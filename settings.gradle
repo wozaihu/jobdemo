@@ -1,2 +1,3 @@
-include ':app'
+include ':app', ':testaar'
 rootProject.name='JobDemo'
+project(':testaar').projectDir = new File('testcreatearr/app')
