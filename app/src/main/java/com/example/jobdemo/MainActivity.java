@@ -2,6 +2,7 @@ package com.example.jobdemo;
 
 import android.os.Bundle;
 
+import com.example.jobdemo.Notification.SendNotification;
 import com.example.testcreatearr.ArrUtils;
 
 import java.util.ArrayList;
@@ -17,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_demo_instance)
     RecyclerView rvDemoInstance;
-    private static String[] demoName = {"Notification加按钮"};
+    private static String[] demoName = {"Notification加按钮"
+    };
     private List<Class> activityList;
 
     @Override
@@ -36,6 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void getListActivity() {
         activityList = new ArrayList<>();
-        activityList.add(MainActivity.class);
+        activityList.add(SendNotification.class);
     }
 }

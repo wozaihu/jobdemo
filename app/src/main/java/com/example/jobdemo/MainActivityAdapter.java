@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.jobdemo.Notification.SendNotification;
-
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -37,7 +35,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
         holder.tv_demo_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.getContext().startActivity(new Intent(v.getContext(), SendNotification.class));
+                v.getContext().startActivity(new Intent(v.getContext(), activity.get(position)));
             }
         });
     }
