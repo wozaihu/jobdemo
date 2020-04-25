@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -36,8 +38,11 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
             @Override
             public void onClick(View v) {
                 v.getContext().startActivity(new Intent(v.getContext(), activity.get(position)));
+                EventBus.getDefault().post("适配器跳转前");
             }
         });
+
+
     }
 
     @Override

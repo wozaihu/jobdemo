@@ -1,11 +1,17 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="JobDemoAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--        在主题中设置全局启动动画，在一些手机和模拟器上无效，还是在beseActivity的OnCreate 中覆盖启动
+                    ，再重写finish 方法添加返回上个activity的动画，
+        -->
+        <item name="android:activityOpenEnterAnimation">@anim/out_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/in_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/finish_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/finish_out</item>
     </style>
-
 </resources>
