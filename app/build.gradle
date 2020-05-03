@@ -10,6 +10,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
         //阿里路由框架配置
         javaCompileOptions {
             annotationProcessorOptions {
@@ -19,14 +21,33 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            buildConfigField "boolean", "LOG_DEBUG", "false" //不显示log
+            minifyEnabled true      //打开混淆
+            shrinkResources true    //打开资源压缩
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.config     //配置前面文件
         }
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    //多渠道打包配置
+    flavorDimensions "default"
+    productFlavors {
+        //渠道包
+        app_360 {
+            manifestPlaceholders = [app_name: "360渠道包", channel: "app_360"]
+        }
+        app_qq {
+            manifestPlaceholders = [app_name: "腾讯应用宝", channel: "app_qq"]
+        }
+        app_release {
+            manifestPlaceholders = [app_name: "默认包", channel: "app_release"]
+        }
     }
 }
 
@@ -40,13 +61,18 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+
     //Event bus 订阅传递数据
     implementation 'org.greenrobot:eventbus:3.2.0'
+
+    //引用的本地库
+    implementation project(path: ':utilslibrary')
     implementation project(path: ':testaar')
 
+    //glide图片框架
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
-    implementation project(path: ':utilslibrary')
 }

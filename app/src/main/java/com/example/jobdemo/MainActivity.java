@@ -2,6 +2,7 @@ package com.example.jobdemo;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.jobdemo.animation.GroupAnimation;
 import com.example.jobdemo.animation.MyAlpha;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             , "ObjectAnimator"
             , "Interpolator"
             , "FrameAnimation"
-            ,"ExpandableListView"
+            , "ExpandableListView"
     };
     private List<Class> activityList;
 
@@ -58,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
         rvDemoInstance.setLayoutManager(new LinearLayoutManager(this));
         rvDemoInstance.setAdapter(adapter);
         EventBus.getDefault().register(this);
+        String channel = ChannelUtil.getChannel(getApplicationContext());
+        Toast.makeText(getApplicationContext(), "当前渠道：" + channel, Toast.LENGTH_SHORT).show();
     }
-
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
