@@ -1,4 +1,4 @@
-package com.example.jobdemo.Animation;
+package com.example.jobdemo.animation;
 
 import android.os.Bundle;
 import android.util.Log;

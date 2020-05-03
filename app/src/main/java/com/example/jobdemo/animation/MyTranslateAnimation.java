@@ -1,4 +1,4 @@
-package com.example.jobdemo.Animation;
+package com.example.jobdemo.animation;
 
 import android.graphics.Rect;
 import android.os.Bundle;

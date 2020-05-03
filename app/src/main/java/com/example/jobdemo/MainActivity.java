@@ -3,14 +3,18 @@ package com.example.jobdemo;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.jobdemo.Animation.GroupAnimation;
-import com.example.jobdemo.Animation.MyAlpha;
-import com.example.jobdemo.Animation.MyRotate;
-import com.example.jobdemo.Animation.MyScaleAnimation;
-import com.example.jobdemo.Animation.MyTranslateAnimation;
-import com.example.jobdemo.Animation.MyValueAnimation;
-import com.example.jobdemo.Animation.VeiwGroupAnimation;
-import com.example.jobdemo.Notification.SendNotification;
+import com.example.jobdemo.animation.GroupAnimation;
+import com.example.jobdemo.animation.MyAlpha;
+import com.example.jobdemo.animation.MyFrameAnimatoin;
+import com.example.jobdemo.animation.MyInterpolator;
+import com.example.jobdemo.animation.MyObjectAnimator;
+import com.example.jobdemo.animation.MyRotate;
+import com.example.jobdemo.animation.MyScaleAnimation;
+import com.example.jobdemo.animation.MyTranslateAnimation;
+import com.example.jobdemo.animation.MyValueAnimation;
+import com.example.jobdemo.animation.VeiwGroupAnimation;
+import com.example.jobdemo.notification.SendNotification;
+import com.example.jobdemo.view_demo.DemoExpandableListView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -34,9 +38,13 @@ public class MainActivity extends AppCompatActivity {
             , "ScaleAnimation"
             , "RotateAnimation"
             , "AlphaAnimation"
-            ,"ViewGroupAnimation"
-            ,"GroupAnimation"
-            ,"ValueAnimation"
+            , "ViewGroupAnimation"
+            , "GroupAnimation"
+            , "ValueAnimation"
+            , "ObjectAnimator"
+            , "Interpolator"
+            , "FrameAnimation"
+            ,"ExpandableListView"
     };
     private List<Class> activityList;
 
@@ -51,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         rvDemoInstance.setAdapter(adapter);
         EventBus.getDefault().register(this);
     }
+
+
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void setStarteEndAnimation(String s) {
@@ -70,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(VeiwGroupAnimation.class);
         activityList.add(GroupAnimation.class);
         activityList.add(MyValueAnimation.class);
+        activityList.add(MyObjectAnimator.class);
+        activityList.add(MyInterpolator.class);
+        activityList.add(MyFrameAnimatoin.class);
+        activityList.add(DemoExpandableListView.class);
     }
 
 

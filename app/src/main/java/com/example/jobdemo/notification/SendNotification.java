@@ -1,4 +1,4 @@
-package com.example.jobdemo.Notification;
+package com.example.jobdemo.notification;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

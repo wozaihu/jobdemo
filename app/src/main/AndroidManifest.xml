@@ -22,14 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Notification.SendNotification" />
-        <activity android:name=".Animation.MyTranslateAnimation" />
-        <activity android:name=".Animation.MyScaleAnimation" />
-        <activity android:name=".Animation.MyRotate" />
-        <activity android:name=".Animation.MyAlpha" />
-        <activity android:name=".Animation.VeiwGroupAnimation"/>
-        <activity android:name=".Animation.GroupAnimation"/>
-        <activity android:name=".Animation.MyValueAnimation"/>
+        <activity android:name=".notification.SendNotification" />
+        <activity android:name=".animation.MyTranslateAnimation" />
+        <activity android:name=".animation.MyScaleAnimation" />
+        <activity android:name=".animation.MyRotate" />
+        <activity android:name=".animation.MyAlpha" />
+        <activity android:name=".animation.VeiwGroupAnimation"/>
+        <activity android:name=".animation.GroupAnimation"/>
+        <activity android:name=".animation.MyValueAnimation"/>
+        <activity android:name=".animation.MyObjectAnimator"/>
+        <activity android:name=".animation.MyInterpolator"/>
+        <activity android:name=".animation.MyFrameAnimatoin"/>
+        <activity android:name=".view_demo.DemoExpandableListView"/>
     </application>
 
 </manifest>
