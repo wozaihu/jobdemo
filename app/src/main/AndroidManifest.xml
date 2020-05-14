@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.jobdemo">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -12,8 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/JobDemoAppTheme"
-        tools:replace="android:theme"
-        >
+        tools:replace="android:theme">
         <!-- 多渠道配置 -->
         <meta-data
             android:name="UMENG_CHANNEL"
@@ -32,13 +33,14 @@
         <activity android:name=".animation.MyScaleAnimation" />
         <activity android:name=".animation.MyRotate" />
         <activity android:name=".animation.MyAlpha" />
-        <activity android:name=".animation.VeiwGroupAnimation"/>
-        <activity android:name=".animation.GroupAnimation"/>
-        <activity android:name=".animation.MyValueAnimation"/>
-        <activity android:name=".animation.MyObjectAnimator"/>
-        <activity android:name=".animation.MyInterpolator"/>
-        <activity android:name=".animation.MyFrameAnimatoin"/>
-        <activity android:name=".view_demo.DemoExpandableListView"/>
+        <activity android:name=".animation.VeiwGroupAnimation" />
+        <activity android:name=".animation.GroupAnimation" />
+        <activity android:name=".animation.MyValueAnimation" />
+        <activity android:name=".animation.MyObjectAnimator" />
+        <activity android:name=".animation.MyInterpolator" />
+        <activity android:name=".animation.MyFrameAnimatoin" />
+        <activity android:name=".view_demo.DemoExpandableListView" />
+        <activity android:name=".exercise.RecyclerView_Demo" />
     </application>
 
 </manifest>

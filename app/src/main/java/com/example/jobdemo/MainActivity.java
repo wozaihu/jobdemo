@@ -14,6 +14,7 @@ import com.example.jobdemo.animation.MyScaleAnimation;
 import com.example.jobdemo.animation.MyTranslateAnimation;
 import com.example.jobdemo.animation.MyValueAnimation;
 import com.example.jobdemo.animation.VeiwGroupAnimation;
+import com.example.jobdemo.exercise.RecyclerView_Demo;
 import com.example.jobdemo.notification.SendNotification;
 import com.example.jobdemo.view_demo.DemoExpandableListView;
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             , "Interpolator"
             , "FrameAnimation"
             , "ExpandableListView"
+            , "recyclerView瀑布流"
     };
     private List<Class> activityList;
 
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(MyInterpolator.class);
         activityList.add(MyFrameAnimatoin.class);
         activityList.add(DemoExpandableListView.class);
+        activityList.add(RecyclerView_Demo.class);
     }
 
 
@@ -94,4 +97,6 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+
 }

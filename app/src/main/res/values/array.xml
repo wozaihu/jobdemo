@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pictureUrls">
+        <item>https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&amp;quality=100&amp;size=b4000_4000&amp;sec=1589212041&amp;di=376be7b501c58c2ef78223b613a4c5d5&amp;src=http://pic1.zhimg.com/50/v2-0a47d0deee5122308e986bcdc7c45de4_hd.jpg</item>
+        <item>https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1589222126176&amp;di=f5982f77fa6efab6c52acb613a66b40d&amp;imgtype=0&amp;src=http%3A%2F%2Fapkjimg.wxhon.com%2Fcontent_3ebf9804f67686ef7e0383743c5c2ec7.jpg</item>
+        <item>https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1589222316878&amp;di=45265db205e03c6996e90b522e227501&amp;imgtype=0&amp;src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201408%2F07%2F194456i55q58pqnb55fi88.jpg</item>
+        <item>https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2615072792,72707936&amp;fm=26&amp;gp=0.jpg</item>
+        <item>https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1589222359305&amp;di=27fdf930b6325ed39016ca1547770740&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.kttpdq.com%2Fpic%2F7%2F4767%2Fe0d6876a6551d29c.jpg</item>
+        <item>https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1433344920,2609399254&amp;fm=26&amp;gp=0.jpg</item>
+        <item>https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1589222440241&amp;di=c82fb2796948fac37c70448e89c52976&amp;imgtype=0&amp;src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fd62a6059252dd42a1c362a29033b5bb5c9eab870.jpg</item>
+        <item>https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1589222384105&amp;di=332d7ea6aa2b5b1b71c2dd41ac9ab8cd&amp;imgtype=0&amp;src=http%3A%2F%2Fwx4.sinaimg.cn%2Flarge%2F9e31678cgy1ffid5rbncvj209q09qjrm.jpg</item>
+        <item>https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1589222316878&amp;di=4cddb79281ee449e4c6e1eef7eadd6db&amp;imgtype=0&amp;src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201105%2F17%2F113554rnu40q7nbgnn3lgq.jpg</item>
+        <item>https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3546967651,2909803484&amp;fm=15&amp;gp=0.jpg</item>
+    </string-array>
+</resources>
