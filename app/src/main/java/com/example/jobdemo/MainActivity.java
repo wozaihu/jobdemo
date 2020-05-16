@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             , "Interpolator"
             , "FrameAnimation"
             , "ExpandableListView"
-            , "recyclerView瀑布流"
+            , "recyclerView瀑布流_feature分支修改"
     };
     private List<Class> activityList;
 
