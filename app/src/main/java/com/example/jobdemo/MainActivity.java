@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             , "TranslateAnimation"
             , "ScaleAnimation"
             , "RotateAnimation"
-            , "AlphaAnimation"
+            , "AlphaAnimation透明动画"
             , "ViewGroupAnimation"
             , "GroupAnimation"
             , "ValueAnimation"
