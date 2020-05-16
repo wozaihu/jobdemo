@@ -41,14 +41,14 @@ android {
     flavorDimensions "default"
     productFlavors {
         //渠道包
+        app_official {
+            manifestPlaceholders = [app_name: "默认包", channel: "app_official"]
+        }
         app_360 {
             manifestPlaceholders = [app_name: "360渠道包", channel: "app_360"]
         }
         app_qq {
             manifestPlaceholders = [app_name: "腾讯应用宝", channel: "app_qq"]
-        }
-        app_release {
-            manifestPlaceholders = [app_name: "默认包", channel: "app_release"]
         }
     }
 }
