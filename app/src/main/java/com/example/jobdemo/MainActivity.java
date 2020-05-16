@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             , "ViewGroupAnimation"
             , "GroupAnimation"
             , "ValueAnimation"
-            , "ObjectAnimator"
+            , "ObjectAnimator动画"
             , "Interpolator"
             , "FrameAnimation"
             , "ExpandableListView"
