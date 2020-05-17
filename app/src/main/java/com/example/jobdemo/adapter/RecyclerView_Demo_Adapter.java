@@ -13,16 +13,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.jobdemo.MyApplication;
 import com.example.jobdemo.R;
 import com.example.jobdemo.bean.ImageSizeBean;
-import com.lyx.utilslibrary.MeasureUtils;
+import com.example.jobdemo.kotlin_code.GlideUtils;
+import com.example.jobdemo.kotlin_code.ImageSize;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,8 +62,8 @@ public class RecyclerView_Demo_Adapter extends RecyclerView.Adapter<RecyclerView
 //        layoutParams.width = MeasureUtils.getScreenWidth(context) / 2;
 //        layoutParams.height = (int) (layoutParams.width / scales.get(position));
 //        holder.iv_picture.setLayoutParams(layoutParams);
-        Log.d(TAG, "集合里有几个数: " + imageSizeBean.size() + "是否包含:" + position + "----" + imageSizeBean.containsKey(position));
-
+//        Log.d(TAG, "集合里有几个数: " + imageSizeBean.size() + "是否包含:" + position + "----" + imageSizeBean.containsKey(position));
+//
 //        Glide.with(context).asBitmap().load(stringArray[position]).into(new SimpleTarget<Bitmap>() {
 //                    @Override
 //                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
@@ -101,63 +98,21 @@ public class RecyclerView_Demo_Adapter extends RecyclerView.Adapter<RecyclerView
 //                        }
 //                    }
 //                });
-//        if (GlideUtils.imageSize.containsKey(helper ?.position)){
-//            params ?.width = GlideUtils.imageSize.get(helper ?.position)?.width
-//            params ?.height = GlideUtils.imageSize.get(helper ?.position)?.height
-//            ivItem ?.layoutParams = params
-//        }
 
-        Glide.with(context).load(stringArray[position]).addListener(new RequestListener<Drawable>() {
-
-            @Override
-            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                return false;
-            }
-
-            @Override
-            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                if (!imageSizeBean.containsKey(position)) {
-                    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) holder.iv_picture.getLayoutParams();//获取你要填充图片的布局的layoutParam
-                    int realityHeight = (int) (((float) resource.getIntrinsicHeight()) / resource.getIntrinsicWidth() * MeasureUtils.getScreenWidth(context) / 2);
-                    layoutParams.height = realityHeight;
-                    //因为是2列,所以宽度是屏幕的一半,高度是根据bitmap的高/宽*屏幕宽的一半
-                    int realityWidth = MeasureUtils.getScreenWidth(context) / 2;//这个是布局的宽度
-                    layoutParams.width = realityWidth;
-                    holder.iv_picture.setLayoutParams(layoutParams);//容器的宽高设置好了
-                  Bitmap  resource2 = zoomImg(resource, layoutParams.width, layoutParams.height);
-                    ImageSizeBean bean = new ImageSizeBean();
-                    bean.setHeight(realityHeight);
-                    bean.setWidth(realityWidth);
-//                            bean.setBitmap(resource);
-                    imageSizeBean.put(position, bean);
-                    // 然后在改变一下bitmap的宽高
-                    Log.d(TAG, "添加了缓存: " + bean.toString());
-                    holder.iv_picture.setImageBitmap(resource2);
-                } else {
-                    Log.d(TAG, "使用缓存的图片: " + position);
-                    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) holder.iv_picture.getLayoutParams();//获取你要填充图片的布局的layoutParam
-                    layoutParams.height = imageSizeBean.get(position).getHeight();
-                    //因为是2列,所以宽度是屏幕的一半,高度是根据bitmap的高/宽*屏幕宽的一半
-                    layoutParams.width = imageSizeBean.get(position).getWidth();//这个是布局的宽度
-                    holder.iv_picture.setLayoutParams(layoutParams);//容器的宽高设置好了
-                    holder.iv_picture.setImageBitmap(zoomImg(resource, layoutParams.width, layoutParams.height));
-                }
-                return false;
-            }
-        }).into(holder.iv_picture);
 
 //        使用一个kotlin的工具类获得图片宽高，并缓存，为了解决上拉图片重绘宽高的问题
-//        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) holder.iv_picture.getLayoutParams();//获取你要填充图片的布局的layoutParam
-//        if (GlideUtils.getImageSize().containsKey(position)) {
-//            HashMap<Integer, ImageSize> imageSize = GlideUtils.getImageSize();
-//            ImageSize size = imageSize.get(position);
-//            layoutParams.width = size.getWidth();
-//            layoutParams.height = size.getHight();
-//            holder.iv_picture.setLayoutParams(layoutParams);//容器的宽高设置好了
-//        }
-//        GlideUtils.getGlide().with(context).load(stringArray[position]).into(holder.iv_picture, position);
-
-
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) holder.iv_picture.getLayoutParams();//获取你要填充图片的布局的layoutParam
+        if (GlideUtils.getImageSize().containsKey(position)) {
+            HashMap<Integer, ImageSize> imageSize = GlideUtils.getImageSize();
+            ImageSize size = imageSize.get(position);
+            layoutParams.width = size.getWidth();
+            layoutParams.height = size.getHight();
+            holder.iv_picture.setLayoutParams(layoutParams);//容器的宽高设置好了
+            //清空所有view的画
+//            holder.iv_picture.setWillNotDraw(true);
+        } else {
+            GlideUtils.getGlide().with(context).load(stringArray[position]).into(holder.iv_picture, position);
+        }
     }
 
     @Override
@@ -210,7 +165,7 @@ public class RecyclerView_Demo_Adapter extends RecyclerView.Adapter<RecyclerView
     //改变bitmap尺寸的方法
     public static Bitmap zoomImg(Drawable bm, int newWidth, int newHeight) {
         // 获得图片的宽高
-        BitmapDrawable bitmapDrawable= (BitmapDrawable) bm;
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) bm;
         Bitmap bitmap = bitmapDrawable.getBitmap();
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
