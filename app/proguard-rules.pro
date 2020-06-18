@@ -204,3 +204,7 @@
 -dontwarn android.support.test.**
 -dontwarn org.junit.**
 #
+#百度地图混淆
+-keep class com.baidu.** {*;}
+-keep class mapsdkvi.com.** {*;}
+-dontwarn com.baidu.**
