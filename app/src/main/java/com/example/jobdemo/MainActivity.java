@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.jobdemo.activity.CameraDemo;
+import com.example.jobdemo.activity.DialogDemo;
 import com.example.jobdemo.animation.GroupAnimation;
 import com.example.jobdemo.animation.MyAlpha;
 import com.example.jobdemo.animation.MyFrameAnimatoin;
@@ -14,8 +16,11 @@ import com.example.jobdemo.animation.MyScaleAnimation;
 import com.example.jobdemo.animation.MyTranslateAnimation;
 import com.example.jobdemo.animation.MyValueAnimation;
 import com.example.jobdemo.animation.VeiwGroupAnimation;
+import com.example.jobdemo.baidu_map.BaiduMapDemo;
+import com.example.jobdemo.bean.MainOnDestroy;
 import com.example.jobdemo.exercise.RecyclerView_Demo;
 import com.example.jobdemo.notification.SendNotification;
+import com.example.jobdemo.util.ChannelUtil;
 import com.example.jobdemo.view_demo.DemoExpandableListView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -47,7 +52,11 @@ public class MainActivity extends AppCompatActivity {
             , "Interpolator"
             , "FrameAnimation"
             , "ExpandableListView"
-            , "recyclerView瀑布流_feature分支修改"
+            , "recyclerView瀑布流"
+            , "集成百度地图展示"
+            , "调用相机"
+            , "dialogDEMO"
+
     };
     private List<Class> activityList;
 
@@ -89,13 +98,19 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(MyFrameAnimatoin.class);
         activityList.add(DemoExpandableListView.class);
         activityList.add(RecyclerView_Demo.class);
+        activityList.add(BaiduMapDemo.class);
+        activityList.add(CameraDemo.class);
+        activityList.add(DialogDemo.class);
+
     }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().post(new MainOnDestroy());
         EventBus.getDefault().unregister(this);
+        Log.d(MyApplication.TAG, "onDestroy: MainActivity");
     }
 
 
