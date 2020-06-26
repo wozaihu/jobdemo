@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.dialog.VerificationDialogFragment;
-import com.tencent.bugly.crashreport.CrashReport;
 
 import androidx.annotation.Nullable;
 import butterknife.BindView;
