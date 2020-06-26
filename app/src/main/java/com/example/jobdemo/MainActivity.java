@@ -1,5 +1,8 @@
 package com.example.jobdemo;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -31,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         EventBus.getDefault().register(this);
         String channel = ChannelUtil.getChannel(getApplicationContext());
         Toast.makeText(getApplicationContext(), "当前渠道：" + channel, Toast.LENGTH_SHORT).show();
+        checkLOCATIONPermission();
     }
 
 
@@ -114,4 +119,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void checkLOCATIONPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 001);
+            }
+        }
+    }
 }
