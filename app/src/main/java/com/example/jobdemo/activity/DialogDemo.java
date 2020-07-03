@@ -46,7 +46,6 @@ public class DialogDemo extends BaseActivity {
     private void shwoCircularDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_default, null);
-        TextView tvConfirm;
         TextView tvTitle = view.findViewById(R.id.tv_title);
         TextView tvMessage = view.findViewById(R.id.tv_message);
         TextView tv_cancel = view.findViewById(R.id.tv_cancel);

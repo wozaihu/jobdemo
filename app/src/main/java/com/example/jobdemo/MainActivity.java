@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.jobdemo.activity.CameraDemo;
 import com.example.jobdemo.activity.DialogDemo;
+import com.example.jobdemo.activity.WidgetViewDemo;
 import com.example.jobdemo.animation.GroupAnimation;
 import com.example.jobdemo.animation.MyAlpha;
 import com.example.jobdemo.animation.MyFrameAnimatoin;
@@ -37,6 +38,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             , "集成百度地图展示"
             , "调用相机"
             , "dialogDEMO"
+            , "自定义viewDemo"
 
     };
     private List<Class> activityList;
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(BaiduMapDemo.class);
         activityList.add(CameraDemo.class);
         activityList.add(DialogDemo.class);
+        activityList.add(WidgetViewDemo.class);
 
     }
 
