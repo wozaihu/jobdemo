@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.jobdemo.activity.CameraDemo;
 import com.example.jobdemo.activity.DialogDemo;
+import com.example.jobdemo.activity.PopupWindowDemo;
 import com.example.jobdemo.activity.WidgetViewDemo;
 import com.example.jobdemo.animation.GroupAnimation;
 import com.example.jobdemo.animation.MyAlpha;
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             , "调用相机"
             , "dialogDEMO"
             , "自定义viewDemo"
+            , "PopupWindow使用"
 
     };
     private List<Class> activityList;
@@ -110,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(CameraDemo.class);
         activityList.add(DialogDemo.class);
         activityList.add(WidgetViewDemo.class);
-
+        activityList.add(PopupWindowDemo.class);
     }
 
 

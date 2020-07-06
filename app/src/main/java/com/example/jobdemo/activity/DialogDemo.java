@@ -38,40 +38,40 @@ public class DialogDemo extends BaseActivity {
                 new VerificationDialogFragment().show(getSupportFragmentManager(), "");
                 break;
             case R.id.tv_show_dialog_fragment2:
-                shwoCircularDialog("请注意", "确定支付后，资金将直接");
+//                shwoCircularDialog("请注意", "确定支付后，资金将直接");
                 break;
         }
     }
 
-    private void shwoCircularDialog(String title, String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View view = LayoutInflater.from(this).inflate(R.layout.dialog_default, null);
-        TextView tvTitle = view.findViewById(R.id.tv_title);
-        TextView tvMessage = view.findViewById(R.id.tv_message);
-        TextView tv_cancel = view.findViewById(R.id.tv_cancel);
-        TextView tv_confirm = view.findViewById(R.id.tv_confirm);
-        builder.setView(view);
-        tvTitle.setText(title);
-        tvMessage.setText(message);
-        tv_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (circularDialog != null) {
-                    circularDialog.dismiss();
-                }
-            }
-        });
-        tv_confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (circularDialog != null) {
-                    Toast.makeText(DialogDemo.this, "点击了确定", Toast.LENGTH_LONG).show();
-                    circularDialog.dismiss();
-                }
-            }
-        });
-        circularDialog = builder.create();
-        circularDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        circularDialog.show();
-    }
+//    private void shwoCircularDialog(String title, String message) {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        View view = LayoutInflater.from(this).inflate(R.layout.dialog_default, null);
+//        TextView tvTitle = view.findViewById(R.id.tv_title);
+//        TextView tvMessage = view.findViewById(R.id.tv_message);
+//        TextView tv_cancel = view.findViewById(R.id.tv_cancel);
+//        TextView tv_confirm = view.findViewById(R.id.tv_confirm);
+//        builder.setView(view);
+//        tvTitle.setText(title);
+//        tvMessage.setText(message);
+//        tv_cancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (circularDialog != null) {
+//                    circularDialog.dismiss();
+//                }
+//            }
+//        });
+//        tv_confirm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (circularDialog != null) {
+//                    Toast.makeText(DialogDemo.this, "点击了确定", Toast.LENGTH_LONG).show();
+//                    circularDialog.dismiss();
+//                }
+//            }
+//        });
+//        circularDialog = builder.create();
+//        circularDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//        circularDialog.show();
+//    }
 }
