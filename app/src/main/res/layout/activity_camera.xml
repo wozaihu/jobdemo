@@ -8,11 +8,11 @@
         android:id="@+id/btn_start_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="启动相机页面" />
+        android:text="@string/start_camera_page" />
 
     <Button
         android:id="@+id/btn_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="btn2" />
+        android:text="@string/two_button" />
 </LinearLayout>

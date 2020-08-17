@@ -6,15 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.jobdemo.util.DensityUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.MyViewholder> {
     public MainActivityAdapter(String[] array, List<Class> activity) {
@@ -35,6 +35,19 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewholder holder, int position) {
+        //设置每行文字数量
+//        StringBuilder text = new StringBuilder(array[position]);
+//        int length = text.length();
+//        int temp = 0;
+//        if (text.length() > 4) {
+//            for (int i = 0; i < length; i += 4) {
+//                if (i != 0 && i % 4 == 0) {
+//                    text.insert(i + temp, "\n");
+//                    temp++;
+//                }
+//            }
+//        }
+//        holder.tv_demo_name.setText(text.toString());
         holder.tv_demo_name.setText(array[position]);
         holder.tv_demo_name.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +59,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
         if (position == array.length - 1) {
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.cv_root.getLayoutParams();
-            layoutParams.setMargins( DensityUtil.INSTANCE.dip2px(20), DensityUtil.INSTANCE.dip2px(10),  DensityUtil.INSTANCE.dip2px(20), DensityUtil.INSTANCE.dip2px(10));
+            layoutParams.setMargins(DensityUtil.INSTANCE.dip2px(20), DensityUtil.INSTANCE.dip2px(10), DensityUtil.INSTANCE.dip2px(20), DensityUtil.INSTANCE.dip2px(10));
             holder.cv_root.setLayoutParams(layoutParams);
         }
     }

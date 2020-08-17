@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.example.jobdemo.debug",
+  "variantName": "app_360Debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "properties": [],
+      "versionCode": 1,
+      "versionName": "1.0",
+      "enabled": true,
+      "outputFile": "app-app_360-debug.apk"
+    }
+  ]
+}

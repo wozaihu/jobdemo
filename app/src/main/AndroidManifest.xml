@@ -5,22 +5,13 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <!-- 访问网络，进行地图相关业务数据请求，包括地图数据，路线规划，POI检索等 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 获取网络状态，根据网络状态切换进行数据请求网络转换 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <!-- 读取外置存储。如果开发者使用了so动态加载功能并且把so文件放在了外置存储区域，则需要申请该权限，否则不需要 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 写外置存储。如果开发者使用了离线地图，并且数据写在外置存储区域，则需要申请该权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <!-- 这个权限用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 访问网络，进行地图相关业务数据请求，包括地图数据，路线规划，POI检索等 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取网络状态，根据网络状态切换进行数据请求网络转换 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 读取外置存储。如果开发者使用了so动态加载功能并且把so文件放在了外置存储区域，则需要申请该权限，否则不需要 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 写外置存储。如果开发者使用了离线地图，并且数据写在外置存储区域，则需要申请该权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 这个权限用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission
@@ -31,21 +22,23 @@
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="${label}"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/JobDemoAppTheme"
         tools:replace="android:theme">
+        <meta-data
+            android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="true" />
         <!-- 多渠道配置 -->
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="${channel}" />
-        <!-- 百度地图 定位需要-->
+        <!-- 百度地图 定位需要 -->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote" />
-        <!-- 百度地图 key-->
+            android:process=":remote" /> <!-- 百度地图 key -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="UpGAvq5yhd89MZRcTpihc2mjKeR5ziDs" />
@@ -76,6 +69,11 @@
         <activity android:name=".activity.DialogDemo" />
         <activity android:name=".activity.WidgetViewDemo" />
         <activity android:name=".activity.PopupWindowDemo" />
+        <activity android:name=".activity.BiuldVariantDetails" />
+        <activity
+            android:name=".activity.Activity_Privacy_Tip"
+            android:hardwareAccelerated="false" />
+        <activity android:name=".activity.InfoShow" />
     </application>
 
 </manifest>

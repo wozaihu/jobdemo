@@ -21,8 +21,10 @@
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
         tools:src="@mipmap/a4" />
+
     <Button
         android:id="@+id/btn_Start_CameraDemo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF" />
 </RelativeLayout>

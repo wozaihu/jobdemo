@@ -8,7 +8,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.2'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
@@ -21,6 +21,15 @@ allprojects {
         google()
         jcenter()
         maven { url "https://raw.githubusercontent.com/wozaihu/testmaven/master" }
+    }
+
+    configurations.all {
+        //每隔24小时检查远程依赖是否存在更新
+        resolutionStrategy.cacheChangingModulesFor 24, 'hours'
+        //每隔10分钟..
+        resolutionStrategy.cacheChangingModulesFor 10, 'minutes'
+        // 采用动态版本声明的依赖缓存10分钟
+        resolutionStrategy.cacheDynamicVersionsFor 1000 * 60, 'seconds'
     }
 }
 

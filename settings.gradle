@@ -1,2 +1,2 @@
 include ':app', ':utilslibrary'
-rootProject.name='JobDemo'
+rootProject.name = 'JobDemo'

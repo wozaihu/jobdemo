@@ -3,9 +3,12 @@ package com.example.jobdemo;
 import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
+import com.example.jobdemo.util.AppInfoUtils;
+import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import java.io.BufferedReader;
@@ -38,6 +41,14 @@ public class MyApplication extends Application {
         strategy.setUploadProcess(processName == null || processName.equals(packageName));
 // 初始化Bugly
         CrashReport.initCrashReport(context, "e1a59cdaba", true, strategy);
+
+
+        //debug模式下 初始化内存泄漏测试
+        if (BuildConfig.DEBUG && !LeakCanary.isInAnalyzerProcess(this)
+                && AppInfoUtils.sHA1(this).equals("D2:50:F6:48:44:67:AA:4A:91:55:4B:FE:6C:AC:39:4F:4C:37:D2:7F")) {
+            LeakCanary.install(this);
+            Log.d(TAG, "sha1值对上了，内存泄漏框架初始化了");
+        }
     }
 
     public static Context getApplication() {

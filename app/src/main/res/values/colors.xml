@@ -6,4 +6,7 @@
     <color name="transparent">#00000000</color>
     <color name="green">#13b5b1</color> <!-- 绿蓝 -->
     <color name="white">#fff</color> <!-- 白色 -->
+    <color name="yellow">#FFFF00</color>
+    <color name="alto">#D3D3D3</color>
+    <color name="dove_gray">#696969</color>
 </resources>
