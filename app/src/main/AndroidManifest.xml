@@ -26,7 +26,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/JobDemoAppTheme"
-        tools:replace="android:theme">
+        android:requestLegacyExternalStorage="true"
+        tools:replace="android:theme"
+        tools:targetApi="q">
+        <!-- suppress AndroidDomInspection -->
+        <!--子线程初始化第三方-->
+
+        <service
+            android:name=".service.InitializeService"
+            android:enabled="true"
+            android:exported="false" />
         <meta-data
             android:name="android.webkit.WebView.EnableSafeBrowsing"
             android:value="true" />
@@ -71,9 +80,13 @@
         <activity android:name=".activity.PopupWindowDemo" />
         <activity android:name=".activity.BiuldVariantDetails" />
         <activity
-            android:name=".activity.Activity_Privacy_Tip"
+            android:name=".activity.ActivityPublicWebView"
             android:hardwareAccelerated="false" />
         <activity android:name=".activity.InfoShow" />
+        <activity android:name=".activity.Activity_List" />
+        <activity android:name=".activity.StudioDemo"
+            android:parentActivityName=".MainActivity"
+            />
     </application>
 
 </manifest>

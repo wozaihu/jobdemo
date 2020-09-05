@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
+import com.example.jobdemo.service.InitializeService;
 import com.example.jobdemo.util.AppInfoUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -23,6 +24,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         application = this;
+        InitializeService.start(this);
         //在使用SDK各组件之前初始化context信息，传入ApplicationContext
         SDKInitializer.initialize(this);
         //自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.
@@ -49,6 +51,7 @@ public class MyApplication extends Application {
             LeakCanary.install(this);
             Log.d(TAG, "sha1值对上了，内存泄漏框架初始化了");
         }
+        Log.d(TAG, "app是否在前台: ");
     }
 
     public static Context getApplication() {

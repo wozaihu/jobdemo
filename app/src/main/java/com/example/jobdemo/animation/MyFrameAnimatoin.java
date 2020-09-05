@@ -28,7 +28,6 @@ public class MyFrameAnimatoin extends BaseActivity {
     @BindView(R.id.iv_java)
     ImageView ivJava;
     private AnimationDrawable animationDrawable;
-    private static final String TAG = "MyFrameAnimatoin";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

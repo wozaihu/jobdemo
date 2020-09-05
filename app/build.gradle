@@ -26,17 +26,19 @@ android {
     signingConfigs {
         release {
             def Properties keyProps = new Properties()
-            keyProps.load(new FileInputStream(file('C:\\Users\\Administrator\\.android\\debug_sign.properties')))
+            keyProps.load(new FileInputStream(file('C:\\Users\\Administrator\\.android\\default_sign.properties')))
             storeFile file(keyProps["store_file"])
             storePassword keyProps["store_pwd"]
             keyAlias keyProps["key_alias"]
             keyPassword keyProps["key_pwd"]
         }
         debug {
-            storeFile file('C:\\Users\\Administrator\\.android\\default.jks')
-            storePassword '123456'
-            keyAlias 'androiddebug'
-            keyPassword '123456'
+            def Properties keyProps = new Properties()
+            keyProps.load(new FileInputStream(file('C:\\Users\\Administrator\\.android\\default_sign.properties')))
+            storeFile file(keyProps["store_file"])
+            storePassword keyProps["store_pwd"]
+            keyAlias keyProps["key_alias"]
+            keyPassword keyProps["key_pwd"]
         }
     }
 
@@ -53,7 +55,7 @@ android {
         }
         debug {
             buildConfigField "String", "BUILD_TYPE999", '"debug"'
-            applicationIdSuffix '.debug'
+//            applicationIdSuffix '.debug'
             manifestPlaceholders = [label: "jobdemo调试版"]
         }
 
@@ -95,7 +97,7 @@ android {
     variantFilter { variant ->
         def names = variant.flavors*.name
         // To check for a build type instead, use variant.buildType.name == "buildType"
-        if (names.contains("app_qq")) {
+        if (names.contains("app_qq") || names.contains("app_360")) {
             // Gradle ignores any variants that satisfy the conditions above.
             setIgnore(true)
         }
@@ -139,6 +141,7 @@ dependencies {
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    betatestImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
 }
 repositories {
     mavenCentral()

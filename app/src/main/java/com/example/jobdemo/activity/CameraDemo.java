@@ -14,7 +14,12 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.example.jobdemo.MyApplication;
 import com.example.jobdemo.R;
@@ -25,14 +30,16 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class CameraDemo extends BaseActivity {
     private static final String TAG = "CameraDemo";
+    @BindView(R.id.btn_start_camera)
+    Button btnStartCamera;
+    @BindView(R.id.btn_2)
+    Button btn2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

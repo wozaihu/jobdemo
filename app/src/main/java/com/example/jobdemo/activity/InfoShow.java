@@ -1,5 +1,7 @@
 package com.example.jobdemo.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -22,11 +24,21 @@ public class InfoShow extends AppCompatActivity {
     @BindView(R.id.tv_sha265)
     TextView tvSha265;
 
+    public static void start(Context context, String parameter) {
+        Intent starter = new Intent(context, InfoShow.class);
+        starter.putExtra("parameter", parameter);
+        context.startActivity(starter);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         ButterKnife.bind(this);
+        if (getIntent().getStringExtra("parameter") != null) {
+            String extra = getIntent().getStringExtra("parameter");
+            tvSha265.setText("从" + extra + "跳转过来");
+        }
         tvSha1.setText(AppInfoUtils.sHA1(this));
         tvMd5.setText("包名: " + getPackageName());
         Log.d(TAG, "包名: " + getPackageName());
