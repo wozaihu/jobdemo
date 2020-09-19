@@ -1,4 +1,4 @@
-package com.lyx.utilslibrary;
+package com.example.jobdemo.util;
 
 import android.app.Activity;
 import android.content.Context;

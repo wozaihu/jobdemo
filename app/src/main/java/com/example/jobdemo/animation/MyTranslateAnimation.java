@@ -13,6 +13,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
 import com.example.jobdemo.R;
+import com.example.jobdemo.base.BaseActivity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MyTranslateAnimation extends AppCompatActivity {
+public class MyTranslateAnimation extends BaseActivity {
     @BindView(R.id.tv_test_translate_animation)
     TextView tvTestTranslateAnimation;
     @BindView(R.id.btn_start_translate)

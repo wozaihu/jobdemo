@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv1"
+                android:text="你好"
+                android:layout_margin="10dp"
+                android:background="@drawable/storke_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_toRightOf="@+id/tv1"
+                android:layout_margin="10dp"
+                android:background="@drawable/ring_green"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <FrameLayout
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/concentric_circles"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                >
+                <ImageView
+                    android:id="@+id/img_picture"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:contentDescription="TODO"
+                    tools:src="@mipmap/a4" />
+            </FrameLayout>
+
+
+            <com.example.jobdemo.view.ListViewForScrollView
+                android:id="@+id/lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_picture"
+                android:layout_marginTop="20dp" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/img_layout_create_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:src="@mipmap/scissor" />
+</RelativeLayout>

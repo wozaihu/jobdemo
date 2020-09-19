@@ -1,28 +1,29 @@
 package com.example.jobdemo.notification;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.example.jobdemo.R;
-import com.example.jobdemo.view.LooperLayoutManager;
-import com.example.jobdemo.view.SlidingIndicator;
-import com.example.testcreatearr.ArrUtils;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
+
+import com.bumptech.glide.Glide;
+import com.example.jobdemo.R;
+import com.example.jobdemo.base.BaseActivity;
+import com.example.jobdemo.view.LooperLayoutManager;
+import com.example.jobdemo.view.SlidingIndicator;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SendNotification extends AppCompatActivity {
+public class SendNotification extends BaseActivity {
     @BindView(R.id.iv_http)
     ImageView ivHttp;
     @BindView(R.id.btn_show_picture)
@@ -46,11 +47,41 @@ public class SendNotification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         ButterKnife.bind(this);
-
+        Log.d("点击测试", "onCreate: ===SendNotification");
         LooperLayoutManager layoutManager = new LooperLayoutManager();
         layoutManager.setLooperEnable(true);
         rvLoopPicture.setLayoutManager(layoutManager);
         rvLoopPicture.setAdapter(new LoopAdapter());
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("点击测试", "onRestart: ===SendNotification");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("点击测试", "onResume: ===SendNotification");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("点击测试", "onPause: ===SendNotification");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("点击测试", "onStop: ===SendNotification");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("点击测试", "onDestroy: ===SendNotification");
     }
 
     @OnClick({R.id.iv_http, R.id.btn_show_picture})
@@ -59,7 +90,6 @@ public class SendNotification extends AppCompatActivity {
             case R.id.iv_http:
                 break;
             case R.id.btn_show_picture:
-                Glide.with(this).load(ArrUtils.getInstance().getPictureUrl()).into(ivHttp);
                 break;
         }
     }

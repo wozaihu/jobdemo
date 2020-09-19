@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.jobdemo.R;
 import com.example.jobdemo.util.AppInfoUtils;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -35,6 +37,7 @@ public class InfoShow extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         ButterKnife.bind(this);
+        Log.d("点击测试", "onCreate: ===InfoShow");
         if (getIntent().getStringExtra("parameter") != null) {
             String extra = getIntent().getStringExtra("parameter");
             tvSha265.setText("从" + extra + "跳转过来");
@@ -42,5 +45,35 @@ public class InfoShow extends AppCompatActivity {
         tvSha1.setText(AppInfoUtils.sHA1(this));
         tvMd5.setText("包名: " + getPackageName());
         Log.d(TAG, "包名: " + getPackageName());
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("点击测试", "onRestart: ===InfoShow");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("点击测试", "onResume: ===InfoShow");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("点击测试", "onPause: ===InfoShow");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("点击测试", "onStop: ===InfoShow");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("点击测试", "onDestroy: ===InfoShow");
     }
 }

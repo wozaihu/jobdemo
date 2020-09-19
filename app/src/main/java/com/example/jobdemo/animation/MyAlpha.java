@@ -10,25 +10,26 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.jobdemo.activity.CameraDemo;
 import com.example.jobdemo.MyApplication;
 import com.example.jobdemo.R;
+import com.example.jobdemo.activity.CameraDemo;
+import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.bean.MainOnDestroy;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MyAlpha extends AppCompatActivity {
+public class MyAlpha extends BaseActivity {
     @BindView(R.id.tv_alpha)
     TextView tvAlpha;
     @BindView(R.id.iv_alpha)

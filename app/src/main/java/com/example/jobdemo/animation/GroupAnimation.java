@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.jobdemo.R;
+import com.example.jobdemo.base.BaseActivity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class GroupAnimation extends AppCompatActivity {
+public class GroupAnimation extends BaseActivity {
     @BindView(R.id.tv_group_animation)
     TextView tvGroupAnimation;
     @BindView(R.id.iv_group_animation)

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +17,7 @@ import com.example.jobdemo.activity.BiuldVariantDetails;
 import com.example.jobdemo.activity.CameraDemo;
 import com.example.jobdemo.activity.DialogDemo;
 import com.example.jobdemo.activity.InfoShow;
+import com.example.jobdemo.activity.LayoutCreatePicture;
 import com.example.jobdemo.activity.PopupWindowDemo;
 import com.example.jobdemo.activity.StudioDemo;
 import com.example.jobdemo.activity.WidgetViewDemo;
@@ -32,6 +32,7 @@ import com.example.jobdemo.animation.MyTranslateAnimation;
 import com.example.jobdemo.animation.MyValueAnimation;
 import com.example.jobdemo.animation.VeiwGroupAnimation;
 import com.example.jobdemo.baidu_map.BaiduMapDemo;
+import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.bean.MainOnDestroy;
 import com.example.jobdemo.exercise.RecyclerView_Demo;
 import com.example.jobdemo.notification.SendNotification;
@@ -46,7 +47,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
     @BindView(R.id.rv_demo_instance)
     RecyclerView rvDemoInstance;
@@ -72,14 +73,16 @@ public class MainActivity extends AppCompatActivity {
             , "PopupWindow使用"
             , "产品变种==" + BuildConfig.FLAVOR + ";----编译模式==" + BuildConfig.BUILD_TYPE
             , MyApplication.getApplication().getString(R.string.web_view)
-            ,"list_view"
-            ,MyApplication.getApplication().getString(R.string.studio_demo)
+            , "list_view"
+            , MyApplication.getApplication().getString(R.string.studio_demo)
+            ,MyApplication.getApplication().getString(R.string.layout_create_picture)
     };
     private List<Class> activityList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("点击测试", "onCreate: ===MainActivity");
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         getListActivity();
@@ -122,15 +125,39 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(ActivityPublicWebView.class);
         activityList.add(Activity_List.class);
         activityList.add(StudioDemo.class);
+        activityList.add(LayoutCreatePicture.class);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("点击测试", "onRestart: ===MainActivity");
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("点击测试", "onResume: ===MainActivity");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("点击测试", "onPause: ===MainActivity");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("点击测试", "onStop: ===MainActivity");
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().post(new MainOnDestroy());
         Log.d(MyApplication.TAG, "onDestroy: MainActivity");
+        Log.d("点击测试", "onDestroy: ===MainActivity");
     }
 
 

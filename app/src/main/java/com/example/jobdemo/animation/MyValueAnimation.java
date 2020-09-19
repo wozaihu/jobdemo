@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.jobdemo.R;
+import com.example.jobdemo.base.BaseActivity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MyValueAnimation extends AppCompatActivity {
+public class MyValueAnimation extends BaseActivity {
     @BindView(R.id.iv_value_animation)
     ImageView ivValueAnimation;
     @BindView(R.id.tv_change_width)

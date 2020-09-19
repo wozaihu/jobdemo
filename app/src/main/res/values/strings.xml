@@ -10,4 +10,25 @@
     <string name="enter_password">请输入密码</string>
     <string name="default_content">默认内容</string>
     <string name="studio_demo">studio_使用教程</string>
+    <string name="privacy_intent">隐式跳转</string>
+    <string name="intent_pracelable">intent传递parcelable对象</string>
+    <string name="name">姓名：</string>
+    <string name="age">年龄：</string>
+    <string name="picture">图片</string>
+    <string name="cl_radius">根据角度偏移</string>
+    <string name="gender">性别：</string>
+    <string name="width_height">宽高比不得了了啊</string>
+    <string name="textview5">TextView5</string>
+    <string name="textview6">TextView6</string>
+    <string name="textview7">TextView7</string>
+    <string name="hi">你好</string>
+    <string name="i_am_fine">我好</string>
+    <string name="he_is_good">他好</string>
+    <string name="national_day">国庆</string>
+    <string name="mid_autumn">中秋佳节</string>
+    <string name="good_vacation">好假期</string>
+    <string name="layout_create_picture">布局生成图片</string>
+    <string name="todo">TODO</string>
+    <string name="azqx">安装权限</string>
+    <string name="update_tip">需要授予点金台“安装未知应用”权限才能更新</string>
 </resources>

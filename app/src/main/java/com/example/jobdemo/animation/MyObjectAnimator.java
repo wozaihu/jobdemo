@@ -7,18 +7,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.jobdemo.R;
-import com.example.jobdemo.evaluator.GradualCircleColorEvaluator;
-import com.example.jobdemo.view.GradualCircleColor;
-import com.lyx.utilslibrary.MeasureUtils;
-
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.jobdemo.R;
+import com.example.jobdemo.base.BaseActivity;
+import com.example.jobdemo.evaluator.GradualCircleColorEvaluator;
+import com.example.jobdemo.util.MeasureUtils;
+import com.example.jobdemo.view.GradualCircleColor;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MyObjectAnimator extends AppCompatActivity {
+public class MyObjectAnimator extends BaseActivity {
     @BindView(R.id.tv_rotate)
     TextView tvRotate;
     @BindView(R.id.tv_alpha)
@@ -27,11 +28,12 @@ public class MyObjectAnimator extends AppCompatActivity {
     TextView tvTranslate;
     @BindView(R.id.tv_scale)
     TextView tvScale;
-    private static final String TAG = "MyObjectAnimator";
     @BindView(R.id.tv_test_property)
     TextView tvTestProperty;
     @BindView(R.id.gradual_circle_color)
     GradualCircleColor gradualCircleColor;
+
+    private static final String TAG = "MyObjectAnimator";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

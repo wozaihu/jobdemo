@@ -11,7 +11,7 @@ import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.LazyHeaders
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.lyx.utilslibrary.MeasureUtils
+import com.example.jobdemo.util.MeasureUtils
 import java.util.*
 
 class GlideUtils {

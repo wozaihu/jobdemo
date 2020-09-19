@@ -14,16 +14,17 @@ import android.view.animation.OvershootInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
-import com.example.jobdemo.R;
-import com.lyx.utilslibrary.MeasureUtils;
-
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.jobdemo.R;
+import com.example.jobdemo.base.BaseActivity;
+import com.example.jobdemo.util.MeasureUtils;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MyInterpolator extends AppCompatActivity {
+public class MyInterpolator extends BaseActivity {
     @BindView(R.id.tv_accelerate)
     TextView tvAccelerate;
     @BindView(R.id.tv_overshoot)

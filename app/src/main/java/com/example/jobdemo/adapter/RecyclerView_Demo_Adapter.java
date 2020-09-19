@@ -12,22 +12,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.jobdemo.MyApplication;
 import com.example.jobdemo.R;
 import com.example.jobdemo.bean.ImageSizeBean;
-import com.example.jobdemo.kotlin_code.GlideUtils;
-import com.example.jobdemo.kotlin_code.ImageSize;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerView_Demo_Adapter extends RecyclerView.Adapter<RecyclerView_Demo_Adapter.MyViewHolder> {
     private static final String TAG = "RecyclerView_Demo_Adapt";
@@ -102,17 +100,6 @@ public class RecyclerView_Demo_Adapter extends RecyclerView.Adapter<RecyclerView
 
 //        使用一个kotlin的工具类获得图片宽高，并缓存，为了解决上拉图片重绘宽高的问题
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) holder.iv_picture.getLayoutParams();//获取你要填充图片的布局的layoutParam
-        if (GlideUtils.getImageSize().containsKey(position)) {
-            HashMap<Integer, ImageSize> imageSize = GlideUtils.getImageSize();
-            ImageSize size = imageSize.get(position);
-            layoutParams.width = size.getWidth();
-            layoutParams.height = size.getHight();
-            holder.iv_picture.setLayoutParams(layoutParams);//容器的宽高设置好了
-            //清空所有view的画
-//            holder.iv_picture.setWillNotDraw(true);
-        } else {
-            GlideUtils.getGlide().with(context).load(stringArray[position]).into(holder.iv_picture, position);
-        }
     }
 
     @Override
