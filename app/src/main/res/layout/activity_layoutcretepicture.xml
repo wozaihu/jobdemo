@@ -11,13 +11,14 @@
         android:scrollbars="none">
 
         <RelativeLayout
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tv1"
                 android:text="你好"
                 android:layout_margin="10dp"
-                android:background="@drawable/storke_black"
+                android:background="@drawable/concentric_circles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <ImageView
@@ -27,17 +28,15 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"/>
             <FrameLayout
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/concentric_circles"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 >
                 <ImageView
                     android:id="@+id/img_picture"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:contentDescription="TODO"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     tools:src="@mipmap/a4" />
             </FrameLayout>
 
@@ -47,7 +46,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/img_picture"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                tools:ignore="NotSibling" />
         </RelativeLayout>
     </ScrollView>
 

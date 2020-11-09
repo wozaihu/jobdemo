@@ -23,4 +23,12 @@
         <attr name="inputType" format="integer" />
 
     </declare-styleable>
+
+    <!-- 圆角图片 -->
+    <declare-styleable name="CornerImageView">
+        <attr name="roundWidth" format="dimension" />
+        <attr name="roundHeight" format="dimension" />
+        <attr name="setBorder" format="boolean" />
+        <attr name="borderColor" format="color" />
+    </declare-styleable>
 </resources>

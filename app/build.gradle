@@ -26,7 +26,7 @@ android {
     signingConfigs {
         release {
             def Properties keyProps = new Properties()
-            keyProps.load(new FileInputStream(file('C:\\Users\\Administrator\\.android\\default_sign.properties')))
+            keyProps.load(new FileInputStream(file('E:\\lyx_\\AndroidProject\\jobdemo\\sign\\default_sign.properties')))
             storeFile file(keyProps["store_file"])
             storePassword keyProps["store_pwd"]
             keyAlias keyProps["key_alias"]
@@ -34,7 +34,7 @@ android {
         }
         debug {
             def Properties keyProps = new Properties()
-            keyProps.load(new FileInputStream(file('C:\\Users\\Administrator\\.android\\default_sign.properties')))
+            keyProps.load(new FileInputStream(file('E:\\lyx_\\AndroidProject\\jobdemo\\sign\\default_sign.properties')))
             storeFile file(keyProps["store_file"])
             storePassword keyProps["store_pwd"]
             keyAlias keyProps["key_alias"]
@@ -66,6 +66,13 @@ android {
         }
     }
 
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -76,7 +83,7 @@ android {
             // 设置支持的SO库架构
             abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
-        signingConfig signingConfigs.release
+//        signingConfig signingConfigs.release
     }
 
     //多渠道打包配置

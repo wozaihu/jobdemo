@@ -16,6 +16,7 @@ import com.example.jobdemo.activity.Activity_List;
 import com.example.jobdemo.activity.BiuldVariantDetails;
 import com.example.jobdemo.activity.CameraDemo;
 import com.example.jobdemo.activity.DialogDemo;
+import com.example.jobdemo.activity.EditTextDemo;
 import com.example.jobdemo.activity.InfoShow;
 import com.example.jobdemo.activity.LayoutCreatePicture;
 import com.example.jobdemo.activity.PopupWindowDemo;
@@ -75,7 +76,8 @@ public class MainActivity extends BaseActivity {
             , MyApplication.getApplication().getString(R.string.web_view)
             , "list_view"
             , MyApplication.getApplication().getString(R.string.studio_demo)
-            ,MyApplication.getApplication().getString(R.string.layout_create_picture)
+            , MyApplication.getApplication().getString(R.string.layout_create_picture)
+            , "EditTextDemo"
     };
     private List<Class> activityList;
 
@@ -126,6 +128,7 @@ public class MainActivity extends BaseActivity {
         activityList.add(Activity_List.class);
         activityList.add(StudioDemo.class);
         activityList.add(LayoutCreatePicture.class);
+        activityList.add(EditTextDemo.class);
     }
 
     @Override

@@ -95,6 +95,7 @@
         <activity android:name=".activity.ShowContent" />
         <activity android:name=".activity.ConstraintLayoutDemo" />
         <activity android:name=".activity.LayoutCreatePicture" />
+        <activity android:name=".activity.EditTextDemo" />
     </application>
 
 </manifest>
