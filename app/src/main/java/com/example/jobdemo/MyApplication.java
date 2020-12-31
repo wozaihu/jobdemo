@@ -5,12 +5,15 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.multidex.MultiDex;
+
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 import com.example.jobdemo.service.InitializeService;
 import com.example.jobdemo.util.AppInfoUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.umeng.commonsdk.UMConfigure;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -23,7 +26,10 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        MultiDex.install(this);
         application = this;
+        UMConfigure.setLogEnabled(true);
+        UMConfigure.init(this, "5fbcaf52690bda19c789ed16", "jobdemo", UMConfigure.DEVICE_TYPE_PHONE, null);
         InitializeService.start(this);
         //在使用SDK各组件之前初始化context信息，传入ApplicationContext
         SDKInitializer.initialize(this);
@@ -52,6 +58,8 @@ public class MyApplication extends Application {
             Log.d(TAG, "sha1值对上了，内存泄漏框架初始化了");
         }
         Log.d(TAG, "app是否在前台: ");
+
+
     }
 
     public static Context getApplication() {

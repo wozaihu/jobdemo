@@ -11,24 +11,14 @@
         <item>https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1589222384105&amp;di=332d7ea6aa2b5b1b71c2dd41ac9ab8cd&amp;imgtype=0&amp;src=http%3A%2F%2Fwx4.sinaimg.cn%2Flarge%2F9e31678cgy1ffid5rbncvj209q09qjrm.jpg</item>
         <item>https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1589222316878&amp;di=4cddb79281ee449e4c6e1eef7eadd6db&amp;imgtype=0&amp;src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201105%2F17%2F113554rnu40q7nbgnn3lgq.jpg</item>
         <item>https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3546967651,2909803484&amp;fm=15&amp;gp=0.jpg</item>
+        <item>动车</item>
+        <item>火车</item>
+        <item>汽车</item>
+        <item>摩托车</item>
+        <item>自行车</item>
+        <item>测试列表</item>
+        <item>调试列表</item>
+        <item>正式数据</item>
+        <item>可以了</item>
     </string-array>
-
-    <declare-styleable name="VerCodeInputView">
-        <attr name="inputNum" format="integer" />
-        <attr name="inputWidth" format="integer" />
-        <attr name="inputPadding" format="integer" />
-        <attr name="inputTxtColor" format="integer" />
-        <attr name="inputTxtSize" format="integer" />
-        <attr name="inputBg" format="reference" />
-        <attr name="inputType" format="integer" />
-
-    </declare-styleable>
-
-    <!-- 圆角图片 -->
-    <declare-styleable name="CornerImageView">
-        <attr name="roundWidth" format="dimension" />
-        <attr name="roundHeight" format="dimension" />
-        <attr name="setBorder" format="boolean" />
-        <attr name="borderColor" format="color" />
-    </declare-styleable>
 </resources>

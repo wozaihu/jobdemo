@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,10 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.jobdemo.R;
 import com.example.jobdemo.util.AppInfoUtils;
 
-import org.greenrobot.eventbus.EventBus;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class InfoShow extends AppCompatActivity {
     private static final String TAG = "InfoShow";
@@ -25,6 +26,8 @@ public class InfoShow extends AppCompatActivity {
     TextView tvMd5;
     @BindView(R.id.tv_sha265)
     TextView tvSha265;
+    @BindView(R.id.tv_child)
+    TextView tvChild;
 
     public static void start(Context context, String parameter) {
         Intent starter = new Intent(context, InfoShow.class);
@@ -75,5 +78,20 @@ public class InfoShow extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d("点击测试", "onDestroy: ===InfoShow");
+    }
+
+    @OnClick({R.id.tv_sha1, R.id.tv_md5, R.id.tv_sha265, R.id.tv_child})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_sha1:
+                break;
+            case R.id.tv_md5:
+                break;
+            case R.id.tv_sha265:
+                break;
+            case R.id.tv_child:
+                Toast.makeText(this, "点击了子view", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

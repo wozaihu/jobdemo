@@ -1,8 +1,11 @@
 package com.example.jobdemo.view;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.ListView;
+
+import androidx.annotation.RequiresApi;
 
 public class ListViewForScrollView extends ListView {
 
@@ -18,6 +21,7 @@ public class ListViewForScrollView extends ListView {
         super(context, attrs, defStyleAttr);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public ListViewForScrollView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }

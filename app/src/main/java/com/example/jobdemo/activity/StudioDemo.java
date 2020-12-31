@@ -57,10 +57,10 @@ public class StudioDemo extends BaseActivity {
     }
 
     public void btnClick(View view) {
-        if (NoDoubleClickUtils.isDoubleClick()) {
-            Log.d("点击测试", "快速点击了两次: ===StudioDemo");
-            return;
-        }
+//        if (NoDoubleClickUtils.isDoubleClick()) {
+//            Log.d("点击测试", "快速点击了两次: ===StudioDemo");
+//            return;
+//        }
         switch (view.getId()) {
             case R.id.btn_1:
                 InfoShow.start(this, this.getLocalClassName());

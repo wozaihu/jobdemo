@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SpinnerView">
+        <attr name="root_layout_background" format="reference|color" />
+        <attr name="hint_text" format="string" />
+        <attr name="hint_text_color" format="color" />
+        <attr name="icon" format="reference" />
+        <attr name="entries" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="VerCodeInputView">
+        <attr name="inputNum" format="integer" />
+        <attr name="inputWidth" format="integer" />
+        <attr name="inputPadding" format="integer" />
+        <attr name="inputTxtColor" format="integer" />
+        <attr name="inputTxtSize" format="integer" />
+        <attr name="inputBg" format="reference" />
+        <attr name="inputType" format="integer" />
+
+    </declare-styleable>
+
+    <!-- 圆角图片 -->
+    <declare-styleable name="CornerImageView">
+        <attr name="roundWidth" format="dimension" />
+        <attr name="roundHeight" format="dimension" />
+        <attr name="setBorder" format="boolean" />
+        <attr name="borderColor" format="color" />
+    </declare-styleable>
+
+</resources>

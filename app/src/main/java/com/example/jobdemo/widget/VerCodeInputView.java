@@ -110,10 +110,11 @@ public class VerCodeInputView extends FrameLayout {
         addView(llTextViewRoot);
         for (int i = 0; i < inputNum; i++) {
             TextView textView = new TextView(getContext());
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(inputWidth, inputHeight);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, inputHeight);
             if (i != inputNum - 1) {//最后一个textView 不设置margin
                 params.rightMargin = childPadding;
             }
+            params.weight = 1;
             params.gravity = Gravity.CENTER;
             textView.setLayoutParams(params);
             textView.setTextColor(textColor);

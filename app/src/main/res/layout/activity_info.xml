@@ -25,4 +25,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         tools:text="sha256" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_child"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:background="@color/yellow"
+            android:text="你好"
+            tools:text="sha256" />
+    </LinearLayout>
 </LinearLayout>

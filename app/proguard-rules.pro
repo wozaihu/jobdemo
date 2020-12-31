@@ -213,3 +213,25 @@
 #bugly
 -dontwarn com.tencent.bugly.**
 -keep public class com.tencent.bugly.**{*;}
+
+#友盟混淆
+-keep class com.umeng.** {*;}
+
+-keep class com.uc.** {*;}
+
+-keepclassmembers class * {
+   public <init> (org.json.JSONObject);
+}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keep class com.zui.** {*;}
+-keep class com.miui.** {*;}
+-keep class com.heytap.** {*;}
+-keep class a.** {*;}
+-keep class com.vivo.** {*;}
+
+-keep public class [com.example.jobdemo].R$*{
+public static final int *;
+}

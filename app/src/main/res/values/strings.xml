@@ -31,4 +31,8 @@
     <string name="todo">TODO</string>
     <string name="azqx">安装权限</string>
     <string name="update_tip">需要授予点金台“安装未知应用”权限才能更新</string>
+    <string name="add">添加</string>
+    <string name="default_count">默认数量</string>
+    <string name="show_dialog">显示对话框</string>
+    <string name="selector_client">请选择客户</string>
 </resources>

@@ -1,15 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
     <com.example.jobdemo.widget.VerCodeInputView
         android:id="@+id/vcd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/yellow"
         android:minHeight="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <Button
+        android:id="@+id/btn_showDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/show_dialog"
+        app:layout_constraintLeft_toLeftOf="@+id/vcd"
+        app:layout_constraintTop_toBottomOf="@+id/vcd" />
+
+    <com.example.jobdemo.view.SpinnerView
+        android:id="@+id/spv_1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        app:hint_text="@string/selector_client"
+        app:entries="@array/pictureUrls"
+        app:icon="@mipmap/down_blue"
+        app:layout_constraintLeft_toLeftOf="@+id/btn_showDialog"
+        app:layout_constraintTop_toBottomOf="@+id/btn_showDialog"
+        app:root_layout_background="@drawable/rectangle_bg"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_showSpinnerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/show_dialog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="100dp"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:spinnerMode="dropdown"
+        android:entries="@array/pictureUrls"
+        app:layout_constraintTop_toBottomOf="@+id/btn_showSpinnerView"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

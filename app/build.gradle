@@ -12,7 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        multiDexEnabled true
 
         //阿里路由框架配置
         javaCompileOptions {
@@ -20,28 +20,17 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+        signingConfig signingConfigs.debug
     }
 
-    //配置签名（debug版或默认使用默认的签名，release版要自己配置一下）
     signingConfigs {
-        release {
-            def Properties keyProps = new Properties()
-            keyProps.load(new FileInputStream(file('E:\\lyx_\\AndroidProject\\jobdemo\\sign\\default_sign.properties')))
-            storeFile file(keyProps["store_file"])
-            storePassword keyProps["store_pwd"]
-            keyAlias keyProps["key_alias"]
-            keyPassword keyProps["key_pwd"]
-        }
-        debug {
-            def Properties keyProps = new Properties()
-            keyProps.load(new FileInputStream(file('E:\\lyx_\\AndroidProject\\jobdemo\\sign\\default_sign.properties')))
-            storeFile file(keyProps["store_file"])
-            storePassword keyProps["store_pwd"]
-            keyAlias keyProps["key_alias"]
-            keyPassword keyProps["key_pwd"]
+        app_official {
+            storeFile file('C:\\Users\\Administrator\\.android\\debug.keystore')
+            storePassword 'android'
+            keyPassword 'android'
+            keyAlias 'androiddebugkey'
         }
     }
-
 
     buildTypes {
         release {
@@ -72,7 +61,7 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
-    
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -123,7 +112,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-
+    //解决方法数超标的问题（在application里有初始化，上面android标签页有设置为true）
+    implementation 'com.android.support:multidex:1.0.3'
 
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
@@ -148,6 +138,19 @@ dependencies {
     betatestImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     //初始化启动框架
     implementation "androidx.startup:startup-runtime:1.0.0-alpha03"
+
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+
+    // 友盟统计SDK
+    implementation 'com.umeng.umsdk:common:9.3.0' // (必选)版本号
+    implementation 'com.umeng.umsdk:asms:1.1.3' // asms包依赖(必选)
+    implementation 'com.umeng.umsdk:crash:0.0.5' // native crash包依赖(必选
+
+    //OAID采集
+    implementation 'com.umeng.umsdk:oaid_lenovo:1.0.0' // (可选)
+    implementation 'com.umeng.umsdk:oaid_mi:1.0.0' // (可选)
+    implementation 'com.umeng.umsdk:oaid_oppo:1.0.4' // (可选)
+    implementation 'com.umeng.umsdk:oaid_vivo:1.0.0.1' // (可选)
 }
 repositories {
     mavenCentral()
