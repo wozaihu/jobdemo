@@ -1,9 +1,14 @@
 package com.example.jobdemo.util;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
+import android.view.WindowManager;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 public enum Utils {
@@ -27,5 +32,17 @@ public enum Utils {
             }
         }
         return false;
+    }
+
+    public void setImmersion(WeakReference<Activity> contextWeakReference) {
+        Activity activity = contextWeakReference.get();
+        //沉浸式效果
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { // LOLLIPOP解决方案
+            activity.getWindow().setStatusBarColor(Color.TRANSPARENT);//状态栏设置为透明色
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION); //透明导航栏
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {// KITKAT解决方案
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//透明状态栏
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);//透明导航栏
+        }
     }
 }

@@ -19,7 +19,10 @@ import com.example.jobdemo.activity.DialogDemo;
 import com.example.jobdemo.activity.EditTextDemo;
 import com.example.jobdemo.activity.InfoShow;
 import com.example.jobdemo.activity.LayoutCreatePicture;
+import com.example.jobdemo.activity.MeasureView;
 import com.example.jobdemo.activity.PopupWindowDemo;
+import com.example.jobdemo.activity.RetrofitDemoActivity;
+import com.example.jobdemo.activity.RxjavaTiming;
 import com.example.jobdemo.activity.StudioDemo;
 import com.example.jobdemo.activity.WidgetViewDemo;
 import com.example.jobdemo.animation.GroupAnimation;
@@ -49,7 +52,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
-    private static final String TAG = "MainActivity";
     @BindView(R.id.rv_demo_instance)
     RecyclerView rvDemoInstance;
     private static String[] demoName = {
@@ -73,12 +75,16 @@ public class MainActivity extends BaseActivity {
             , "自定义viewDemo"
             , "PopupWindow使用"
             , "产品变种==" + BuildConfig.FLAVOR + ";----编译模式==" + BuildConfig.BUILD_TYPE
-            , MyApplication.getApplication().getString(R.string.web_view)
+            , MyApplication.getAppContent().getString(R.string.web_view)
             , "list_view"
-            , MyApplication.getApplication().getString(R.string.studio_demo)
-            , MyApplication.getApplication().getString(R.string.layout_create_picture)
+            , MyApplication.getAppContent().getString(R.string.studio_demo)
+            , MyApplication.getAppContent().getString(R.string.layout_create_picture)
             , "EditTextDemo"
+            , "测量view"
+            , "retrofit简单使用"
+            , "RXJava使用"
     };
+
     private List<Class> activityList;
 
     @Override
@@ -129,6 +135,9 @@ public class MainActivity extends BaseActivity {
         activityList.add(StudioDemo.class);
         activityList.add(LayoutCreatePicture.class);
         activityList.add(EditTextDemo.class);
+        activityList.add(MeasureView.class);
+        activityList.add(RetrofitDemoActivity.class);
+        activityList.add(RxjavaTiming.class);
     }
 
     @Override

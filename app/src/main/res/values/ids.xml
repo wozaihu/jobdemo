@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="spinner_root" type="id" />
+    <item name="spinner_tv" type="id" />
+    <item name="spinner_icon" type="id" />
 </resources>

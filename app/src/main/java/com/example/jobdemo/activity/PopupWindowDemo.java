@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
-import com.example.jobdemo.util.EnumDemo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

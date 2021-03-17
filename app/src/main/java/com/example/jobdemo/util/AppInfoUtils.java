@@ -9,6 +9,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
 
+/**
+ * 获取签名信息SHA1
+ */
 public class AppInfoUtils {
 
     public final static String SHA1 = "SHA1";

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     android:padding="20dp">
 
@@ -41,4 +42,24 @@
             android:text="你好"
             tools:text="sha256" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_getCurrentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/getCurrentTime" />
+
+    <TextView
+        android:id="@+id/tv_CurrentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btn_branchThread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/branchTreadShowToast" />
 </LinearLayout>

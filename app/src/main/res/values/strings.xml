@@ -35,4 +35,13 @@
     <string name="default_count">默认数量</string>
     <string name="show_dialog">显示对话框</string>
     <string name="selector_client">请选择客户</string>
+    <string name="setAdapter">设置适配器</string>
+    <string name="really_size">真实的尺寸</string>
+    <string name="getCurrentTime">获得当前时间</string>
+    <string name="AdapterControlShowCount">适配器控制listView显示数量</string>
+    <string name="branchTreadShowToast">分支线程弹toast</string>
+    <string name="startTiming">开始倒计时</string>
+    <string name="inputTimingNumber_Please">请输入倒计时秒数</string>
+    <string name="timingNumbers">倒计时：%1$s秒</string>
+    <string name="timingNumber">倒计时：0秒</string>
 </resources>

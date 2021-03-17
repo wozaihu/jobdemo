@@ -40,7 +40,7 @@ public class RecyclerView_Demo_Adapter extends RecyclerView.Adapter<RecyclerView
     }
 
     public RecyclerView_Demo_Adapter() {
-        context = MyApplication.getApplication();
+        context = MyApplication.getAppContent();
         stringArray = context.getResources().getStringArray(R.array.pictureUrls);
 //        setImageScale();
 //        Log.d(TAG, "RecyclerView_Demo_Adapter: 初始化");

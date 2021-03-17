@@ -1,11 +1,13 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="JobDemoAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="JobDemoAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/orange2</item>
+        <item name="colorPrimaryDark">@color/orange</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <!--        小米底部手势线背景使用底部导航颜色-->
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/black</item>
         <!--        在主题中设置全局启动动画，在一些手机和模拟器上无效，还是在beseActivity的OnCreate 中覆盖启动
                     ，再重写finish 方法添加返回上个activity的动画，
         -->
@@ -15,5 +17,27 @@
         <item name="android:activityCloseExitAnimation">@anim/finish_out</item>
     </style>
 
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+       -->
+
+    </style>
+
+    <!-- App全局主题 -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">@color/green</item>
+        <item name="colorAccent">@color/green</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--<item name="android:windowAnimationStyle">@style/ActivityTranslateAnim</item>-->
+    </style>
+
+    <style name="otherPageStyle" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 
 </resources>

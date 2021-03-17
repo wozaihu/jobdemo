@@ -6,6 +6,8 @@
         <attr name="hint_text_color" format="color" />
         <attr name="icon" format="reference" />
         <attr name="entries" format="reference" />
+        <attr name="itemSelectorTextColor" format="color" />
+        <attr name="itemSelector" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="VerCodeInputView">

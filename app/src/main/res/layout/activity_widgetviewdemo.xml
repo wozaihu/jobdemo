@@ -30,12 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="20dp"
-        app:hint_text="@string/selector_client"
-        app:entries="@array/pictureUrls"
-        app:icon="@mipmap/down_blue"
         app:layout_constraintLeft_toLeftOf="@+id/btn_showDialog"
         app:layout_constraintTop_toBottomOf="@+id/btn_showDialog"
-        app:root_layout_background="@drawable/rectangle_bg"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -43,18 +39,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/show_dialog"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="100dp"
         tools:ignore="MissingConstraints" />
 
     <Spinner
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:spinnerMode="dropdown"
         android:entries="@array/pictureUrls"
+        android:spinnerMode="dropdown"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/btn_showSpinnerView"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

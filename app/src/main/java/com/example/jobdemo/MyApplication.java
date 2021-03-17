@@ -62,7 +62,7 @@ public class MyApplication extends Application {
 
     }
 
-    public static Context getApplication() {
+    public static Context getAppContent() {
         return application;
     }
 

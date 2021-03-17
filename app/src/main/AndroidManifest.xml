@@ -54,6 +54,7 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="UpGAvq5yhd89MZRcTpihc2mjKeR5ziDs" />
 
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -84,7 +85,9 @@
         <activity
             android:name=".activity.ActivityPublicWebView"
             android:hardwareAccelerated="false" />
-        <activity android:name=".activity.InfoShow">
+        <activity
+            android:name=".activity.InfoShow"
+            android:theme="@style/otherPageStyle">
             <intent-filter
                 android:icon="@mipmap/forwarding_wechat"
                 android:label="什么东西">
@@ -92,12 +95,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Activity_List" />
+        <activity
+            android:name=".activity.Activity_List"
+            android:label="@string/AdapterControlShowCount" />
         <activity android:name=".activity.StudioDemo" />
         <activity android:name=".activity.ShowContent" />
         <activity android:name=".activity.ConstraintLayoutDemo" />
         <activity android:name=".activity.LayoutCreatePicture" />
         <activity android:name=".activity.EditTextDemo" />
+        <activity android:name=".activity.MeasureView" />
+        <activity android:name=".activity.RetrofitDemoActivity" />
+        <activity android:name=".activity.RxjavaTiming" />
     </application>
 
 </manifest>
