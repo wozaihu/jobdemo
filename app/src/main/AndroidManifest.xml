@@ -54,6 +54,16 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="UpGAvq5yhd89MZRcTpihc2mjKeR5ziDs" />
 
+        <!--文件内容提供者-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -106,6 +116,9 @@
         <activity android:name=".activity.MeasureView" />
         <activity android:name=".activity.RetrofitDemoActivity" />
         <activity android:name=".activity.RxjavaTiming" />
+        <activity android:name=".activity.TestJetpackActivity" />
+        <activity android:name=".activity.DataBinDingDemo" />
+        <activity android:name=".activity.SQLiteDemo" />
     </application>
 
 </manifest>

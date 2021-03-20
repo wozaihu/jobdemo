@@ -11,12 +11,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.bean.PersonBean;
-import com.example.jobdemo.util.NoDoubleClickUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +65,7 @@ public class StudioDemo extends BaseActivity {
             case R.id.btn_1:
                 InfoShow.start(this, this.getLocalClassName());
                 break;
-            case R.id.btn_privacy_intent:
+            case R.id.btn_privacy_intent2:
                 startActivity(new Intent("com.example.jobdemo.INFOSHOW").putExtra("parameter", "隐式"));
                 break;
             case R.id.btn_start_parcelable:
@@ -76,6 +76,7 @@ public class StudioDemo extends BaseActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

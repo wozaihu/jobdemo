@@ -44,4 +44,9 @@
     <string name="inputTimingNumber_Please">请输入倒计时秒数</string>
     <string name="timingNumbers">倒计时：%1$s秒</string>
     <string name="timingNumber">倒计时：0秒</string>
+    <string name="changeData">改变数据</string>
+    <string name="SettingData">未设置数据</string>
+    <string name="BaseObservableUse">BaseObservable使用</string>
+    <string name="unknown">unknown</string>
+    <string name="noData">没有数据</string>
 </resources>

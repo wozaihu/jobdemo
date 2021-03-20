@@ -15,6 +15,7 @@ import com.example.jobdemo.activity.ActivityPublicWebView;
 import com.example.jobdemo.activity.Activity_List;
 import com.example.jobdemo.activity.BiuldVariantDetails;
 import com.example.jobdemo.activity.CameraDemo;
+import com.example.jobdemo.activity.DataBinDingDemo;
 import com.example.jobdemo.activity.DialogDemo;
 import com.example.jobdemo.activity.EditTextDemo;
 import com.example.jobdemo.activity.InfoShow;
@@ -23,7 +24,9 @@ import com.example.jobdemo.activity.MeasureView;
 import com.example.jobdemo.activity.PopupWindowDemo;
 import com.example.jobdemo.activity.RetrofitDemoActivity;
 import com.example.jobdemo.activity.RxjavaTiming;
+import com.example.jobdemo.activity.SQLiteDemo;
 import com.example.jobdemo.activity.StudioDemo;
+import com.example.jobdemo.activity.TestJetpackActivity;
 import com.example.jobdemo.activity.WidgetViewDemo;
 import com.example.jobdemo.animation.GroupAnimation;
 import com.example.jobdemo.animation.MyAlpha;
@@ -83,6 +86,9 @@ public class MainActivity extends BaseActivity {
             , "测量view"
             , "retrofit简单使用"
             , "RXJava使用"
+            , "jetPack使用"
+            , "dataBinDing使用"
+            , "SQLite使用"
     };
 
     private List<Class> activityList;
@@ -138,6 +144,9 @@ public class MainActivity extends BaseActivity {
         activityList.add(MeasureView.class);
         activityList.add(RetrofitDemoActivity.class);
         activityList.add(RxjavaTiming.class);
+        activityList.add(TestJetpackActivity.class);
+        activityList.add(DataBinDingDemo.class);
+        activityList.add(SQLiteDemo.class);
     }
 
     @Override
