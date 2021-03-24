@@ -5,9 +5,6 @@
     <data>
 
         <import type="com.example.jobdemo.bean.AnimalBean" />
-
-        <import type="com.example.jobdemo.adapter.ImageViewAdapter" />
-
         <variable
             name="animal"
             type="AnimalBean" />
@@ -35,8 +32,7 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_below="@+id/et_dogName"
-                android:layout_marginTop="10dp"
-                app:imageUrl="@{animal.savePicturePath}" />
+                android:layout_marginTop="10dp" />
 
             <Button
                 android:id="@+id/btn_selectPicture"
@@ -83,8 +79,7 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_below="@+id/btn_query"
-                android:layout_marginTop="10dp"
-                app:imageUrl="@{animal.queryPicturePath}" />
+                android:layout_marginTop="10dp" />
 
             <Button
                 android:id="@+id/btn_setVersion"

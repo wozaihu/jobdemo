@@ -119,6 +119,11 @@
         <activity android:name=".activity.TestJetpackActivity" />
         <activity android:name=".activity.DataBinDingDemo" />
         <activity android:name=".activity.SQLiteDemo" />
+        <activity android:name=".activity.RoomDemo" />
+        <activity android:name=".activity.ViewModelTest" />
+        <activity android:name=".activity.NavigationDemo" />
+        <activity android:name=".activity.NavigationUIDemo" />
+        <activity android:name=".activity.DraftActivity" />
     </application>
 
 </manifest>

@@ -12,4 +12,5 @@
     <color name="black">#000000</color>
     <color name="orange">#FF7F00</color>
     <color name="orange2">#F09000</color>
+    <color name="gary">#f6f6f7</color>
 </resources>

@@ -17,16 +17,21 @@ import com.example.jobdemo.activity.BiuldVariantDetails;
 import com.example.jobdemo.activity.CameraDemo;
 import com.example.jobdemo.activity.DataBinDingDemo;
 import com.example.jobdemo.activity.DialogDemo;
+import com.example.jobdemo.activity.DraftActivity;
 import com.example.jobdemo.activity.EditTextDemo;
 import com.example.jobdemo.activity.InfoShow;
 import com.example.jobdemo.activity.LayoutCreatePicture;
 import com.example.jobdemo.activity.MeasureView;
+import com.example.jobdemo.activity.NavigationDemo;
+import com.example.jobdemo.activity.NavigationUIDemo;
 import com.example.jobdemo.activity.PopupWindowDemo;
 import com.example.jobdemo.activity.RetrofitDemoActivity;
+import com.example.jobdemo.activity.RoomDemo;
 import com.example.jobdemo.activity.RxjavaTiming;
 import com.example.jobdemo.activity.SQLiteDemo;
 import com.example.jobdemo.activity.StudioDemo;
 import com.example.jobdemo.activity.TestJetpackActivity;
+import com.example.jobdemo.activity.ViewModelTest;
 import com.example.jobdemo.activity.WidgetViewDemo;
 import com.example.jobdemo.animation.GroupAnimation;
 import com.example.jobdemo.animation.MyAlpha;
@@ -58,7 +63,8 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.rv_demo_instance)
     RecyclerView rvDemoInstance;
     private static String[] demoName = {
-            "信息显示"
+            "草稿"
+            , "信息显示"
             , "Notification加按钮"
             , "TranslateAnimation"
             , "ScaleAnimation"
@@ -89,6 +95,10 @@ public class MainActivity extends BaseActivity {
             , "jetPack使用"
             , "dataBinDing使用"
             , "SQLite使用"
+            , "Room使用"
+            , "ViewModel使用"
+            , "Navigation使用"
+            , "NavigationUI使用"
     };
 
     private List<Class> activityList;
@@ -116,6 +126,7 @@ public class MainActivity extends BaseActivity {
 
     private void getListActivity() {
         activityList = new ArrayList<>();
+        activityList.add(DraftActivity.class);
         activityList.add(InfoShow.class);
         activityList.add(SendNotification.class);
         activityList.add(MyTranslateAnimation.class);
@@ -147,6 +158,10 @@ public class MainActivity extends BaseActivity {
         activityList.add(TestJetpackActivity.class);
         activityList.add(DataBinDingDemo.class);
         activityList.add(SQLiteDemo.class);
+        activityList.add(RoomDemo.class);
+        activityList.add(ViewModelTest.class);
+        activityList.add(NavigationDemo.class);
+        activityList.add(NavigationUIDemo.class);
     }
 
     @Override
