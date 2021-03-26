@@ -11,6 +11,8 @@ import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.jobdemo.MyApplication;
+
 public class MeasureUtils {
     private volatile static MeasureUtils measureUtils;
 
@@ -32,11 +34,10 @@ public class MeasureUtils {
     /**
      * 获取DisplayMetrics
      *
-     * @param context
      * @return
      */
-    public static DisplayMetrics getDisplayMetrics(Context context) {
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+    public static DisplayMetrics getDisplayMetrics() {
+        WindowManager wm = (WindowManager) MyApplication.getAppContent().getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
         return dm;
@@ -49,11 +50,10 @@ public class MeasureUtils {
      * 底部没有虚拟按键
      * 这里获取到的宽高，就是你眼睛能看到的，屏幕亮着的地方的宽高。
      *
-     * @param context
      * @return
      */
-    public static int getScreenWidth(Context context) {
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+    public static int getScreenWidth() {
+        WindowManager wm = (WindowManager) MyApplication.getAppContent().getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
         return dm.widthPixels;
@@ -62,11 +62,10 @@ public class MeasureUtils {
     /**
      * 获取屏幕的高度
      *
-     * @param context
      * @return
      */
-    public static int getScreenHeight(Context context) {
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+    public static int getScreenHeight() {
+        WindowManager wm = (WindowManager) MyApplication.getAppContent().getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
         return dm.heightPixels;

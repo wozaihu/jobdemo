@@ -186,7 +186,8 @@ dependencies {
     //管理页面和APP Bar,方便Activity中对多个Fragment进行管理
     implementation 'androidx.navigation:navigation-fragment:2.3.1'
     implementation 'androidx.navigation:navigation-ui:2.3.1'
-
+    //圆形imageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
 repositories {
     mavenCentral()

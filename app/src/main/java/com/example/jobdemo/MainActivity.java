@@ -21,6 +21,7 @@ import com.example.jobdemo.activity.DraftActivity;
 import com.example.jobdemo.activity.EditTextDemo;
 import com.example.jobdemo.activity.InfoShow;
 import com.example.jobdemo.activity.LayoutCreatePicture;
+import com.example.jobdemo.activity.MaterialDesignDemo;
 import com.example.jobdemo.activity.MeasureView;
 import com.example.jobdemo.activity.NavigationDemo;
 import com.example.jobdemo.activity.NavigationUIDemo;
@@ -99,6 +100,7 @@ public class MainActivity extends BaseActivity {
             , "ViewModel使用"
             , "Navigation使用"
             , "NavigationUI使用"
+            , "MaterialDesign一些布局和控件使用"
     };
 
     private List<Class> activityList;
@@ -162,6 +164,7 @@ public class MainActivity extends BaseActivity {
         activityList.add(ViewModelTest.class);
         activityList.add(NavigationDemo.class);
         activityList.add(NavigationUIDemo.class);
+        activityList.add(MaterialDesignDemo.class);
     }
 
     @Override
