@@ -2,9 +2,11 @@ package com.example.jobdemo.activity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -40,7 +42,15 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- *
+ * drawerLayout<抽屉布局><只能有两个子类，第一个是主屏幕，第二个是抽屉布局，
+ * 要设置从那边出来，不然会覆盖主布局>
+ * coordinatorLayout <协调布局>
+ * APPBarLayout<appbar>
+ * collapsingToolBarLayout<折叠布局>
+ * <p>
+ * NavigationView<用于抽屉布局做抽屉>
+ * <p>
+ * bottomNavigationView<底部导航布局，不好做凸出效果和红点未读提示消息效果，慎用>
  */
 public class MaterialDesignDemo extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
         , View.OnClickListener {
@@ -90,6 +100,9 @@ public class MaterialDesignDemo extends AppCompatActivity implements NavigationV
         }
         binding.nvLeftMenu.setCheckedItem(R.id.email);
         binding.nvLeftMenu.setNavigationItemSelectedListener(this::onNavigationItemSelected);
+        WindowManager windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
+        DisplayMetrics metrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(metrics);
     }
 
     /**

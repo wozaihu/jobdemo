@@ -25,4 +25,19 @@ public class NoDoubleClickUtils {
         lastClickTime = currentTime;
         return true;
     }
+
+    /**
+     * 是否是双击？
+     *
+     * @return true：是双击； false：不是双击；
+     */
+    public synchronized static boolean isDoubleClick(int stopTime) {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastClickTime > stopTime) {
+            lastClickTime = currentTime;
+            return false;
+        }
+        lastClickTime = currentTime;
+        return true;
+    }
 }

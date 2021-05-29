@@ -42,7 +42,7 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
-    <style name="defaultStyle" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="defaultStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -58,5 +58,19 @@
         <item name="android:activityOpenExitAnimation">@anim/in_left</item>
         <item name="android:activityCloseEnterAnimation">@anim/finish_in</item>
         <item name="android:activityCloseExitAnimation">@anim/finish_out</item>
+    </style>
+
+
+    <!--tablayout 字体设置-->
+    <style name="TabLayoutBoldTextSize" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#fc5a44</item>
+    </style>
+
+    <style name="TabLayoutNormalTextSize" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

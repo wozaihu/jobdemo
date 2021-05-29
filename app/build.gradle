@@ -136,7 +136,7 @@ dependencies {
     //glide图片框架
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
-    implementation 'androidx.core:core-ktx:1.5.0-alpha02'
+    implementation 'androidx.core:core-ktx:1.5.0-alpha05'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation 'com.tencent.bugly:crashreport:latest.release'
@@ -153,7 +153,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 
     // 友盟统计SDK
-    implementation 'com.umeng.umsdk:common:9.3.0' // (必选)版本号
+    implementation 'com.umeng.umsdk:common:9.3.8' // (必选)版本号
     implementation 'com.umeng.umsdk:asms:1.1.3' // asms包依赖(必选)
     implementation 'com.umeng.umsdk:crash:0.0.5' // native crash包依赖(必选
 
@@ -163,17 +163,17 @@ dependencies {
     implementation 'com.umeng.umsdk:oaid_oppo:1.0.4' // (可选)
     implementation 'com.umeng.umsdk:oaid_vivo:1.0.0.1' // (可选)
 
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.code.gson:gson:2.8.6'
 
 // RxJava
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
-    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     // Retrofit和jxjava关联
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     // Retrofit使用Gson转换
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     // RxAndroid
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 

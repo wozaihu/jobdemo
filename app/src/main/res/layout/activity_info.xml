@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="250dp"
             android:background="@color/yellow"
-            android:text="你好"
+            android:text="@string/hi"
             tools:text="sha256" />
     </LinearLayout>
 

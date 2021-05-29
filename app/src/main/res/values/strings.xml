@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">JobDemo</string>
     <string name="debug_app_name">JobDemo_debug</string>
     <string name="web_view">webView</string>
@@ -54,4 +54,6 @@
     <string name="email">邮箱</string>
     <string name="phone">电话</string>
     <string name="location">位置</string>
+    <string name="button">Button</string>
+    <string name="TextView">TextView</string>
 </resources>

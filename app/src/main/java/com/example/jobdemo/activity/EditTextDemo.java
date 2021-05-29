@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
+import com.example.jobdemo.kotlin_code.bean.KTPerson;
 import com.example.jobdemo.util.PriceTextWatcher;
 
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class EditTextDemo extends BaseActivity {
         for (int i = 0; i < list.size(); i++) {
             Log.d(TAG, i + "==" + list.get(i));
         }
+        KTPerson.isJavaSupport();
     }
 
     @OnClick(R.id.button)
@@ -59,5 +61,13 @@ public class EditTextDemo extends BaseActivity {
         Log.d(TAG, "isClickable: " + checkBox.isClickable());
         Log.d(TAG, "isChecked: " + checkBox.isChecked());
         Log.d(TAG, "isSelected: " + checkBox.isSelected());
+        int value = Integer.parseInt(edtPrice.getText().toString().trim());
+        if (value > 100) {
+            throw new RuntimeException("输入的值超过100了");
+        } else {
+            value = 999;
+            new Thread(() -> {
+            }).start();
+        }
     }
 }

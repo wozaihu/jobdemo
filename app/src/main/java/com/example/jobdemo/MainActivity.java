@@ -18,6 +18,7 @@ import com.example.jobdemo.activity.CameraDemo;
 import com.example.jobdemo.activity.DataBinDingDemo;
 import com.example.jobdemo.activity.DialogDemo;
 import com.example.jobdemo.activity.DraftActivity;
+import com.example.jobdemo.activity.DragLayout;
 import com.example.jobdemo.activity.EditTextDemo;
 import com.example.jobdemo.activity.InfoShow;
 import com.example.jobdemo.activity.LayoutCreatePicture;
@@ -25,6 +26,7 @@ import com.example.jobdemo.activity.MaterialDesignDemo;
 import com.example.jobdemo.activity.MeasureView;
 import com.example.jobdemo.activity.NavigationDemo;
 import com.example.jobdemo.activity.NavigationUIDemo;
+import com.example.jobdemo.activity.NotificationDemo;
 import com.example.jobdemo.activity.PopupWindowDemo;
 import com.example.jobdemo.activity.RetrofitDemoActivity;
 import com.example.jobdemo.activity.RoomDemo;
@@ -33,6 +35,7 @@ import com.example.jobdemo.activity.SQLiteDemo;
 import com.example.jobdemo.activity.StudioDemo;
 import com.example.jobdemo.activity.TestJetpackActivity;
 import com.example.jobdemo.activity.ViewModelTest;
+import com.example.jobdemo.activity.ViewPager2Use;
 import com.example.jobdemo.activity.WidgetViewDemo;
 import com.example.jobdemo.animation.GroupAnimation;
 import com.example.jobdemo.animation.MyAlpha;
@@ -101,6 +104,9 @@ public class MainActivity extends BaseActivity {
             , "Navigation使用"
             , "NavigationUI使用"
             , "MaterialDesign一些布局和控件使用"
+            , "ViewPager2使用"
+            , "Notification使用"
+            ,"拖拽创建布局"
     };
 
     private List<Class> activityList;
@@ -165,6 +171,9 @@ public class MainActivity extends BaseActivity {
         activityList.add(NavigationDemo.class);
         activityList.add(NavigationUIDemo.class);
         activityList.add(MaterialDesignDemo.class);
+        activityList.add(ViewPager2Use.class);
+        activityList.add(NotificationDemo.class);
+        activityList.add(DragLayout.class);
     }
 
     @Override

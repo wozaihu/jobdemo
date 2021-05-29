@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--
+         tabIndicatorColor  指示器颜色
+         tabIndicatorHeight 指示器高度
+         tabIndicatorFullWidth  设置为false 则指示器跟文本宽度一致
+         tabUnboundedRipple 设置为true点击时会有一个水波纹效果
+         tabGravity 可设置center或fill；center指的是居中显示，fill指的是沾满全屏。
+         tabMode 可设置fixed和 scrollable；fixed：指的是固定tab；scrollable指的是tab可滑动。
+         tabTextColor tab文字颜色
+         tabSelectedTextColor 选中时的tab颜色
+
+     -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:tabIndicatorHeight="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorFullWidth="false"
+        app:tabMode="scrollable" />
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp2_use"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>
