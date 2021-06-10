@@ -56,4 +56,10 @@
     <string name="location">位置</string>
     <string name="button">Button</string>
     <string name="TextView">TextView</string>
+    <string name="toolbar_title">toolbar标题</string>
+    <string name="toolbar_subtitle">在xml中定义title要使用toolbar命名空间</string>
+    <string name="search">搜索</string>
+    <string name="save">保存</string>
+    <string name="click_object">点击了---------%s</string>
+    <string name="inputContentPlease">请输入搜索内容</string>
 </resources>

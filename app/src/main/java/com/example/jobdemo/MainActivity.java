@@ -32,6 +32,7 @@ import com.example.jobdemo.activity.RetrofitDemoActivity;
 import com.example.jobdemo.activity.RoomDemo;
 import com.example.jobdemo.activity.RxjavaTiming;
 import com.example.jobdemo.activity.SQLiteDemo;
+import com.example.jobdemo.activity.SearchViewDemo;
 import com.example.jobdemo.activity.StudioDemo;
 import com.example.jobdemo.activity.TestJetpackActivity;
 import com.example.jobdemo.activity.ViewModelTest;
@@ -107,6 +108,7 @@ public class MainActivity extends BaseActivity {
             , "ViewPager2使用"
             , "Notification使用"
             ,"拖拽创建布局"
+            ,"searchView"
     };
 
     private List<Class> activityList;
@@ -174,6 +176,8 @@ public class MainActivity extends BaseActivity {
         activityList.add(ViewPager2Use.class);
         activityList.add(NotificationDemo.class);
         activityList.add(DragLayout.class);
+        activityList.add(SearchViewDemo.class);
+
     }
 
     @Override

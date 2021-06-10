@@ -1,5 +1,6 @@
 package com.example.jobdemo.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ import butterknife.OnClick;
 
 public class Activity_List extends BaseActivity {
     private static final String TAG = "Activity_List";
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.lv)
     ListView lv;
     @BindView(R.id.btn_addName)
@@ -57,6 +59,9 @@ public class Activity_List extends BaseActivity {
     }
 
 
+    /**
+     * @param view switch支持常量，现在直接用ID会报警告，studio4.1以后还是使用viewBinding吧，butterKnife不更新了
+     */
     @OnClick({R.id.btn_addName, R.id.btn_default})
     public void onViewClicked(View view) {
         switch (view.getId()) {
