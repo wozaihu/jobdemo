@@ -67,7 +67,7 @@ class GlideUtils {
                 var height = resource.height
                 Log.d("原始宽高", width.toString() + "---" + height)
                 //拿到当前屏幕的宽度的一半  如果是3列就除以3
-                var screenWidthPx = MeasureUtils.getScreenWidth(mContext)!! / 2
+                var screenWidthPx = MeasureUtils.getScreenWidth()!! / 2
                 //通过宽高比例动态计算高度,使图片撑满屏幕
                 height *= (width / screenWidthPx)
                 //设置图片的宽高
