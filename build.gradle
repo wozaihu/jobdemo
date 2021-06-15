@@ -31,3 +31,9 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task daviTask1{
+    println("-----start定义----------");
+    println("-----执行中我是daviTask1----------");
+    println("-----end定义----------");
+}
