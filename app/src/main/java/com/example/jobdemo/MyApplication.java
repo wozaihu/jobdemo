@@ -18,6 +18,7 @@ import com.umeng.commonsdk.UMConfigure;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Objects;
 
 public class MyApplication extends Application {
     private static Context application;
@@ -29,7 +30,9 @@ public class MyApplication extends Application {
         MultiDex.install(this);
         application = this;
         UMConfigure.setLogEnabled(true);
-        UMConfigure.init(this, "5fbcaf52690bda19c789ed16", "jobdemo", UMConfigure.DEVICE_TYPE_PHONE, null);
+        //友盟冷启动，用户同意隐私协议后再正式初始化
+        UMConfigure.preInit(this,"5fbcaf52690bda19c789ed16","jobdemo");
+//        UMConfigure.init(this, "5fbcaf52690bda19c789ed16", "jobdemo", UMConfigure.DEVICE_TYPE_PHONE, null);
         InitializeService.start(this);
         //在使用SDK各组件之前初始化context信息，传入ApplicationContext
         SDKInitializer.initialize(this);
@@ -53,7 +56,7 @@ public class MyApplication extends Application {
 
         //debug模式下 初始化内存泄漏测试
         if (BuildConfig.DEBUG && !LeakCanary.isInAnalyzerProcess(this)
-                && AppInfoUtils.sHA1(this).equals("D2:50:F6:48:44:67:AA:4A:91:55:4B:FE:6C:AC:39:4F:4C:37:D2:7F")) {
+                && Objects.equals(AppInfoUtils.sHA1(this), "D2:50:F6:48:44:67:AA:4A:91:55:4B:FE:6C:AC:39:4F:4C:37:D2:7F")) {
             LeakCanary.install(this);
             Log.d(TAG, "sha1值对上了，内存泄漏框架初始化了");
         }

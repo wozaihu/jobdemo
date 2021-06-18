@@ -152,10 +152,11 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 
     // 友盟统计SDK
-    implementation 'com.umeng.umsdk:common:9.3.8' // (必选)版本号
-    implementation 'com.umeng.umsdk:asms:1.1.3' // asms包依赖(必选)
-    implementation 'com.umeng.umsdk:crash:0.0.5' // native crash包依赖(必选
-
+    implementation 'com.umeng.umsdk:common:9.4.0' // (必选)版本号
+    implementation 'com.umeng.umsdk:asms:1.2.3' // asms包依赖(必选)
+    implementation 'com.umeng.umsdk:apm:1.2.0'//推荐，错误分析升级为U-APM产品，关注crash数据需集成
+    implementation  'com.umeng.umsdk:abtest:1.0.0'//U-App中ABTest能力
+    implementation 'com.umeng.umsdk:link:1.0.0'//集成智能超链SDK，必选
     //OAID采集
     implementation 'com.umeng.umsdk:oaid_lenovo:1.0.0' // (可选)
     implementation 'com.umeng.umsdk:oaid_mi:1.0.0' // (可选)

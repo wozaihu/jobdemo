@@ -55,6 +55,7 @@ import com.example.jobdemo.exercise.RecyclerView_Demo;
 import com.example.jobdemo.notification.SendNotification;
 import com.example.jobdemo.util.ChannelUtil;
 import com.example.jobdemo.view_demo.DemoExpandableListView;
+import com.umeng.commonsdk.UMConfigure;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -107,8 +108,8 @@ public class MainActivity extends BaseActivity {
             , "MaterialDesign一些布局和控件使用"
             , "ViewPager2使用"
             , "Notification使用"
-            ,"拖拽创建布局"
-            ,"searchView"
+            , "拖拽创建布局"
+            , "searchView"
     };
 
     private List<Class> activityList;
@@ -117,6 +118,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("点击测试", "onCreate: ===MainActivity");
+        //友盟正式初始化，冷启动时配置过key和通道了，这里不用在设置
+        UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, null);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         getListActivity();
