@@ -188,6 +188,14 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.3.1'
     //圆形imageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //PermissionsDispatcher权限
+    implementation "com.github.permissions-dispatcher:permissionsdispatcher:4.8.0"
+    annotationProcessor "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.8.0"
+
+    //九宫格
+    implementation 'com.github.bingoogolapple:BGAPhotoPicker-Android:2.0.3'
+    implementation 'com.github.bingoogolapple:BGABaseAdapter-Android:2.0.1'
 }
 repositories {
     mavenCentral()

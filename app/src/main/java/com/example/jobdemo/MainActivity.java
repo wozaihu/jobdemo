@@ -19,6 +19,7 @@ import com.example.jobdemo.activity.DataBinDingDemo;
 import com.example.jobdemo.activity.DialogDemo;
 import com.example.jobdemo.activity.DraftActivity;
 import com.example.jobdemo.activity.DragLayout;
+import com.example.jobdemo.activity.DynamicActivity;
 import com.example.jobdemo.activity.EditTextDemo;
 import com.example.jobdemo.activity.InfoShow;
 import com.example.jobdemo.activity.LayoutCreatePicture;
@@ -110,6 +111,7 @@ public class MainActivity extends BaseActivity {
             , "Notification使用"
             , "拖拽创建布局"
             , "searchView"
+            , "动态保存草稿"
     };
 
     private List<Class> activityList;
@@ -130,9 +132,6 @@ public class MainActivity extends BaseActivity {
         Toast.makeText(getApplicationContext(), "当前渠道：" + channel, Toast.LENGTH_SHORT).show();
         checkLOCATIONPermission();
         Log.d(TAG, "编译版本是不是dubug: " + BuildConfig.DEBUG);
-        if (true) {
-            return;
-        }
         Toast.makeText(this, "编译版本是不是dubug: " + BuildConfig.DEBUG, Toast.LENGTH_LONG).show();
     }
 
@@ -180,6 +179,7 @@ public class MainActivity extends BaseActivity {
         activityList.add(NotificationDemo.class);
         activityList.add(DragLayout.class);
         activityList.add(SearchViewDemo.class);
+        activityList.add(DynamicActivity.class);
 
     }
 
@@ -219,7 +219,7 @@ public class MainActivity extends BaseActivity {
     private void checkLOCATIONPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 001);
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
             }
         }
     }
