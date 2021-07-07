@@ -1,5 +1,6 @@
 package com.example.jobdemo.util;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -24,6 +25,26 @@ public enum DensityUtil {
     public int px2dip(float pxValue) {
         final float scale = MyApplication.getAppContent().getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
+    }
+
+    /**
+     * 将px值转换为sp值，保证文字大小不变
+     * @param pxValue
+     * @return
+     */
+    public static int px2sp(float pxValue) {
+        final float fontScale = MyApplication.getAppContent().getResources().getDisplayMetrics().scaledDensity;
+        return (int) (pxValue / fontScale + 0.5f);
+    }
+
+    /**
+     * 将sp值转换为px值，保证文字大小不变
+     * @param spValue
+     * @return
+     */
+    public static int sp2px( float spValue) {
+        final float fontScale = MyApplication.getAppContent().getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
     }
 
     /**

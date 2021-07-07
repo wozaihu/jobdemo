@@ -33,6 +33,7 @@ import com.example.jobdemo.activity.RetrofitDemoActivity;
 import com.example.jobdemo.activity.RoomDemo;
 import com.example.jobdemo.activity.RxjavaTiming;
 import com.example.jobdemo.activity.SQLiteDemo;
+import com.example.jobdemo.activity.ScrollerStringSize;
 import com.example.jobdemo.activity.SearchViewDemo;
 import com.example.jobdemo.activity.StudioDemo;
 import com.example.jobdemo.activity.TestJetpackActivity;
@@ -112,6 +113,7 @@ public class MainActivity extends BaseActivity {
             , "拖拽创建布局"
             , "searchView"
             , "动态保存草稿"
+            , "滚动设置字体大小"
     };
 
     private List<Class> activityList;
@@ -180,6 +182,7 @@ public class MainActivity extends BaseActivity {
         activityList.add(DragLayout.class);
         activityList.add(SearchViewDemo.class);
         activityList.add(DynamicActivity.class);
+        activityList.add(ScrollerStringSize.class);
 
     }
 
