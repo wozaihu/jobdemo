@@ -66,6 +66,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.rong.imlib.RongIMClient;
 
 public class MainActivity extends BaseActivity {
     @BindView(R.id.rv_demo_instance)

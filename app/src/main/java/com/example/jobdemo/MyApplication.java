@@ -20,6 +20,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
 
+import io.rong.imkit.RongIM;
+
 public class MyApplication extends Application {
     private static Context application;
     public static String TAG = "全局打印";
@@ -27,6 +29,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        RongIM.init(this,"vnroth0kvlsio");
         MultiDex.install(this);
         application = this;
         UMConfigure.setLogEnabled(true);
