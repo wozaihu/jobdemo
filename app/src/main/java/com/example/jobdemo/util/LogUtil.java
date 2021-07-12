@@ -4,6 +4,9 @@ import android.util.Log;
 
 import com.example.jobdemo.BuildConfig;
 
+import java.util.List;
+import java.util.Map;
+
 //log工具类
 public class LogUtil {
 
@@ -73,6 +76,55 @@ public class LogUtil {
     public static void exception(String TAG, Exception e) {
         if (open) {
             Log.e(TAG, "开始出现奔溃的位置: " + e.getMessage() + "-----------------", e.getCause());
+        }
+    }
+
+    /**
+     * 打印数组或集合
+     *
+     * @param TAG
+     * @param obj
+     */
+    public static  void showList(String TAG, Object obj) {
+        if (open) {
+            if (obj instanceof Map) {
+                Map<Object, Object> map = (Map) obj;
+                for (Map.Entry<Object, Object> entry : map.entrySet()) {
+                    Log.d(TAG, "key = " + entry.getKey() + "----value = " + entry.getValue());
+                }
+            } else if (obj instanceof List) {
+                List list = (List) obj;
+                for (int i = 0; i < list.size(); i++) {
+                    Log.d(TAG, "第<" + i + ">个元素====" + list.get(i));
+                }
+            }
+        }
+    }
+
+    /**
+     * 打印数组或集合
+     *
+     * @param TAG
+     * @param array
+     */
+    public static void showArray(String TAG, int[] array) {
+        if (open) {
+            for (int i = 0; i < array.length; i++) {
+                Log.d(TAG, "第<" + i + ">个元素====" + array[i]);
+            }
+        }
+    }
+    /**
+     * 打印数组或集合
+     *
+     * @param TAG
+     * @param array
+     */
+    public static void showArray(String TAG, String[] array) {
+        if (open) {
+            for (int i = 0; i < array.length; i++) {
+                Log.d(TAG, "第<" + i + ">个元素====" + array[i]);
+            }
         }
     }
 }

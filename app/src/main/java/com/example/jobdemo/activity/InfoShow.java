@@ -13,12 +13,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jobdemo.R;
+import com.example.jobdemo.bean.Person;
 import com.example.jobdemo.util.AppInfoUtils;
+import com.example.jobdemo.util.IntToChineseNumUtil;
+import com.example.jobdemo.util.LogUtil;
 
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,39 +67,27 @@ public class InfoShow extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getNavigationBarColor();
         }
+        pointDate();
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("点击测试", "onRestart: ===InfoShow");
+    private void pointDate() {
+        int[] array = new int[10];
+        List list = new ArrayList();
+        Map<Integer, String> map = new HashMap<>();
+        Map<String, Person> map2 = new HashMap<>();
+        for (int i = 0; i < 10; i++) {
+            array[i] = i;
+            list.add(IntToChineseNumUtil.int2chineseNum(i));
+            map.put(i, IntToChineseNumUtil.int2chineseNum(i));
+            map2.put(IntToChineseNumUtil.int2chineseNum(i), new Person("武", i, false));
+        }
+        LogUtil.showArray("打印数据", array);
+        LogUtil.showList("打印数据", list);
+        LogUtil.showList("打印数据", map);
+        LogUtil.showList("打印数据", map2);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("点击测试", "onResume: ===InfoShow");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("点击测试", "onPause: ===InfoShow");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("点击测试", "onStop: ===InfoShow");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("点击测试", "onDestroy: ===InfoShow");
-    }
-
-    @OnClick({R.id.tv_sha1, R.id.tv_md5, R.id.tv_sha265, R.id.tv_child, R.id.btn_getCurrentTime,R.id.btn_branchThread})
+    @OnClick({R.id.tv_sha1, R.id.tv_md5, R.id.tv_sha265, R.id.tv_child, R.id.btn_getCurrentTime, R.id.btn_branchThread})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_sha1:
