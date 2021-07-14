@@ -187,36 +187,12 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("点击测试", "onRestart: ===MainActivity");
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("点击测试", "onResume: ===MainActivity");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("点击测试", "onPause: ===MainActivity");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("点击测试", "onStop: ===MainActivity");
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().post(new MainOnDestroy());
-        Log.d(MyApplication.TAG, "onDestroy: MainActivity");
-        Log.d("点击测试", "onDestroy: ===MainActivity");
     }
 
 
