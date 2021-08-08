@@ -49,12 +49,10 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 //        }
 //        holder.tv_demo_name.setText(text.toString());
         holder.tv_demo_name.setText(array[position]);
-        holder.tv_demo_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.tv_demo_name.setOnClickListener((v)-> {
                 v.getContext().startActivity(new Intent(v.getContext(), activity.get(position)));
                 EventBus.getDefault().post("适配器跳转前");
-            }
+
         });
 
         if (position == array.length - 1) {

@@ -72,6 +72,11 @@ public class VerCodeInputView extends FrameLayout {
      */
     private int inputType;
 
+    /**
+     * 样式，默认是1 方框，2是横线（参考百度贴吧）
+     */
+    private int styleType;
+
 
     public VerCodeInputView(Context context) {
         this(context, null);

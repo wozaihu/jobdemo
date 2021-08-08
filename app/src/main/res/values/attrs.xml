@@ -12,12 +12,16 @@
 
     <declare-styleable name="VerCodeInputView">
         <attr name="inputNum" format="integer" />
-        <attr name="inputWidth" format="integer" />
-        <attr name="inputPadding" format="integer" />
-        <attr name="inputTxtColor" format="integer" />
-        <attr name="inputTxtSize" format="integer" />
-        <attr name="inputBg" format="reference" />
+        <attr name="inputWidth" format="dimension" />
+        <attr name="inputPadding" format="dimension" />
+        <attr name="inputTxtColor" format="reference|color" />
+        <attr name="inputTxtSize" format="dimension" />
+        <attr name="inputBg" format="reference|color" />
         <attr name="inputType" format="integer" />
+        <attr name="styleType" format="integer">
+            <enum name="line" value="1" />
+            <enum name="rectangle" value="2" />
+        </attr>
 
     </declare-styleable>
 
