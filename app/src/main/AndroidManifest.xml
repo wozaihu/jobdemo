@@ -135,6 +135,7 @@
         <activity android:name=".activity.SearchViewDemo" />
         <activity android:name=".activity.DynamicActivity" />
         <activity android:name=".activity.ScrollerStringSize" />
+        <activity android:name=".activity.VerificationCode" />
 
     </application>
 

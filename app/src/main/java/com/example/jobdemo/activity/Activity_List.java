@@ -42,7 +42,7 @@ public class Activity_List extends BaseActivity {
         setContentView(R.layout.activity_list);
         ButterKnife.bind(this);
         name = new ArrayList<>();
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 200; i++) {
             name.add("第" + i + "个人");
         }
 //        ImageView imageView = new ImageView(this);
@@ -62,7 +62,7 @@ public class Activity_List extends BaseActivity {
     /**
      * @param view switch支持常量，现在直接用ID会报警告，studio4.1以后还是使用viewBinding吧，butterKnife不更新了
      */
-    @OnClick({R.id.btn_addName, R.id.btn_default})
+    @OnClick({R.id.btn_addName, R.id.btn_default, R.id.btn_modification})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_addName:
@@ -74,12 +74,19 @@ public class Activity_List extends BaseActivity {
             case R.id.btn_default:
                 adapter.setItemIsmMore(false);
                 break;
+            case R.id.btn_modification:
+                //notifyDataSetChanged 不会回到顶部
+                if (name.size() > 50) {
+                    name.set(50, "修改了50的数据哦");
+                    adapter.notifyDataSetChanged();
+                }
+                break;
         }
     }
 
 
     public class NaemAdapter extends BaseAdapter {
-        private boolean isMore = false;
+        private boolean isMore = true;
 
         public void setItemIsmMore(boolean isMore) {
             this.isMore = isMore;

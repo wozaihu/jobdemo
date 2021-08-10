@@ -16,46 +16,31 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
-public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.MyViewholder> {
-    public MainActivityAdapter(String[] array, List<Class> activity) {
-        this.array = array;
-        this.activity = activity;
+public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.MyViewHolder> {
+    private final List<Class> activitys;
+
+    public MainActivityAdapter(List<Class> activitys) {
+        this.activitys = activitys;
     }
 
-    private String[] array;
-    private List<Class> activity;
 
     @NonNull
     @Override
-    public MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mainactivity_rycyclerview, parent, false);
-        MyViewholder viewholder = new MyViewholder(view);
-        return viewholder;
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewholder holder, int position) {
-        //设置每行文字数量
-//        StringBuilder text = new StringBuilder(array[position]);
-//        int length = text.length();
-//        int temp = 0;
-//        if (text.length() > 4) {
-//            for (int i = 0; i < length; i += 4) {
-//                if (i != 0 && i % 4 == 0) {
-//                    text.insert(i + temp, "\n");
-//                    temp++;
-//                }
-//            }
-//        }
-//        holder.tv_demo_name.setText(text.toString());
-        holder.tv_demo_name.setText(array[position]);
-        holder.tv_demo_name.setOnClickListener((v)-> {
-                v.getContext().startActivity(new Intent(v.getContext(), activity.get(position)));
-                EventBus.getDefault().post("适配器跳转前");
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.tv_demo_name.setText(activitys.get(position).getSimpleName());
+        holder.tv_demo_name.setOnClickListener((v) -> {
+            v.getContext().startActivity(new Intent(v.getContext(), activitys.get(position)));
+            EventBus.getDefault().post("适配器跳转前");
 
         });
 
-        if (position == array.length - 1) {
+        if (position == activitys.size() - 1) {
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.cv_root.getLayoutParams();
             layoutParams.setMargins(DensityUtil.INSTANCE.dip2px(20), DensityUtil.INSTANCE.dip2px(10), DensityUtil.INSTANCE.dip2px(20), DensityUtil.INSTANCE.dip2px(10));
             holder.cv_root.setLayoutParams(layoutParams);
@@ -68,14 +53,14 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
     @Override
     public int getItemCount() {
-        return array.length;
+        return activitys.size();
     }
 
-    public class MyViewholder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv_demo_name;
         CardView cv_root;
 
-        public MyViewholder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_demo_name = itemView.findViewById(R.id.tv_demo_name);
             cv_root = itemView.findViewById(R.id.cv_root);

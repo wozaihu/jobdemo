@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.jobdemo.R;
 import com.example.jobdemo.bean.Person;
 import com.example.jobdemo.util.AppInfoUtils;
+import com.example.jobdemo.util.DefaultVerificationDialog;
 import com.example.jobdemo.util.IntToChineseNumUtil;
 import com.example.jobdemo.util.LogUtil;
 
@@ -87,7 +88,9 @@ public class InfoShow extends AppCompatActivity {
         LogUtil.showList("打印数据", map2);
     }
 
-    @OnClick({R.id.tv_sha1, R.id.tv_md5, R.id.tv_sha265, R.id.tv_child, R.id.btn_getCurrentTime, R.id.btn_branchThread})
+    @OnClick({R.id.tv_sha1, R.id.tv_md5, R.id.tv_sha265, R.id.tv_child, R.id.btn_getCurrentTime, R.id.btn_branchThread
+    ,R.id.btn_show_dialog
+    })
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_sha1:
@@ -104,6 +107,10 @@ public class InfoShow extends AppCompatActivity {
                 break;
             case R.id.btn_branchThread:
 
+                break;
+            case R.id.btn_show_dialog:
+                DefaultVerificationDialog defaultVerificationDialog = DefaultVerificationDialog.newInstance();
+                defaultVerificationDialog.show(getFragmentManager(), "同意退款");
                 break;
         }
     }

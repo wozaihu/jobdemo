@@ -2,11 +2,11 @@ package com.example.jobdemo.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.os.Build;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -19,29 +19,26 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import androidx.core.content.ContextCompat;
 
 import com.example.jobdemo.R;
 import com.example.jobdemo.util.DensityUtil;
+import com.example.jobdemo.util.LogUtil;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Administrator
- * @date 2020/6/11 9:34
- * @desc
- */
-
-/**
- * Created by @author iblade.Wang on 2019/4/4.
  * 验证码输入框
- * EditText字号极小，且颜色透明
+ * 1、未设置inputWidth宽度，则验证码平分宽度；
+ * 2、有设置inputWidth宽度则宽度固定，如果宽度过大可能显示不全，要缩小默认间隔请设置间隔
+ * 3、左右间隔由VerCodeInputView的margin控制
+ * 4、验证码高度匹配VerCodeInputView的高度
  */
 
 public class VerCodeInputView extends FrameLayout {
+    private static final String TAG = "VerCodeInputView";
     /**
      * 输入框个数
      */
@@ -50,7 +47,6 @@ public class VerCodeInputView extends FrameLayout {
      * 输入框宽度
      */
     private int inputWidth;
-    private int inputHeight;
     /**
      * 输入框之间的间隔
      */
@@ -76,6 +72,11 @@ public class VerCodeInputView extends FrameLayout {
      * 样式，默认是1 方框，2是横线（参考百度贴吧）
      */
     private int styleType;
+    /**
+     * 默认间隔
+     */
+    private final int defaultChildPadding;
+    private LinearLayout llTextViewRoot;
 
 
     public VerCodeInputView(Context context) {
@@ -91,75 +92,92 @@ public class VerCodeInputView extends FrameLayout {
         super(context, attrs, defStyleAttr);
         TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.VerCodeInputView, defStyleAttr, 0);
         inputNum = ta.getInteger(R.styleable.VerCodeInputView_inputNum, 6);
-        inputWidth = ta.getDimensionPixelSize(R.styleable.VerCodeInputView_inputWidth, DensityUtil.INSTANCE.dip2px(43f));
-        inputHeight = inputWidth;
-        childPadding = ta.getDimensionPixelSize(R.styleable.VerCodeInputView_inputPadding, DensityUtil.INSTANCE.dip2px(7.5f));
-        textColor = ta.getColor(R.styleable.VerCodeInputView_inputTxtColor, Color.parseColor("#333333"));
-        textSize = ta.getDimensionPixelSize(R.styleable.VerCodeInputView_inputTxtSize, 24);
-        editTextBg = ta.getResourceId(R.styleable.VerCodeInputView_inputBg, R.drawable.selector_bg_edit);
+        styleType = ta.getInteger(R.styleable.VerCodeInputView_styleType, 1);
+        if (styleType == 1) {
+            editTextBg = ta.getResourceId(R.styleable.VerCodeInputView_inputBg, R.drawable.selector_bg_edit);
+        } else {
+            editTextBg = ta.getResourceId(R.styleable.VerCodeInputView_inputBg, R.drawable.transverse_lin);
+        }
+        inputWidth = ta.getDimensionPixelSize(R.styleable.VerCodeInputView_inputWidth, 0);
+        defaultChildPadding = DensityUtil.INSTANCE.dip2px(8f);
+        childPadding = ta.getDimensionPixelSize(R.styleable.VerCodeInputView_inputPadding, defaultChildPadding);
+        textColor = ta.getColor(R.styleable.VerCodeInputView_inputTxtColor, ContextCompat.getColor(context, R.color.green));
+        textSize = ta.getDimensionPixelSize(R.styleable.VerCodeInputView_inputTxtSize, 14);
         inputType = ta.getInt(R.styleable.VerCodeInputView_inputType, InputType.TYPE_CLASS_NUMBER);
         ta.recycle();
         textViewList = new ArrayList<>(inputNum);
-        initViews(context);
+        initViews();
     }
 
     private List<TextView> textViewList;
     private EditText editText;
 
-    private void initViews(Context context) {
+    private void initViews() {
         textViewList = new ArrayList<>(inputNum);
-        LinearLayout llTextViewRoot = new LinearLayout(getContext());
-        LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        llTextViewRoot = new LinearLayout(getContext());
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         llTextViewRoot.setLayoutParams(layoutParams);
         llTextViewRoot.setOrientation(LinearLayout.HORIZONTAL);
         addView(llTextViewRoot);
         for (int i = 0; i < inputNum; i++) {
-            TextView textView = new TextView(getContext());
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, inputHeight);
-            if (i != inputNum - 1) {//最后一个textView 不设置margin
-                params.rightMargin = childPadding;
-            }
-            params.weight = 1;
-            params.gravity = Gravity.CENTER;
-            textView.setLayoutParams(params);
-            textView.setTextColor(textColor);
-            textView.setTextSize(textSize);
-            textView.setGravity(Gravity.CENTER);
-            textView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(1)});
-            textView.setInputType(inputType);
-            textView.setBackgroundResource(editTextBg);
-            textView.setId(i);
-            textView.setTextColor(ContextCompat.getColor(context, R.color.green));
-            if (i == 0) {
-                textView.setText("|");
-            }
-            llTextViewRoot.addView(textView);
-            textViewList.add(textView);
+            textViewList.add(getTextView());
         }
+        initEditText();
+        initListener();
+    }
+
+    private TextView getTextView() {
+        TextView textView = new TextView(getContext());
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT);
+        if (llTextViewRoot.getChildCount() == 0) {
+            textView.setText("|");
+        } else {
+            params.leftMargin = childPadding;
+        }
+        if (inputWidth == 0) {
+            params.weight = 1;
+        } else {
+            params.width = inputWidth;
+        }
+        params.gravity = Gravity.CENTER;
+        textView.setLayoutParams(params);
+        textView.setTextColor(textColor);
+        textView.setTextSize(textSize);
+        textView.setGravity(Gravity.CENTER);
+        textView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(1)});
+        textView.setInputType(inputType);
+        textView.setBackgroundResource(editTextBg);
+        llTextViewRoot.addView(textView);
+        return textView;
+    }
+
+    /**
+     * 初始化输入框
+     */
+    private void initEditText() {
         editText = new EditText(getContext());
-        LayoutParams layoutParam2 = new LayoutParams(LayoutParams.MATCH_PARENT, inputHeight);
+        LayoutParams layoutParam2 = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         editText.setLayoutParams(layoutParam2);
         editText.setTextSize(0.0001f);
         //设置透明光标，如果直接不显示光标的话，长按粘贴会没效果
         try {
-            Field f = TextView.class.getDeclaredField("mCursorDrawableRes");
-            f.setAccessible(true);
-            f.set(editText, R.drawable.edit_cursor_bg_transparent);
-//            f.set(editText, R.color.green);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                editText.setTextCursorDrawable(R.drawable.edit_cursor_bg_transparent);
+            } else {
+                Field setCursor = TextView.class.getDeclaredField("mCursorDrawableRes");
+                setCursor.setAccessible(true);
+                setCursor.set(this, R.drawable.edit_cursor_bg_transparent);
+            }
         } catch (Exception e) {
+            LogUtil.showD(TAG, "验证码光标颜色设置异常" + e.getMessage());
             e.printStackTrace();
         }
         editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(inputNum)});
         editText.setInputType(inputType);
         editText.setTextColor(ContextCompat.getColor(getContext(), R.color.transparent));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            editText.setBackground(null);
-        } else {
-            editText.setBackgroundDrawable(null);
-        }
+        editText.setBackground(null);
         editText.addTextChangedListener(textWatcher);
         addView(editText);
-        initListener();
     }
 
     private void initListener() {
@@ -172,7 +190,7 @@ public class VerCodeInputView extends FrameLayout {
         });
     }
 
-    private TextWatcher textWatcher = new TextWatcher() {
+    private final TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -185,7 +203,7 @@ public class VerCodeInputView extends FrameLayout {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            String inputContent = (null == editText.getText()) ? "" : editText.getText().toString();
+            String inputContent = TextUtils.isEmpty(editText.getText().toString()) ? "" : editText.getText().toString();
             //已经有输入时，屏蔽长按和光标
             if (inputContent.length() > 0) {
                 editText.setLongClickable(false);
@@ -194,10 +212,11 @@ public class VerCodeInputView extends FrameLayout {
                 editText.setLongClickable(true);
                 editText.setCursorVisible(true);
             }
+            //输入完成调用的方法
             if (listener != null && inputContent.length() >= inputNum) {
                 listener.onComplete(inputContent);
             }
-            for (int i = 0, len = textViewList.size(); i < len; i++) {
+            for (int i = 0; i < textViewList.size(); i++) {
                 TextView textView = textViewList.get(i);
                 if (i < inputContent.length()) {
                     textView.setText(String.valueOf(inputContent.charAt(i)));
@@ -210,62 +229,136 @@ public class VerCodeInputView extends FrameLayout {
         }
     };
 
-    private boolean isAuto = false;
-
-    /**
-     * 设置宽高自适应，单个框的宽度平分父布局总宽度
-     */
-    public void setAutoWidth() {
-        isAuto = true;
-        requestLayout();
-    }
-
-    public void setAutoWidth(int i) {
-        isAuto = true;
-        requestLayout();
-    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int width = getMeasuredWidth();
-        if (isAuto && width > 0) {
-            isAuto = false;
-            //resetWH(width);
+        if (inputWidth > 0) {
             resetMargin(width);
         }
     }
 
-    /*    private void resetWH(int w) {
-            int paddings = childPadding * (inputNum - 1);
-            inputWidth = (w - paddings) / (inputNum);
-            inputHeight = inputWidth;
-            for (int i = 0, len = textViewList.size(); i < len; i++) {
-                View child = textViewList.get(i);
-                child.getLayoutParams().height = inputHeight;
-                child.getLayoutParams().width = inputWidth;
-            }
-            editText.getLayoutParams().height = inputHeight;
-        }*/
+
+    /**
+     * @param width 有设置inputWidth则从新设置宽度
+     */
     private void resetMargin(int width) {
-        Log.d("重新绘制验证码框", "resetMargin===" + width);
         if (width > 0) {
+            //剩余的宽度
             int remainWidth = width - (inputNum * inputWidth);
-            if (remainWidth > 0 && inputNum > 1) {
+
+            //设置宽度后还有空间，且没有设置间隔，则间隔为剩余空间平分
+            if (remainWidth > 0 && defaultChildPadding == childPadding) {
                 childPadding = remainWidth / (inputNum - 1);
-                for (int i = 0, len = textViewList.size(); i < len; i++) {
-                    View child = textViewList.get(i);
-                    LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) child.getLayoutParams();
-                    if (i != inputNum - 1) {//最后一个textView 不设置margin
-                        params.rightMargin = childPadding;
-                    }
-                    params.gravity = Gravity.CENTER;
-                    child.setLayoutParams(params);
-                    child.getLayoutParams().height = inputHeight;
-                    child.getLayoutParams().width = inputHeight;
-                }
-                editText.getLayoutParams().height = inputHeight;
             }
+            for (int i = 0; i < textViewList.size(); i++) {
+                View child = textViewList.get(i);
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) child.getLayoutParams();
+                if (i != 0) {//最后一个textView 不设置margin
+                    params.leftMargin = childPadding;
+                }
+                params.weight = inputWidth;
+                params.gravity = Gravity.CENTER;
+                child.setLayoutParams(params);
+            }
+        }
+    }
+
+    /**
+     * @param inputNum 验证码个数
+     */
+    public void setInputNum(int inputNum) {
+
+        if (inputNum != this.inputNum) {
+            this.inputNum = inputNum;
+            textViewList.clear();
+            llTextViewRoot.removeAllViews();
+            for (int i = 0; i < inputNum; i++) {
+                textViewList.add(getTextView());
+            }
+            initEditText();
+        }
+    }
+
+    /**
+     * @param inputWidth 设置验证码单个宽度
+     */
+    public void setInputWidth(int inputWidth) {
+        this.inputWidth = inputWidth;
+        Log.d("重新绘制验证码框", "总的宽度为===" + getWidth());
+        resetMargin(getWidth());
+    }
+
+    /**
+     * @param childPadding 设置间隔
+     */
+    public void setChildPadding(int childPadding) {
+        this.childPadding = childPadding;
+        textViewList.clear();
+        llTextViewRoot.removeAllViews();
+        for (int i = 0; i < inputNum; i++) {
+            textViewList.add(getTextView());
+        }
+    }
+
+    /**
+     * @param editTextBg 设置背景
+     */
+    public void setEditTextBg(int editTextBg) {
+        this.editTextBg = editTextBg;
+        updateText();
+    }
+
+    /**
+     * @param textColor 设置文字颜色
+     */
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
+        updateText();
+    }
+
+    /**
+     * @param textSize 设置文字大小
+     */
+    public void setTextSize(int textSize) {
+        this.textSize = textSize;
+        updateText();
+    }
+
+    /**
+     * @param inputType 设置键盘输入类型
+     */
+    public void setInputType(int inputType) {
+        this.inputType = inputType;
+        updateText();
+    }
+
+    /**
+     * @param styleType 设置验证码样式
+     */
+    public void setStyleType(int styleType) {
+        this.styleType = styleType;
+        for (int i = 0; i < textViewList.size(); i++) {
+            TextView child = textViewList.get(i);
+            if (styleType == 1) {
+                child.setBackgroundResource(R.drawable.selector_bg_edit);
+            } else {
+                child.setBackgroundResource(R.drawable.transverse_lin);
+            }
+        }
+    }
+
+    /**
+     * 更新text属性
+     */
+    public void updateText() {
+        for (int i = 0; i < textViewList.size(); i++) {
+            TextView child = textViewList.get(i);
+            child.setTextColor(textColor);
+            child.setTextSize(textSize);
+            child.setInputType(inputType);
+            child.setBackgroundResource(editTextBg);
         }
     }
 
