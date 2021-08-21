@@ -35,6 +35,8 @@ import java.util.List;
  * 2、有设置inputWidth宽度则宽度固定，如果宽度过大可能显示不全，要缩小默认间隔请设置间隔
  * 3、左右间隔由VerCodeInputView的margin控制
  * 4、验证码高度匹配VerCodeInputView的高度
+ * invalidate 只调用onDraw 重绘，
+ * requestLayout调用onMeasure和onLayout
  */
 
 public class VerCodeInputView extends FrameLayout {

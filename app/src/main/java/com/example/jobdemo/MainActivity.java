@@ -4,16 +4,14 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
+import android.view.LayoutInflater;
 
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.bean.MainOnDestroy;
-import com.example.jobdemo.util.ChannelUtil;
+import com.example.jobdemo.databinding.ActivityMainBinding;
 import com.example.jobdemo.util.ClassUtils;
 import com.umeng.commonsdk.UMConfigure;
 
@@ -24,22 +22,15 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class MainActivity extends BaseActivity {
-    @BindView(R.id.rv_demo_instance)
-    RecyclerView rvDemoInstance;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("点击测试", "onCreate: ===MainActivity");
         //友盟正式初始化，冷启动时配置过key和通道了，这里不用在设置
         UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, null);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        ActivityMainBinding inflate = ActivityMainBinding.inflate(LayoutInflater.from(this));
+        setContentView(inflate.getRoot());
         List<Class> exclude = new ArrayList<>();
         exclude.add(this.getClass());
         List<Class> classList = ClassUtils.getActivitiesClass(this, getPackageName(), exclude);
@@ -55,13 +46,12 @@ public class MainActivity extends BaseActivity {
             }
         });
         MainActivityAdapter adapter = new MainActivityAdapter(classList);
-        rvDemoInstance.setLayoutManager(new LinearLayoutManager(this));
-        rvDemoInstance.setAdapter(adapter);
-        String channel = ChannelUtil.getChannel(getApplicationContext());
-        Toast.makeText(getApplicationContext(), "当前渠道：" + channel, Toast.LENGTH_SHORT).show();
+        inflate.rvDemoInstance.setLayoutManager(new LinearLayoutManager(this));
+        inflate.rvDemoInstance.setAdapter(adapter);
+//        String channel = ChannelUtil.getChannel(getApplicationContext());
+//        Toast.makeText(getApplicationContext(), "当前渠道：" + channel, Toast.LENGTH_SHORT).show();
         checkLOCATIONPermission();
-        Log.d(TAG, "编译版本是不是dubug: " + BuildConfig.DEBUG);
-        Toast.makeText(this, "编译版本是不是dubug: " + BuildConfig.DEBUG, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "编译版本是不是dubug: " + BuildConfig.DEBUG, Toast.LENGTH_LONG).show();
     }
 
 
