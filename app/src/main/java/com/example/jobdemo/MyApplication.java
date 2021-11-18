@@ -29,12 +29,11 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        RongIM.init(this,"vnroth0kvlsio");
         MultiDex.install(this);
         application = this;
         UMConfigure.setLogEnabled(true);
         //友盟冷启动，用户同意隐私协议后再正式初始化
-        UMConfigure.preInit(this,"5fbcaf52690bda19c789ed16","jobdemo");
+        UMConfigure.preInit(this, "5fbcaf52690bda19c789ed16", "jobdemo");
 //        UMConfigure.init(this, "5fbcaf52690bda19c789ed16", "jobdemo", UMConfigure.DEVICE_TYPE_PHONE, null);
         InitializeService.start(this);
         //在使用SDK各组件之前初始化context信息，传入ApplicationContext
@@ -65,7 +64,14 @@ public class MyApplication extends Application {
         }
         Log.d(TAG, "app是否在前台: ");
 
+        //阿里云短视频初始化
+//        com.aliyun.vod.common.httpfinal.QupaiHttpFinal.getInstance().initOkHttpFinal();
+//        AlivcSdkCore.register(getApplicationContext());
+//        AlivcSdkCore.setLogLevel(AlivcSdkCore.AlivcLogLevel.AlivcLogWarn);
+//        AlivcSdkCore.setDebugLoggerLevel(AlivcSdkCore.AlivcDebugLoggerLevel.AlivcDLClose);
 
+        //融云
+        RongIM.init(this, "vnroth0kvlsio");
     }
 
     public static Context getAppContent() {

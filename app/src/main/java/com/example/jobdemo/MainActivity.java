@@ -19,9 +19,12 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
+/**
+ * 主页
+ * @author Administrator
+ */
 public class MainActivity extends BaseActivity {
 
     @Override
@@ -35,23 +38,17 @@ public class MainActivity extends BaseActivity {
         exclude.add(this.getClass());
         List<Class> classList = ClassUtils.getActivitiesClass(this, getPackageName(), exclude);
         //类名按字母进行排序
-        Collections.sort(classList, new Comparator<Class>() {
-            @Override
-            public int compare(Class o1, Class o2) {
-                int i = o1.getSimpleName().compareTo(o2.getSimpleName());
-                if (i > 0) {
-                    return 1;
-                }
-                return -1;
+        Collections.sort(classList, (o1, o2) -> {
+            int i = o1.getSimpleName().compareTo(o2.getSimpleName());
+            if (i > 0) {
+                return 1;
             }
+            return -1;
         });
         MainActivityAdapter adapter = new MainActivityAdapter(classList);
         inflate.rvDemoInstance.setLayoutManager(new LinearLayoutManager(this));
         inflate.rvDemoInstance.setAdapter(adapter);
-//        String channel = ChannelUtil.getChannel(getApplicationContext());
-//        Toast.makeText(getApplicationContext(), "当前渠道：" + channel, Toast.LENGTH_SHORT).show();
-        checkLOCATIONPermission();
-//        Toast.makeText(this, "编译版本是不是dubug: " + BuildConfig.DEBUG, Toast.LENGTH_LONG).show();
+        checkLocationPermission();
     }
 
 
@@ -62,7 +59,7 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    private void checkLOCATIONPermission() {
+    private void checkLocationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);

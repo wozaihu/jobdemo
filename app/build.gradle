@@ -15,7 +15,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-
+        ndk {
+            abiFilters "armeabi",'x86'
+        }
         //阿里路由框架配置
         javaCompileOptions {
             annotationProcessorOptions {
@@ -72,7 +74,8 @@ android {
     defaultConfig {
         ndk {
             // 设置支持的SO库架构
-            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+//            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            abiFilters 'armeabi-v7a'
         }
 //        signingConfig signingConfigs.release
     }
@@ -197,11 +200,18 @@ dependencies {
     implementation 'com.github.bingoogolapple:BGAPhotoPicker-Android:2.0.3'
     implementation 'com.github.bingoogolapple:BGABaseAdapter-Android:2.0.1'
 
-    implementation 'cn.rongcloud.sdk:call_kit:4.0.0'
-    implementation 'cn.rongcloud.sdk:call_lib:4.0.0'
-    implementation 'cn.rongcloud.sdk:im_kit:4.0.0'
-    implementation 'cn.rongcloud.sdk:im_lib:4.0.0'
+    //阿里云集成
+    implementation 'com.aliyun.video.android:svideosnap:3.24.+'//短视频基础版SDK必须依赖
+    implementation 'com.aliyun.video.android:core:1.2.2' //核心库必须依赖
+    implementation  'com.alivc.conan:AlivcConan:1.0.3'//核心库必须依赖
+    implementation  'com.aliyun.video.android:AlivcFFmpeg:4.3.0'//必须依赖,且版本需要在4.3.0及以上
+    implementation  'com.aliyun.video.android:upload:1.6.0'// 上传库,如不需要上传可不依赖
 
+    /*---------------融云--------------*/
+    implementation 'cn.rongcloud.sdk:im_lib:5.1.5' // 即时通讯基础能力库
+    implementation 'cn.rongcloud.sdk:im_kit:5.1.5' // 即时通讯 UI 基础组件
+    implementation 'cn.rongcloud.sdk:call_lib:5.1.9' // 音视频呼叫能力库（内含 rtc_lib)
+    implementation 'cn.rongcloud.sdk:call_kit:5.1.9' // 音视频通话能力 UI 组件
 }
 repositories {
     mavenCentral()

@@ -20,7 +20,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TAG = this.getClass().getSimpleName();
+        TAG = this.getClass().getSimpleName() + "打印";
         mContentView = (ViewGroup) findViewById(android.R.id.content);
     }
 
@@ -37,6 +37,8 @@ public class BaseActivity extends AppCompatActivity {
             mContentView.setId(View.NO_ID);
             frameLayout.setId(android.R.id.content);
             LayoutInflater.from(this).inflate(layoutResID, frameLayout, true);
+
+            // TODO: 2021/11/16 有功能代码待编写
 
         } else {
             super.setContentView(layoutResID);
@@ -73,7 +75,5 @@ public class BaseActivity extends AppCompatActivity {
             throw new NullPointerException("toolbar of BaseActivity is NULL");
         }
     }
-
-
 
 }

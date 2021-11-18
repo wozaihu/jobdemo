@@ -39,15 +39,18 @@ public class ClassUtils {
             if (packageInfo.activities != null) {
                 LogUtil.showD(TAG, "Found " + packageInfo.activities.length + " activity in the AndrodiManifest.xml");
                 for (ActivityInfo ai : packageInfo.activities) {
-                    Class c;
+                    Class c = null;
                     try {
-                        c = Class.forName(ai.name);
+                        if (ai.name.contains(packageName)) {
+                            c = Class.forName(ai.name);
+                        }
                         // 排除其他SDK合并的activity，只显示自己写的activity，用包名排除
-                        if (Activity.class.isAssignableFrom(c) && ai.name.contains(packageName)) {
+                        if (c != null && Activity.class.isAssignableFrom(c) && ai.name.contains(packageName)) {
                             returnClassList.add(c);
                             LogUtil.showD(TAG, ai.name + "...OK");
                         }
-                    } catch (ClassNotFoundException e) {
+                    } catch (Exception e) {
+                        LogUtil.showD(TAG, "Class Not Found:" + e.getMessage());
                         LogUtil.showD(TAG, "Class Not Found:" + ai.name);
                     }
                 }

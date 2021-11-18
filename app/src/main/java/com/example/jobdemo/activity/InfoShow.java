@@ -92,6 +92,7 @@ public class InfoShow extends AppCompatActivity {
     ,R.id.btn_show_dialog
     })
     public void onViewClicked(View view) {
+        // FIXME: 2021/11/16 标识处代码需要修正
         switch (view.getId()) {
             case R.id.tv_sha1:
                 break;

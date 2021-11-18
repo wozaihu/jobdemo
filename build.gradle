@@ -6,7 +6,10 @@ buildscript {
         google()
         jcenter()
         maven { url 'https://repo1.maven.org/maven2/' }
-        maven{ url 'https://maven.aliyun.com/repository/google'}
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.1'
@@ -26,8 +29,10 @@ allprojects {
         jcenter()
         maven { url 'https://repo1.maven.org/maven2/' }
         maven { url "https://jitpack.io" }
-        maven {url  "http://maven.rongcloud.cn/repository/maven-releases/"}
-        maven{ url 'https://maven.aliyun.com/repository/google'}
+        maven { url "http://maven.rongcloud.cn/repository/maven-releases/" }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven {url 'http://maven.aliyun.com/nexus/content/repositories/releases/'}
+
     }
 }
 
@@ -35,7 +40,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-task daviTask1{
+task daviTask1 {
     println("-----start定义----------");
     println("-----执行中我是daviTask1----------");
     println("-----end定义----------");
