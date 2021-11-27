@@ -1,5 +1,6 @@
 package com.example.jobdemo.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -89,7 +90,7 @@ public class InfoShow extends AppCompatActivity {
     }
 
     @OnClick({R.id.tv_sha1, R.id.tv_md5, R.id.tv_sha265, R.id.tv_child, R.id.btn_getCurrentTime, R.id.btn_branchThread
-    ,R.id.btn_show_dialog
+            , R.id.btn_show_dialog, R.id.close
     })
     public void onViewClicked(View view) {
         // FIXME: 2021/11/16 标识处代码需要修正
@@ -112,6 +113,10 @@ public class InfoShow extends AppCompatActivity {
             case R.id.btn_show_dialog:
                 DefaultVerificationDialog defaultVerificationDialog = DefaultVerificationDialog.newInstance();
                 defaultVerificationDialog.show(getFragmentManager(), "同意退款");
+                break;
+            case R.id.close:
+                setResult(Activity.RESULT_OK, new Intent().putExtra("extra", "info返回的数据"));
+                finish();
                 break;
         }
     }

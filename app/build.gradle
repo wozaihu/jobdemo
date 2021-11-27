@@ -113,7 +113,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.annotation:annotation:1.1.0'
@@ -142,9 +142,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation 'com.tencent.bugly:crashreport:latest.release'
-    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    //其中latest.release指代最新BugLy SDK版本号，也可以指定明确的版本号，例如2.1.9
     implementation 'com.tencent.bugly:nativecrashreport:3.8.0'
-    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    //其中latest.release指代最新BugLy NDK版本号，也可以指定明确的版本号，例如3.0
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
@@ -156,11 +156,11 @@ dependencies {
 
     // 友盟统计SDK
     implementation 'com.umeng.umsdk:common:9.4.0' // (必选)版本号
-    implementation 'com.umeng.umsdk:asms:1.2.3' // asms包依赖(必选)
+    implementation 'com.umeng.umsdk:asms:1.2.3' // aSms包依赖(必选)
     implementation 'com.umeng.umsdk:apm:1.2.0'//推荐，错误分析升级为U-APM产品，关注crash数据需集成
     implementation  'com.umeng.umsdk:abtest:1.0.0'//U-App中ABTest能力
     implementation 'com.umeng.umsdk:link:1.0.0'//集成智能超链SDK，必选
-    //OAID采集
+    //oAid采集
     implementation 'com.umeng.umsdk:oaid_lenovo:1.0.0' // (可选)
     implementation 'com.umeng.umsdk:oaid_mi:1.0.0' // (可选)
     implementation 'com.umeng.umsdk:oaid_oppo:1.0.4' // (可选)
@@ -171,7 +171,7 @@ dependencies {
 // RxJava
     implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    // Retrofit和jxjava关联
+    // Retrofit和jxJava关联
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     // Retrofit使用Gson转换
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'

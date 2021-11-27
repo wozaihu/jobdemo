@@ -143,6 +143,7 @@
         <activity android:name=".activity.ScrollerStringSize" />
         <activity android:name=".activity.VerificationCode" />
         <activity android:name=".activity.TestFunctionAndPrint" />
+        <activity android:name=".activity.ResultApiUse" />
 
     </application>
 

@@ -69,4 +69,7 @@
     <string name="save_to_root">保存文件到根目录</string>
     <string name="save_to_app">保存文件到应用包下</string>
     <string name="clear_cache">清除缓存</string>
+    <string name="startInfoShow">启动infoShow页面</string>
+    <string name="close">关闭</string>
+    <string name="photograph">拍照</string>
 </resources>
