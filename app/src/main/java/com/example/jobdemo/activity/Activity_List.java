@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -48,12 +47,7 @@ public class Activity_List extends BaseActivity {
 //        ImageView imageView = new ImageView(this);
 //        imageView.setBackgroundResource(R.mipmap.a1);
 //        lv.addHeaderView(imageView);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(Activity_List.this, "点击了===" + i, Toast.LENGTH_SHORT).show();
-            }
-        });
+        lv.setOnItemClickListener((adapterView, view, i, l) -> Toast.makeText(Activity_List.this, "点击了===" + i, Toast.LENGTH_SHORT).show());
         adapter = new NaemAdapter();
         lv.setAdapter(adapter);
     }
