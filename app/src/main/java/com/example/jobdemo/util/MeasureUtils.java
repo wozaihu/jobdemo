@@ -14,8 +14,11 @@ import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.view.WindowMetrics;
 
-import com.example.jobdemo.MyApplication;
+import java.lang.ref.WeakReference;
 
+/**
+ * @author Administrator
+ */
 public class MeasureUtils {
     private volatile static MeasureUtils measureUtils;
 
@@ -39,8 +42,8 @@ public class MeasureUtils {
      *
      * @return
      */
-    public static DisplayMetrics getDisplayMetrics() {
-        WindowManager wm = (WindowManager) MyApplication.getAppContent().getSystemService(Context.WINDOW_SERVICE);
+    public static DisplayMetrics getDisplayMetrics(Context context) {
+        WindowManager wm = (WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
         return dm;
@@ -55,8 +58,8 @@ public class MeasureUtils {
      *
      * @return
      */
-    public static int getScreenWidth() {
-        WindowManager wm = (WindowManager) MyApplication.getAppContent().getSystemService(Context.WINDOW_SERVICE);
+    public static int getScreenWidth(Context context) {
+        WindowManager wm = (WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             WindowMetrics windowMetrics = wm.getCurrentWindowMetrics();
             Insets insets = windowMetrics.getWindowInsets()
@@ -74,50 +77,36 @@ public class MeasureUtils {
      *
      * @return
      */
-    public static int getScreenHeight() {
-        WindowManager wm = (WindowManager) MyApplication.getAppContent().getSystemService(Context.WINDOW_SERVICE);
+    public static int getScreenHeight(Context context) {
+        WindowManager wm = (WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
         return dm.heightPixels;
     }
 
-    /*    二、底部有虚拟按键
-        华为手机底部都会有一个黑色的虚拟按键(NavigationBar)，
-        通过上面这个方式得到的屏幕高度是屏幕真是高度-虚拟按键的高度。
-        所以有虚拟按键的情况获取屏幕的高度就是另一种方法了。*/
+    /**
+     * @param context 上下文
+     * @return 有虚拟按键情况下获得屏幕高度
+     */
     public static int getRealHeight(Context context) {
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         int screenHeight = 0;
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            DisplayMetrics dm = new DisplayMetrics();
-            display.getRealMetrics(dm);
-            screenHeight = dm.heightPixels;
-
-            //或者也可以使用getRealSize方法
-//            Point size = new Point();
-//            display.getRealSize(size);
-//            screenHeight = size.y;
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            try {
-                screenHeight = (Integer) Display.class.getMethod("getRawHeight").invoke(display);
-            } catch (Exception e) {
-                DisplayMetrics dm = new DisplayMetrics();
-                display.getMetrics(dm);
-                screenHeight = dm.heightPixels;
-            }
-        }
+        DisplayMetrics dm = new DisplayMetrics();
+        display.getRealMetrics(dm);
+        screenHeight = dm.heightPixels;
         return screenHeight;
     }
 
-/*    虚拟按键高度
-    虚拟按键(NavigationBar)高度可以通过读取定义在Android系统尺寸资源中的 navigation_bar_height 获得。
-    所以不管虚拟按键是显示还是隐藏，得到的结果都是一样的。*/
 
+    /**
+     * @param context 虚拟按键(NavigationBar)高度可以通过读取定义在Android系统尺寸资源中的 navigation_bar_height 获得。
+     *                所以不管虚拟按键是显示还是隐藏，得到的结果都是一样的。
+     * @return 虚拟按键高度
+     */
     public static int getNavigationBarHeight(Context context) {
         int navigationBarHeight = -1;
-        Resources resources = context.getResources();
+        Resources resources = context.getApplicationContext().getResources();
         int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
         if (resourceId > 0) {
             navigationBarHeight = resources.getDimensionPixelSize(resourceId);
@@ -126,12 +115,15 @@ public class MeasureUtils {
     }
 
 
-    //获得状态栏高度（电量，信号栏）
+    /**
+     * @param context
+     * @return 状态栏高度
+     */
     public int getStatusBarHeight(Context context) {
         int result = 0;
-        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int resourceId = context.getApplicationContext().getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
-            result = context.getResources().getDimensionPixelSize(resourceId);
+            result = context.getApplicationContext().getResources().getDimensionPixelSize(resourceId);
         }
         return result;
     }
@@ -142,32 +134,42 @@ public class MeasureUtils {
      * 因为这种方法依赖于WMS（窗口管理服务的回调）。正是因为窗口回调机制，所以在Activity初始化时执行此方法得到的高度是0。
      * 这个方法推荐在回调方法onWindowFocusChanged()中执行，才能得到预期结果。
      */
-    public void getAppViewHeight(Activity activity) {
+    public int getAppViewHeight(Activity activity) {
+        WeakReference<Activity> activityWeakReference = new WeakReference<>(activity);
+
         //屏幕
         DisplayMetrics dm = new DisplayMetrics();
-        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        activityWeakReference.get().getWindowManager().getDefaultDisplay().getMetrics(dm);
         //应用区域
         Rect outRect1 = new Rect();
-        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect1);
-        int statusBar = dm.heightPixels - outRect1.height();  //状态栏高度=屏幕高度-应用区域高度
+        activityWeakReference.get().getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect1);
+        //状态栏高度=屏幕高度-应用区域高度
+        return dm.heightPixels - outRect1.height();
     }
 
-    //    标题栏高度
-    //  标题栏高度 = 应用区高度 - view 显示高度
-    public static void getTitleBarHeight(Activity activity) {
+    /**
+     * @param activity 标题栏高度 = 应用区高度 - view 显示高度
+     */
+
+    public static int getTitleBarHeight(Activity activity) {
+        WeakReference<Activity> activityWeakReference = new WeakReference<>(activity);
         Rect outRect1 = new Rect();
-        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect1);
-
-        int viewTop = activity.getWindow().findViewById(Window.ID_ANDROID_CONTENT).getTop();   //要用这种方法
-        int titleBarH = viewTop - outRect1.top;
+        activityWeakReference.get().getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect1);
+        //要用这种方法
+        int viewTop = activity.getWindow().findViewById(Window.ID_ANDROID_CONTENT).getTop();
+        return viewTop - outRect1.top;
     }
 
-    //获得toolbar高度
+    /**
+     * @param activity 获得toolbar高度
+     * @return
+     */
     public int getToolbarHeight(Activity activity) {
+        WeakReference<Activity> activityWeakReference = new WeakReference<>(activity);
         int actionBarHeight = 0;
         TypedValue tv = new TypedValue();
         if (activity.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, activity.getResources().getDisplayMetrics());
+            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, activityWeakReference.get().getResources().getDisplayMetrics());
         }
         return actionBarHeight;
     }

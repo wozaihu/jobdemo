@@ -21,7 +21,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
-import com.example.jobdemo.MyApplication;
 import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.bean.MainOnDestroy;
@@ -51,7 +50,6 @@ public class CameraDemo extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MainOnDestroy mainOnDestroy) {
-        Log.d(MyApplication.TAG, "onMessageEvent: CameraDemo");
     }
 
     @Override
@@ -68,7 +66,6 @@ public class CameraDemo extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
-        Log.d(MyApplication.TAG, "onDestroy: CameraDemo");
     }
 
     private void startCamera() {
@@ -105,7 +102,7 @@ public class CameraDemo extends BaseActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 001) {
-            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.length != 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Log.d(TAG, "onRequestPermissionsResult: 没有获得权限");
                 popAlterDialog();
             }

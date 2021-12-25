@@ -164,8 +164,12 @@ public class MaterialDesignDemo extends AppCompatActivity implements NavigationV
                 if (list.size() != 0) {
                     list.clear();
                 }
-                list.addAll(beans);
-                adapter.notifyDataSetChanged();
+                if (beans!=null) {
+                    list.addAll(beans);
+                    adapter.notifyDataSetChanged();
+                }
+                break;
+            default:
                 break;
         }
     }

@@ -23,8 +23,8 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-import com.example.jobdemo.MyApplication;
 import com.example.jobdemo.R;
+import com.example.jobdemo.util.DensityUtil;
 
 public class SpinnerView extends RelativeLayout implements View.OnClickListener {
     private static final String TAG = "SpinnerView";
@@ -175,7 +175,7 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
         params.height = LayoutParams.MATCH_PARENT;
         params.addRule(RelativeLayout.CENTER_VERTICAL);
         params.addRule(RelativeLayout.LEFT_OF, R.id.spinner_icon);
-        params.setMargins(dip2px(5), 0, dip2px(5), 0);
+        params.setMargins(DensityUtil.dip2px(context,5), 0, DensityUtil.dip2px(context,5), 0);
         tv_hint.setTextColor(hint_color);
         tv_hint.setLines(1);
         tv_hint.setEllipsize(TextUtils.TruncateAt.END);
@@ -187,11 +187,11 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
         img_icon.setId(R.id.spinner_icon);
         addView(img_icon);
         RelativeLayout.LayoutParams imgIconLayoutParams = (LayoutParams) img_icon.getLayoutParams();
-        imgIconLayoutParams.height = dip2px(15);
-        imgIconLayoutParams.width = dip2px(15);
+        imgIconLayoutParams.height =DensityUtil.dip2px(context,15);
+        imgIconLayoutParams.width = DensityUtil.dip2px(context,15);
         imgIconLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
         imgIconLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        imgIconLayoutParams.setMargins(0, 0, dip2px(5), 0);
+        imgIconLayoutParams.setMargins(0, 0, DensityUtil.dip2px(context,5), 0);
         if (SpinnerView_icon != 0) {
             img_icon.setImageResource(SpinnerView_icon);
         }
@@ -199,22 +199,6 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
 
     }
 
-
-    /**
-     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
-     */
-    public static int dip2px(float dpValue) {
-        final float scale = MyApplication.getAppContent().getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
-    /**
-     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
-     */
-    public static int px2dip(float pxValue) {
-        final float scale = MyApplication.getAppContent().getResources().getDisplayMetrics().density;
-        return (int) (pxValue / scale + 0.5f);
-    }
 
     @Override
     public void onClick(View v) {

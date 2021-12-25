@@ -61,13 +61,5 @@ public class EditTextDemo extends BaseActivity {
         Log.d(TAG, "isClickable: " + checkBox.isClickable());
         Log.d(TAG, "isChecked: " + checkBox.isChecked());
         Log.d(TAG, "isSelected: " + checkBox.isSelected());
-        int value = Integer.parseInt(edtPrice.getText().toString().trim());
-        if (value > 100) {
-            throw new RuntimeException("输入的值超过100了");
-        } else {
-            value = 999;
-            new Thread(() -> {
-            }).start();
-        }
     }
 }

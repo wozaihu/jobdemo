@@ -72,4 +72,5 @@
     <string name="startInfoShow">启动infoShow页面</string>
     <string name="close">关闭</string>
     <string name="photograph">拍照</string>
+    <string name="exclude">exclude</string>
 </resources>

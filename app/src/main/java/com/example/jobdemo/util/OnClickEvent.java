@@ -11,9 +11,13 @@ public abstract class OnClickEvent implements View.OnClickListener {
 
     private static long lastTime;
 
+    /**
+     * @param v view
+     *          避免双击
+     */
     public abstract void singleClick(View v);
 
-    private long delay;
+    private final long delay;
 
     public OnClickEvent(long delay) {
         this.delay = delay;

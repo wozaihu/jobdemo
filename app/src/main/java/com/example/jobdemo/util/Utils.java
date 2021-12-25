@@ -13,6 +13,9 @@ import java.util.Calendar;
 import java.util.List;
 
 public enum Utils {
+    /**
+     * 工具类
+     */
     INSTANCE;
 
     /**
@@ -22,10 +25,12 @@ public enum Utils {
      */
     public boolean isAppOnForeground(Context context) {
         // Returns a list of application processes that are running on the device
-        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        String packageName = context.getPackageName();
+        ActivityManager activityManager = (ActivityManager) context.getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
+        String packageName = context.getApplicationContext().getPackageName();
         List<RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
-        if (appProcesses == null) return false;
+        if (appProcesses == null) {
+            return false;
+        }
         for (RunningAppProcessInfo appProcess : appProcesses) {
             // The name of the process that this object is associated with.
             if (appProcess.processName.equals(packageName) && appProcess.importance == RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {

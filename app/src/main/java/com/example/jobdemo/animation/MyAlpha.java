@@ -69,13 +69,11 @@ public class MyAlpha extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MainOnDestroy mainOnDestroy) {
-        Log.d(MyApplication.TAG, "onMessageEvent: MyAlpha");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(MyApplication.TAG, "onDestroy: MyAlpha");
         EventBus.getDefault().unregister(this);
     }
 }

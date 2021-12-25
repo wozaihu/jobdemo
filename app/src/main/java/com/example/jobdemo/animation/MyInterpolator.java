@@ -50,7 +50,7 @@ public class MyInterpolator extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interpolator);
         ButterKnife.bind(this);
-        screenWidth = MeasureUtils.getScreenWidth();
+        screenWidth = MeasureUtils.getScreenWidth(this);
     }
 
     @OnClick({R.id.tv_accelerate, R.id.tv_overshoot, R.id.tv_accelerate_decelerate, R.id.tv_anticipate, R.id.tv_anticipate_overshoot, R.id.tv_bounce, R.id.tv_cycle, R.id.tv_decelerate, R.id.tv_linear})

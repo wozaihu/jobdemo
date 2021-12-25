@@ -2,6 +2,7 @@ package com.example.jobdemo.util;
 
 /**
  * 防止快速点击
+ * @author Administrator
  */
 public class NoDoubleClickUtils {
     private final static int SPACE_TIME = 500;

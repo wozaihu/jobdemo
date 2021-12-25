@@ -13,7 +13,8 @@
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取网络状态，根据网络状态切换进行数据请求网络转换 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 读取外置存储。如果开发者使用了so动态加载功能并且把so文件放在了外置存储区域，则需要申请该权限，否则不需要 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 写外置存储。如果开发者使用了离线地图，并且数据写在外置存储区域，则需要申请该权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" /> <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 这个权限用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -117,7 +118,9 @@
             android:name=".activity.Activity_List"
             android:label="@string/AdapterControlShowCount" />
         <activity android:name=".activity.StudioDemo" />
-        <activity android:name=".activity.ShowContent" />
+        <activity
+            android:name=".activity.ShowContent"
+            android:description="@string/exclude" />
         <activity android:name=".activity.ConstraintLayoutDemo" />
         <activity android:name=".activity.LayoutCreatePicture" />
         <activity android:name=".activity.EditTextDemo" />
@@ -136,8 +139,8 @@
             android:name=".activity.MaterialDesignDemo"
             android:theme="@style/defaultStyle" />
         <activity android:name=".activity.ViewPager2Use" />
-        <activity android:name=".activity.NotificationDemo"/>
-        <activity android:name=".activity.DragLayout"/>
+        <activity android:name=".activity.NotificationDemo" />
+        <activity android:name=".activity.DragLayout" />
         <activity android:name=".activity.SearchViewDemo" />
         <activity android:name=".activity.DynamicActivity" />
         <activity android:name=".activity.ScrollerStringSize" />

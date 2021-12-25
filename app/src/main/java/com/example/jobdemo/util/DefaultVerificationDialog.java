@@ -1,6 +1,5 @@
 package com.example.jobdemo.util;
 
-import android.app.DialogFragment;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -9,6 +8,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.fragment.app.DialogFragment;
 
 import com.example.jobdemo.R;
 import com.example.jobdemo.widget.VerCodeInputView;
@@ -76,13 +77,16 @@ public class DefaultVerificationDialog extends DialogFragment implements View.On
         switch (v.getId()) {
             case R.id.tv_count_down:
                 if (tvCountDown != null) {
-                    verificationDialogCall.reGetVerification(tvCountDown); //重新获取验证码
+                    //重新获取验证码
+                    verificationDialogCall.reGetVerification(tvCountDown);
                 }
                 break;
             case R.id.btn_confirm:
                 if (!TextUtils.isEmpty(viewVerification.getEditContent()) && viewVerification.getEditContent().length() == 6) {
                     verificationDialogCall.Confirm(viewVerification.getEditContent());
                 }
+                break;
+            default:
                 break;
         }
     }
@@ -95,6 +99,9 @@ public class DefaultVerificationDialog extends DialogFragment implements View.On
     }
 
     public interface VerificationDialogCall {
+        /**
+         * @param view 得到TextView
+         */
         void reGetVerification(TextView view);
 
         void Confirm(String code);

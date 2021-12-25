@@ -1,14 +1,26 @@
 package com.example.jobdemo.util;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import com.example.jobdemo.MyApplication;
 
-
+/**
+ * @author Administrator
+ */
 public class ToastUtils {
     private static final String TAG = "ToastUtils";
     public static Toast toast;
+    /**
+     * static 修饰的context会造成内存泄漏，但这里使用的是applicationContext
+     */
+    @SuppressLint("StaticFieldLeak")
+    private static Context context;
+
+    public static void init(Context context) {
+        ToastUtils.context = context.getApplicationContext();
+    }
 
     public static void shortToast(String s) {
         showToast(s, Toast.LENGTH_SHORT, -99, -99, -99, -99, -99);
@@ -54,7 +66,7 @@ public class ToastUtils {
      */
     public static void showToast(String s, int duration, int gravity, int xOffset, int yOffset, float horizontalMargin, float verticalMargin) {
         if (toast == null) {
-            toast = Toast.makeText(MyApplication.getAppContent(), "", duration);
+            toast = Toast.makeText(context, "", duration);
         }
         toast.setText(s);
         toast.setDuration(duration);
@@ -78,9 +90,9 @@ public class ToastUtils {
      */
     public static void showToast(int s, int duration, int gravity, int xOffset, int yOffset, float horizontalMargin, float verticalMargin) {
         if (toast == null) {
-            toast = Toast.makeText(MyApplication.getAppContent(), "", duration);
+            toast = Toast.makeText(context, "", duration);
         }
-        toast.setText(MyApplication.getAppContent().getResources().getString(s));
+        toast.setText(context.getResources().getString(s));
         toast.setDuration(duration);
         if (gravity != -99) {
             toast.setGravity(Gravity.CENTER, xOffset, yOffset);

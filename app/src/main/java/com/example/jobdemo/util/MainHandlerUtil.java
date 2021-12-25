@@ -4,6 +4,9 @@ import android.os.Handler;
 import android.os.Looper;
 
 
+/**
+ * @author Administrator
+ */
 public class MainHandlerUtil {
     public Handler handler;
 
@@ -14,10 +17,10 @@ public class MainHandlerUtil {
     }
 
     public static MainHandlerUtil getMainHandler() {
-        return singleOnHolder.mainHandlerUtil;
+        return SingleOnHolder.MAIN_HANDLER_UTIL;
     }
 
-    private static class singleOnHolder {
-        private static MainHandlerUtil mainHandlerUtil = new MainHandlerUtil();
+    private static class SingleOnHolder {
+        private static final MainHandlerUtil MAIN_HANDLER_UTIL = new MainHandlerUtil();
     }
 }

@@ -5,7 +5,9 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 /**
- * Created by Administrator on 2020/11/4.
+ *
+ * @author Administrator
+ * @date 2020/11/4
  * 如果输入的内容以点“.”开头，就改为“0.”
  */
 

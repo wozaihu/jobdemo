@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 
-import com.example.jobdemo.MyApplication;
 import com.google.gson.Gson;
 
 /**
@@ -20,7 +19,6 @@ public class SPUtil {
      * 保存在手机里面的文件名
      */
     private static final String FILE_NAME = "share_date";
-    private static Context context;
     private static SharedPreferences.Editor editor;
     private static SharedPreferences sp;
     private static Gson gson;
@@ -29,16 +27,15 @@ public class SPUtil {
     }
 
     public static SPUtil getInstance() {
-        return singleOnHolder.spUtil;
+        return SingleOnHolder.spUtil;
     }
 
-    private static class singleOnHolder {
-        private static SPUtil spUtil = new SPUtil();
+    private static class SingleOnHolder {
+        private static final SPUtil spUtil = new SPUtil();
     }
 
-    static {
-        context = MyApplication.getAppContent();
-        sp = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+    public static void init(Context context) {
+        sp = context.getApplicationContext().getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
         editor = sp.edit();
         gson = new Gson();
     }

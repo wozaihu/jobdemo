@@ -11,6 +11,7 @@ import java.util.Locale;
 
 /**
  * 获取签名信息SHA1
+ * @author Administrator
  */
 public class AppInfoUtils {
 

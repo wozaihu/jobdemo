@@ -45,7 +45,8 @@ public class ClassUtils {
                             c = Class.forName(ai.name);
                         }
                         // 排除其他SDK合并的activity，只显示自己写的activity，用包名排除
-                        if (c != null && Activity.class.isAssignableFrom(c) && ai.name.contains(packageName)) {
+                        //descriptionRes做一个标记，不为空则为要排除的activity
+                        if (c != null && Activity.class.isAssignableFrom(c) && ai.descriptionRes == 0) {
                             returnClassList.add(c);
                             LogUtil.showD(TAG, ai.name + "...OK");
                         }

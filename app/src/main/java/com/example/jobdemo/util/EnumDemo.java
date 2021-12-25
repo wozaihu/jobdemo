@@ -1,12 +1,14 @@
 package com.example.jobdemo.util;
 
+/**
+ * @author Administrator
+ */
+
 public enum EnumDemo {
+    /**
+     * 枚举类创建单例
+     */
     INSTANCE2("", 0);
-
-
-
-
-
     private String name;
     private int age;
 

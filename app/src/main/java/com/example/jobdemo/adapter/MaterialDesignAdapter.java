@@ -35,7 +35,7 @@ public class MaterialDesignAdapter extends RecyclerView.Adapter<MaterialDesignAd
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        int width = MeasureUtils.getScreenWidth();
+        int width = MeasureUtils.getScreenWidth(context);
         int reallyWidth = (width - 30) / 2;
         PictureBean bean = list.get(position);
         int ratio = bean.getWidth() / reallyWidth;

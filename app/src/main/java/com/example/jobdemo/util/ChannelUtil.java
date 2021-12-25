@@ -10,8 +10,8 @@ public class ChannelUtil {
      */
     public static String getChannel(Context context) {
         try {
-            PackageManager manager = context.getPackageManager();
-            ApplicationInfo appInfo = manager.getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            PackageManager manager = context.getApplicationContext().getPackageManager();
+            ApplicationInfo appInfo = manager.getApplicationInfo(context.getApplicationContext().getPackageName(), PackageManager.GET_META_DATA);
             return appInfo.metaData.getString("UMENG_CHANNEL");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();

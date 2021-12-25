@@ -8,7 +8,6 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.example.jobdemo.MyApplication;
 import com.tencent.smtt.sdk.QbSdk;
 
 /**
@@ -54,7 +53,6 @@ public class InitializeService extends IntentService {
      * 子线程进行初始化SDK操作
      **/
     private void initApplication() {
-        MyApplication.getAppContent();
         //搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
         QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
 

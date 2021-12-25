@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import com.example.jobdemo.util.AppInfoUtils;
 import com.example.jobdemo.util.DefaultVerificationDialog;
 import com.example.jobdemo.util.IntToChineseNumUtil;
 import com.example.jobdemo.util.LogUtil;
+import com.example.jobdemo.util.ToastUtils;
 
 import java.net.URL;
 import java.net.URLConnection;
@@ -96,10 +98,13 @@ public class InfoShow extends AppCompatActivity {
         // FIXME: 2021/11/16 标识处代码需要修正
         switch (view.getId()) {
             case R.id.tv_sha1:
+                ToastUtils.shortToast("短时间显示toast");
                 break;
             case R.id.tv_md5:
+                ToastUtils.shortToast("长时间显示toast");
                 break;
             case R.id.tv_sha265:
+                ToastUtils.shortToast("toast显示3秒",3000);
                 break;
             case R.id.tv_child:
                 Toast.makeText(this, "点击了子view", Toast.LENGTH_SHORT).show();
@@ -108,15 +113,20 @@ public class InfoShow extends AppCompatActivity {
                 getCurrentTime();
                 break;
             case R.id.btn_branchThread:
-
+                //Android11中不能居中显示了，改用snackBar
+                Toast toast = Toast.makeText(this, "居中位置的Toast", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
                 break;
             case R.id.btn_show_dialog:
                 DefaultVerificationDialog defaultVerificationDialog = DefaultVerificationDialog.newInstance();
-                defaultVerificationDialog.show(getFragmentManager(), "同意退款");
+                defaultVerificationDialog.show(getSupportFragmentManager(), "同意退款");
                 break;
             case R.id.close:
                 setResult(Activity.RESULT_OK, new Intent().putExtra("extra", "info返回的数据"));
                 finish();
+                break;
+            default:
                 break;
         }
     }

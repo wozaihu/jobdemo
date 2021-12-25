@@ -101,7 +101,7 @@ public class VerCodeInputView extends FrameLayout {
             editTextBg = ta.getResourceId(R.styleable.VerCodeInputView_inputBg, R.drawable.transverse_lin);
         }
         inputWidth = ta.getDimensionPixelSize(R.styleable.VerCodeInputView_inputWidth, 0);
-        defaultChildPadding = DensityUtil.INSTANCE.dip2px(8f);
+        defaultChildPadding = DensityUtil.dip2px(context,8f);
         childPadding = ta.getDimensionPixelSize(R.styleable.VerCodeInputView_inputPadding, defaultChildPadding);
         textColor = ta.getColor(R.styleable.VerCodeInputView_inputTxtColor, ContextCompat.getColor(context, R.color.green));
         textSize = ta.getDimensionPixelSize(R.styleable.VerCodeInputView_inputTxtSize, 14);
@@ -257,7 +257,8 @@ public class VerCodeInputView extends FrameLayout {
             for (int i = 0; i < textViewList.size(); i++) {
                 View child = textViewList.get(i);
                 LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) child.getLayoutParams();
-                if (i != 0) {//最后一个textView 不设置margin
+                //最后一个textView 不设置margin
+                if (i != 0) {
                     params.leftMargin = childPadding;
                 }
                 params.weight = inputWidth;

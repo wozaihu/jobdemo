@@ -5,16 +5,13 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.databinding.ScrollerstringsizeBinding;
 import com.example.jobdemo.util.DensityUtil;
@@ -44,10 +41,12 @@ public class ScrollerStringSize extends BaseActivity {
             LogUtil.showD(TAG, "移动的距离---" + scrollY);
             LogUtil.showD(TAG, "之前的距离---" + oldScrollY);
             LogUtil.showD(TAG, "之前的字体大小px---" + inflate.tvContent.getTextSize());
-            LogUtil.showD(TAG, "之前的字体大小sp---" + DensityUtil.px2sp(inflate.tvContent.getTextSize()));
+            LogUtil.showD(TAG, "之前的字体大小sp---" + DensityUtil.px2sp(this
+                    ,inflate.tvContent.getTextSize()));
             int i = new Double(Math.floor(scrollY / 100)).intValue();
             inflate.tvContent.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14 + i);
-            LogUtil.showD(TAG, "设置后的的字体大小sp---" + DensityUtil.px2sp(inflate.tvContent.getTextSize()));
+            LogUtil.showD(TAG, "设置后的的字体大小sp---" + DensityUtil.px2sp(this
+                    ,inflate.tvContent.getTextSize()));
         });
     }
 

@@ -7,9 +7,16 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * @author Administrator
+ */
+
 public enum MyRetrofitUtil {
+    /**
+     * 枚举单例
+     */
     INSTANCE;
-    private RetrofitInterface retrofitInterface;
+    private final RetrofitInterface retrofitInterface;
 
     private MyRetrofitUtil() {
         Retrofit retrofit = new Retrofit.Builder()

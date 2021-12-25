@@ -62,7 +62,8 @@ public class ActivityPublicWebView extends BaseActivity {
         settings.setAllowContentAccess(true);   // 是否可访问Content Provider的资源，默认值 true
         settings.setAllowFileAccess(true);      // 是否可访问本地文件，默认值 true
         settings.setLoadsImagesAutomatically(true); //支持自动加载图片
-        webContent.loadUrl("http://api-home-beta.51djt.com/share/MicroMallIndex");
+//        webContent.loadUrl("http://api-home-beta.51djt.com/share/MicroMallIndex");
+        webContent.loadUrl("https://www.baidu.com");
         webContent.setWebViewClient(new WebViewClient() {
 
             @Override
@@ -92,4 +93,24 @@ public class ActivityPublicWebView extends BaseActivity {
             }
         });
     }
+
+    @Override
+    protected void onDestroy() {
+
+        try{
+            if (webContent != null) {
+                webContent.stopLoading();
+                webContent.removeAllViewsInLayout();
+                webContent.removeAllViews();
+//                CookieSyncManager.getInstance().stopSync();
+                webContent.destroy();
+                webContent = null;
+            }
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+        } finally {
+            super.onDestroy();
+        }
+    }
+
 }

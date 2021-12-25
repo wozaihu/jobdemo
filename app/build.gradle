@@ -6,7 +6,6 @@ apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.jobdemo"
         minSdkVersion 21
@@ -145,10 +144,6 @@ dependencies {
     //其中latest.release指代最新BugLy SDK版本号，也可以指定明确的版本号，例如2.1.9
     implementation 'com.tencent.bugly:nativecrashreport:3.8.0'
     //其中latest.release指代最新BugLy NDK版本号，也可以指定明确的版本号，例如3.0
-
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
-    betatestImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     //初始化启动框架
     implementation "androidx.startup:startup-runtime:1.0.0"
 
@@ -212,6 +207,8 @@ dependencies {
     implementation 'cn.rongcloud.sdk:im_kit:5.1.5' // 即时通讯 UI 基础组件
     implementation 'cn.rongcloud.sdk:call_lib:5.1.9' // 音视频呼叫能力库（内含 rtc_lib)
     implementation 'cn.rongcloud.sdk:call_kit:5.1.9' // 音视频通话能力 UI 组件
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 }
 repositories {
     mavenCentral()

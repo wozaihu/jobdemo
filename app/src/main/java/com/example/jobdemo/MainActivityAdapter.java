@@ -16,6 +16,9 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
+/**
+ * @author Administrator
+ */
 public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.MyViewHolder> {
     private final List<Class> activitys;
 
@@ -42,11 +45,17 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
         if (position == activitys.size() - 1) {
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.cv_root.getLayoutParams();
-            layoutParams.setMargins(DensityUtil.INSTANCE.dip2px(20), DensityUtil.INSTANCE.dip2px(10), DensityUtil.INSTANCE.dip2px(20), DensityUtil.INSTANCE.dip2px(10));
+            layoutParams.setMargins(DensityUtil.dip2px(holder.cv_root.getContext(), 20)
+                    , DensityUtil.dip2px(holder.cv_root.getContext(),10)
+                    , DensityUtil.dip2px(holder.cv_root.getContext(),20)
+                    , DensityUtil.dip2px(holder.cv_root.getContext(),10));
             holder.cv_root.setLayoutParams(layoutParams);
         } else {
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.cv_root.getLayoutParams();
-            layoutParams.setMargins(DensityUtil.INSTANCE.dip2px(20), DensityUtil.INSTANCE.dip2px(10), DensityUtil.INSTANCE.dip2px(20), DensityUtil.INSTANCE.dip2px(0));
+            layoutParams.setMargins(DensityUtil.dip2px(holder.cv_root.getContext(),20)
+                    , DensityUtil.dip2px(holder.cv_root.getContext(),10)
+                    , DensityUtil.dip2px(holder.cv_root.getContext(),20)
+                    , DensityUtil.dip2px(holder.cv_root.getContext(),0));
             holder.cv_root.setLayoutParams(layoutParams);
         }
     }

@@ -64,7 +64,7 @@ public class MyObjectAnimator extends BaseActivity {
         tvTranslate.post(new Runnable() {
             @Override
             public void run() {
-                int screenWidth = MeasureUtils.getScreenWidth();
+                int screenWidth = MeasureUtils.getScreenWidth(MyObjectAnimator.this);
                 int width = tvTranslate.getWidth();
                 float real = Float.valueOf(screenWidth - width);
                 Log.d(TAG, "view的宽度: " + width + "--------转换后的屏幕宽度：" + real);

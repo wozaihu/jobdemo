@@ -33,15 +33,15 @@ public class VerificationCode extends BaseActivity {
         setContentView(inflate.getRoot());
         inputView = new VerCodeInputView(this);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.leftMargin = DensityUtil.INSTANCE.dip2px(20);
-        params.rightMargin = DensityUtil.INSTANCE.dip2px(20);
+        params.leftMargin = DensityUtil.dip2px(this,20);
+        params.rightMargin = DensityUtil.dip2px(this,20);
         inputView.setLayoutParams(params);
         inflate.fl.addView(inputView);
     }
 
     public void viewClick(@NotNull View view) {
         if (view.getId() == R.id.btn_upDateWidth) {
-            inputView.setInputWidth(DensityUtil.INSTANCE.dip2px(10));
+            inputView.setInputWidth(DensityUtil.dip2px(this,10));
         } else if (view.getId() == R.id.btn_upDateNumber) {
             inputView.setInputNum(4);
         } else if (view.getId() == R.id.btn_upDateStyle) {

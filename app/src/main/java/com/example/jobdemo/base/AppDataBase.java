@@ -1,5 +1,7 @@
 package com.example.jobdemo.base;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
@@ -7,7 +9,6 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.jobdemo.MyApplication;
 import com.example.jobdemo.bean.PersonStateBean;
 import com.example.jobdemo.dao.PersonStateDao;
 import com.example.jobdemo.util.LogUtil;
@@ -16,13 +17,22 @@ import com.example.jobdemo.util.LogUtil;
  * room基本用法：创建一个抽象类，继承RoomDatabase,类加注解@Database，entities为要创建的表（数组形式，多个用逗号分隔）
  * ，version代表版本，升级版本直接把数字改大就可以了（在构建room的地方添加addMigrations，版本升级或降级都会调用相应的Migrations）
  * 写个抽象方法，返回Dao，调用这个类就可以获得dao增删改查了
+ * @author Administrator
  */
 @Database(entities = {PersonStateBean.class}, version = 2)
 public abstract class AppDataBase extends RoomDatabase {
     private static volatile AppDataBase instance;
     private static final String DBName = "testRoom";
+    private static Context context;
 
     public abstract PersonStateDao getPersonStateDao();
+
+    /**
+     * @param context  全局上下文
+     */
+    public static void init(Context context) {
+        AppDataBase.context = context.getApplicationContext();
+    }
 
     public static AppDataBase getInstance() {
         if (instance == null) {
@@ -36,7 +46,7 @@ public abstract class AppDataBase extends RoomDatabase {
     }
 
     private static AppDataBase createDB() {
-        return Room.databaseBuilder(MyApplication.getAppContent(), AppDataBase.class, DBName)
+        return Room.databaseBuilder(context, AppDataBase.class, DBName)
                 .addCallback(new Callback() {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {

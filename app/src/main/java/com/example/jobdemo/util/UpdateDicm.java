@@ -11,7 +11,9 @@ import java.io.File;
 import java.lang.ref.WeakReference;
 
 /**
- * Created by Administrator on 2020/10/20.
+ *
+ * @author Administrator
+ * @date 2020/10/20
  */
 
 public class UpdateDicm {
@@ -30,7 +32,7 @@ public class UpdateDicm {
     /**
      * 保存视频
      *
-     * @param file
+     * @param file 文件
      */
     public void saveVideo(WeakReference<Context> weakReference, File file) {
         Context context = weakReference.get();
