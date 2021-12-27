@@ -12,11 +12,14 @@ import com.example.jobdemo.base.AppDataBase;
 import com.example.jobdemo.util.SPUtil;
 import com.example.jobdemo.util.ToastUtils;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.tencent.smtt.export.external.TbsCoreSettings;
+import com.tencent.smtt.sdk.QbSdk;
 import com.umeng.commonsdk.UMConfigure;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 
 import io.rong.imkit.RongIM;
 
@@ -63,6 +66,11 @@ public class MyApplication extends Application {
 
         //融云
         RongIM.init(this, "vnroth0kvlsio");
+
+        HashMap map = new HashMap();
+        map.put(TbsCoreSettings.TBS_SETTINGS_USE_SPEEDY_CLASSLOADER, true);
+        map.put(TbsCoreSettings.TBS_SETTINGS_USE_DEXLOADER_SERVICE, true);
+        QbSdk.initTbsSettings(map);
     }
 
 

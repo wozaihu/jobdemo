@@ -235,3 +235,11 @@
 -keep public class [com.example.jobdemo].R$*{
 public static final int *;
 }
+
+#腾讯X5混淆
+-dontwarn dalvik.**
+-dontwarn com.tencent.smtt.**
+
+-keep class com.tencent.smtt.** {*;}
+
+-keep class com.tencent.tbs.** {*;}

@@ -209,6 +209,7 @@ dependencies {
     implementation 'cn.rongcloud.sdk:call_kit:5.1.9' // 音视频通话能力 UI 组件
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+    api 'com.tencent.tbs:tbssdk:44136'
 }
 repositories {
     mavenCentral()
