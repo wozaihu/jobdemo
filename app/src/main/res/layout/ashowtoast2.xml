@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnShowNetworkIsAvailable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/networkIsAvailable" />
+
+    <Button
+        android:id="@+id/btnNetworkIsWifi"
+        android:layout_toEndOf="@+id/btnShowNetworkIsAvailable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/isWifiConnect" />
+
+    <Button
+        android:id="@+id/btnNetworkIsCellular"
+        android:layout_below="@+id/btnShowNetworkIsAvailable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/isCellularConnect" />
+
+    <Button
+        android:id="@+id/btnShowNetworkType"
+        android:layout_alignTop="@+id/btnNetworkIsCellular"
+        android:layout_toEndOf="@+id/btnNetworkIsCellular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/showNetworkType" />
+
+    <Button
+        android:id="@+id/btnShowCellphoneIP"
+        android:layout_below="@+id/btnNetworkIsCellular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/showCellphoneIP" />
+
+    <Button
+        android:id="@+id/btnOpenNetworkSetting"
+        android:layout_alignTop="@+id/btnShowCellphoneIP"
+        android:layout_toEndOf="@+id/btnShowCellphoneIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/openCellphoneNetworkSetting" />
+</RelativeLayout>

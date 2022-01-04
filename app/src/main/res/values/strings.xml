@@ -73,4 +73,14 @@
     <string name="close">关闭</string>
     <string name="photograph">拍照</string>
     <string name="exclude">exclude</string>
+    <string name="showToast">showToast</string>
+    <string name="networkIsAvailable">网络连接是否可用</string>
+    <string name="isWifiConnect">是否为WiFi连接</string>
+    <string name="isCellularConnect">是否流量网络连接</string>
+    <string name="showNetworkType">显示网络类型</string>
+    <string name="showCellphoneIP">显示手机IP</string>
+    <string name="openCellphoneNetworkSetting">打开手机网络设置页面</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+    <string name="confirmDownload">确认下载</string>
 </resources>

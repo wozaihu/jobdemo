@@ -23,8 +23,7 @@ public class SPUtil {
     private static SharedPreferences sp;
     private static Gson gson;
 
-    private void SPUtil() {
-    }
+    private void SPUtil() {}
 
     public static SPUtil getInstance() {
         return SingleOnHolder.spUtil;

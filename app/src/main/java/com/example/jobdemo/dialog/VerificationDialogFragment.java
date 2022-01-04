@@ -1,6 +1,5 @@
 package com.example.jobdemo.dialog;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -8,12 +7,33 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+/**
+ * @author Administrator
+ */
 public class VerificationDialogFragment extends AppCompatDialogFragment {
-    @NonNull
+
+//    @Nullable
+//    @org.jetbrains.annotations.Nullable
+//    @Override
+//    public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+//        Dialog dialog = getDialog();
+//        dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+//        dialog.setCanceledOnTouchOutside(false);
+//        UpdatadialogBinding inflate = UpdatadialogBinding.inflate(getLayoutInflater());
+//        inflate.cancel.setText(getString(R.string.cancel));
+//        inflate.confirmDownload.setText(getString(R.string.confirmDownload));
+//        inflate.message.setText(getString(R.string.toolbar_subtitle));
+//        inflate.cancel.setOnClickListener(v -> dismiss());
+//        inflate.confirmDownload.setOnClickListener(v ->
+//                ToastUtils.shortToast("点击了确定下载")
+//        );
+//        return inflate.getRoot();
+//    }
+
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -44,7 +64,6 @@ public class VerificationDialogFragment extends AppCompatDialogFragment {
                 });
             }
         });
-
         return alertDialog;
     }
 }

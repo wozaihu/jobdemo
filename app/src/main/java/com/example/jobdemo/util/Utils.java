@@ -43,12 +43,12 @@ public enum Utils {
     public void setImmersion(WeakReference<Activity> contextWeakReference) {
         Activity activity = contextWeakReference.get();
         //沉浸式效果
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { // LOLLIPOP解决方案
-            activity.getWindow().setStatusBarColor(Color.TRANSPARENT);//状态栏设置为透明色
-            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION); //透明导航栏
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {// KITKAT解决方案
-            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//透明状态栏
-            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);//透明导航栏
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
     }
 
@@ -63,6 +63,10 @@ public enum Utils {
         String str_month = monthNow < 10 ? "0" + monthNow : "" + monthNow;
         int dayOfMonthNow = calendar.get(Calendar.DAY_OF_MONTH);
         String str_day = dayOfMonthNow < 10 ? "0" + dayOfMonthNow : "" + dayOfMonthNow;
-        return yearNow+str_month+str_day;
+        return yearNow + str_month + str_day;
+    }
+
+    public static boolean isUpdate() {
+        return false;
     }
 }

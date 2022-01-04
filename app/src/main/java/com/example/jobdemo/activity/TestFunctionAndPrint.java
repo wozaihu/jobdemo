@@ -32,7 +32,7 @@ public class TestFunctionAndPrint extends BaseActivity {
         setContentView(inflate.getRoot());
         LogUtil.showD(TAG, "目录1----------" + Environment.getExternalStorageDirectory().getPath());
         LogUtil.showD(TAG, "目录2----------" + getFilesDir().getPath());
-        LogUtil.showD(TAG, "目录3----------" + getCacheDir().getPath());
+        LogUtil.showD(TAG, "目录3----------" + getApplicationContext().getCacheDir().getPath());
         LogUtil.showD(TAG, "目录4----------" + getExternalFilesDir("").getPath());
         LogUtil.showD(TAG, "目录4----------" + getExternalFilesDir(Environment.DIRECTORY_DCIM).getPath());
         LogUtil.showD(TAG, "目录5----------" + getExternalCacheDir().getPath());
