@@ -58,23 +58,19 @@ public class Activity_List extends BaseActivity {
      */
     @OnClick({R.id.btn_addName, R.id.btn_default, R.id.btn_modification})
     public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_addName:
-                Random random = new Random();
-                int i = random.nextInt();
-                name.add("李白----" + i);
-                adapter.setItemIsmMore(true);
-                break;
-            case R.id.btn_default:
-                adapter.setItemIsmMore(false);
-                break;
-            case R.id.btn_modification:
-                //notifyDataSetChanged 不会回到顶部
-                if (name.size() > 50) {
-                    name.set(50, "修改了50的数据哦");
-                    adapter.notifyDataSetChanged();
-                }
-                break;
+        int id = view.getId();
+        if (id == R.id.btn_addName) {
+            Random random = new Random();
+            int i = random.nextInt();
+            name.add("李白----" + i);
+            adapter.setItemIsmMore(true);
+        } else if (id == R.id.btn_default) {
+            adapter.setItemIsmMore(false);
+        } else if (id == R.id.btn_modification) {
+            if (name.size() > 50) {
+                name.set(50, "修改了50的数据哦");
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 

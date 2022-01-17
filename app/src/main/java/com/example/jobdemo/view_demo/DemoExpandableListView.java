@@ -4,16 +4,20 @@ import android.os.Bundle;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
 import com.example.jobdemo.R;
 import com.example.jobdemo.adapter.MyExpandableAdapter;
 import com.example.jobdemo.base.BaseActivity;
 
-import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
+/**
+ * @author Administrator
+ */
 public class DemoExpandableListView extends BaseActivity {
     @BindView(R.id.elv_show_list_data)
     ExpandableListView elvShowListData;

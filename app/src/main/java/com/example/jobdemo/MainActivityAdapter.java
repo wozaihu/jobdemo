@@ -39,8 +39,6 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
         holder.tv_demo_name.setText(activitys.get(position).getSimpleName());
         holder.tv_demo_name.setOnClickListener((v) -> {
             v.getContext().startActivity(new Intent(v.getContext(), activitys.get(position)));
-            EventBus.getDefault().post("适配器跳转前");
-
         });
 
         if (position == activitys.size() - 1) {

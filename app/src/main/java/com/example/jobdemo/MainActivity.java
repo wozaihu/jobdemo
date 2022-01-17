@@ -17,7 +17,6 @@ import com.umeng.commonsdk.UMConfigure;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,9 +33,7 @@ public class MainActivity extends BaseActivity {
         UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, null);
         ActivityMainBinding inflate = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(inflate.getRoot());
-        List<Class> exclude = new ArrayList<>();
-        exclude.add(this.getClass());
-        List<Class> classList = ClassUtils.getActivitiesClass(this, getPackageName(), exclude);
+        List<Class> classList = ClassUtils.getActivitiesClass(getApplicationContext(), getPackageName());
         //类名按字母进行排序
         Collections.sort(classList, (o1, o2) -> {
             int i = o1.getSimpleName().compareTo(o2.getSimpleName());

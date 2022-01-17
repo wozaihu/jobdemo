@@ -70,7 +70,8 @@
             android:label="dexopt"
             android:process=":dexopt"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:description="@string/exclude">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

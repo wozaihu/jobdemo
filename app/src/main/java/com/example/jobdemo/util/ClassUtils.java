@@ -27,10 +27,9 @@ public class ClassUtils {
      *
      * @param context     环境
      * @param packageName 包名
-     * @param excludeList 排除class列表
      * @return
      */
-    public final static List<Class> getActivitiesClass(Context context, String packageName, List<Class> excludeList) {
+    public final static List<Class> getActivitiesClass(Context context, String packageName) {
 
         List<Class> returnClassList = new ArrayList<Class>();
         try {
@@ -48,26 +47,17 @@ public class ClassUtils {
                         //descriptionRes做一个标记，不为空则为要排除的activity
                         if (c != null && Activity.class.isAssignableFrom(c) && ai.descriptionRes == 0) {
                             returnClassList.add(c);
-                            LogUtil.showD(TAG, ai.name + "...OK");
                         }
                     } catch (Exception e) {
                         LogUtil.showD(TAG, "Class Not Found:" + e.getMessage());
                         LogUtil.showD(TAG, "Class Not Found:" + ai.name);
                     }
                 }
-                LogUtil.showD(TAG, "Filter out, left " + returnClassList.size() + " activity," + Arrays.toString(returnClassList.toArray()));
-
-                //Exclude some activity classes
-                if (excludeList != null) {
-                    returnClassList.removeAll(excludeList);
-                    LogUtil.showD(TAG, "Exclude " + excludeList.size() + " activity," + Arrays.toString(excludeList.toArray()));
-                }
                 LogUtil.showD(TAG, "Return " + returnClassList.size() + " activity," + Arrays.toString(returnClassList.toArray()));
             }
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-
         return returnClassList;
     }
 

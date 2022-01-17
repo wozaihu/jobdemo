@@ -14,6 +14,9 @@ import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.databinding.ViewModelTestBinding;
 import com.example.jobdemo.view_model.TimerViewModel;
 
+/**
+ * @author Administrator
+ */
 public class ViewModelTest extends BaseActivity implements View.OnClickListener {
 
     private ViewModelTestBinding binding;
@@ -38,11 +41,8 @@ public class ViewModelTest extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_resetDownTimer:
-                liveData.setValue(50);
-                break;
+        if (v.getId() == R.id.btn_resetDownTimer) {
+            liveData.setValue(50);
         }
     }
-
 }
