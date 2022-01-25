@@ -20,7 +20,9 @@ import androidx.appcompat.widget.AppCompatImageView;
 import com.example.jobdemo.R;
 
 
-//圆角图片   圆形图片 加虚线  动态 问答头像
+/**
+ * @author Administrator
+ */
 public class CornerImageView extends AppCompatImageView {
 
     private Paint paint;

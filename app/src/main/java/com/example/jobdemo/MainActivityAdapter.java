@@ -10,10 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.jobdemo.util.DensityUtil;
-
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.List;
 
 /**
@@ -40,22 +36,6 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
         holder.tv_demo_name.setOnClickListener((v) -> {
             v.getContext().startActivity(new Intent(v.getContext(), activitys.get(position)));
         });
-
-        if (position == activitys.size() - 1) {
-            RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.cv_root.getLayoutParams();
-            layoutParams.setMargins(DensityUtil.dip2px(holder.cv_root.getContext(), 20)
-                    , DensityUtil.dip2px(holder.cv_root.getContext(),10)
-                    , DensityUtil.dip2px(holder.cv_root.getContext(),20)
-                    , DensityUtil.dip2px(holder.cv_root.getContext(),10));
-            holder.cv_root.setLayoutParams(layoutParams);
-        } else {
-            RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.cv_root.getLayoutParams();
-            layoutParams.setMargins(DensityUtil.dip2px(holder.cv_root.getContext(),20)
-                    , DensityUtil.dip2px(holder.cv_root.getContext(),10)
-                    , DensityUtil.dip2px(holder.cv_root.getContext(),20)
-                    , DensityUtil.dip2px(holder.cv_root.getContext(),0));
-            holder.cv_root.setLayoutParams(layoutParams);
-        }
     }
 
     @Override
