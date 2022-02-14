@@ -14,7 +14,6 @@ import com.baidu.mapapi.SDKInitializer;
 import com.example.jobdemo.base.AppDataBase;
 import com.example.jobdemo.util.ProcessUtil;
 import com.example.jobdemo.util.SPUtil;
-import com.example.jobdemo.util.ToastUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.export.external.TbsCoreSettings;
 import com.tencent.smtt.sdk.QbSdk;
@@ -28,7 +27,6 @@ import io.rong.imkit.RongIM;
  * @author Administrator
  */
 public class MyApplication extends Application {
-
 
     @Override
     public void onCreate() {
@@ -48,7 +46,6 @@ public class MyApplication extends Application {
      *
      */
     private void init() {
-        ToastUtils.init(this);
         SPUtil.init(this);
         MultiDex.install(this);
         AppDataBase.init(this);
@@ -63,17 +60,10 @@ public class MyApplication extends Application {
         // 设置是否为上报进程
         CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(getApplicationContext());
         strategy.setUploadProcess(true);
-        // 初始化Bugly
+        // 初始化BugLy
         CrashReport.initCrashReport(getApplicationContext(), "e1a59cdaba", true, strategy);
-        //阿里云短视频初始化
-//        com.aliyun.vod.common.httpfinal.QupaiHttpFinal.getInstance().initOkHttpFinal();
-//        AlivcSdkCore.register(getApplicationContext());
-//        AlivcSdkCore.setLogLevel(AlivcSdkCore.AlivcLogLevel.AlivcLogWarn);
-//        AlivcSdkCore.setDebugLoggerLevel(AlivcSdkCore.AlivcDebugLoggerLevel.AlivcDLClose);
-
-        //融云
         RongIM.init(this, "vnroth0kvlsio");
-        HashMap map = new HashMap();
+        HashMap<String, Object> map = new HashMap<>(2);
         map.put(TbsCoreSettings.TBS_SETTINGS_USE_SPEEDY_CLASSLOADER, true);
         map.put(TbsCoreSettings.TBS_SETTINGS_USE_DEXLOADER_SERVICE, true);
         QbSdk.initTbsSettings(map);
@@ -90,25 +80,12 @@ public class MyApplication extends Application {
 
             @Override
             public void onActivityResumed(@NonNull Activity activity) {
-//                LogUtil.showD("当前名称-----"+activity.getClass().getSimpleName());
-//                if (MyActivityManager.getInstance().getCurrentActivity() == null
-//                        || !MyActivityManager.getInstance().getCurrentActivity().getClass().getSimpleName().equals(activity.getClass().getSimpleName())) {
-//                    if (!"LeakActivity".equals(activity.getClass().getSimpleName())) {
-//                        MyActivityManager.getInstance().setCurrentActivity(activity);
-//                    }
-//                    //全局对话框
-//                    try {
-//                        if (!Utils.isUpdate() && !"LeakActivity".equals(activity.getClass().getSimpleName())) {
-//                            UpdateDialog dialog = new UpdateDialog();
-//                            dialog.show(((AppCompatActivity) activity).getSupportFragmentManager(), "");
-//                        }
-//                    } catch (Exception e) {
-//                    }
-//                }
+
             }
 
             @Override
             public void onActivityPaused(@NonNull Activity activity) {
+
 
             }
 

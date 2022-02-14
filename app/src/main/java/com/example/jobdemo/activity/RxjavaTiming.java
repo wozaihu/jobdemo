@@ -106,7 +106,7 @@ public class RxjavaTiming extends BaseActivity {
         switch (view.getId()) {
             case R.id.btn_startTiming:
                 if (TextUtils.isEmpty(etTimingNumber.getText().toString())) {
-                    ToastUtils.shortToast(getResources().getString(R.string.inputTimingNumber_Please));
+                    ToastUtils.shortToast(this,getResources().getString(R.string.inputTimingNumber_Please));
                 } else {
                     setTiming(etTimingNumber.getText().toString());
                 }
@@ -246,7 +246,7 @@ public class RxjavaTiming extends BaseActivity {
         }).subscribe(new Consumer<Boolean>() {
             @Override
             public void accept(Boolean aBoolean) throws Exception {
-                ToastUtils.shortToast("" + aBoolean);
+                ToastUtils.shortToast(RxjavaTiming.this,"" + aBoolean);
                 btnCommit.setEnabled(aBoolean);
             }
         });

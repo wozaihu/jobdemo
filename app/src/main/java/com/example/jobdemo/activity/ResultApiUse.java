@@ -27,7 +27,7 @@ public class ResultApiUse extends BaseActivity {
         setContentView(inflate.getRoot());
         ActivityResultLauncher<Intent> launcherInfo = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result != null && result.getData() != null) {
-                ToastUtils.shortToast(result.getData().getStringExtra("extra"));
+                ToastUtils.shortToast(ResultApiUse.this,result.getData().getStringExtra("extra"));
             }
         });
         // FIXME: 2021/11/27 要请求拍照权限，不然会崩溃

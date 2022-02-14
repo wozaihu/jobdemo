@@ -74,6 +74,8 @@
     <string name="photograph">拍照</string>
     <string name="exclude">exclude</string>
     <string name="showToast">showToast</string>
+    <string name="saveData">saveData</string>
+    <string name="getData">getData</string>
     <string name="networkIsAvailable">网络连接是否可用</string>
     <string name="isWifiConnect">是否为WiFi连接</string>
     <string name="isCellularConnect">是否流量网络连接</string>

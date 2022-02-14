@@ -131,7 +131,7 @@ public class RetrofitDemoActivity extends BaseActivity {
                     beanList.addAll(bean);
                     gvAdapter.notifyDataSetChanged();
                 } else {
-                    ToastUtils.shortToast("没有缓存的图片");
+                    ToastUtils.shortToast(this,"没有缓存的图片");
                 }
                 break;
             case R.id.btn_cycleInternetGetPicture:

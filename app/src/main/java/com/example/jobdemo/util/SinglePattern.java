@@ -11,7 +11,7 @@ public class SinglePattern {
     private SinglePattern() {
     }
 
-    private static SinglePattern getInstance() {
+    public static SinglePattern getInstance() {
         return SingleOnHolder.SINGLE_PATTERN;
     }
 

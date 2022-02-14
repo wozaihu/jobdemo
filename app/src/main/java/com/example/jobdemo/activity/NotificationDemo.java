@@ -52,7 +52,7 @@ public class NotificationDemo extends BaseActivity {
         switch (view.getId()) {
             case R.id.tv_downTime:  //不是正在倒计时就发送验证码
                 if (TextUtils.isEmpty(binding.etPhone.getText().toString())) {
-                    ToastUtils.shortToast("请先输入手机号");
+                    ToastUtils.shortToast(this,"请先输入手机号");
                 } else if (!TextUtils.isEmpty(binding.etPhone.getText().toString()) && isPhoneNumber() && binding.tvDownTime.getText().toString().equals("获取验证码")
                         || binding.tvDownTime.getText().toString().equals("重新获取验证码")) {
                     sendVerification(binding.etPhone.getText().toString()); //发送验证码

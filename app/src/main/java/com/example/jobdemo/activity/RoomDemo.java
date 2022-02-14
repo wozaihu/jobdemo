@@ -42,37 +42,28 @@ public class RoomDemo extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_insert:
-                insertDb();
-                break;
-            case R.id.btn_queryType:
-                List<PersonStateBean> type1 = personStateDao.queryPersonByType(1);
-                notifyAdapter(type1);
-                break;
-            case R.id.btn_queryAll:
-                List<PersonStateBean> beans = personStateDao.queryPerson();
-                if (beans != null) {
-                    LogUtil.showD(TAG, beans.get(0).toString());
-                }
-                notifyAdapter(beans);
-                break;
-            case R.id.btn_queryPersonId:
-                List<PersonStateBean> stateBean = personStateDao.queryPersonByEat(true);
-                notifyAdapter(stateBean);
-                break;
-            case R.id.btn_queryPersonAge:
-                break;
-            case R.id.btn_queryPersonName:
-                break;
-            case R.id.btn_deleteName:
-                if (TextUtils.isEmpty(binding.etDeleteName.getText().toString().trim())) {
-                    ToastUtils.shortToast("请输入要删除的姓名");
-                    return;
-                }
-                LogUtil.showD(TAG, "删除：" + binding.etDeleteName.getText().toString().trim());
-                personStateDao.deletePersonName(binding.etDeleteName.getText().toString().trim());
-                break;
+        int id = v.getId();
+        if (id == R.id.btn_insert) {
+            insertDb();
+        } else if (id == R.id.btn_queryType) {
+            List<PersonStateBean> type1 = personStateDao.queryPersonByType(1);
+            notifyAdapter(type1);
+        } else if (id == R.id.btn_queryAll) {
+            List<PersonStateBean> beans = personStateDao.queryPerson();
+            if (beans != null) {
+                LogUtil.showD(TAG, beans.get(0).toString());
+            }
+            notifyAdapter(beans);
+        } else if (id == R.id.btn_queryPersonId) {
+            List<PersonStateBean> stateBean = personStateDao.queryPersonByEat(true);
+            notifyAdapter(stateBean);
+        } else if (id == R.id.btn_queryPersonAge || id == R.id.btn_queryPersonName || id == R.id.btn_deleteName) {
+            if (TextUtils.isEmpty(binding.etDeleteName.getText().toString().trim())) {
+                ToastUtils.shortToast(this,"请输入要删除的姓名");
+                return;
+            }
+            LogUtil.showD(TAG, "删除：" + binding.etDeleteName.getText().toString().trim());
+            personStateDao.deletePersonName(binding.etDeleteName.getText().toString().trim());
         }
     }
 

@@ -19,7 +19,6 @@ import com.example.jobdemo.util.AppInfoUtils;
 import com.example.jobdemo.util.DefaultVerificationDialog;
 import com.example.jobdemo.util.IntToChineseNumUtil;
 import com.example.jobdemo.util.LogUtil;
-import com.example.jobdemo.util.MyActivityManager;
 import com.example.jobdemo.util.ToastUtils;
 
 import java.net.URL;
@@ -98,18 +97,18 @@ public class InfoShow extends AppCompatActivity {
         // FIXME: 2021/11/16 标识处代码需要修正
         int id = view.getId();
         if (id == R.id.tv_sha1) {
-            ToastUtils.shortToast("网络是否可用---");
+            ToastUtils.shortToast(this,"网络是否可用---");
         } else if (id == R.id.tv_md5) {
-            ToastUtils.longToast("长时间显示toast");
+            ToastUtils.longToast(this,"长时间显示toast");
         } else if (id == R.id.tv_sha265) {
-            ToastUtils.timerToast("toast显示3秒", 3000);
+            ToastUtils.timerToast(this,"toast显示3秒", 3000);
         } else if (id == R.id.tv_child) {
             Toast.makeText(this, "点击了子view", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.btn_getCurrentTime) {
             getCurrentTime();
         } else if (id == R.id.btn_branchThread) {
             //Android11中不能居中显示了，改用snackBar
-            ToastUtils.timerToast("手机IP==="+ MyActivityManager.getInstance().getCurrentActivity().getClass().getSimpleName(), 5000);
+            ToastUtils.timerToast(this,"手机IP===", 5000);
         } else if (id == R.id.btn_show_dialog) {
             DefaultVerificationDialog defaultVerificationDialog = DefaultVerificationDialog.newInstance();
             defaultVerificationDialog.show(getSupportFragmentManager(), "同意退款");

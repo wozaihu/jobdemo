@@ -36,9 +36,9 @@ public class TestJetpackActivity extends BaseActivity {
             LogUtil.showD("viewBinDing生效了");
             String string = vBinDing.etName.getText().toString();
             if (TextUtils.isEmpty(string)) {
-                ToastUtils.shortToast("请输入内容");
+                ToastUtils.shortToast(TestJetpackActivity.this,"请输入内容");
             } else {
-                ToastUtils.shortToast(string);
+                ToastUtils.shortToast(TestJetpackActivity.this,string);
             }
         });
 

@@ -18,7 +18,7 @@ public class AShowToast4 extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ashowtoast);
         findViewById(R.id.btnShowToast).setOnClickListener(v -> {
-            ToastUtils.shortToast("在application初始化的toast");
+            ToastUtils.shortToast(AShowToast4.this,"在application初始化的toast");
         });
     }
 }

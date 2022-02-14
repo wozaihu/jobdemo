@@ -10,43 +10,32 @@ import android.widget.Toast;
 public class ToastUtils {
     public static Toast toast;
 
-    private ToastUtils() {
-        throw new UnsupportedOperationException("不能被实例化");
-    }
-
-    /**
-     * 一定要在application中初始化,感觉还是不要这样写
-     */
-
-    public static void init(Context context) {
-        if (toast == null) {
-            toast = Toast.makeText(context.getApplicationContext(), "", Toast.LENGTH_SHORT);
-        }
-    }
-
-    public static void shortToast(String s) {
-        cancel();
+    public static void shortToast(Context context, String s) {
+        cancel(context);
         toast.setText(s);
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.show();
     }
 
 
-    public static void timerToast(String s, int duration) {
-        cancel();
+    public static void timerToast(Context context,String s, int duration) {
+        cancel(context);
         toast.setText(s);
         toast.setDuration(duration);
         toast.show();
     }
 
-    public static void longToast(String s) {
-        cancel();
+    public static void longToast(Context context,String s) {
+        cancel(context);
         toast.setText(s);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.show();
     }
 
-    public static void cancel() {
-        toast.cancel();
+    public static void cancel(Context context) {
+        if (toast!=null) {
+            toast.cancel();
+        }
+        toast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
     }
 }

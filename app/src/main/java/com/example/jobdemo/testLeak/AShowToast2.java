@@ -20,13 +20,13 @@ public class AShowToast2 extends BaseActivity {
         super.onCreate(savedInstanceState);
         Ashowtoast2Binding binding = Ashowtoast2Binding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
-        binding.btnShowNetworkIsAvailable.setOnClickListener(v -> ToastUtils.shortToast("网络是否可用----"));
-        binding.btnNetworkIsWifi.setOnClickListener(v -> ToastUtils.shortToast("是否WiFi上网----"));
-        binding.btnNetworkIsCellular.setOnClickListener(v -> ToastUtils.shortToast("是否流量上网----"));
-        binding.btnShowNetworkType.setOnClickListener(v -> ToastUtils.shortToast("网络type----"));
-        binding.btnShowCellphoneIP.setOnClickListener(v -> ToastUtils.shortToast("手机网络IP----"));
+        binding.btnShowNetworkIsAvailable.setOnClickListener(v -> ToastUtils.shortToast(AShowToast2.this,"网络是否可用----"));
+        binding.btnNetworkIsWifi.setOnClickListener(v -> ToastUtils.shortToast(AShowToast2.this,"是否WiFi上网----"));
+        binding.btnNetworkIsCellular.setOnClickListener(v -> ToastUtils.shortToast(AShowToast2.this,"是否流量上网----"));
+        binding.btnShowNetworkType.setOnClickListener(v -> ToastUtils.shortToast(AShowToast2.this,"网络type----"));
+        binding.btnShowCellphoneIP.setOnClickListener(v -> ToastUtils.shortToast(AShowToast2.this,"手机网络IP----"));
         binding.btnOpenNetworkSetting.setOnClickListener(v -> {
-            ToastUtils.shortToast("点击了打开自己");
+            ToastUtils.shortToast(AShowToast2.this,"点击了打开自己");
             startActivity(new Intent(AShowToast2.this, AShowToast2.class));
         });
     }

@@ -10,4 +10,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/showToast" />
+    <Button
+        android:id="@+id/btnSaveData"
+        android:layout_below="@+id/btnShowToast"
+        android:textAllCaps="false"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/saveData" />
+    <Button
+        android:id="@+id/btnShowData"
+        android:layout_below="@+id/btnSaveData"
+        android:textAllCaps="false"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/getData" />
 </RelativeLayout>

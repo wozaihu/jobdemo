@@ -38,7 +38,7 @@ public class UpdateDialog extends AppCompatDialogFragment {
         inflate.message.setText(getString(R.string.toolbar_subtitle));
         inflate.cancel.setOnClickListener(v -> dismiss());
         inflate.confirmDownload.setOnClickListener(v ->
-                ToastUtils.shortToast("点击了确定下载")
+                ToastUtils.shortToast(getActivity(),"点击了确定下载")
         );
         return inflate.getRoot();
     }

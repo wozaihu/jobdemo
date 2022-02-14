@@ -92,7 +92,7 @@ public class SearchViewDemo extends BaseActivity implements SearchView.OnQueryTe
         searchAutoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ToastUtils.shortToast("点击了" +((TextView)view).getText().toString());
+                ToastUtils.shortToast(SearchViewDemo.this,"点击了" +((TextView)view).getText().toString());
                 Log.d(TAG, "onItemClick: "+adapter.getItem(position));
             }
         });
@@ -104,12 +104,12 @@ public class SearchViewDemo extends BaseActivity implements SearchView.OnQueryTe
         if (item.getItemId() == android.R.id.home) {
             finish();
         } else if (item.getItemId() == R.id.app_bar_search) {
-            ToastUtils.longToast(String.format(getString(R.string.click_object), getString(R.string.search)));
+            ToastUtils.longToast(this,String.format(getString(R.string.click_object), getString(R.string.search)));
             Log.d(TAG, "onOptionsItemSelected: ------------------------------搜索");
             LogUtil.showD(TAG, String.format(getString(R.string.click_object), getString(R.string.search)));
 
         } else if (item.getItemId() == R.id.app_bar_save) {
-            ToastUtils.longToast(String.format(getString(R.string.click_object), getString(R.string.save)));
+            ToastUtils.longToast(this,String.format(getString(R.string.click_object), getString(R.string.save)));
         }
         return super.onOptionsItemSelected(item);
     }

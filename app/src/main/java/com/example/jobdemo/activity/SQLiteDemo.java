@@ -58,7 +58,7 @@ public class SQLiteDemo extends BaseActivity {
                 break;
             case R.id.btn_saveDbPicture:
                 if (TextUtils.isEmpty(sqlitedemoBinding.etDogName.getText().toString()) || TextUtils.isEmpty(path)) {
-                    ToastUtils.shortToast("请输入狗的名字和选择图片");
+                    ToastUtils.shortToast(this,"请输入狗的名字和选择图片");
                     return;
                 }
                 saveDogDB();
@@ -125,7 +125,7 @@ public class SQLiteDemo extends BaseActivity {
                             "image/*");
                     startActivityForResult(intent, 9);
                 } else {
-                    ToastUtils.shortToast("请给予读取SD卡权限");
+                    ToastUtils.shortToast(SQLiteDemo.this,"请给予读取SD卡权限");
                 }
             }
 

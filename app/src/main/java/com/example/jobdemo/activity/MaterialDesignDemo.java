@@ -51,6 +51,7 @@ import io.reactivex.schedulers.Schedulers;
  * NavigationView<用于抽屉布局做抽屉>
  * <p>
  * bottomNavigationView<底部导航布局，不好做凸出效果和红点未读提示消息效果，慎用>
+ * @author Administrator
  */
 public class MaterialDesignDemo extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
         , View.OnClickListener {
@@ -113,12 +114,9 @@ public class MaterialDesignDemo extends AppCompatActivity implements NavigationV
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                binding.drawerLayout.openDrawer(GravityCompat.START);
-                break;
+        if (item.getItemId() == android.R.id.home) {
+            binding.drawerLayout.openDrawer(GravityCompat.START);
         }
-
         return true;
     }
 
@@ -130,47 +128,39 @@ public class MaterialDesignDemo extends AppCompatActivity implements NavigationV
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.email:
-                ToastUtils.shortToast("点击了邮寄");
-                break;
-            case R.id.phone:
-                ToastUtils.shortToast("点击了电话");
-                break;
-            case R.id.location:
-                ToastUtils.shortToast("点击了位置");
-                break;
+        int itemId = item.getItemId();
+        if (itemId == R.id.email) {
+            ToastUtils.shortToast(this, "点击了邮寄");
+        } else if (itemId == R.id.phone) {
+            ToastUtils.shortToast(this, "点击了电话");
+        } else if (itemId == R.id.location) {
+            ToastUtils.shortToast(this, "点击了位置");
         }
         return true;
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fb_showSnackBar:
-                Snackbar.make(binding.fbShowSnackBar, "点击了悬浮按钮", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("取消", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                ToastUtils.shortToast("点击了snackBar的取消");
-                            }
-                        }).show();
-                break;
-            case R.id.fb_addPicture:
-                addPicture();
-                break;
-            case R.id.fb_getCachePicture:
-                List<PictureBean> beans = getListPictureBean("pictureList");
-                if (list.size() != 0) {
-                    list.clear();
-                }
-                if (beans!=null) {
-                    list.addAll(beans);
-                    adapter.notifyDataSetChanged();
-                }
-                break;
-            default:
-                break;
+        int id = v.getId();
+        if (id == R.id.fb_showSnackBar) {
+            Snackbar.make(binding.fbShowSnackBar, "点击了悬浮按钮", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("取消", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ToastUtils.shortToast(MaterialDesignDemo.this, "点击了snackBar的取消");
+                        }
+                    }).show();
+        } else if (id == R.id.fb_addPicture) {
+            addPicture();
+        } else if (id == R.id.fb_getCachePicture) {
+            List<PictureBean> beans = getListPictureBean("pictureList");
+            if (list.size() != 0) {
+                list.clear();
+            }
+            if (beans != null) {
+                list.addAll(beans);
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 
