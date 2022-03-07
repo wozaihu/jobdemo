@@ -12,6 +12,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.jobdemo.R;
 
+/**
+ * @author Administrator
+ */
 public class BaseActivity extends AppCompatActivity {
     protected static String TAG = "";
     private Toolbar toolbar;
@@ -21,27 +24,24 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TAG = this.getClass().getSimpleName() + "打印";
-        mContentView = (ViewGroup) findViewById(android.R.id.content);
+        mContentView = findViewById(android.R.id.content);
     }
 
     @Override
-    public void setContentView(int layoutResID) {
+    public void setContentView(int layoutResId) {
         if (hasToolBar()) {
             //将activity_base.xml布局作为根布局
             super.setContentView(R.layout.layout_base);
             toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             //拿到activity_base.xml的base_content子布局
-            FrameLayout frameLayout = (FrameLayout) findViewById(R.id.fl_root);
+            FrameLayout frameLayout = findViewById(R.id.fl_root);
             //将子类的布局文件加载到base_content布局中
             mContentView.setId(View.NO_ID);
             frameLayout.setId(android.R.id.content);
-            LayoutInflater.from(this).inflate(layoutResID, frameLayout, true);
-
-            // TODO: 2021/11/16 有功能代码待编写
-
+            LayoutInflater.from(this).inflate(layoutResId, frameLayout, true);
         } else {
-            super.setContentView(layoutResID);
+            super.setContentView(layoutResId);
         }
     }
 
@@ -53,22 +53,25 @@ public class BaseActivity extends AppCompatActivity {
             toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             //拿到activity_base.xml的base_content子布局
-            FrameLayout frameLayout = (FrameLayout) findViewById(R.id.fl_root);
-            //将子类的布局文件加载到base_content布局中
-//            LayoutInflater.from(this).inflate(layoutResID, frameLayout, true);
+            FrameLayout frameLayout = findViewById(R.id.fl_root);
             frameLayout.addView(view);
         } else {
             super.setContentView(view);
         }
     }
 
-    //不需要toolbar就重写该方法返回false
+    /**
+     * @return 不需要toolbar就重写该方法返回false
+     */
+
     protected boolean hasToolBar() {
         return true;
     }
 
-    //子类通过该方法获取ToolBar的引用进行相应的操作,若没有ToolBar则抛出异常
-    protected Toolbar getParentToolbar() throws Exception {
+    /**
+     * @return toolbar
+     */
+    protected Toolbar getParentToolbar() {
         if (hasToolBar()) {
             return toolbar;
         } else {

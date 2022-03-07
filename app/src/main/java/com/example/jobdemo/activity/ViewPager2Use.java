@@ -36,8 +36,8 @@ public class ViewPager2Use extends BaseActivity {
         list = new ArrayList<>();
         list.add("页面一");
         list.add("页面二");
-        list.add("页面三");
-        list.add("页面四");
+//        list.add("页面三");
+//        list.add("页面四");
         binding.vp2Use.setAdapter(new ViewPagerAdapter(this, list, binding.vp2Use));
         callback = new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -50,7 +50,7 @@ public class ViewPager2Use extends BaseActivity {
         new TabLayoutMediator(binding.tabLayout, binding.vp2Use, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                //tabItem不写在布局文件里就用这个关联
+                //这样可实现文字选中变大，但下划线适应文字宽度有问题，因为下划线是根据view的宽度定的
                 TextView view = (TextView) LayoutInflater.from(ViewPager2Use.this).inflate(R.layout.tab_layout_text, null);
                 view.setText(list.get(position));
                 tab.setCustomView(view);
@@ -60,12 +60,12 @@ public class ViewPager2Use extends BaseActivity {
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                changeTabTextView(tab, true);
+//                changeTabTextView(tab, true);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                changeTabTextView(tab, false);
+//                changeTabTextView(tab, false);
             }
 
             @Override

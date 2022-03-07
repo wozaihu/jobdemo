@@ -86,4 +86,5 @@
     <string name="confirm">确认</string>
     <string name="confirmDownload">确认下载</string>
     <string name="loginFail">login fail please again try</string>
+    <string name="experience">经验</string>
 </resources>

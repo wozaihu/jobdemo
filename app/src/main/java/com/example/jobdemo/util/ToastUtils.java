@@ -36,6 +36,6 @@ public class ToastUtils {
         if (toast!=null) {
             toast.cancel();
         }
-        toast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
+        toast = Toast.makeText(context.getApplicationContext(), "", Toast.LENGTH_SHORT);
     }
 }

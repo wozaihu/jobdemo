@@ -83,7 +83,7 @@ public class SearchViewDemo extends BaseActivity implements SearchView.OnQueryTe
         mSearchView.setOnQueryTextListener(this);
         SearchView.SearchAutoComplete searchAutoComplete = mSearchView.findViewById(R.id.search_src_text);
         SearchManager searchManager =
-                (SearchManager) getSystemService(this.SEARCH_SERVICE);
+                (SearchManager) getSystemService(SEARCH_SERVICE);
         mSearchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
         searchAutoComplete.setThreshold(1);

@@ -18,12 +18,14 @@
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        app:tabIndicatorHeight="0dp"
+        app:tabIndicatorHeight="2dp"
+        app:tabIndicatorColor="@color/green"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabIndicatorFullWidth="false"
-        app:tabMode="scrollable" />
+        app:tabGravity="fill"
+        app:tabMode="fixed" />
 
 
     <androidx.viewpager2.widget.ViewPager2

@@ -1,5 +1,6 @@
 package com.example.jobdemo.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jobdemo.R;
+import com.example.jobdemo.base.DjtActivity;
 import com.example.jobdemo.bean.Person;
 import com.example.jobdemo.util.AppInfoUtils;
 import com.example.jobdemo.util.DefaultVerificationDialog;
@@ -34,7 +35,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class InfoShow extends AppCompatActivity {
+public class InfoShow extends DjtActivity {
     private static final String TAG = "InfoShow";
     @BindView(R.id.tv_sha1)
     TextView tvSha1;
@@ -54,12 +55,12 @@ public class InfoShow extends AppCompatActivity {
 
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         ButterKnife.bind(this);
-        Log.d("点击测试", "onCreate: ===InfoShow");
         if (getIntent().getStringExtra("parameter") != null) {
             String extra = getIntent().getStringExtra("parameter");
             tvSha265.setText("从" + extra + "跳转过来");

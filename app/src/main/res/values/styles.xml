@@ -35,12 +35,14 @@
         <item name="colorPrimary">@color/green</item>
         <item name="colorPrimaryDark">@color/green</item>
         <item name="colorAccent">@color/green</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--        <item name="android:windowBackground">@android:color/transparent</item>-->
         <!--<item name="android:windowAnimationStyle">@style/ActivityTranslateAnim</item>-->
     </style>
 
     <style name="otherPageStyle" parent="AppTheme">
-        <item name="android:windowIsTranslucent">true</item>
+        <!--        <item name="android:windowIsTranslucent">true</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
     </style>
 
     <style name="defaultStyle" parent="Theme.AppCompat.Light.NoActionBar">
@@ -73,5 +75,9 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="DjtStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 </resources>

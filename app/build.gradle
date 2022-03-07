@@ -15,7 +15,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
-            abiFilters "armeabi",'x86'
+            abiFilters "armeabi", 'x86'
         }
         //阿里路由框架配置
         javaCompileOptions {
@@ -153,7 +153,7 @@ dependencies {
     implementation 'com.umeng.umsdk:common:9.4.0' // (必选)版本号
     implementation 'com.umeng.umsdk:asms:1.2.3' // aSms包依赖(必选)
     implementation 'com.umeng.umsdk:apm:1.2.0'//推荐，错误分析升级为U-APM产品，关注crash数据需集成
-    implementation  'com.umeng.umsdk:abtest:1.0.0'//U-App中ABTest能力
+    implementation 'com.umeng.umsdk:abtest:1.0.0'//U-App中ABTest能力
     implementation 'com.umeng.umsdk:link:1.0.0'//集成智能超链SDK，必选
     //oAid采集
     implementation 'com.umeng.umsdk:oaid_lenovo:1.0.0' // (可选)
@@ -202,9 +202,9 @@ dependencies {
     //阿里云集成
     implementation 'com.aliyun.video.android:svideosnap:3.24.+'//短视频基础版SDK必须依赖
     implementation 'com.aliyun.video.android:core:1.2.2' //核心库必须依赖
-    implementation  'com.alivc.conan:AlivcConan:1.0.3'//核心库必须依赖
-    implementation  'com.aliyun.video.android:AlivcFFmpeg:4.3.0'//必须依赖,且版本需要在4.3.0及以上
-    implementation  'com.aliyun.video.android:upload:1.6.0'// 上传库,如不需要上传可不依赖
+    implementation 'com.alivc.conan:AlivcConan:1.0.3'//核心库必须依赖
+    implementation 'com.aliyun.video.android:AlivcFFmpeg:4.3.0'//必须依赖,且版本需要在4.3.0及以上
+    implementation 'com.aliyun.video.android:upload:1.6.0'// 上传库,如不需要上传可不依赖
 
     /*---------------融云--------------*/
     implementation 'cn.rongcloud.sdk:im_lib:5.1.5' // 即时通讯基础能力库
@@ -214,6 +214,19 @@ dependencies {
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
     api 'com.tencent.tbs:tbssdk:44136'
+    /*屏幕适配库*/
+    implementation 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
+    /*tabLayout*/
+    implementation 'io.github.h07000223:flycoTabLayout:3.0.0'
+
+    implementation  'com.scwang.smart:refresh-layout-kernel:2.0.3'      //core
+    implementation  'com.scwang.smart:refresh-header-classics:2.0.3'    //ClassicsHeader
+    implementation  'com.scwang.smart:refresh-header-radar:2.0.3'       //BezierRadarHeader
+    implementation  'com.scwang.smart:refresh-header-falsify:2.0.3'     //FalsifyHeader
+    implementation  'com.scwang.smart:refresh-header-material:2.0.3'    //MaterialHeader
+    implementation  'com.scwang.smart:refresh-header-two-level:2.0.3'   //TwoLevelHeader
+    implementation  'com.scwang.smart:refresh-footer-ball:2.0.3'        //BallPulseFooter
+    implementation  'com.scwang.smart:refresh-footer-classics:2.0.3'    //ClassicsFooter
 }
 repositories {
     mavenCentral()

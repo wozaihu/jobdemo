@@ -33,7 +33,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.tv_demo_name.setText(activitys.get(position).getSimpleName());
-        holder.tv_demo_name.setOnClickListener((v) -> {
+        holder.itemView.setOnClickListener((v) -> {
             v.getContext().startActivity(new Intent(v.getContext(), activitys.get(position)));
         });
     }

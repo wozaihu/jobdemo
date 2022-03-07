@@ -18,7 +18,7 @@
         <item name="android:windowBackground">@color/white</item>
 
         <!--底部导航栏颜色-->
-        <item name="android:navigationBarColor">@color/colorPrimary</item>
+<!--        <item name="android:navigationBarColor">@color/black</item>-->
 
         <!--Appbar背景色-->
         <item name="android:colorPrimary">@color/colorPrimary</item>
