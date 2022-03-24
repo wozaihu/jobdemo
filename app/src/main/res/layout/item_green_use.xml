@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_userId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userId"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tv_userId"
+            android:textColor="@color/green"
+            tools:text="89563215" />
+
+        <TextView
+            android:id="@+id/tv_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_userId"
+            android:layout_marginTop="10dp"
+            android:text="@string/userName"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_userName"
+            android:layout_toEndOf="@+id/tv_userName"
+            android:textColor="@color/green"
+            tools:text="李稻葵" />
+
+        <TextView
+            android:id="@+id/tv_userAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_userName"
+            android:layout_marginTop="10dp"
+            android:text="@string/userAge"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_userAge"
+            android:layout_toEndOf="@+id/tv_userAge"
+            android:textColor="@color/green"
+            tools:text="22" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -32,6 +32,12 @@
     <string name="azqx">安装权限</string>
     <string name="update_tip">需要授予点金台“安装未知应用”权限才能更新</string>
     <string name="add">添加</string>
+    <string name="delete">删除</string>
+    <string name="deleteALL">删除全部</string>
+    <string name="addNullName">添加一条姓名为空的数据</string>
+    <string name="alterNameNull">指定Id姓名改为空</string>
+    <string name="alter">修改</string>
+    <string name="deleteOrAlterHind">请输入要删除或修改的用户Id</string>
     <string name="default_count">默认数量</string>
     <string name="show_dialog">显示对话框</string>
     <string name="selector_client">请选择客户</string>
@@ -87,4 +93,17 @@
     <string name="confirmDownload">确认下载</string>
     <string name="loginFail">login fail please again try</string>
     <string name="experience">经验</string>
+    <string name="AllUsersAreDisplayed">已显示全部用户</string>
+    <string name="friendRecommend">好友推荐</string>
+    <string name="addAddressListFriend">添加通讯录好友</string>
+    <string name="enterpriseRecruitment">企业招聘</string>
+    <string name="postJobConsult">发布职位的咨询</string>
+    <string name="adService">广告业务</string>
+    <string name="adCooperation">广告招商合作</string>
+    <string name="serviceHelp">客服帮助</string>
+    <string name="serviceHelpDetails">及时解决您的问题</string>
+    <string name="searchFriend">搜索好友</string>
+    <string name="userId">用户id：</string>
+    <string name="userName">用户姓名：</string>
+    <string name="userAge">用户年龄：</string>
 </resources>

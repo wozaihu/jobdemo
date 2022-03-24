@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.scwang.smart.refresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/refreshLayout"
-    android:orientation="vertical">
-
-    <com.scwang.smart.refresh.header.ClassicsHeader
+    android:layout_height="match_parent">
+    <include layout="@layout/layout_chat_search"/>
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_picture_show_style"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <com.example.jobdemo.widget.SmartRefreshLayoutHead
+            android:id="@+id/head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlAccentColor="@android:color/white"
+            app:srlPrimaryColor="@color/colorPrimary" />
 
-    <com.scwang.smart.refresh.footer.ClassicsFooter
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</com.scwang.smart.refresh.layout.SmartRefreshLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_picture_show_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:id="@+id/foot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            app:srlTextLoading="自定义正在加载文字"
+            app:srlTextNothing="@string/AllUsersAreDisplayed" />
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+</LinearLayout>

@@ -22,7 +22,29 @@ public class RandomUtils {
         return SingleRandomUtils.RANDOMUTILS;
     }
 
-    private int getRandomInt() {
+    /**
+     * @return 返回一个随机数
+     */
+    public int getRandomInt() {
         return random.nextInt();
+    }
+
+    /**
+     * @return 返回随机年龄
+     */
+    public int getRandomAge() {
+        return random.nextInt(99) + 1;
+    }
+
+    /**
+     * @param size 几位数的ID
+     * @return 返回随机ID
+     */
+    public String getRandomInt(int size) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < size; i++) {
+            builder.append(random.nextInt(10));
+        }
+        return builder.toString();
     }
 }

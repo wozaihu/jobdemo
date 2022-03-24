@@ -12,6 +12,8 @@ import androidx.multidex.MultiDex;
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 import com.example.jobdemo.base.AppDataBase;
+import com.example.jobdemo.database.DaoMaster;
+import com.example.jobdemo.database.DaoSession;
 import com.example.jobdemo.util.ProcessUtil;
 import com.example.jobdemo.util.SPUtil;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -27,6 +29,9 @@ import io.rong.imkit.RongIM;
  * @author Administrator
  */
 public class MyApplication extends Application {
+    private DaoMaster daoMaster;
+    private static DaoSession daoSession;
+    private DaoMaster.DevOpenHelper devOpenHelper = null;
 
     @Override
     public void onCreate() {
@@ -104,5 +109,18 @@ public class MyApplication extends Application {
 
             }
         });
+
+        devOpenHelper = new DaoMaster.DevOpenHelper(getApplicationContext(), "User_Info.db", null);
+        //实例化DaoMaster对象
+        daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
+        //实例化DaoSession对象
+        daoSession = daoMaster.newSession();
+    }
+
+    /**
+     * @return 通过此方法, 进行增删改查
+     */
+    public static DaoSession getDaoSession() {
+        return daoSession;
     }
 }

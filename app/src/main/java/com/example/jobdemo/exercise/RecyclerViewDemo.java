@@ -20,8 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.jobdemo.R;
 import com.example.jobdemo.base.DjtActivity;
 import com.example.jobdemo.databinding.ActivityRecyclerviewDemoBinding;
-import com.scwang.smart.refresh.footer.ClassicsFooter;
-import com.scwang.smart.refresh.header.ClassicsHeader;
+import com.example.jobdemo.util.ToastUtils;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 
@@ -37,35 +36,28 @@ import java.util.Objects;
 public class RecyclerViewDemo extends DjtActivity {
     private final List<String> list = new ArrayList<>();
     private final int listSize = 20;
-    private int listPage=1;
+    private int listPage = 1;
     private ActivityRecyclerviewDemoBinding inflate;
     private MyAdapter adapter;
+    private static final int PAGE = 5;
 
     @RequiresApi(api = Build.VERSION_CODES.P)
-    @SuppressLint("StringFormatMatches")
+    @SuppressLint({"StringFormatMatches", "NotifyDataSetChanged"})
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         inflate = ActivityRecyclerviewDemoBinding.inflate(LayoutInflater.from(this));
         setContentView(inflate.getRoot());
-        inflate.refreshLayout.setRefreshHeader(new ClassicsHeader(this));
-        inflate.refreshLayout.setRefreshFooter(new ClassicsFooter(this));
-        getData();
         inflate.refreshLayout.setOnRefreshListener(refreshlayout -> {
             listPage = 1;
-            //传入false表示刷新失败
-            refreshlayout.finishRefresh(1000/*,false*/);//传入false表示刷新失败
             getData();
-            adapter.notifyDataSetChanged();
         });
         inflate.refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshlayout) {
                 //传入false表示加载失败
                 listPage++;
-                refreshlayout.finishLoadMore(1000/*,false*/);//传入false表示加载失败
                 getData();
-                adapter.notifyDataSetChanged();
             }
         });
         inflate.refreshLayout.setEnableFooterFollowWhenNoMoreData(true);
@@ -78,16 +70,26 @@ public class RecyclerViewDemo extends DjtActivity {
         inflate.rvPictureShowStyle.addItemDecoration(decoration);
         adapter = new MyAdapter();
         inflate.rvPictureShowStyle.setAdapter(adapter);
+        inflate.refreshLayout.autoRefresh();
     }
 
     @SuppressLint("StringFormatMatches")
     private void getData() {
-        list.clear();
-        for (int i = 0; i < listSize * listPage; i++) {
-            list.add(String.format(getString(R.string.whichRow), (i + 1)));
+        if (listPage == 1) {
+            list.clear();
         }
-        int page = 5;
-        if (listPage == page) {
+        for (int i = 0; i < listSize; i++) {
+            list.add(String.format(getString(R.string.whichRow), (list.size() + 1)));
+        }
+
+        if (listPage != 1) {
+            adapter.notifyItemRangeInserted(adapter.getItemCount(), listSize);
+        } else {
+            adapter.notifyDataSetChanged();
+        }
+        inflate.refreshLayout.finishLoadMore();
+        inflate.refreshLayout.finishRefresh();
+        if (listPage == PAGE) {
             inflate.refreshLayout.finishLoadMoreWithNoMoreData();
         }
     }
@@ -105,6 +107,9 @@ public class RecyclerViewDemo extends DjtActivity {
         @Override
         public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
             holder.textView.setText(list.get(position));
+            holder.itemView.setOnClickListener(v -> {
+                ToastUtils.shortToast(holder.textView.getContext(), "点击了-------" + list.get(position));
+            });
         }
 
         @Override

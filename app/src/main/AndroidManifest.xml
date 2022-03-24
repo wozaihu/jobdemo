@@ -86,7 +86,9 @@
         <activity android:name=".animation.MyInterpolator" />
         <activity android:name=".animation.MyFrameAnimatoin" />
         <activity android:name=".view_demo.DemoExpandableListView" />
-        <activity android:name=".exercise.RecyclerViewDemo" />
+        <activity android:name=".exercise.RecyclerViewDemo"
+            android:windowSoftInputMode = "adjustNothing"
+            />
         <activity android:name=".baidu_map.BaiduMapDemo" />
         <activity android:name=".activity.CameraDemo" />
         <activity android:name=".activity.DialogDemo" />
@@ -97,7 +99,7 @@
             android:name=".activity.ActivityPublicWebView"
             android:hardwareAccelerated="false" />
         <activity
-            android:name=".activity.RecycleViewDemo2"
+            android:name=".activity.GreenDaoUse"
             android:exported="false" />
         <activity
             android:name=".activity.InfoShow"

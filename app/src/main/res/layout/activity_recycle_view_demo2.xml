@@ -4,13 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.RecycleViewDemo2">
+    tools:context=".activity.GreenDaoUse">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.nex3z.flowlayout.FlowLayout
+        android:id="@+id/flowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry">
+
+        <EditText
+            android:id="@+id/et_enterUserId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:hint="@string/deleteOrAlterHind"
+            android:inputType="number"
+            android:longClickable="false"
+            tools:ignore="Autofill" />
+
+        <Button
+            android:id="@+id/tv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add" />
+
+        <Button
+            android:id="@+id/tv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete" />
+
+        <Button
+            android:id="@+id/tv_alter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alter" />
+        <Button
+            android:id="@+id/tv_deleteAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deleteALL" />
+        <Button
+            android:id="@+id/tv_addNullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addNullName" />
+        <Button
+            android:id="@+id/tv_alterNameNull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alterNameNull" />
+    </com.nex3z.flowlayout.FlowLayout>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:orientation="vertical"
+        app:srlEnableFooterFollowWhenLoadFinished="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flowLayout">
+
+        <com.example.jobdemo.widget.SmartRefreshLayoutHead
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_userList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlTextNothing="@string/AllUsersAreDisplayed" />
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
