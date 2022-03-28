@@ -146,16 +146,10 @@
         <activity android:name=".activity.VerificationCode" />
         <activity android:name=".activity.TestFunctionAndPrint" />
         <activity android:name=".activity.ResultApiUse" />
-        <activity android:name=".testLeak.AShowToast" />
+        <activity android:name=".testLeak.LotteryDemo" />
         <activity
             android:name=".testLeak.AShowToast2"
             android:launchMode="singleTop" />
-        <activity
-            android:name=".testLeak.AShowToast3"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".testLeak.AShowToast4"
-            android:launchMode="singleInstance" />
         <activity android:name=".activity.ExperienceActivity"
             android:theme="@style/DjtStyle"
             />

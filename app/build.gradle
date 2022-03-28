@@ -242,6 +242,9 @@ dependencies {
     implementation 'org.greenrobot:greendao:3.3.0'
     /*流布局*/
     implementation 'com.nex3z:flow-layout:1.3.3'
+
+    /*轮盘*/
+    implementation 'com.github.hnsycsxhzcsh:TurntableView:v1.1'
 }
 repositories {
     mavenCentral()

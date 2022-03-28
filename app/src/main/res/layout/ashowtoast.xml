@@ -3,27 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnShowToast"
-        android:textAllCaps="false"
-        android:layout_centerInParent="true"
+    <com.turntableview.TurntableView
+        android:id="@+id/turntable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/iv_node"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/showToast" />
-    <Button
-        android:id="@+id/btnSaveData"
-        android:layout_below="@+id/btnShowToast"
-        android:textAllCaps="false"
         android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/saveData" />
-    <Button
-        android:id="@+id/btnShowData"
-        android:layout_below="@+id/btnSaveData"
-        android:textAllCaps="false"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/getData" />
+        android:background="@mipmap/node" />
 </RelativeLayout>
