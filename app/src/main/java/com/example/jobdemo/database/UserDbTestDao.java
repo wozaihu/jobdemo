@@ -15,7 +15,7 @@ import com.example.jobdemo.bean.UserDbTest;
 /** 
  * DAO for table "USER_DB_TEST".
 */
-public class UserDbTestDao extends AbstractDao<UserDbTest, String> {
+public class UserDbTestDao extends AbstractDao<UserDbTest, Long> {
 
     public static final String TABLENAME = "USER_DB_TEST";
 
@@ -24,7 +24,7 @@ public class UserDbTestDao extends AbstractDao<UserDbTest, String> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property UserId = new Property(0, String.class, "userId", true, "USER_ID");
+        public final static Property UserId = new Property(0, Long.class, "userId", true, "_id");
         public final static Property UserName = new Property(1, String.class, "userName", false, "USER_NAME");
         public final static Property Age = new Property(2, int.class, "age", false, "AGE");
     }
@@ -42,7 +42,7 @@ public class UserDbTestDao extends AbstractDao<UserDbTest, String> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"USER_DB_TEST\" (" + //
-                "\"USER_ID\" TEXT PRIMARY KEY NOT NULL UNIQUE ," + // 0: userId
+                "\"_id\" INTEGER PRIMARY KEY NOT NULL UNIQUE ," + // 0: userId
                 "\"USER_NAME\" TEXT," + // 1: userName
                 "\"AGE\" INTEGER NOT NULL );"); // 2: age
     }
@@ -56,11 +56,7 @@ public class UserDbTestDao extends AbstractDao<UserDbTest, String> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, UserDbTest entity) {
         stmt.clearBindings();
- 
-        String userId = entity.getUserId();
-        if (userId != null) {
-            stmt.bindString(1, userId);
-        }
+        stmt.bindLong(1, entity.getUserId());
  
         String userName = entity.getUserName();
         if (userName != null) {
@@ -72,11 +68,7 @@ public class UserDbTestDao extends AbstractDao<UserDbTest, String> {
     @Override
     protected final void bindValues(SQLiteStatement stmt, UserDbTest entity) {
         stmt.clearBindings();
- 
-        String userId = entity.getUserId();
-        if (userId != null) {
-            stmt.bindString(1, userId);
-        }
+        stmt.bindLong(1, entity.getUserId());
  
         String userName = entity.getUserName();
         if (userName != null) {
@@ -86,14 +78,14 @@ public class UserDbTestDao extends AbstractDao<UserDbTest, String> {
     }
 
     @Override
-    public String readKey(Cursor cursor, int offset) {
-        return cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0);
+    public Long readKey(Cursor cursor, int offset) {
+        return cursor.getLong(offset + 0);
     }    
 
     @Override
     public UserDbTest readEntity(Cursor cursor, int offset) {
         UserDbTest entity = new UserDbTest( //
-            cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // userId
+            cursor.getLong(offset + 0), // userId
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // userName
             cursor.getInt(offset + 2) // age
         );
@@ -102,18 +94,19 @@ public class UserDbTestDao extends AbstractDao<UserDbTest, String> {
      
     @Override
     public void readEntity(Cursor cursor, UserDbTest entity, int offset) {
-        entity.setUserId(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
+        entity.setUserId(cursor.getLong(offset + 0));
         entity.setUserName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setAge(cursor.getInt(offset + 2));
      }
     
     @Override
-    protected final String updateKeyAfterInsert(UserDbTest entity, long rowId) {
-        return entity.getUserId();
+    protected final Long updateKeyAfterInsert(UserDbTest entity, long rowId) {
+        entity.setUserId(rowId);
+        return rowId;
     }
     
     @Override
-    public String getKey(UserDbTest entity) {
+    public Long getKey(UserDbTest entity) {
         if(entity != null) {
             return entity.getUserId();
         } else {
@@ -123,7 +116,7 @@ public class UserDbTestDao extends AbstractDao<UserDbTest, String> {
 
     @Override
     public boolean hasKey(UserDbTest entity) {
-        return entity.getUserId() != null;
+        throw new UnsupportedOperationException("Unsupported for entities with a non-null key");
     }
 
     @Override

@@ -95,7 +95,6 @@ public class InfoShow extends DjtActivity {
             , R.id.btn_show_dialog, R.id.close
     })
     public void onViewClicked(View view) {
-        // FIXME: 2021/11/16 标识处代码需要修正
         int id = view.getId();
         if (id == R.id.tv_sha1) {
             ToastUtils.shortToast(this,"网络是否可用---");

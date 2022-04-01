@@ -12,7 +12,6 @@ import com.example.jobdemo.R;
 public class LineGridView extends GridView {
     public LineGridView(Context context) {
         super(context);
-        // TODO Auto-generated constructor stub
     }
 
     public LineGridView(Context context, AttributeSet attrs) {

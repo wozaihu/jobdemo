@@ -149,7 +149,6 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
 
     /**
      * @param context
-     * @// TODO: 2020/12/28 初始化view
      */
     private void initView(Context context) {
 

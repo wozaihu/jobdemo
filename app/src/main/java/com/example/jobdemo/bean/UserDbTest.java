@@ -1,10 +1,12 @@
 package com.example.jobdemo.bean;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.NotNull;
+import org.greenrobot.greendao.annotation.OrderBy;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Unique;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * @Author LYX
@@ -13,9 +15,12 @@ import org.greenrobot.greendao.annotation.Unique;
 @Entity
 public class UserDbTest {
 
-    @Unique
+
     @Id
-    private String userId;
+    @Unique
+    @NotNull
+    @OrderBy
+    private Long userId;
 
     @Property
     private String userName;
@@ -23,8 +28,8 @@ public class UserDbTest {
     @Property
     private int age;
 
-    @Generated(hash = 1213410607)
-    public UserDbTest(String userId, String userName, int age) {
+    @Generated(hash = 1902946757)
+    public UserDbTest(@NotNull Long userId, String userName, int age) {
         this.userId = userId;
         this.userName = userName;
         this.age = age;
@@ -34,12 +39,11 @@ public class UserDbTest {
     public UserDbTest() {
     }
 
-
-    public String getUserId() {
+    public Long getUserId() {
         return this.userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -58,14 +62,5 @@ public class UserDbTest {
     public void setAge(int age) {
         this.age = age;
     }
-
-
-    @Override
-    public String toString() {
-        return "UserDbTest{" +
-                "userId='" + userId + '\'' +
-                ", userName='" + userName + '\'' +
-                ", age=" + age +
-                '}';
-    }
+    
 }

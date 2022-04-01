@@ -111,7 +111,7 @@ fun forMap() {
 
 fun getMaxLength() {
     //maxBy查找最大长度的字符串
-    println("最大长度是：" + list.maxBy { it.length })
+//    println("最大长度是：" + list.maxBy { it.length })
 
     //过滤字符串
     val newFilter = muTableList.filter { it < 60 }

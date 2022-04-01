@@ -21,6 +21,23 @@ import java.util.List;
 public class GreenUseAdapter extends RecyclerView.Adapter<GreenUseAdapter.ViewHolder> {
     private Context context;
     private List<UserDbTest> list;
+    private ItemClickCell itemClickCell;
+
+    public void setItemClickCell(ItemClickCell itemClickCell) {
+        this.itemClickCell = itemClickCell;
+    }
+
+
+    public interface ItemClickCell {
+
+        /**
+         * Item点击回调
+         *
+         * @param position 位置
+         * @param id       id
+         */
+        void itemClick(int position, Long id);
+    }
 
     public GreenUseAdapter(Context context, List<UserDbTest> list) {
         this.context = context;
@@ -37,9 +54,13 @@ public class GreenUseAdapter extends RecyclerView.Adapter<GreenUseAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvId.setText(list.get(position).getUserId());
+        holder.tvRow.setText(String.valueOf(position + 1));
+        holder.tvId.setText(String.valueOf(list.get(position).getUserId()));
         holder.tvName.setText(list.get(position).getUserName());
         holder.tvAge.setText(String.valueOf(list.get(position).getAge()));
+        holder.itemView.setOnClickListener(v -> {
+            itemClickCell.itemClick(position, list.get(position).getUserId());
+        });
     }
 
     @Override
@@ -51,12 +72,14 @@ public class GreenUseAdapter extends RecyclerView.Adapter<GreenUseAdapter.ViewHo
         TextView tvId;
         TextView tvName;
         TextView tvAge;
+        TextView tvRow;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvId = itemView.findViewById(R.id.tv_id);
             tvName = itemView.findViewById(R.id.tv_name);
             tvAge = itemView.findViewById(R.id.tv_age);
+            tvRow = itemView.findViewById(R.id.tv_row);
         }
     }
 }

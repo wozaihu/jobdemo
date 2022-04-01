@@ -67,6 +67,7 @@
     <string name="search">搜索</string>
     <string name="save">保存</string>
     <string name="click_object">点击了---------%s</string>
+    <string name="addPosition">在第%d行-----添加了%s</string>
     <string name="inputContentPlease">请输入搜索内容</string>
     <string name="shear_your_idea">分享你的想法吧</string>
     <string name="scrollview_string_font_size">scrollview滑动时设置字体大小</string>
@@ -106,4 +107,5 @@
     <string name="userId">用户id：</string>
     <string name="userName">用户姓名：</string>
     <string name="userAge">用户年龄：</string>
+    <string name="toolText">立足当下，想做的事现在就去做，不要总想着具备了什么条件在开始行动，先做能做的。很多事都是立足于一个基础之上，所以这个基础一定要重视，不能因为别的事或人而影响到增强它，在难都要坚持下去，这样才能避免以后感慨“如果坚持下来，我已经会了”的局面。</string>
 </resources>

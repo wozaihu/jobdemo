@@ -30,7 +30,6 @@ public class ResultApiUse extends BaseActivity {
                 ToastUtils.shortToast(ResultApiUse.this,result.getData().getStringExtra("extra"));
             }
         });
-        // FIXME: 2021/11/27 要请求拍照权限，不然会崩溃
         ActivityResultLauncher<Void> launcherPhotograph = registerForActivityResult(new ActivityResultContracts.TakePicturePreview(), result -> inflate.imageView.setImageBitmap(result));
         inflate.startInfoShow.setOnClickListener(v -> launcherInfo.launch(new Intent(ResultApiUse.this, InfoShow.class)));
         inflate.photograph.setOnClickListener(v -> launcherPhotograph.launch(null));

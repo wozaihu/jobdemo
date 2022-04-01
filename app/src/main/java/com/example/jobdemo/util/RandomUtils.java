@@ -25,7 +25,7 @@ public class RandomUtils {
     /**
      * @return 返回一个随机数
      */
-    public int getRandomInt() {
+    public int getRandomId() {
         return random.nextInt();
     }
 
@@ -40,11 +40,12 @@ public class RandomUtils {
      * @param size 几位数的ID
      * @return 返回随机ID
      */
-    public String getRandomInt(int size) {
+    public Long getRandomId(int size) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < size; i++) {
-            builder.append(random.nextInt(10));
+            int n = random.nextInt(10);
+            builder.append(n == 0 ? 1 : n);
         }
-        return builder.toString();
+        return Long.parseLong(builder.toString());
     }
 }
