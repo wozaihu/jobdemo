@@ -42,7 +42,7 @@ public class MyAlpha extends BaseActivity {
         ButterKnife.bind(this);
         EventBus.getDefault().register(this);
         Glide.with(this)
-                .applyDefaultRequestOptions(RequestOptions.bitmapTransform(new CircleCrop()))
+
                 .load("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1974547380,3759934635&fm=26&gp=0.jpg")
                 .into(ivAlpha);
     }

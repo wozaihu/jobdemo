@@ -88,7 +88,7 @@
         <activity android:name=".animation.MyFrameAnimatoin" />
         <activity android:name=".view_demo.DemoExpandableListView" />
         <activity android:name=".exercise.RecyclerViewDemo"
-            android:windowSoftInputMode = "adjustNothing"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             />
         <activity android:name=".baidu_map.BaiduMapDemo" />
         <activity android:name=".activity.CameraDemo" />
@@ -104,6 +104,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.InfoShow"
+            android:theme="@style/otherPageStyle"
             >
             <intent-filter
                 android:icon="@mipmap/forwarding_wechat"

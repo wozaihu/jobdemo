@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <include layout="@layout/layout_chat_search"/>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_chat_search" />
+
     <com.scwang.smart.refresh.layout.SmartRefreshLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <com.example.jobdemo.widget.SmartRefreshLayoutHead
@@ -26,8 +29,13 @@
             android:id="@+id/foot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/green"
-            app:srlTextLoading="自定义正在加载文字"
             app:srlTextNothing="@string/AllUsersAreDisplayed" />
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    <EditText
+        android:id="@+id/et_chat"
+        android:padding="10dp"
+        android:hint="@string/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

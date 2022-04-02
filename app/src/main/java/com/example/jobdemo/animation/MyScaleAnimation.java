@@ -8,14 +8,12 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -31,7 +29,7 @@ public class MyScaleAnimation extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myscaleanimation);
         ButterKnife.bind(this);
-        Glide.with(this).applyDefaultRequestOptions(RequestOptions.bitmapTransform(new CircleCrop())).load(R.mipmap.a1).into(ivInfinite);
+        Glide.with(this).load(R.mipmap.a1).into(ivInfinite);
     }
 
     @OnClick({R.id.tv_test_center, R.id.iv_infinite})

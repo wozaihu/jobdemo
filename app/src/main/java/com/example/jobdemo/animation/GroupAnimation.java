@@ -7,14 +7,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -31,7 +29,7 @@ public class GroupAnimation extends BaseActivity {
         setContentView(R.layout.activity_group_animation);
         ButterKnife.bind(this);
         Glide.with(this)
-                .applyDefaultRequestOptions(RequestOptions.bitmapTransform(new CircleCrop()))
+
                 .load("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1198093723,2182898449&fm=11&gp=0.jpg")
                 .into(ivGroupAnimation);
     }
