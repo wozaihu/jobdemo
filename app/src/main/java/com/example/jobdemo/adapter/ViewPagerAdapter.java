@@ -48,7 +48,6 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
         String animal = mData.get(position);
         holder.myTextView.setText(animal);
         holder.relativeLayout.setBackgroundResource(colorArray[position]);
-
     }
 
     @Override

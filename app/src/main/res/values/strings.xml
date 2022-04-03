@@ -71,7 +71,8 @@
     <string name="inputContentPlease">请输入搜索内容</string>
     <string name="shear_your_idea">分享你的想法吧</string>
     <string name="scrollview_string_font_size">scrollview滑动时设置字体大小</string>
-    <string name="whichRow">第%s行</string>
+    <string name="whichRow">第%d行</string>
+    <string name="whichRowStr">第%s行</string>
     <string name="modification">修改</string>
     <string name="save_to_root">保存文件到根目录</string>
     <string name="save_to_app">保存文件到应用包下</string>
