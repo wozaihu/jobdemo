@@ -8,7 +8,7 @@ import android.widget.Toast;
  * @author Administrator toast工具类
  */
 public class ToastUtils {
-    public static Toast toast;
+    private static Toast toast;
 
     public static void shortToast(Context context, String s) {
         cancel(context);

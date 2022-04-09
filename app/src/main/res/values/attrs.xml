@@ -33,4 +33,16 @@
         <attr name="borderColor" format="color" />
     </declare-styleable>
 
+    <!--可膨胀TextView-->
+    <declare-styleable name="ExpandableTextview">
+        <attr name="max_word" format="integer" />
+        <attr name="show_fold" format="boolean" />
+        <attr name="unfold_word" format="string" />
+        <attr name="fold_word" format="string" />
+        <attr name="unfold_word_color" format="reference|color" />
+        <attr name="fold_word_color" format="reference|color" />
+        <attr name="unfold_word_size" format="dimension" />
+        <attr name="fold_word_size" format="dimension" />
+    </declare-styleable>
+
 </resources>

@@ -36,7 +36,7 @@
         <!-- 如果您项目中的所有页面都只需要以高或宽中的一个作为基准进行适配的话, 那就只需要填写高或宽中的一个设计图尺寸即可 -->
         <meta-data
             android:name="design_width_in_dp"
-            android:value="375"/>
+            android:value="375" />
         <meta-data
             android:name="android.webkit.WebView.EnableSafeBrowsing"
             android:value="true" /> <!-- 多渠道配置 -->
@@ -87,9 +87,9 @@
         <activity android:name=".animation.MyInterpolator" />
         <activity android:name=".animation.MyFrameAnimatoin" />
         <activity android:name=".view_demo.DemoExpandableListView" />
-        <activity android:name=".exercise.RecyclerViewDemo"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            />
+        <activity
+            android:name=".exercise.RecyclerViewDemo"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".baidu_map.BaiduMapDemo" />
         <activity android:name=".activity.CameraDemo" />
         <activity android:name=".activity.DialogDemo" />
@@ -104,8 +104,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.InfoShow"
-            android:theme="@style/otherPageStyle"
-            >
+            android:theme="@style/otherPageStyle">
             <intent-filter
                 android:icon="@mipmap/forwarding_wechat"
                 android:label="什么东西">
@@ -121,7 +120,7 @@
         <activity
             android:name=".activity.ShowContent"
             android:description="@string/exclude" />
-        <activity android:name=".activity.ConstraintLayoutDemo" />
+        <activity android:name=".activity.FlowLayoutDemo" />
         <activity android:name=".activity.LayoutCreatePicture" />
         <activity android:name=".activity.EditTextDemo" />
         <activity android:name=".activity.MeasureView" />
@@ -151,9 +150,12 @@
         <activity
             android:name=".testLeak.AShowToast2"
             android:launchMode="singleTop" />
-        <activity android:name=".activity.ExperienceActivity"
-            android:theme="@style/DjtStyle"
-            />
+        <activity
+            android:name=".activity.ExperienceActivity"
+            android:theme="@style/DjtStyle" />
+        <activity
+            android:name=".activity.CompanyDetailsDemo"
+            android:theme="@style/DjtStyle" />
     </application>
 
 </manifest>
