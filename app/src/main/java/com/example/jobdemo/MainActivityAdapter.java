@@ -10,16 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.jobdemo.bean.ActivityBean;
+
 import java.util.List;
 
 /**
  * @author Administrator
  */
 public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.MyViewHolder> {
-    private final List<Class> activitys;
+    private final List<ActivityBean> activityS;
 
-    public MainActivityAdapter(List<Class> activitys) {
-        this.activitys = activitys;
+    public MainActivityAdapter(List<ActivityBean> activityS) {
+        this.activityS = activityS;
     }
 
 
@@ -32,15 +34,15 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.tv_demo_name.setText(activitys.get(position).getSimpleName());
+        holder.tv_demo_name.setText(activityS.get(position).getActivityChinesName());
         holder.itemView.setOnClickListener((v) -> {
-            v.getContext().startActivity(new Intent(v.getContext(), activitys.get(position)));
+            v.getContext().startActivity(new Intent(v.getContext(), activityS.get(position).getClassName()));
         });
     }
 
     @Override
     public int getItemCount() {
-        return activitys.size();
+        return activityS.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {

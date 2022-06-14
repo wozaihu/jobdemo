@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'androidx.navigation.safeargs'
@@ -39,7 +38,7 @@ android {
     buildTypes {
         release {
             buildConfigField "String", "BUILD_TYPE999", '"release"'
-            buildConfigField "boolean", "LOG_DEBUG", "false" //不显示log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
             minifyEnabled true      //打开混淆
             shrinkResources true    //打开资源压缩
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -50,12 +49,6 @@ android {
             buildConfigField "String", "BUILD_TYPE999", '"debug"'
 //            applicationIdSuffix '.debug'
             manifestPlaceholders = [label: "jobdemo调试版"]
-        }
-
-        betatest {
-            buildConfigField "String", "BUILD_TYPE999", '"betatest"'
-            applicationIdSuffix '.test'
-            manifestPlaceholders = [label: "jobdemo测试版"]
         }
     }
 
@@ -73,11 +66,9 @@ android {
 
     defaultConfig {
         ndk {
-            // 设置支持的SO库架构
 //            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
             abiFilters 'armeabi-v7a'
         }
-//        signingConfig signingConfigs.release
     }
 
     //多渠道打包配置
@@ -232,11 +223,7 @@ dependencies {
     implementation 'com.scwang.smart:refresh-layout-kernel:2.0.3'
     implementation 'com.scwang.smart:refresh-header-classics:2.0.3'
     implementation 'com.scwang.smart:refresh-footer-classics:2.0.3'
-    implementation 'com.scwang.smart:refresh-header-radar:2.0.3'
-    implementation 'com.scwang.smart:refresh-header-falsify:2.0.3'
-    implementation 'com.scwang.smart:refresh-header-material:2.0.3'
-    implementation 'com.scwang.smart:refresh-header-two-level:2.0.3'
-    implementation 'com.scwang.smart:refresh-footer-ball:2.0.3'
+
 
     /*数据库*/
     implementation 'org.greenrobot:greendao:3.3.0'
@@ -245,6 +232,14 @@ dependencies {
 
     /*轮盘*/
     implementation 'com.github.hnsycsxhzcsh:TurntableView:v1.1'
+
+    /*第三方tabLayout*/
+    implementation 'io.github.h07000223:flycoTabLayout:3.0.0'
+    /*超级TextView，可直接设置圆角，GIF图片等*/
+    implementation 'com.github.chenBingX:SuperTextView:v3.2.6.99'
+
+    /*文字转拼音*/
+    implementation 'com.github.houbb:pinyin:0.3.1'
 }
 repositories {
     mavenCentral()

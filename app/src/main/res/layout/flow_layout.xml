@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <com.nex3z.flowlayout.FlowLayout
+        android:id="@+id/flowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:flChildSpacing="20dp" />
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
+
+    <com.example.jobdemo.widget.ExpandableTextview
+        android:id="@+id/expandTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="3dp"
+        android:text="@string/toolbar_title"
+        app:fold_word="@string/fold"
+        app:fold_word_color="@color/app_color_blue"
+        app:fold_word_size="16dp"
+        app:max_word="8"
+        app:show_fold="true"
+        app:unfold_word_size="20dp" />
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btn_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Setting" />
+
+    <Button
+        android:id="@+id/btn_setting2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置为空" />
+
+    <RatingBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/gray"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="3dp"
+        app:cardCornerRadius="100dp">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/siv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:padding="0.5dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearance="@style/RoundedStyle"
+            app:srcCompat="@mipmap/a1"
+            app:strokeColor="@color/green"
+            app:strokeWidth="1dp" />
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

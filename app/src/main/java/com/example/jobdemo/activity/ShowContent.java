@@ -56,7 +56,7 @@ public class ShowContent extends BaseActivity {
                 }
                 break;
             case R.id.tv_name:
-                startActivity(new Intent(this, ConstraintLayoutDemo.class));
+                startActivity(new Intent(this, FlowLayoutDemo.class));
                 break;
             case R.id.img_heat_portrait:
                 break;

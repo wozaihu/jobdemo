@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.jobdemo.base.BaseActivity;
+import com.example.jobdemo.bean.ActivityBean;
 import com.example.jobdemo.bean.MainOnDestroy;
 import com.example.jobdemo.databinding.ActivityMainBinding;
 import com.example.jobdemo.util.ClassUtils;
@@ -22,6 +23,7 @@ import java.util.List;
 
 /**
  * 主页
+ *
  * @author Administrator
  */
 public class MainActivity extends BaseActivity {
@@ -33,10 +35,10 @@ public class MainActivity extends BaseActivity {
         UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, null);
         ActivityMainBinding inflate = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(inflate.getRoot());
-        List<Class> classList = ClassUtils.getActivitiesClass(getApplicationContext(), getPackageName());
-        //类名按字母进行排序
+        List<ActivityBean> classList = ClassUtils.getActivitiesClass(getApplicationContext(), getPackageName());
+        //类名按字母进行排序,中文就首字母，英文就所有的都算
         Collections.sort(classList, (o1, o2) -> {
-            int i = o1.getSimpleName().compareTo(o2.getSimpleName());
+            int i = o1.getAllInitial().compareTo(o2.getAllInitial());
             if (i > 0) {
                 return 1;
             }

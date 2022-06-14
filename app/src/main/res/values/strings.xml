@@ -1,5 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">JobDemo</string>
+    <!--Activity名称-->
+    <string name="activity_send_notify">发送通知demo</string>
+    <string name="activity_flow_layout">流布局demo</string>
+    <string name="activity_expandable_listview">分组ListViewDemo</string>
+    <string name="activity_camera_demo">相机使用demo</string>
+    <!--如果要按字母排序显示activity名称就写下来-->
     <string name="debug_app_name">JobDemo_debug</string>
     <string name="web_view">webView</string>
     <string name="start_camera_page">启动相机页面</string>
@@ -52,6 +58,7 @@
     <string name="timingNumber">倒计时：0秒</string>
     <string name="changeData">改变数据</string>
     <string name="SettingData">未设置数据</string>
+    <string name="Setting">设置</string>
     <string name="BaseObservableUse">BaseObservable使用</string>
     <string name="unknown">unknown</string>
     <string name="noData">没有数据</string>
@@ -67,12 +74,14 @@
     <string name="search">搜索</string>
     <string name="save">保存</string>
     <string name="click_object">点击了---------%s</string>
+    <string name="click_int">点击了---------%d</string>
     <string name="addPosition">在第%d行-----添加了%s</string>
     <string name="inputContentPlease">请输入搜索内容</string>
     <string name="shear_your_idea">分享你的想法吧</string>
     <string name="scrollview_string_font_size">scrollview滑动时设置字体大小</string>
     <string name="whichRow">第%d行</string>
     <string name="whichRowStr">第%s行</string>
+    <string name="whichRowInt">第%d行</string>
     <string name="modification">修改</string>
     <string name="save_to_root">保存文件到根目录</string>
     <string name="save_to_app">保存文件到应用包下</string>
@@ -109,4 +118,8 @@
     <string name="userName">用户姓名：</string>
     <string name="userAge">用户年龄：</string>
     <string name="toolText">立足当下，想做的事现在就去做，不要总想着具备了什么条件在开始行动，先做能做的。很多事都是立足于一个基础之上，所以这个基础一定要重视，不能因为别的事或人而影响到增强它，在难都要坚持下去，这样才能避免以后感慨“如果坚持下来，我已经会了”的局面。</string>
+    <string name="back">返回</string>
+    <string name="companyDetails">企业详情</string>
+    <string name="companyType">公司类型</string>
+    <string name="fold">折叠</string>
 </resources>

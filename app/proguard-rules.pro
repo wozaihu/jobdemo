@@ -243,3 +243,6 @@ public static final int *;
 -keep class com.tencent.smtt.** {*;}
 
 -keep class com.tencent.tbs.** {*;}
+
+#SuperTextView
+-keep class com.coorchice.library.gifdecoder.JNI { *; }

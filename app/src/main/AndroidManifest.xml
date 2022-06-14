@@ -36,7 +36,7 @@
         <!-- 如果您项目中的所有页面都只需要以高或宽中的一个作为基准进行适配的话, 那就只需要填写高或宽中的一个设计图尺寸即可 -->
         <meta-data
             android:name="design_width_in_dp"
-            android:value="375"/>
+            android:value="375" />
         <meta-data
             android:name="android.webkit.WebView.EnableSafeBrowsing"
             android:value="true" /> <!-- 多渠道配置 -->
@@ -75,7 +75,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".notification.SendNotification" />
+        <activity
+            android:name=".notification.SendNotification"
+            android:label="@string/activity_send_notify" />
         <activity android:name=".animation.MyTranslateAnimation" />
         <activity android:name=".animation.MyScaleAnimation" />
         <activity android:name=".animation.MyRotate" />
@@ -86,12 +88,16 @@
         <activity android:name=".animation.MyObjectAnimator" />
         <activity android:name=".animation.MyInterpolator" />
         <activity android:name=".animation.MyFrameAnimatoin" />
-        <activity android:name=".view_demo.DemoExpandableListView" />
-        <activity android:name=".exercise.RecyclerViewDemo"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            />
+        <activity
+            android:name=".view_demo.DemoExpandableListView"
+            android:label="@string/activity_expandable_listview" />
+        <activity
+            android:name=".exercise.RecyclerViewDemo"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".baidu_map.BaiduMapDemo" />
-        <activity android:name=".activity.CameraDemo" />
+        <activity
+            android:name=".activity.CameraDemo"
+            android:label="@string/activity_camera_demo" />
         <activity android:name=".activity.DialogDemo" />
         <activity android:name=".activity.WidgetViewDemo" />
         <activity android:name=".activity.PopupWindowDemo" />
@@ -104,11 +110,8 @@
             android:exported="false" />
         <activity
             android:name=".activity.InfoShow"
-            android:theme="@style/otherPageStyle"
-            >
-            <intent-filter
-                android:icon="@mipmap/forwarding_wechat"
-                android:label="什么东西">
+            android:theme="@style/otherPageStyle">
+            <intent-filter android:icon="@mipmap/forwarding_wechat">
                 <action android:name="com.example.jobdemo.INFOSHOW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -121,7 +124,9 @@
         <activity
             android:name=".activity.ShowContent"
             android:description="@string/exclude" />
-        <activity android:name=".activity.ConstraintLayoutDemo" />
+        <activity
+            android:name=".activity.FlowLayoutDemo"
+            android:label="@string/activity_flow_layout" />
         <activity android:name=".activity.LayoutCreatePicture" />
         <activity android:name=".activity.EditTextDemo" />
         <activity android:name=".activity.MeasureView" />
@@ -151,9 +156,12 @@
         <activity
             android:name=".testLeak.AShowToast2"
             android:launchMode="singleTop" />
-        <activity android:name=".activity.ExperienceActivity"
-            android:theme="@style/DjtStyle"
-            />
+        <activity
+            android:name=".activity.ExperienceActivity"
+            android:theme="@style/DjtStyle" />
+        <activity
+            android:name=".activity.CompanyDetailsDemo"
+            android:theme="@style/DjtStyle" />
     </application>
 
 </manifest>

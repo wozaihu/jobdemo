@@ -6,8 +6,12 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.example.jobdemo.bean.ActivityBean;
+import com.github.houbb.heaven.util.lang.StringUtil;
+import com.github.houbb.pinyin.constant.enums.PinyinStyleEnum;
+import com.github.houbb.pinyin.util.PinyinHelper;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -27,16 +31,15 @@ public class ClassUtils {
      *
      * @param context     环境
      * @param packageName 包名
-     * @return
+     * @return activityBean
      */
-    public final static List<Class> getActivitiesClass(Context context, String packageName) {
+    public static List<ActivityBean> getActivitiesClass(Context context, String packageName) {
 
-        List<Class> returnClassList = new ArrayList<Class>();
+        List<ActivityBean> activityList = new ArrayList<>();
         try {
             //Get all activity classes in the AndroidManifest.xml
             PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
             if (packageInfo.activities != null) {
-                LogUtil.showD(TAG, "Found " + packageInfo.activities.length + " activity in the AndrodiManifest.xml");
                 for (ActivityInfo ai : packageInfo.activities) {
                     Class c = null;
                     try {
@@ -46,19 +49,25 @@ public class ClassUtils {
                         // 排除其他SDK合并的activity，只显示自己写的activity，用包名排除
                         //descriptionRes做一个标记，不为空则为要排除的activity
                         if (c != null && Activity.class.isAssignableFrom(c) && ai.descriptionRes == 0) {
-                            returnClassList.add(c);
+                            String activityName;
+                            if (ai.labelRes == 0) {
+                                activityName = c.getSimpleName();
+                            } else {
+                                activityName = context.getString(ai.labelRes);
+                            }
+                            String tempName = activityName.toLowerCase();
+                            String pinyin = PinyinHelper.toPinyin(tempName, PinyinStyleEnum.FIRST_LETTER, StringUtil.EMPTY);
+                            activityList.add(new ActivityBean(activityName, pinyin.substring(0, 1), pinyin, c));
                         }
                     } catch (Exception e) {
                         LogUtil.showD(TAG, "Class Not Found:" + e.getMessage());
-                        LogUtil.showD(TAG, "Class Not Found:" + ai.name);
                     }
                 }
-                LogUtil.showD(TAG, "Return " + returnClassList.size() + " activity," + Arrays.toString(returnClassList.toArray()));
             }
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        return returnClassList;
+        return activityList;
     }
 
 }
