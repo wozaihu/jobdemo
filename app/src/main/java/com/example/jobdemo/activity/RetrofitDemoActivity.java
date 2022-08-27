@@ -70,7 +70,7 @@ public class RetrofitDemoActivity extends BaseActivity {
      */
     private void getPicture() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASEPICTUREURL)
+                .baseUrl(Api.BASE_PICTURE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);

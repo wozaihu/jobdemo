@@ -122,4 +122,9 @@
     <string name="companyDetails">企业详情</string>
     <string name="companyType">公司类型</string>
     <string name="fold">折叠</string>
+    <string name="showDialog">显示dialog</string>
+    <string name="showCircleDialog">圆角dialog</string>
+    <string name="showDefaultTip">显示默认文字</string>
+    <string name="changeDefaultTip">修改默认提示文字</string>
+    <string name="changeTip">DialogDemo修改了默认文字</string>
 </resources>

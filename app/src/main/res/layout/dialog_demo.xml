@@ -6,16 +6,22 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_show_dialog_fragment"
+        android:id="@+id/tv_show_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="显示直接返回的dialog" />
+        android:text="@string/showDialog" />
 
     <TextView
-        android:id="@+id/tv_show_dialog_fragment2"
+        android:id="@+id/tv_circle_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="圆角dialog" />
+        android:text="@string/showCircleDialog" />
+    <TextView
+        android:id="@+id/tv_change_default_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/changeDefaultTip" />
 </LinearLayout>

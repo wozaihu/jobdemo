@@ -46,11 +46,19 @@
         android:layout_alignTop="@+id/btnShowCellphoneIP"
         android:layout_toEndOf="@+id/btnShowCellphoneIP"
         android:text="@string/openCellphoneNetworkSetting" />
+
+    <Button
+        android:id="@+id/btnShowDefaultTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnOpenNetworkSetting"
+        android:text="@string/showDefaultTip" />
+
     <ImageView
         android:id="@+id/img4"
-        android:layout_above="@+id/img1"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_above="@+id/img1"
         android:layout_centerInParent="true" />
 
     <ImageView
@@ -66,6 +74,7 @@
         android:layout_below="@+id/img1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />
+
     <ImageView
         android:id="@+id/img3"
         android:layout_width="80dp"

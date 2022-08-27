@@ -20,7 +20,7 @@ public enum MyRetrofitUtil {
 
     private MyRetrofitUtil() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASEPICTUREURL)
+                .baseUrl(Api.BASE_PICTURE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
