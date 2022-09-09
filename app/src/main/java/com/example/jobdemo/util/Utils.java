@@ -4,26 +4,28 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.WindowManager;
 
 import java.lang.ref.WeakReference;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-public enum Utils {
-    /**
-     * 工具类
-     */
-    INSTANCE;
+/**
+ * @author Administrator
+ */
+public class Utils {
 
     /**
      * 程序是否在前台运行
      *
      * @return 是否在前台运行
      */
-    public boolean isAppOnForeground(Context context) {
+    public static boolean isAppOnForeground(Context context) {
         // Returns a list of application processes that are running on the device
         ActivityManager activityManager = (ActivityManager) context.getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
         String packageName = context.getApplicationContext().getPackageName();
@@ -40,7 +42,7 @@ public enum Utils {
         return false;
     }
 
-    public void setImmersion(WeakReference<Activity> contextWeakReference) {
+    public static void setImmersion(WeakReference<Activity> contextWeakReference) {
         Activity activity = contextWeakReference.get();
         //沉浸式效果
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -69,4 +71,37 @@ public enum Utils {
     public static boolean isUpdate() {
         return false;
     }
+
+    /**
+     * @return 获得手机信息，返回字符串
+     */
+    public static String getPhoneInfo(Context context) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("手机定制商：").append(Build.BRAND);
+        builder.append("\n手机型号：").append(Build.MODEL);
+        builder.append("\nAndroid版本：").append(Build.VERSION.RELEASE);
+        builder.append("\nAndroid版本数字号：").append(Build.VERSION.SDK_INT);
+        builder.append("\n主板：").append(Build.BOARD);
+        builder.append("\ncpu指令集：").append(Arrays.toString(Build.SUPPORTED_ABIS));
+        builder.append("\n设备参数：").append(Build.DEVICE);
+        builder.append("\n显示屏参数：").append(Build.DISPLAY);
+        builder.append("\n硬件名称：").append(Build.FINGERPRINT);
+        builder.append("\n硬件制造商：").append(Build.MANUFACTURER);
+        builder.append("\n手机制造商：").append(Build.PRODUCT);
+        builder.append("\nbuilder类型：").append(Build.TYPE);
+        String packageName = context.getApplicationContext().getPackageName();
+        try {
+            PackageInfo packageInfo = context.getApplicationContext().getPackageManager().getPackageInfo(packageName, 0);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                builder.append("\n项目版本：").append(packageInfo.getLongVersionCode());
+            } else {
+                builder.append("\n项目版本：").append(packageInfo.versionCode);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return builder.toString();
+    }
+
+
 }

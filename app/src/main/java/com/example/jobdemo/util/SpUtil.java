@@ -13,7 +13,7 @@ import com.google.gson.Gson;
  *
  * @author xiaanming
  */
-public class SPUtil {
+public class SpUtil {
 
     /**
      * 保存在手机里面的文件名
@@ -23,16 +23,20 @@ public class SPUtil {
     private static SharedPreferences sp;
     private static Gson gson;
 
-    private void SPUtil() {}
+    private void SPUtil() {
+    }
 
-    public static SPUtil getInstance() {
-        return SingleOnHolder.spUtil;
+    public static SpUtil getInstance() {
+        return SingleOnHolder.SP_UTIL;
     }
 
     private static class SingleOnHolder {
-        private static final SPUtil spUtil = new SPUtil();
+        private static final SpUtil SP_UTIL = new SpUtil();
     }
 
+    /**
+     * @param context 在application中初始化，这样在没有context的类中也能使用
+     */
     public static void init(Context context) {
         sp = context.getApplicationContext().getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
         editor = sp.edit();

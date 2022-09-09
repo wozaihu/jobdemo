@@ -127,4 +127,5 @@
     <string name="showDefaultTip">显示默认文字</string>
     <string name="changeDefaultTip">修改默认提示文字</string>
     <string name="changeTip">DialogDemo修改了默认文字</string>
+    <string name="skipAd">跳过</string>
 </resources>

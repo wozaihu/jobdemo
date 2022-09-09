@@ -33,6 +33,7 @@
         android:theme="@style/JobDemoAppTheme"
         tools:replace="android:theme"
         tools:targetApi="q">
+
         <!-- 如果您项目中的所有页面都只需要以高或宽中的一个作为基准进行适配的话, 那就只需要填写高或宽中的一个设计图尺寸即可 -->
         <meta-data
             android:name="design_width_in_dp"
@@ -58,15 +59,15 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider>
-        <!-- 腾讯X5初始化优化 -->
+        </provider> <!-- 腾讯X5初始化优化 -->
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
             android:label="dexopt"
             android:process=":dexopt" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".LaunchActivity"
+            android:theme="@style/DjtStyle"
             android:description="@string/exclude">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -75,6 +76,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:description="@string/exclude" />
+
         <activity
             android:name=".notification.SendNotification"
             android:label="@string/activity_send_notify" />
@@ -108,9 +114,7 @@
         <activity
             android:name=".activity.GreenDaoUse"
             android:exported="false" />
-        <activity
-            android:name=".activity.InfoShow"
-            android:theme="@style/otherPageStyle">
+        <activity android:name=".activity.InfoShow">
             <intent-filter android:icon="@mipmap/forwarding_wechat">
                 <action android:name="com.example.jobdemo.INFOSHOW" />
 
@@ -162,6 +166,7 @@
         <activity
             android:name=".activity.CompanyDetailsDemo"
             android:theme="@style/DjtStyle" />
+        <activity android:name=".activity.ShowCellPhoneInfo" />
     </application>
 
 </manifest>

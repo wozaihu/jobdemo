@@ -7,15 +7,15 @@ buildscript {
         maven {url 'https://maven.aliyun.com/repository/central'}
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven {
-            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+            url 'https://maven.aliyun.com/nexus/content/repositories/releases/'
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
+        classpath 'com.android.tools.build:gradle:7.2.2'
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.1'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10'
         classpath 'me.tatarka:gradle-retrolambda:3.2.5' // 添加的这行
-        classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.3.1'
+        classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.4.1'
         classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -28,9 +28,9 @@ allprojects {
         mavenCentral()
         maven {url 'https://maven.aliyun.com/repository/central'}
         maven { url "https://jitpack.io" }
-        maven { url "http://maven.rongcloud.cn/repository/maven-releases/" }
+        maven { url "https://maven.rongcloud.cn/repository/maven-releases/" }
         maven { url 'https://maven.aliyun.com/repository/google' }
-        maven {url 'http://maven.aliyun.com/nexus/content/repositories/releases/'}
+        maven {url 'https://maven.aliyun.com/nexus/content/repositories/releases/'}
         maven { url "https://plugins.gradle.org/m2/"}
     }
 }

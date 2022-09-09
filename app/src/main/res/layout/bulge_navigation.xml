@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -9,7 +10,39 @@
         android:layout_gravity="bottom"，控制突破方向，设为底部表示底部对齐，
         凸出来的向上凸出，不设置默认向下
     -->
+    <com.nex3z.flowlayout.FlowLayout
+        android:id="@+id/flowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomNavigation"
+        android:padding="10dp"
+        app:flChildSpacing="5dp">
+
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/stv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="@string/addNullName"
+            android:textColor="@color/white"
+            app:stv_corner="5dp"
+            app:stv_solid="@color/orange" />
+
+        <Button
+            android:id="@+id/btn_2"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/orange"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="@string/alter"
+            android:textColor="@color/white" />
+    </com.nex3z.flowlayout.FlowLayout>
+
     <LinearLayout
+        android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="49dp"
         android:layout_alignParentBottom="true"
@@ -83,4 +116,5 @@
                 android:src="@mipmap/ic_launcher" />
         </RelativeLayout>
     </LinearLayout>
+
 </RelativeLayout>

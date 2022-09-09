@@ -15,7 +15,7 @@ import com.example.jobdemo.base.AppDataBase;
 import com.example.jobdemo.database.DaoMaster;
 import com.example.jobdemo.database.DaoSession;
 import com.example.jobdemo.util.ProcessUtil;
-import com.example.jobdemo.util.SPUtil;
+import com.example.jobdemo.util.SpUtil;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.export.external.TbsCoreSettings;
 import com.tencent.smtt.sdk.QbSdk;
@@ -51,7 +51,7 @@ public class MyApplication extends Application {
      *
      */
     private void init() {
-        SPUtil.init(this);
+        SpUtil.init(this);
         MultiDex.install(this);
         AppDataBase.init(this);
         UMConfigure.setLogEnabled(true);

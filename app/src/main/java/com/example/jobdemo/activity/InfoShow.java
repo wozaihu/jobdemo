@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -68,9 +67,6 @@ public class InfoShow extends DjtActivity {
         tvSha1.setText(AppInfoUtils.sHA1(this));
         tvMd5.setText("包名: " + getPackageName());
         Log.d(TAG, "包名: " + getPackageName());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().getNavigationBarColor();
-        }
         pointDate();
     }
 

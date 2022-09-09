@@ -21,7 +21,7 @@ import com.example.jobdemo.bean.PictureBean;
 import com.example.jobdemo.constants.Api;
 import com.example.jobdemo.util.LogUtil;
 import com.example.jobdemo.util.MyRetrofitUtil;
-import com.example.jobdemo.util.SPUtil;
+import com.example.jobdemo.util.SpUtil;
 import com.example.jobdemo.util.ToastUtils;
 import com.example.jobdemo.view.LineGridView;
 import com.google.gson.Gson;
@@ -96,7 +96,7 @@ public class RetrofitDemoActivity extends BaseActivity {
      * @return 获取保存的图片集合
      */
     private List<PictureBean> getListPictureBean(String paramName) {
-        String pictureStr = (String) SPUtil.getInstance().getParam(paramName, "");
+        String pictureStr = (String) SpUtil.getInstance().getParam(paramName, "");
         if (TextUtils.isEmpty(pictureStr)) {
             return null;
         }
@@ -115,28 +115,25 @@ public class RetrofitDemoActivity extends BaseActivity {
             pictureBeanList = new ArrayList<>();
         }
         pictureBeanList.add(bean);
-        SPUtil.getInstance().setObjectToString(paramName, pictureBeanList);
+        SpUtil.getInstance().setObjectToString(paramName, pictureBeanList);
     }
 
     @OnClick({R.id.btn_addPicture, R.id.btn_getCachePicture, R.id.btn_cycleInternetGetPicture})
     public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_addPicture:
-                getPicture();
-                break;
-            case R.id.btn_getCachePicture:
-                List<PictureBean> bean = getListPictureBean("pictureList");
-                if (bean != null) {
-                    beanList.clear();
-                    beanList.addAll(bean);
-                    gvAdapter.notifyDataSetChanged();
-                } else {
-                    ToastUtils.shortToast(this,"没有缓存的图片");
-                }
-                break;
-            case R.id.btn_cycleInternetGetPicture:
-                cycleGetPicture();
-                break;
+        int id = view.getId();
+        if (id == R.id.btn_addPicture) {
+            getPicture();
+        } else if (id == R.id.btn_getCachePicture) {
+            List<PictureBean> bean = getListPictureBean("pictureList");
+            if (bean != null) {
+                beanList.clear();
+                beanList.addAll(bean);
+                gvAdapter.notifyDataSetChanged();
+            } else {
+                ToastUtils.shortToast(this, "没有缓存的图片");
+            }
+        } else if (id == R.id.btn_cycleInternetGetPicture) {
+            cycleGetPicture();
         }
     }
 

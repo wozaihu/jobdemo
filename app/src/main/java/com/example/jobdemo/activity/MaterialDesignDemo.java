@@ -23,7 +23,7 @@ import com.example.jobdemo.adapter.MaterialDesignAdapter;
 import com.example.jobdemo.bean.PictureBean;
 import com.example.jobdemo.databinding.MaterialdesignBinding;
 import com.example.jobdemo.util.MyRetrofitUtil;
-import com.example.jobdemo.util.SPUtil;
+import com.example.jobdemo.util.SpUtil;
 import com.example.jobdemo.util.ToastUtils;
 import com.example.jobdemo.widget.GridSpaceItemDecoration;
 import com.google.android.material.navigation.NavigationView;
@@ -200,7 +200,7 @@ public class MaterialDesignDemo extends AppCompatActivity implements NavigationV
      * @return 获取保存的图片集合
      */
     private List<PictureBean> getListPictureBean(String paramName) {
-        String pictureStr = (String) SPUtil.getInstance().getParam(paramName, "");
+        String pictureStr = (String) SpUtil.getInstance().getParam(paramName, "");
         if (TextUtils.isEmpty(pictureStr)) {
             return null;
         }
@@ -219,6 +219,6 @@ public class MaterialDesignDemo extends AppCompatActivity implements NavigationV
             pictureBeanList = new ArrayList<>();
         }
         pictureBeanList.add(bean);
-        SPUtil.getInstance().setObjectToString(paramName, pictureBeanList);
+        SpUtil.getInstance().setObjectToString(paramName, pictureBeanList);
     }
 }

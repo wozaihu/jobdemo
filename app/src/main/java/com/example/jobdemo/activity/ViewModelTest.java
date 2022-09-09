@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.jobdemo.R;
@@ -29,12 +28,7 @@ public class ViewModelTest extends BaseActivity implements View.OnClickListener 
         setContentView(binding.getRoot());
         TimerViewModel model = new ViewModelProvider(this).get(TimerViewModel.class);
         liveData = model.getCurrentSecond();
-        liveData.observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                binding.tvShowTime.setText("倒计时：" + integer);
-            }
-        });
+        liveData.observe(this, integer -> binding.tvShowTime.setText("倒计时：" + integer));
         model.startTiming();
 
     }
