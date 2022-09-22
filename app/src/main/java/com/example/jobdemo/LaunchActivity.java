@@ -8,6 +8,10 @@ import android.view.LayoutInflater;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jobdemo.databinding.ActivityLaunchBinding;
+import com.example.jobdemo.service.MyIntentService;
+import com.example.jobdemo.util.LogUtil;
+
+import java.util.concurrent.Executors;
 
 /**
  * @author Administrator
@@ -21,6 +25,7 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityLaunchBinding binding = ActivityLaunchBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
+        MyIntentService.startActionFoo(this, "hello", "hi");
         downTimer = new CountDownTimer(3000, 1000) {
             @SuppressLint("SetTextI18n")
             @Override
@@ -40,6 +45,15 @@ public class LaunchActivity extends AppCompatActivity {
             finish();
         });
         downTimer.start();
+
+        begin();
+
+    }
+
+    private void begin() {
+        Executors.newFixedThreadPool(10).execute(() ->
+                LogUtil.showD("版本检测", "LaunchActivity----begin开启")
+        );
     }
 
     @Override
@@ -48,5 +62,6 @@ public class LaunchActivity extends AppCompatActivity {
         if (downTimer != null) {
             downTimer.cancel();
         }
+        LogUtil.showD("版本检测", "LaunchActivity----onDestroy");
     }
 }

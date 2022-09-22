@@ -1,8 +1,6 @@
 package com.example.jobdemo.kotlin_code
 
-import com.example.jobdemo.kotlin_code.bean.KTPerson
 import com.example.jobdemo.kotlin_code.bean.KTStudent
-import kotlin.concurrent.thread
 import kotlin.math.max
 
 fun main() {

@@ -206,7 +206,8 @@
 #
 #百度地图混淆
 -keep class com.baidu.** {*;}
--keep class mapsdkvi.com.** {*;}
+-keep class vi.com.** {*;}
+-keep class com.baidu.vi.** {*;}
 -dontwarn com.baidu.**
 
 

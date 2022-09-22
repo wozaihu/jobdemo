@@ -5,22 +5,22 @@ apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 32
     defaultConfig {
         applicationId "com.example.jobdemo"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
-            abiFilters "armeabi", 'x86'
+            abiFilters "armeabi", "x86", "arm64-v8a"
         }
         //阿里路由框架配置
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName(),"room.schemaLocation":
+                arguments = [AROUTER_MODULE_NAME: project.getName(), "room.schemaLocation":
                         "$projectDir/schemas".toString()]
             }
         }
@@ -28,7 +28,13 @@ android {
     }
 
     signingConfigs {
-        app_official {
+        release {
+            storeFile file('C:\\Users\\Administrator\\.android\\debug.keystore')
+            storePassword 'android'
+            keyPassword 'android'
+            keyAlias 'androiddebugkey'
+        }
+        debug {
             storeFile file('C:\\Users\\Administrator\\.android\\debug.keystore')
             storePassword 'android'
             keyPassword 'android'
@@ -43,13 +49,13 @@ android {
             minifyEnabled true      //打开混淆
             shrinkResources true    //打开资源压缩
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            manifestPlaceholders = [label: "jobdemo正式版"]
+            manifestPlaceholders = [label: "jobdemo正式版", channel: "default"]
 //            signingConfig signingConfigs.config     //配置前面文件
         }
         debug {
             buildConfigField "String", "BUILD_TYPE999", '"debug"'
 //            applicationIdSuffix '.debug'
-            manifestPlaceholders = [label: "jobdemo调试版"]
+            manifestPlaceholders = [label: "jobdemo调试版", channel: "default"]
         }
     }
 
@@ -69,29 +75,6 @@ android {
         }
     }
 
-    //多渠道打包配置
-    flavorDimensions "default"
-    productFlavors {
-        //渠道包
-        app_official {
-            manifestPlaceholders = [app_name: "默认包", channel: "app_official"]
-        }
-        app_360 {
-            manifestPlaceholders = [app_name: "360渠道包", channel: "app_360"]
-        }
-        app_qq {
-            manifestPlaceholders = [app_name: "腾讯应用宝", channel: "app_qq"]
-        }
-    }
-
-    variantFilter { variant ->
-        def names = variant.flavors*.name
-        // To check for a build type instead, use variant.buildType.name == "buildType"
-        if (names.contains("app_qq") || names.contains("app_360")) {
-            // Gradle ignores any variants that satisfy the conditions above.
-            setIgnore(true)
-        }
-    }
 
     buildFeatures {
         dataBinding = true
@@ -112,7 +95,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.annotation:annotation:1.2.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.mediarouter:mediarouter:1.2.4'
@@ -206,7 +189,7 @@ dependencies {
     implementation 'cn.rongcloud.sdk:call_lib:5.1.9' // 音视频呼叫能力库（内含 rtc_lib)
     implementation 'cn.rongcloud.sdk:call_kit:5.1.9' // 音视频通话能力 UI 组件
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
     api 'com.tencent.tbs:tbssdk:44136'
     /*屏幕适配库*/
     implementation 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
