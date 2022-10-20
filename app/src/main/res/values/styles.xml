@@ -98,4 +98,15 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="BottomDialogStyle" parent="@android:style/Theme.Dialog">
+        <!-- Dialog进入及退出动画 -->
+        <item name="android:windowAnimationStyle">@style/DialogPopupStyle</item>
+    </style>
+
+    <style name="DialogPopupStyle" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/show_up</item>
+        <item name="android:windowExitAnimation">@anim/dismiss_down</item>
+    </style>
+
+
 </resources>

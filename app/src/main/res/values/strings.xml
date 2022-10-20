@@ -117,15 +117,26 @@
     <string name="userId">用户id：</string>
     <string name="userName">用户姓名：</string>
     <string name="userAge">用户年龄：</string>
-    <string name="toolText">立足当下，想做的事现在就去做，不要总想着具备了什么条件在开始行动，先做能做的。很多事都是立足于一个基础之上，所以这个基础一定要重视，不能因为别的事或人而影响到增强它，在难都要坚持下去，这样才能避免以后感慨“如果坚持下来，我已经会了”的局面。</string>
+    <string name="toolText">你知道怎么做才是好的</string>
     <string name="back">返回</string>
     <string name="companyDetails">企业详情</string>
     <string name="companyType">公司类型</string>
     <string name="fold">折叠</string>
     <string name="showDialog">显示dialog</string>
     <string name="showCircleDialog">圆角dialog</string>
+    <string name="show_bottom_dialog">底部弹出dialog</string>
     <string name="showDefaultTip">显示默认文字</string>
     <string name="changeDefaultTip">修改默认提示文字</string>
     <string name="changeTip">DialogDemo修改了默认文字</string>
     <string name="skipAd">跳过</string>
+    <string name="start_baidu_map">通过经纬度调起百度地图</string>
+    <string name="start_gaode_map">通过经纬度调起高德地图</string>
+    <string name="start_tencent_map">通过经纬度调起腾讯地图</string>
+    <string name="start_baidu_by_address">通过地址调起百度地图</string>
+    <string name="start_gaode_by_address">通过地址调起高德地图</string>
+    <string name="start_tencent_by_address">通过地址调起腾讯地图</string>
+    <string name="look_address">查看地址</string>
+    <string name="get_address_code">获取地理编码</string>
+    <string name="api_get_address_code">商用api取地理编码</string>
+    <string name="please_enter_address">请输入地址</string>
 </resources>

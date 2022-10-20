@@ -49,7 +49,10 @@ public class LogUtil {
         }
     }
 
-    public static void showD(String content) {
+    public static void
+
+
+    showD(String content) {
         if (open) {
             Log.d(TAG, content);
         }
@@ -85,7 +88,7 @@ public class LogUtil {
      * @param TAG
      * @param obj
      */
-    public static  void showList(String TAG, Object obj) {
+    public static void showList(String TAG, Object obj) {
         if (open) {
             if (obj instanceof Map) {
                 Map<Object, Object> map = (Map) obj;
@@ -114,6 +117,21 @@ public class LogUtil {
             }
         }
     }
+
+    /**
+     * 打印数组或集合
+     *
+     * @param TAG
+     * @param array
+     */
+    public static void showArray(String TAG, double[] array) {
+        if (open) {
+            for (int i = 0; i < array.length; i++) {
+                Log.d(TAG, "第<" + i + ">个元素====" + array[i]);
+            }
+        }
+    }
+
     /**
      * 打印数组或集合
      *

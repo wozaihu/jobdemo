@@ -215,6 +215,9 @@ dependencies {
 
     /*文字转拼音*/
     implementation 'com.github.houbb:pinyin:0.3.1'
+
+    /*网络请求库*/
+    implementation 'com.lzy.net:okgo:3.0.4'
 }
 repositories {
     mavenCentral()

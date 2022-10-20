@@ -120,23 +120,20 @@ public class InfoShow extends DjtActivity {
         int month = calendar.get(Calendar.MONTH) + 1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         tvCurrentTime.setText("Calendar获取当前日期" + year + "年" + month + "月" + day + "日");
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL("https://www.baidu.cn");//取得资源对象
-                    URLConnection uc = url.openConnection();//生成连接对象
-                    uc.connect(); //发出连接
-                    long ld = uc.getDate(); //取得网站日期时间
-                    Date date = new Date(ld); //转换为标准时间对象
-                    Calendar calendar1 = Calendar.getInstance();
-                    calendar1.setTime(date);
-                    //分别取得时间中的小时，分钟和秒，并输出
-                    Log.d(TAG, calendar1.get(Calendar.YEAR) + "年" + (calendar1.get(Calendar.MONTH) + 1) + "月" + calendar1.get(Calendar.DAY_OF_MONTH) + "日");
-                    Log.d(TAG, calendar1.get(Calendar.HOUR) + "时" + calendar1.get(Calendar.MINUTE) + "分" + calendar1.get(Calendar.SECOND) + "秒");
-                } catch (Exception e) {
-                    Log.d(TAG, "getCurrentTime: 获取网络时间异常" + e.getMessage());
-                }
+        new Thread(() -> {
+            try {
+                URL url = new URL("https://www.baidu.cn");//取得资源对象
+                URLConnection uc = url.openConnection();//生成连接对象
+                uc.connect(); //发出连接
+                long ld = uc.getDate(); //取得网站日期时间
+                Date date = new Date(ld); //转换为标准时间对象
+                Calendar calendar1 = Calendar.getInstance();
+                calendar1.setTime(date);
+                //分别取得时间中的小时，分钟和秒，并输出
+                Log.d(TAG, calendar1.get(Calendar.YEAR) + "年" + (calendar1.get(Calendar.MONTH) + 1) + "月" + calendar1.get(Calendar.DAY_OF_MONTH) + "日");
+                Log.d(TAG, calendar1.get(Calendar.HOUR) + "时" + calendar1.get(Calendar.MINUTE) + "分" + calendar1.get(Calendar.SECOND) + "秒");
+            } catch (Exception e) {
+                Log.d(TAG, "getCurrentTime: 获取网络时间异常" + e.getMessage());
             }
         }).start();
 

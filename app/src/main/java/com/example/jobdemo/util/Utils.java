@@ -104,4 +104,23 @@ public class Utils {
     }
 
 
+    /**
+     * 检测应用是否安装，Android11开始需要在清单文件中添加包名，不然需要android.permission.QUERY_ALL_PACKAGES权限
+     *
+     * @return
+     */
+    public static boolean checkAppsIsExist(Context context, String packageName) {
+        PackageInfo packageInfo;
+        try {
+            packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
+        } catch (Exception e) {
+            packageInfo = null;
+            e.printStackTrace();
+        }
+        if (packageInfo == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

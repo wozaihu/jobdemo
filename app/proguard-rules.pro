@@ -262,3 +262,11 @@ public static java.lang.String TABLENAME;
 # If you do NOT use RxJava:
 -dontwarn rx.**
 #greendao end
+
+#okhttp
+-dontwarn okhttp3.**
+-keep class okhttp3.**{*;}
+
+#okio
+-dontwarn okio.**
+-keep class okio.**{*;}

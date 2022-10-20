@@ -3,6 +3,8 @@ package com.example.jobdemo.baidu_map;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
@@ -15,8 +17,6 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.example.jobdemo.base.BaseActivity;
-
-import androidx.annotation.Nullable;
 
 public class BaiduMapDemo extends BaseActivity {
     private static final String TAG = "BaiduMapDemo";
@@ -137,7 +137,7 @@ public class BaiduMapDemo extends BaseActivity {
             baiduMap.setMyLocationData(locData);
             baiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
             setContentView(mapView);
-            Log.d(TAG, "纬度信息== " + latitude + "-------经度信息==" + longitude);
+            Log.d("定位的", "百度纬度信息== " + latitude + "-------百度经度信息==" + longitude);
 
             //设定bai中心点坐标
             LatLng cenpt = new LatLng(latitude, longitude);

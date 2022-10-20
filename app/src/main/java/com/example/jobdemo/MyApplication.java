@@ -16,6 +16,7 @@ import com.example.jobdemo.database.DaoMaster;
 import com.example.jobdemo.database.DaoSession;
 import com.example.jobdemo.util.ProcessUtil;
 import com.example.jobdemo.util.SpUtil;
+import com.lzy.okgo.OkGo;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.export.external.TbsCoreSettings;
 import com.tencent.smtt.sdk.QbSdk;
@@ -41,6 +42,8 @@ public class MyApplication extends Application {
         // 获取当前进程名
         String processName = ProcessUtil.getCurProcessName(getApplicationContext());
         Log.d("初始化", "进程名: " + processName);
+        // 初始化Okgo
+        OkGo.getInstance().init(this);
         //主进程
         if (packageName.equals(processName)) {
             init();

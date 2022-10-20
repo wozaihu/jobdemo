@@ -9,6 +9,8 @@ import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.constants.Api;
 import com.example.jobdemo.databinding.DialogDemoBinding;
+import com.example.jobdemo.dialog.MapDialog;
+import com.example.jobdemo.dialog.UpdateDialog;
 import com.example.jobdemo.dialog.VerificationDialogFragment;
 
 /**
@@ -23,6 +25,14 @@ public class DialogDemo extends BaseActivity {
         setContentView(binding.getRoot());
         binding.tvShowDialog.setOnClickListener(v ->
                 new VerificationDialogFragment().show(getSupportFragmentManager(), ""));
-        binding.tvChangeDefaultTip.setOnClickListener(v-> Api.DEFAULT_TIP_STRING=getString( R.string.changeTip));
+        binding.tvChangeDefaultTip.setOnClickListener(v -> Api.DEFAULT_TIP_STRING = getString(R.string.changeTip));
+
+        binding.btnBottomDialog.setOnClickListener(v -> {
+            new UpdateDialog().show(getSupportFragmentManager(), "");
+        });
+
+        binding.btnBottomDialog.setOnClickListener(v ->
+                new MapDialog().show(getSupportFragmentManager(), "")
+        );
     }
 }

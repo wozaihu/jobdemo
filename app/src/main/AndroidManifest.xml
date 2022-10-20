@@ -18,12 +18,30 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <uses-permission android:name="android.permission.RECORD_VIDEO" />
-    <!-- 地图截屏图片保存等 -->
+    <uses-permission android:name="android.permission.RECORD_VIDEO" /> <!-- 地图截屏图片保存等 -->
     <uses-permission android:name="android.permission.READ_MEDIA_PERMISSION" />
     <uses-permission
         android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
+    <queries>
+
+        <!-- 指定微信包名 -->
+        <package android:name="com.tencent.mm" />
+        <!-- 指定qq包名 -->
+        <package android:name="com.tencent.mobileqq" />
+        <!-- 指定微博包名 -->
+        <package android:name="com.sina.weibo" />
+        <!-- 指定QQ空间包名 -->
+        <package android:name="com.qzone" />
+        <!-- 指定支付宝包名 -->
+        <package android:name="com.eg.android.AlipayGphone" />
+        <!-- 指定百度地图包名 -->
+        <package android:name="com.baidu.BaiduMap" />
+        <!-- 指定高德地图包名 -->
+        <package android:name="com.autonavi.minimap" />
+        <!-- 指定腾讯地图包名 -->
+        <package android:name="com.tencent.map" />
+    </queries>
 
     <application
         android:name=".MyApplication"
@@ -32,34 +50,28 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/JobDemoAppTheme"
         tools:replace="android:theme">
-
         <meta-data
             android:name="design_width_in_dp"
             android:value="375" />
-
         <meta-data
             android:name="com.lk.lbsapi.API_KEY"
             android:value="DE1663818689205877C32CBE4209C447288C629130111F1B2CYLCVFPFXRT2930" />
-
         <meta-data
             android:name="android.webkit.WebView.EnableSafeBrowsing"
-            android:value="true" />
-        <!-- 多渠道配置 -->
+            android:value="true" /> <!-- 多渠道配置 -->
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="${channel}" />
-        <!-- 百度地图 定位需要 -->
+            android:value="${channel}" /> <!-- 百度地图 定位需要 -->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote" />
-        <!-- 百度地图 key -->
+            android:process=":remote" /> <!-- 百度地图 key -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="UpGAvq5yhd89MZRcTpihc2mjKeR5ziDs" />
-        <!-- 文件内容提供者 -->
+            android:value="UpGAvq5yhd89MZRcTpihc2mjKeR5ziDs" /> <!-- 文件内容提供者 -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -68,15 +80,13 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider>
-        <!-- 腾讯X5初始化优化 -->
+        </provider> <!-- 腾讯X5初始化优化 -->
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
             android:label="dexopt"
             android:process=":dexopt" />
         <service android:name=".service.TestService" />
-        <service android:name=".service.MyIntentService" />
-        <!--   android12 兼容，需要显式指定 exported，融云为升级前在主manifest中复制一份报错的组件，添加exported    -->
+        <service android:name=".service.MyIntentService" /> <!-- android12 兼容，需要显式指定 exported，融云为升级前在主manifest中复制一份报错的组件，添加exported -->
         <!-- push 相关事件接收器 -->
         <receiver
             android:name="io.rong.push.rongpush.PushReceiver"
@@ -95,7 +105,6 @@
                 <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name="io.rong.callkit.VoIPBroadcastReceiver"
             android:exported="true">
@@ -105,17 +114,13 @@
                 <action android:name="action.push.voip.hangup.click" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name="io.rong.callkit.util.RTCPhoneStateReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
-        </receiver>
-
-        <!--android12 兼容 end-->
-
+        </receiver> <!-- android12 兼容 end -->
         <activity
             android:name=".LaunchActivity"
             android:description="@string/exclude"
@@ -220,6 +225,7 @@
             android:theme="@style/DjtStyle" />
         <activity android:name=".activity.ShowCellPhoneInfo" />
         <activity android:name=".activity.TestStatusBarUtils" />
+        <activity android:name=".activity.DefaultLocation" />
     </application>
 
 </manifest>

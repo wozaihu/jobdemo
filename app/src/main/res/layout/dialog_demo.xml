@@ -18,6 +18,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/showCircleDialog" />
+
+    <Button
+        android:id="@+id/btn_bottom_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/show_bottom_dialog"
+        android:textAllCaps="false" />
+
     <TextView
         android:id="@+id/tv_change_default_tip"
         android:layout_width="wrap_content"
