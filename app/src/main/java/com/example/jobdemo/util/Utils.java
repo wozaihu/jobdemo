@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.view.WindowManager;
 
@@ -121,6 +123,16 @@ public class Utils {
             return false;
         } else {
             return true;
+        }
+    }
+
+    public static void startAppStore(Context context, String apkPackageName) {
+        Uri uri = Uri.parse("market://details?id=" + apkPackageName);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        try {
+            context.startActivity(intent);
+        } catch (Exception e) {
+            //不是activity context
         }
     }
 }

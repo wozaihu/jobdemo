@@ -107,6 +107,8 @@ public class DefaultLocation extends AppCompatActivity {
                 double[] doubles = CoordinateTransformUtil.wgs84tobd09(location.getLongitude(), location.getLatitude());
                 LogUtil.showArray("network定位的location---", doubles);
                 Address address = convertAddress(this, location.getLongitude(), location.getLatitude());
+                LogUtil.showD("network定位附近地址数---" + address.getMaxAddressLineIndex());
+                LogUtil.showD("network定位附近地址0---" + address.getAddressLine(0));
                 LogUtil.showD("network定位的原生解析---" + address.toString());
                 StringBuilder mStringBuilder = new StringBuilder();
                 mStringBuilder.append(address.getAdminArea()).append(", ").append(address.getLocality()).append(", ").append(address.getCountryName());
@@ -195,8 +197,8 @@ public class DefaultLocation extends AppCompatActivity {
 
         binding.btnAipGetAddressCode.setOnClickListener(v -> {
             if (!TextUtils.isEmpty(binding.editAddress.getText().toString())) {
-                apiGetAddressCode();
-//                apiGetAddressCode2();
+//                apiGetAddressCode();
+                apiGetAddressCode2();
             }
         });
 

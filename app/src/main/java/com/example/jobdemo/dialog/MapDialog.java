@@ -13,6 +13,7 @@ import com.example.jobdemo.databinding.MapSelectLayoutBinding;
 public class MapDialog extends BottomDialog {
     @Override
     protected View createView(LayoutInflater inflater, ViewGroup container) {
+
         MapSelectLayoutBinding binding = MapSelectLayoutBinding.inflate(inflater);
         return binding.getRoot();
     }
