@@ -33,10 +33,15 @@ public class MyApplication extends Application {
     private DaoMaster daoMaster;
     private static DaoSession daoSession;
     private DaoMaster.DevOpenHelper devOpenHelper = null;
+    /**
+     * 这样再去取applicationContext
+     */
+    public static Application application;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        application = this;
         // 获取当前包名
         String packageName = getPackageName();
         // 获取当前进程名

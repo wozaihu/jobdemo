@@ -1,5 +1,6 @@
 package com.example.jobdemo.util;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -12,10 +13,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.view.WindowManager;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @author Administrator
@@ -64,10 +70,47 @@ public class Utils {
         //取出系统当前时间的年、月、日部分
         int yearNow = calendar.get(Calendar.YEAR);
         int monthNow = calendar.get(Calendar.MONTH) + 1;
-        String str_month = monthNow < 10 ? "0" + monthNow : "" + monthNow;
+        String strMonth = monthNow < 10 ? "0" + monthNow : "" + monthNow;
         int dayOfMonthNow = calendar.get(Calendar.DAY_OF_MONTH);
-        String str_day = dayOfMonthNow < 10 ? "0" + dayOfMonthNow : "" + dayOfMonthNow;
-        return yearNow + str_month + str_day;
+        String strDay = dayOfMonthNow < 10 ? "0" + dayOfMonthNow : "" + dayOfMonthNow;
+        return yearNow + strMonth + strDay;
+    }
+
+    /**
+     * @return 获得日期和时间
+     */
+    public static String getDateAndTime() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int second = calendar.get(Calendar.SECOND);
+        return "Calendar获取当前日期" + year + "年" + month + "月" + day + "日" + hour + ":" + minute + ":" + second;
+    }
+
+
+    /**
+     * @return 指定格式获得当前日期和时间
+     */
+    @SuppressLint("SimpleDateFormat")
+    public static String getDateAndTime(String timeFormat) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat);
+        Date date = new Date(System.currentTimeMillis());
+        return simpleDateFormat.format(date);
+    }
+
+
+    /**
+     * @param time       时间搓
+     * @param timeFormat 格式
+     * @return 字符窜
+     */
+    public static String getDateAndTime(Long time, String timeFormat) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat, Locale.CHINA);
+        Date date = new Date(time);
+        return simpleDateFormat.format(date);
     }
 
     public static boolean isUpdate() {
@@ -126,6 +169,11 @@ public class Utils {
         }
     }
 
+    /**
+     * @param context        上下文
+     * @param apkPackageName 包名
+     *                       指定包名，跳转到应用市场
+     */
     public static void startAppStore(Context context, String apkPackageName) {
         Uri uri = Uri.parse("market://details?id=" + apkPackageName);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -134,5 +182,11 @@ public class Utils {
         } catch (Exception e) {
             //不是activity context
         }
+    }
+
+
+    public static boolean getUserType(@Nullable Context context) {
+        // TODO: 2023/1/4 完善用户体系后，判断用户类型
+        return false;
     }
 }

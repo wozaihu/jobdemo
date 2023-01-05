@@ -27,10 +27,10 @@
 
     <com.example.jobdemo.view.SpinnerView
         android:id="@+id/spv_1"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_margin="20dp"
-        app:layout_constraintLeft_toLeftOf="@+id/btn_showDialog"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_showDialog"
         tools:ignore="MissingConstraints" />
 
@@ -53,4 +53,5 @@
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/btn_showSpinnerView"
         tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

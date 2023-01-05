@@ -20,4 +20,5 @@
     <color name="dode">#1E90FF</color>
     <color name="gray">#F3F3F3</color>
     <color name="chatBackground">#E9EFEF</color>
+    <color name="lightGray">#E4E4E4</color>
 </resources>

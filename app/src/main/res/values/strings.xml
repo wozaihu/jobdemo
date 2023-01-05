@@ -46,6 +46,9 @@
     <string name="deleteOrAlterHind">请输入要删除或修改的用户Id</string>
     <string name="default_count">默认数量</string>
     <string name="show_dialog">显示对话框</string>
+    <string name="show_fragment_dialog">FragmentDialog对话框</string>
+    <string name="show_bottom_sheet_dialog">BottomSheetFragmentDialog对话框</string>
+    <string name="dialog_demo">对话框demo</string>
     <string name="selector_client">请选择客户</string>
     <string name="setAdapter">设置适配器</string>
     <string name="really_size">真实的尺寸</string>
@@ -139,4 +142,6 @@
     <string name="get_address_code">获取地理编码</string>
     <string name="api_get_address_code">商用api取地理编码</string>
     <string name="please_enter_address">请输入地址</string>
+    <string name="Toast">Toast</string>
+    <string name="revamp">修改</string>
 </resources>

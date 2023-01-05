@@ -32,12 +32,8 @@ public class PopupWindowDemo extends BaseActivity {
 
     @OnClick({R.id.tv_show_popupwindow, R.id.tv_view_bottom_show_pop})
     public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.tv_show_popupwindow:
-                showpopupwindow();
-                break;
-            case R.id.tv_view_bottom_show_pop:
-                break;
+        if (view.getId() == R.id.tv_show_popupwindow) {
+            showpopupwindow();
         }
     }
 

@@ -1,108 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_sha1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/alto"
-        tools:text="sha1值" />
-
-    <TextView
-        android:id="@+id/tv_md5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        tools:text="MD5值" />
-
-    <TextView
-        android:id="@+id/tv_sha265"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        tools:text="sha256" />
-
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:orientation="vertical">
+        android:layout_height="?actionBarSize"
+        android:background="@mipmap/title_bar"
+        app:title="仿QQ状态栏和标题栏渐变色"
+        app:titleTextColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/tv_child"
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
-            android:background="@color/yellow"
-            android:text="@string/hi"
-            tools:text="sha256" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_getCurrentTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/getCurrentTime" />
-
-    <TextView
-        android:id="@+id/tv_CurrentTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" />
-
-    <Button
-        android:id="@+id/btn_branchThread"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/branchTreadShowToast" />
-
-    <Button
-        android:id="@+id/btn_show_dialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/show_dialog" />
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/selector_bg_edit" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/selector_bg_edit" />
+            <TextView
+                android:id="@+id/tv_sha1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/alto"
+                tools:text="sha1值" />
 
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/selector_bg_edit" />
+            <TextView
+                android:id="@+id/tv_md5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                tools:text="MD5值" />
 
-        <TextView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/selector_bg_edit" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_sha265"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                tools:text="sha256" />
 
-    <Button
-        android:id="@+id/close"
-        android:layout_marginTop="10dp"
-        android:text="@string/close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/tv_child"
+                    android:layout_width="wrap_content"
+                    android:layout_height="250dp"
+                    android:background="@color/yellow"
+                    android:text="@string/hi"
+                    tools:text="sha256" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_getCurrentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/getCurrentTime" />
+
+            <TextView
+                android:id="@+id/tv_CurrentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/tv_CurrentDateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/tv_byFormatCurrentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+            <Button
+                android:id="@+id/btn_branchThread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/branchTreadShowToast" />
+
+            <Button
+                android:id="@+id/btn_show_dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/show_dialog" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/selector_bg_edit" />
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/selector_bg_edit" />
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/selector_bg_edit" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/selector_bg_edit" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/close" />
+
+            <EditText
+                android:id="@+id/et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

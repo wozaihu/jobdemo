@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Display;
@@ -56,16 +57,15 @@ public class MeasureUtils {
      */
     public static int getScreenWidth(Context context) {
         WindowManager wm = (WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//            WindowMetrics windowMetrics = wm.getCurrentWindowMetrics();
-//            Insets insets = windowMetrics.getWindowInsets()
-//                    .getInsetsIgnoringVisibility(WindowInsets.Type.systemBars());
-//            return windowMetrics.getBounds().width() - insets.left - insets.right;
-//        } else {
-            DisplayMetrics displayMetrics = new DisplayMetrics();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            context.getDisplay();
+            return wm.getCurrentWindowMetrics().getBounds().width();
+        } else {
             wm.getDefaultDisplay().getMetrics(displayMetrics);
             return displayMetrics.widthPixels;
-//        }
+        }
     }
 
     /**

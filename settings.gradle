@@ -1,3 +1,4 @@
 include ':app'
 rootProject.name = 'JobDemo'
 include ':JavaTest'
+include ':mylibrary'

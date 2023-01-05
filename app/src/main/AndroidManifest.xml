@@ -23,6 +23,7 @@
     <uses-permission
         android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
+
     <queries>
 
         <!-- 指定微信包名 -->
@@ -50,9 +51,10 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/JobDemoAppTheme"
+        android:usesCleartextTraffic="true"
         tools:replace="android:theme">
+
         <meta-data
             android:name="design_width_in_dp"
             android:value="375" />
@@ -189,7 +191,9 @@
             android:name=".activity.FlowLayoutDemo"
             android:label="@string/activity_flow_layout" />
         <activity android:name=".activity.LayoutCreatePicture" />
-        <activity android:name=".activity.EditTextDemo" />
+        <activity android:name=".activity.EditTextDemo"
+            android:windowSoftInputMode="stateVisible"
+            />
         <activity android:name=".activity.MeasureView" />
         <activity android:name=".activity.RetrofitDemoActivity" />
         <activity android:name=".activity.RxjavaTiming" />
@@ -215,8 +219,10 @@
         <activity android:name=".activity.ResultApiUse" />
         <activity android:name=".testLeak.LotteryDemo" />
         <activity
-            android:name=".testLeak.AShowToast2"
-            android:launchMode="singleTop" />
+            android:name=".testLeak.ShowToast2"
+            android:launchMode="singleTop"
+            android:theme="@style/DjtStyle"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".activity.ExperienceActivity"
             android:theme="@style/DjtStyle" />
@@ -226,6 +232,12 @@
         <activity android:name=".activity.ShowCellPhoneInfo" />
         <activity android:name=".activity.TestStatusBarUtils" />
         <activity android:name=".activity.DefaultLocation" />
+        <activity android:name=".kotlin_code.activity.KtListViewDemo" />
+        <activity android:name=".kotlin_code.activity.KtRecycleViewDemo" />
+        <activity android:name=".activity.DatePickerAndTimePicker" />
+        <activity
+            android:name=".kotlin_code.activity.KtOftenSentence"
+            android:label="@string/dialog_demo" />
     </application>
 
 </manifest>

@@ -2,9 +2,9 @@ package com.example.jobdemo.activity;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -42,10 +42,11 @@ public class WidgetViewDemo extends BaseActivity implements SpinnerView.ItemClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widgetviewdemo);
         ButterKnife.bind(this);
-        spv1.setHint("提示文字");
+        spv1.setHint("请选择");
         spv1.setRootViewBackground(R.drawable.rectangle_bg);
         spv1.setIcon(R.drawable.selector_spinner);
-        for (int i = 1; i <= 7; i++) {
+        spv1.setWay(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+        for (int i = 1; i <= 15; i++) {
             if (i % 2 == 0) {
                 list.add(new TestBean(RandomNameUtil.randomName(true, 3), i, "女"));
             } else {
@@ -56,30 +57,24 @@ public class WidgetViewDemo extends BaseActivity implements SpinnerView.ItemClic
         listView = spv1.getListView();
         adapter = new SpinnerAdapter(this, list);
         spv1.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                list.get(position).setSelect(true);
-                spv1.setHint(list.get(position).getName());
-                if (spv1.getDefaultSelectorPosition() != -2 && spv1.getDefaultSelectorPosition() < list.size()) {
-                    list.get(spv1.getDefaultSelectorPosition()).setSelect(false);   //把上一个选中的取消
-                }
-                spv1.setDefaultSelectorPosition(position);
-                spv1.popupWindowDismiss();
-                adapter.notifyDataSetChanged();
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            list.get(position).setSelect(true);
+            spv1.setHint(list.get(position).getName());
+            if (spv1.getDefaultSelectorPosition() != -2 && spv1.getDefaultSelectorPosition() < list.size()) {
+                list.get(spv1.getDefaultSelectorPosition()).setSelect(false);   //把上一个选中的取消
             }
+            spv1.setDefaultSelectorPosition(position);
+            spv1.popupWindowDismiss();
+            adapter.notifyDataSetChanged();
         });
     }
 
     @OnClick({R.id.btn_showDialog, R.id.btn_showSpinnerView})
     public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_showDialog:
-                showDialog();
-                break;
-            case R.id.btn_showSpinnerView:
-
-                break;
+        int id = view.getId();
+        if (id == R.id.btn_showDialog) {
+            showDialog();
+        } else if (id == R.id.btn_showSpinnerView) {
         }
     }
 

@@ -5,6 +5,17 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="60dp"
+        android:gravity="center"
+        android:text="常用语"
+        android:textColor="@color/white"
+        android:theme="@style/Theme.MaterialComponents" />
+
     <ImageView
         android:id="@+id/iv_http"
         android:layout_width="match_parent"
@@ -28,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="获取网络图片" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_loop_picture"

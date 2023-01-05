@@ -13,7 +13,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -26,30 +25,34 @@ import androidx.core.content.ContextCompat;
 import com.example.jobdemo.R;
 import com.example.jobdemo.util.DensityUtil;
 
+/**
+ * @author Administrator
+ */
 public class SpinnerView extends RelativeLayout implements View.OnClickListener {
     private static final String TAG = "SpinnerView";
+    private static final int MINUS_TWO = -2;
 
-    private Context context;
+    private final Context context;
 
     /**
      * 提示文字
      */
-    private String hint = "";
+    private String hint;
 
     /**
      * 提示文字的颜色
      */
-    private int hint_color;
+    private int hintColor;
 
     /**
      * 提示的textView
      */
-    private TextView tv_hint;
+    private TextView tvHint;
 
     /**
      * 右侧图标imageView
      */
-    private ImageView img_icon;
+    private ImageView imgIcon;
 
     /**
      * 下拉列表数组
@@ -59,15 +62,15 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
     /**
      * 根布局background
      */
-    private int root_layout_background;
+    private int rootLayoutBackground;
 
     /**
      * 右侧图标资源
      */
-    private int SpinnerView_icon;
+    private int spinnerViewIcon;
     private BaseAdapter adapter;
     private PopupWindow popupWindow;
-    private ListView listView = new ListView(this.getContext());
+    private final ListView listView = new ListView(this.getContext());
 
 
     /**
@@ -94,12 +97,12 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
     /**
      * 提示文字的颜色
      */
-    private int itemSelectorTextColor;
+    private final int itemSelectorTextColor;
 
     /**
      * 是否开启选中item变文字颜色
      */
-    private boolean itemSelector;
+    private final boolean itemSelector;
 
     public ListView getListView() {
         return listView;
@@ -132,69 +135,68 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
         super(context, attrs, defStyleAttr);
         this.context = context;
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.SpinnerView, defStyleAttr, 0);
-        root_layout_background = typedArray.getResourceId(R.styleable.SpinnerView_root_layout_background, R.color.white);
+        rootLayoutBackground = typedArray.getResourceId(R.styleable.SpinnerView_root_layout_background, R.color.white);
         hint = typedArray.getString(R.styleable.SpinnerView_hint_text);
-        hint_color = typedArray.getColor(R.styleable.SpinnerView_hint_text_color, Color.BLACK);
+        hintColor = typedArray.getColor(R.styleable.SpinnerView_hint_text_color, Color.BLACK);
 
         itemSelectorTextColor = typedArray.getColor(R.styleable.SpinnerView_itemSelectorTextColor
-                , ContextCompat.getColor(context, R.color.colorAccent))
-        ;
+                , ContextCompat.getColor(context, R.color.colorAccent));
 
         itemSelector = typedArray.getBoolean(R.styleable.SpinnerView_itemSelector, false);
-        SpinnerView_icon = typedArray.getResourceId(R.styleable.SpinnerView_icon, 0);
+        spinnerViewIcon = typedArray.getResourceId(R.styleable.SpinnerView_icon, 0);
         itemArray = typedArray.getTextArray(R.styleable.SpinnerView_entries);
         typedArray.recycle();
         initView(context);
     }
 
     /**
-     * @param context
+     * @param context 上下文
      */
     private void initView(Context context) {
 
-        if (root_layout_background != 0) {
-            setBackgroundResource(root_layout_background);
+        if (rootLayoutBackground != 0) {
+            setBackgroundResource(rootLayoutBackground);
         }
         setOnClickListener(this);
 
         //先把控件加进去，再设置属性
-        tv_hint = new TextView(context);
-        tv_hint.setOnClickListener(this);
+        tvHint = new TextView(context);
+        tvHint.setOnClickListener(this);
         if (!TextUtils.isEmpty(hint)) {
-            tv_hint.setText(hint);
+            tvHint.setText(hint);
         }
-        addView(tv_hint);
+        addView(tvHint);
 
-        img_icon = new ImageView(context);
-        img_icon.setOnClickListener(this);
-        img_icon.setId(R.id.spinner_icon);
+        imgIcon = new ImageView(context);
+        imgIcon.setOnClickListener(this);
+        imgIcon.setId(R.id.spinner_icon);
 
-        RelativeLayout.LayoutParams params = (LayoutParams) tv_hint.getLayoutParams();
+        RelativeLayout.LayoutParams params = (LayoutParams) tvHint.getLayoutParams();
         params.width = LayoutParams.MATCH_PARENT;
         params.height = LayoutParams.MATCH_PARENT;
         params.addRule(RelativeLayout.CENTER_VERTICAL);
         params.addRule(RelativeLayout.LEFT_OF, R.id.spinner_icon);
-        params.setMargins(DensityUtil.dip2px(context,5), 0, DensityUtil.dip2px(context,5), 0);
-        tv_hint.setTextColor(hint_color);
-        tv_hint.setLines(1);
-        tv_hint.setEllipsize(TextUtils.TruncateAt.END);
-        tv_hint.setGravity(Gravity.CENTER_VERTICAL);
-        tv_hint.setLayoutParams(params);
+        params.setMargins(DensityUtil.dip2px(context, 5), 0, DensityUtil.dip2px(context, 5), 0);
+        tvHint.setTextColor(hintColor);
+        tvHint.setLines(1);
+        tvHint.setEllipsize(TextUtils.TruncateAt.END);
+        tvHint.setGravity(Gravity.CENTER_VERTICAL);
+        tvHint.setLayoutParams(params);
 
-        img_icon = new ImageView(context);
-        img_icon.setOnClickListener(this);
-        img_icon.setId(R.id.spinner_icon);
-        addView(img_icon);
-        RelativeLayout.LayoutParams imgIconLayoutParams = (LayoutParams) img_icon.getLayoutParams();
-        imgIconLayoutParams.height =DensityUtil.dip2px(context,15);
-        imgIconLayoutParams.width = DensityUtil.dip2px(context,15);
+        imgIcon = new ImageView(context);
+        imgIcon.setOnClickListener(this);
+        imgIcon.setId(R.id.spinner_icon);
+        addView(imgIcon);
+        RelativeLayout.LayoutParams imgIconLayoutParams = (LayoutParams) imgIcon.getLayoutParams();
+        imgIconLayoutParams.height = DensityUtil.dip2px(context, 15);
+        imgIconLayoutParams.width = DensityUtil.dip2px(context, 15);
         imgIconLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
         imgIconLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        imgIconLayoutParams.setMargins(0, 0, DensityUtil.dip2px(context,5), 0);
-        if (SpinnerView_icon != 0) {
-            img_icon.setImageResource(SpinnerView_icon);
+        imgIconLayoutParams.setMargins(0, 0, DensityUtil.dip2px(context, 5), 0);
+        if (spinnerViewIcon != 0) {
+            imgIcon.setImageResource(spinnerViewIcon);
         }
-        img_icon.setLayoutParams(imgIconLayoutParams);
+        imgIcon.setLayoutParams(imgIconLayoutParams);
 
     }
 
@@ -212,17 +214,14 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
         //传进来charSequence数组时使用默认的adapter
         if (adapter == null && itemArray != null) {
             adapter = new DefaultAdapter(itemArray, itemSelector);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    defaultSelectorPosition = position;
-                    adapter.notifyDataSetChanged();
-                    tv_hint.setText(itemArray[position]);
-                    if (itemClickBackCall != null) {
-                        itemClickBackCall.itemClick(position, tag);
-                    }
-                    popupWindow.dismiss();
+            listView.setOnItemClickListener((parent, view, position, id) -> {
+                defaultSelectorPosition = position;
+                adapter.notifyDataSetChanged();
+                tvHint.setText(itemArray[position]);
+                if (itemClickBackCall != null) {
+                    itemClickBackCall.itemClick(position, tag);
                 }
+                popupWindow.dismiss();
             });
         }
 
@@ -240,17 +239,12 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
         }
         Log.d(TAG, "listViewHeight== " + listView.getHeight());
 
-        if (defaultSelectorPosition != -2 && defaultSelectorPosition < listView.getCount()) {
+        if (defaultSelectorPosition != MINUS_TWO && defaultSelectorPosition < listView.getCount()) {
             listView.setSelection(defaultSelectorPosition);
         }
-        img_icon.setSelected(true);
-        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                img_icon.setSelected(false);
-            }
-        });
-        ShowPw(popupWindow, this, 0, 0);
+        imgIcon.setSelected(true);
+        popupWindow.setOnDismissListener(() -> imgIcon.setSelected(false));
+        showPw(popupWindow, this, 0, 0);
     }
 
     /**
@@ -258,28 +252,26 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
      *
      * @param pw     popupWindow
      * @param anchor v
-     * @param xoff   x轴偏移
-     * @param yoff   y轴偏移
+     * @param xOff   x轴偏移
+     * @param yOff   y轴偏移
      */
-    public static void ShowPw(final PopupWindow pw, final View anchor, final int xoff, final int yoff) {
-        if (Build.VERSION.SDK_INT >= 24) {
+    public static void showPw(final PopupWindow pw, final View anchor, final int xOff, final int yOff) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Rect visibleFrame = new Rect();
             anchor.getGlobalVisibleRect(visibleFrame);
             int height = anchor.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
             int min = Math.min(height, pw.getHeight());
             pw.setHeight(min);
-            pw.showAsDropDown(anchor, xoff, yoff);
-        } else {
-            pw.showAsDropDown(anchor, xoff, yoff);
         }
+        pw.showAsDropDown(anchor, xOff, yOff);
     }
 
     /**
      * @param drawable 设置背景图片资源
      */
     public void setRootViewBackground(int drawable) {
-        root_layout_background = drawable;
-        this.setBackgroundResource(root_layout_background);
+        rootLayoutBackground = drawable;
+        this.setBackgroundResource(rootLayoutBackground);
     }
 
     /**
@@ -287,24 +279,30 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
      */
     public void setHint(String str) {
         hint = str;
-        tv_hint.setText(hint);
+        tvHint.setText(hint);
     }
 
+    /**
+     * @param gravity 设置提示文字
+     */
+    public void setWay(int gravity) {
+        tvHint.setGravity(gravity);
+    }
 
     /**
      * @param tvColor 设置提示文字颜色
      */
-    public void setTv_hintColor(int tvColor) {
-        hint_color = tvColor;
-        tv_hint.setTextColor(hint_color);
+    public void setTvHintColor(int tvColor) {
+        hintColor = tvColor;
+        tvHint.setTextColor(hintColor);
     }
 
     /**
      * @param drawable 设置右侧图标，支持使用selectStatus的drawable，popupWindow显示时选中，dismiss时未选中
      */
     public void setIcon(int drawable) {
-        SpinnerView_icon = drawable;
-        img_icon.setImageResource(SpinnerView_icon);
+        spinnerViewIcon = drawable;
+        imgIcon.setImageResource(spinnerViewIcon);
     }
 
     /**
@@ -341,8 +339,8 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
      */
     private class DefaultAdapter extends BaseAdapter {
 
-        private CharSequence[] array;
-        private boolean isSelector;
+        private final CharSequence[] array;
+        private final boolean isSelector;
 
         public DefaultAdapter(CharSequence[] array, boolean isSelector) {
             this.array = array;
@@ -380,7 +378,7 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
                 if (defaultSelectorPosition == position) {
                     holder.textView.setTextColor(itemSelectorTextColor);
                 } else {
-                    holder.textView.setTextColor(tv_hint.getCurrentTextColor());
+                    holder.textView.setTextColor(tvHint.getCurrentTextColor());
                 }
             } else {
                 holder.textView.setText(array[position]);
@@ -389,7 +387,7 @@ public class SpinnerView extends RelativeLayout implements View.OnClickListener 
         }
 
         class ViewHolder {
-            private TextView textView;
+            private final TextView textView;
 
             public ViewHolder(View view) {
                 textView = view.findViewById(android.R.id.text1);

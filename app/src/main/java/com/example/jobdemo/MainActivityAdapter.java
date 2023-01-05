@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jobdemo.bean.ActivityBean;
+import com.example.jobdemo.util.LogUtil;
 
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.tv_demo_name.setText(activityS.get(position).getActivityChinesName());
         holder.itemView.setOnClickListener((v) -> {
+            LogUtil.showD("activity名："+activityS.get(position).getClassName());
             v.getContext().startActivity(new Intent(v.getContext(), activityS.get(position).getClassName()));
         });
     }

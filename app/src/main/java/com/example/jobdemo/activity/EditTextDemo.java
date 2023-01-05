@@ -35,6 +35,7 @@ public class EditTextDemo extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edittextdemo);
         ButterKnife.bind(this);
+        edtPrice.requestFocus();
         edtPrice.addTextChangedListener(new PriceTextWatcher(edtPrice));
         double price = Double.parseDouble("0.");
         Log.d(TAG, "price:==" + price);

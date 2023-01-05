@@ -24,6 +24,14 @@ import org.jetbrains.annotations.NotNull;
  */
 public class UpdateDialog extends AppCompatDialogFragment {
 
+    public static UpdateDialog newInstance() {
+        Bundle args = new Bundle();
+        UpdateDialog fragment = new UpdateDialog();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override

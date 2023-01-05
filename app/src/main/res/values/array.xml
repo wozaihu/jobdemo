@@ -21,4 +21,18 @@
         <item>正式数据</item>
         <item>可以了</item>
     </string-array>
+
+    <string-array name="normalOftenSentence">
+        <item>忙碌中，请稍后联系</item>
+        <item>我可以去贵公司面试吗</item>
+        <item>我可以把我的简历发给您看看吗</item>
+        <item>对不起，我觉得该职位不适合我，祝您早日找到满意的工作人选</item>
+    </string-array>
+
+    <string-array name="companyOftenSentence">
+        <item>忙碌中，请稍后联系</item>
+        <item>你好，你明天方便过来面试吗</item>
+        <item>你好，可以发一份你的简历过来吗</item>
+        <item>对不起，看了你的简历后觉得不太适合，祝你早日找到满意的工作</item>
+    </string-array>
 </resources>

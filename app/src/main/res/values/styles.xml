@@ -108,5 +108,22 @@
         <item name="android:windowExitAnimation">@anim/dismiss_down</item>
     </style>
 
+    <style name="CustomDialogWidth" parent="Theme.AppCompat.Dialog">
+        <!-- dialog  宽度与屏幕比例-->
+        <item name="android:windowMinWidthMinor">80%</item>
+        <!-- dialog 背景颜色，默认是白色-->
+        <!--        <item name="android:colorBackground">@android:color/transparent</item>-->
+        <!--        <item name="android:windowIsTranslucent">true</item>-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="TransBottomSheetDialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@color/transparent</item>
+        <!--        这个才能去掉shape的角落背景色-->
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <!--        去除dialog蒙版遮罩层-->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
 
 </resources>
