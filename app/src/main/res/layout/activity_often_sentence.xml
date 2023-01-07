@@ -25,6 +25,14 @@
             android:layout_margin="10dp"
             android:text="@string/show_bottom_sheet_dialog"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_showFileClassConst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/getFileClassConst"
+            android:textAllCaps="false" />
     </com.nex3z.flowlayout.FlowLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

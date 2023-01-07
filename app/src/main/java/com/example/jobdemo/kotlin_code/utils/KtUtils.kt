@@ -10,6 +10,9 @@ import android.util.Log
  * @Date 2022/12/12 10:22
 
  */
+
+private const val key: String = "defaultKey"
+
 fun isExistEmpty(vararg strings: String): Boolean {
     for (str in strings) {
         Log.d("KtUtils", "isAllEmpty: ------$str")
@@ -18,5 +21,9 @@ fun isExistEmpty(vararg strings: String): Boolean {
         }
     }
     return false
+}
+
+fun getDefaultValue(): String {
+    return key
 }
 

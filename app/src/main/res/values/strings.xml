@@ -144,4 +144,7 @@
     <string name="please_enter_address">请输入地址</string>
     <string name="Toast">Toast</string>
     <string name="revamp">修改</string>
+    <string name="getFileClassConst">获得File文件的常量</string>
+    <string name="needReviseRow">要修改的行</string>
+    <string name="needReviseContent">要修改的内容</string>
 </resources>

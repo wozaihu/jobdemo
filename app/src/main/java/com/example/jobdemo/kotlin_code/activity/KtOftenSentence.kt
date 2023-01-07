@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.jobdemo.databinding.ActivityOftenSentenceBinding
 import com.example.jobdemo.kotlin_code.dialog.BottomDialog
 import com.example.jobdemo.kotlin_code.dialog.OftenSentenceDialog
+import com.example.jobdemo.kotlin_code.utils.getDefaultValue
+import com.example.jobdemo.util.ToastUtils
 
 /**
 
@@ -30,6 +32,10 @@ class KtOftenSentence : AppCompatActivity() {
                 supportFragmentManager,
                 "bottomDialog"
             )
+        }
+
+        binding.btnShowFileClassConst.setOnClickListener {
+            ToastUtils.shortToast(this, getDefaultValue())
         }
     }
 }
