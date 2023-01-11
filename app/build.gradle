@@ -221,6 +221,9 @@ dependencies {
 
     /*status库*/
     implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
+
+    //popupWindow
+    implementation 'com.github.li-xiaojun:XPopup:2.9.19'
 }
 repositories {
     mavenCentral()

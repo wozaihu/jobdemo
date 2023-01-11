@@ -35,7 +35,7 @@ class OftenSentenceDialog : AppCompatDialogFragment() {
             list.add("第${i}行")
         }
         binding.rvSentenceList.layoutManager = LinearLayoutManager(context)
-        val adapter = FruitRecycleAdapter(list)
+        val adapter = FruitRecycleAdapter(binding.rvSentenceList.context, list)
         adapter.setListener { ToastUtils.shortToast(context, "点击了${it}的图片") }
         binding.rvSentenceList.adapter = adapter
         binding.tvAdd.setOnClickListener { ToastUtils.shortToast(context, "点击了添加") }
