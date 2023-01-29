@@ -5,13 +5,14 @@
     android:layout_height="wrap_content"
     android:background="@drawable/corner_top_left_right">
 
+    <!--    app:layout_constraintHeight_default="wrap"-->
+    <!--    app:layout_constraintHeight_max="400dp"-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_sentence_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="wrap"
-        app:layout_constraintHeight_max="400dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,8 +25,7 @@
         android:textColor="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/line_vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_sentence_list" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <View
         android:id="@+id/line_vertical"
