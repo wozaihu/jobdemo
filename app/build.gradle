@@ -50,11 +50,10 @@ android {
             shrinkResources true    //打开资源压缩
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [label: "jobdemo正式版", channel: "default"]
-//            signingConfig signingConfigs.config     //配置前面文件
         }
+
         debug {
             buildConfigField "String", "BUILD_TYPE999", '"debug"'
-//            applicationIdSuffix '.debug'
             manifestPlaceholders = [label: "jobdemo调试版", channel: "default"]
         }
     }
@@ -80,6 +79,7 @@ android {
         dataBinding = true
         viewBinding = true
     }
+
 
     greendao {
         //数据库版本号 每次升级数据库都需要改变版本，只能增加

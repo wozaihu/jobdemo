@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@mipmap/img_launch"
+        android:src="@mipmap/wallpaper9"
         tools:ignore="ContentDescription" />
 
     <com.coorchice.library.SuperTextView

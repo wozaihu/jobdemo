@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<clip xmlns:android="http://schemas.android.com/apk/res/android"
+    android:clipOrientation="vertical"
+    android:drawable="@mipmap/a3"
+    android:gravity="bottom">
+    <!--  android:drawable="@mipmap/a1" 可以这样用，但输入没有提示  -->
+</clip>

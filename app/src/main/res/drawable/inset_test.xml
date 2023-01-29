@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@mipmap/back"
+    android:insetLeft="60dp"
+    android:insetTop="20dp"
+    android:insetRight="20dp"
+    android:insetBottom="20dp">
+    <!--    相当于在drawable图片外面套了一层用来设置padding,
+            可以用来扩大图片占地面积,直接用imageview 配个padding也是这个效果
+    -->
+</inset>

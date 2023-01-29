@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/img00000"
+    android:scaleWidth="70%"
+    android:scaleHeight="0%"
+    android:scaleGravity="start">
+    <!-- 缩放drawable，
+       android:drawable="@drawable/img00000" 指定要缩放的drawable，
+           scaleWidth资源文件中用百分比，代码中用0.7f，
+        android:scaleWidth="70%" 宽最大能缩放的比例，如果level为1，view的宽度为屏幕的宽，则这张drawable只显示屏幕的三分之一，
+        android:scaleHeight="0%" 宽最大能缩放的比例，0%代表不能缩放，
+        android:scaleGravity="start" 缩放的位置，
+       level 通过代码修改，一定要设置，不然图片不显示：binding.imageView4.drawable.level = 1，
+       imageview 设置这个资源用src，TextView用background
+       -->
+
+</scale>

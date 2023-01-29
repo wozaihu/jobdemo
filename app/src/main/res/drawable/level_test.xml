@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/wallpaper_1"
+        android:maxLevel="1000"
+        android:minLevel="1" />
+    <item
+        android:drawable="@drawable/wallpaper_2"
+        android:maxLevel="2000"
+        android:minLevel="1001" />
+    <item
+        android:drawable="@drawable/wallpaper_3"
+        android:maxLevel="3000"
+        android:minLevel="2001" />
+    <item
+        android:drawable="@drawable/wallpaper_4"
+        android:maxLevel="4000"
+        android:minLevel="3001" />
+    <item
+        android:drawable="@drawable/wallpaper_5"
+        android:maxLevel="5000"
+        android:minLevel="4001" />
+    <item
+        android:drawable="@drawable/wallpaper_6"
+        android:maxLevel="6000"
+        android:minLevel="5001" />
+    <item
+        android:drawable="@drawable/wallpaper_7"
+        android:maxLevel="7000"
+        android:minLevel="6001" />
+    <item
+        android:drawable="@drawable/wallpaper_8"
+        android:maxLevel="10000"
+        android:minLevel="7001" />
+
+</level-list>

@@ -54,7 +54,6 @@
         android:theme="@style/JobDemoAppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
-
         <meta-data
             android:name="design_width_in_dp"
             android:value="375" />
@@ -191,9 +190,9 @@
             android:name=".activity.FlowLayoutDemo"
             android:label="@string/activity_flow_layout" />
         <activity android:name=".activity.LayoutCreatePicture" />
-        <activity android:name=".activity.EditTextDemo"
-            android:windowSoftInputMode="stateVisible"
-            />
+        <activity
+            android:name=".activity.EditTextDemo"
+            android:windowSoftInputMode="stateVisible" />
         <activity android:name=".activity.MeasureView" />
         <activity android:name=".activity.RetrofitDemoActivity" />
         <activity android:name=".activity.RxjavaTiming" />
@@ -238,6 +237,7 @@
         <activity
             android:name=".kotlin_code.activity.KtOftenSentence"
             android:label="@string/dialog_demo" />
+        <activity android:name=".kotlin_code.activity.KtDrawableDemo" />
     </application>
 
 </manifest>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transition xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/wallpaper_2" />
+    <item android:drawable="@drawable/wallpaper_3" />
+    <!-- 代码中通过setTransition 设置转换的时间   -->
+</transition>

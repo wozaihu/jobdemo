@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jobdemo.bean.ActivityBean;
@@ -35,7 +34,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.tv_demo_name.setText(activityS.get(position).getActivityChinesName());
+        holder.tvDemoName.setText(activityS.get(position).getActivityChinesName());
         holder.itemView.setOnClickListener((v) -> {
             LogUtil.showD("activity名："+activityS.get(position).getClassName());
             v.getContext().startActivity(new Intent(v.getContext(), activityS.get(position).getClassName()));
@@ -48,13 +47,11 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_demo_name;
-        CardView cv_root;
+        TextView tvDemoName;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv_demo_name = itemView.findViewById(R.id.tv_demo_name);
-            cv_root = itemView.findViewById(R.id.cv_root);
+            tvDemoName = itemView.findViewById(R.id.tv_demo_name);
         }
     }
 }

@@ -79,8 +79,9 @@ class KtRecycleViewDemo : AppCompatActivity() {
                     return true
                 }
 
-                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) = Unit
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
+                }
             }
         return touchHelperCall
     }

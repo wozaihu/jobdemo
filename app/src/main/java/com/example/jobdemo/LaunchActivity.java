@@ -9,9 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jobdemo.databinding.ActivityLaunchBinding;
 import com.example.jobdemo.service.MyIntentService;
-import com.example.jobdemo.util.LogUtil;
-
-import java.util.concurrent.Executors;
 
 /**
  * @author Administrator
@@ -45,16 +42,8 @@ public class LaunchActivity extends AppCompatActivity {
             finish();
         });
         downTimer.start();
-
-        begin();
-
     }
 
-    private void begin() {
-        Executors.newFixedThreadPool(10).execute(() ->
-                LogUtil.showD("版本检测", "LaunchActivity----begin开启")
-        );
-    }
 
     @Override
     protected void onDestroy() {
@@ -62,6 +51,5 @@ public class LaunchActivity extends AppCompatActivity {
         if (downTimer != null) {
             downTimer.cancel();
         }
-        LogUtil.showD("版本检测", "LaunchActivity----onDestroy");
     }
 }

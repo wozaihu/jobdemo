@@ -148,4 +148,7 @@
     <string name="getFileClassConst">获得File文件的常量</string>
     <string name="needReviseRow">要修改的行</string>
     <string name="needReviseContent">要修改的内容</string>
+    <string name="zero">0</string>
+    <string name="one">1</string>
+    <string name="startTransition">开始转换</string>
 </resources>
