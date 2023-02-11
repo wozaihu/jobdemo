@@ -15,6 +15,9 @@ import com.example.jobdemo.util.ToastUtils
  */
 class BottomDialogAdapter(private val data: MutableList<String>) :
     RecyclerView.Adapter<BottomDialogAdapter.ViewHolder>() {
+
+    lateinit var itemClickCall: (Int) -> Unit
+
     inner class ViewHolder(var binding: ItemTextBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -27,10 +30,13 @@ class BottomDialogAdapter(private val data: MutableList<String>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.tv.text = data[position]
         holder.binding.root.setOnClickListener {
-            ToastUtils.shortToast(
-                it.context,
-                "点击了第${position}行"
-            )
+            if (position == 0) {
+                if (::itemClickCall.isInitialized) {
+                    itemClickCall(position)
+                }
+            } else {
+                ToastUtils.shortToast(it.context, "点击了第${position}行")
+            }
         }
     }
 

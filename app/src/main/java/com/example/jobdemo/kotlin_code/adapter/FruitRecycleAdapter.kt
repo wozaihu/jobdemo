@@ -32,19 +32,26 @@ class FruitRecycleAdapter(val context: Context, private val list: MutableList<St
      * @property binding ItemImageTextBinding
      * @constructor 这样定义了ViewHolder
      */
-    inner class ViewHolder(var binding: ItemImageTextBinding) :
+    class ViewHolder(var binding: ItemImageTextBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     /**
+     * 参考链接：https://zhuanlan.zhihu.com/p/495402574
      * 定义了一个高级函数变量，后面可以用lambda或相同参数返回值的函数赋值
      * lateInit 表示延迟初始化
      * mListener变量名
      * （）括号中的为参数，不需要参数就是空括号（），有参数就直接写参数类型，如果有两个参数，一个为string，一个为int就是（String,Int）
      * ->后面的为返回值，Unit表示为空
      * 完整的相当于：mListener: (String) -> Unit={str:String-> 要执行的操作}
-     * (String) -> Unit是函数类型，每个函数都有函数类型
+     * (String) -> Unit是函数类型，每个函数都有函数类型,如
+    fun add(num1: Int, num2: Int): Int {
+    return num1 + num2
+    }
+    这个方法的函数类型就是(Int, Int) -> Int，两个参数类型是int，返回值也是int
      */
     private lateinit var mListener: (String) -> Unit
+
+    lateinit var tvOnclick: (Int, String) -> Unit
 
     /**
      * 0默认，1排序
@@ -90,6 +97,8 @@ class FruitRecycleAdapter(val context: Context, private val list: MutableList<St
             //相当于调用了一方法，需要一个参数，然后会执行函数体
             mListener(list[position])
         }
+
+        holder.binding.tvName.setOnClickListener { tvOnclick(position, list[position]) }
 
         if (type == 0) {
             holder.binding.imgSort.visibility = View.GONE

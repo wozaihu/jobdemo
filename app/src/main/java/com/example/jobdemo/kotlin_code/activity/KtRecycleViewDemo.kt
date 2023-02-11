@@ -36,6 +36,9 @@ class KtRecycleViewDemo : AppCompatActivity() {
          * 只有一个参数就直接简写了
          */
         adapter.setListener { ToastUtils.shortToast(this, "点击了${it}的图片") }
+        adapter.tvOnclick = { position, text ->
+            ToastUtils.shortToast(this, "点击了${text}的文字-----索引是$position")
+        }
         binding.rv.adapter = adapter
         val helper = ItemTouchHelper(getTouchHelper())
 

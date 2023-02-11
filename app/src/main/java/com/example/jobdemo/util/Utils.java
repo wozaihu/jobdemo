@@ -186,7 +186,10 @@ public class Utils {
 
 
     public static boolean getUserType(@Nullable Context context) {
-        // TODO: 2023/1/4 完善用户体系后，判断用户类型
         return false;
+    }
+
+    public static String getUserId(@Nullable Context context) {
+        return "80000001";
     }
 }

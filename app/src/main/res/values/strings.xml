@@ -48,6 +48,7 @@
     <string name="show_dialog">显示对话框</string>
     <string name="show_fragment_dialog">FragmentDialog对话框</string>
     <string name="show_bottom_sheet_dialog">BottomSheetFragmentDialog对话框</string>
+    <string name="startSentence">跳转到常用语页面</string>
     <string name="dialog_demo">对话框demo</string>
     <string name="selector_client">请选择客户</string>
     <string name="setAdapter">设置适配器</string>
@@ -151,4 +152,11 @@
     <string name="zero">0</string>
     <string name="one">1</string>
     <string name="startTransition">开始转换</string>
+    <string name="constrainDifficultIdea">约束布局难点</string>
+    <string name="propertyAnimationDemo">属性动画demo</string>
+    <string name="changeTowWidth">改变tow宽度</string>
+    <string name="changeThreeWidth">改变three宽度</string>
+    <string name="changeCancel">改变cancel</string>
+    <string name="enterThePositionYouWantToChange">修改的ID</string>
+    <string name="listApiDemo">kotlin集合Api使用</string>
 </resources>

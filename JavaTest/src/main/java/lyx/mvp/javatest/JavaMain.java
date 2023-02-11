@@ -5,11 +5,12 @@ package lyx.mvp.javatest;
  * @Date 2022/8/27 13:49
  */
 public class JavaMain {
-    private static int a = 1;
+
+    private static Student student2;
 
     public static void main(String[] args) {
-        System.out.println("a==" + a);
-        a=5;
-        System.out.println("a==" + a);
+        Teacher teacher = new Teacher("叶老师");
+        Student student = new Student("李明");
+        student.teacher = teacher;
     }
 }

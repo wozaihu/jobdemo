@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'kotlin-parcelize'
 
 android {
     compileSdkVersion 32
@@ -224,6 +225,9 @@ dependencies {
 
     //popupWindow
     implementation 'com.github.li-xiaojun:XPopup:2.9.19'
+
+    //常用工具类：https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/README-CN.md
+    implementation 'com.blankj:utilcodex:1.31.1'
 }
 repositories {
     mavenCentral()

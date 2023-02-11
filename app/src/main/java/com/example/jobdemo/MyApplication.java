@@ -34,7 +34,7 @@ public class MyApplication extends Application {
     private static DaoSession daoSession;
     private DaoMaster.DevOpenHelper devOpenHelper = null;
     /**
-     * 这样再去取applicationContext
+     * 这样去取applicationContext
      */
     public static Application application;
 

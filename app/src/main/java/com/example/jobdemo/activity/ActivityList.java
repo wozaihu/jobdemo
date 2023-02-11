@@ -25,8 +25,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Activity_List extends BaseActivity {
-    private static final String TAG = "Activity_List";
+/**
+ * @author Administrator
+ */
+public class ActivityList extends BaseActivity {
+    private static final String TAG = "ActivityList";
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.lv)
     ListView lv;
@@ -47,7 +50,7 @@ public class Activity_List extends BaseActivity {
 //        ImageView imageView = new ImageView(this);
 //        imageView.setBackgroundResource(R.mipmap.a1);
 //        lv.addHeaderView(imageView);
-        lv.setOnItemClickListener((adapterView, view, i, l) -> Toast.makeText(Activity_List.this, "点击了===" + i, Toast.LENGTH_SHORT).show());
+        lv.setOnItemClickListener((adapterView, view, i, l) -> Toast.makeText(ActivityList.this, "点击了===" + i, Toast.LENGTH_SHORT).show());
         adapter = new NaemAdapter();
         lv.setAdapter(adapter);
     }
@@ -105,7 +108,7 @@ public class Activity_List extends BaseActivity {
         public View getView(int i, View view, ViewGroup viewGroup) {
             ViewHolder holder;
             if (view == null) {
-                view = LayoutInflater.from(Activity_List.this).inflate(R.layout.item_expandable_child, viewGroup, false);
+                view = LayoutInflater.from(ActivityList.this).inflate(R.layout.item_expandable_child, viewGroup, false);
                 holder = new ViewHolder(view);
                 view.setTag(holder);
             } else {

@@ -11,14 +11,16 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <uses-permission android:name="android.permission.RECORD_VIDEO" /> <!-- 地图截屏图片保存等 -->
+    <uses-permission android:name="android.permission.RECORD_VIDEO" />
     <uses-permission android:name="android.permission.READ_MEDIA_PERMISSION" />
     <uses-permission
         android:name="android.permission.READ_LOGS"
@@ -163,7 +165,9 @@
         <activity android:name=".activity.DialogDemo" />
         <activity android:name=".activity.WidgetViewDemo" />
         <activity android:name=".activity.PopupWindowDemo" />
-        <activity android:name=".activity.BiuldVariantDetails" />
+        <activity
+            android:name=".activity.ListApiDemo"
+            android:label="@string/listApiDemo" />
         <activity
             android:name=".activity.ActivityPublicWebView"
             android:hardwareAccelerated="false" />
@@ -180,7 +184,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.Activity_List"
+            android:name=".activity.ActivityList"
             android:label="@string/AdapterControlShowCount" />
         <activity android:name=".activity.StudioDemo" />
         <activity
@@ -238,6 +242,13 @@
             android:name=".kotlin_code.activity.KtOftenSentence"
             android:label="@string/dialog_demo" />
         <activity android:name=".kotlin_code.activity.KtDrawableDemo" />
+        <activity android:name=".kotlin_code.activity.ShapeAppearanceDemo" />
+        <activity
+            android:name=".kotlin_code.activity.KtConstrainDemo"
+            android:label="@string/constrainDifficultIdea" />
+        <activity
+            android:name=".kotlin_code.activity.KtAnimationDemo"
+            android:label="@string/propertyAnimationDemo" />
     </application>
 
 </manifest>
