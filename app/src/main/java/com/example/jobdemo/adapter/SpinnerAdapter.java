@@ -15,6 +15,9 @@ import com.example.jobdemo.bean.TestBean;
 
 import java.util.List;
 
+/**
+ * @author Administrator
+ */
 public class SpinnerAdapter extends BaseAdapter {
     private List<TestBean> list;
     private Context context;

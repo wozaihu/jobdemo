@@ -10,8 +10,10 @@ import android.util.Log
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.jobdemo.bean.Book
 import com.example.jobdemo.databinding.ActivityKtConstrainDemoBinding
 import com.example.jobdemo.kotlin_code.bean.SentenceBean
+import com.example.jobdemo.util.LogUtil
 import com.example.jobdemo.util.ToastUtils
 import com.google.gson.Gson
 
@@ -67,5 +69,8 @@ class KtConstrainDemo : AppCompatActivity() {
             }
             return@setOnTouchListener true
         }
+
+        val book: Book? = null
+        LogUtil.showD("bookName==${book?.bookName ?: "滚啊"}")
     }
 }

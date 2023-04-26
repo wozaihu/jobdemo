@@ -2,19 +2,29 @@ package com.example.jobdemo.kotlin_code.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.MotionEvent
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchUIUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jobdemo.R
 import com.example.jobdemo.databinding.ActivityKtRecycleViewDemoBinding
 import com.example.jobdemo.kotlin_code.adapter.FruitRecycleAdapter
+import com.example.jobdemo.kotlin_code.addData
+import com.example.jobdemo.util.LogUtil
 import com.example.jobdemo.util.ToastUtils
 import com.google.android.material.divider.MaterialDividerItemDecoration
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import org.json.JSONArray
 
 class KtRecycleViewDemo : AppCompatActivity() {
     private val list: MutableList<String> = ArrayList()
+    var isMove = false
+    var oldPosition = 0
+    var toPosition = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityKtRecycleViewDemoBinding.inflate(layoutInflater)
@@ -41,9 +51,6 @@ class KtRecycleViewDemo : AppCompatActivity() {
         }
         binding.rv.adapter = adapter
         val helper = ItemTouchHelper(getTouchHelper())
-
-
-
         binding.btnSort.setOnClickListener {
             val button = it as Button
             if (button.text.equals("排序")) {
@@ -56,6 +63,18 @@ class KtRecycleViewDemo : AppCompatActivity() {
                 helper.attachToRecyclerView(null)
             }
         }
+
+        val jsonArray = JSONArray().apply {
+            put(JsonObject().apply {
+                addProperty("ID", 415085)
+                addProperty("SortId", 0)
+            })
+            put(JsonObject().apply {
+                addProperty("ID", 415086)
+                addProperty("SortId", 1)
+            })
+        }
+        LogUtil.showD("移动了---createJson：${jsonArray.toString()}")
     }
 
     private fun getTouchHelper(): ItemTouchHelper.SimpleCallback {
@@ -79,13 +98,51 @@ class KtRecycleViewDemo : AppCompatActivity() {
                     list.add(to, temp)
                     //通知Adapter移动了Item,移动后未全局刷新，adapter中使用position获取list数据会有bug，排序时避免点击获取数据
                     recyclerView.adapter?.notifyItemMoved(from, to)
+                    LogUtil.showD("移动了-----from：${from}，to：${to}")
+                    this@KtRecycleViewDemo.oldPosition = from
+                    this@KtRecycleViewDemo.toPosition = to
+                    this@KtRecycleViewDemo.isMove = true
                     return true
                 }
 
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    LogUtil.showD("onSwiped----------$direction")
+                }
 
+                override fun onMoved(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    fromPos: Int,
+                    target: RecyclerView.ViewHolder,
+                    toPos: Int,
+                    x: Int,
+                    y: Int
+                ) {
+                    super.onMoved(recyclerView, viewHolder, fromPos, target, toPos, x, y)
+                    LogUtil.showD("移动了---onMoved--from：${fromPos}，to：${toPos}")
+                }
+
+                override fun clearView(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder
+                ) {
+                    super.clearView(recyclerView, viewHolder)
+                    LogUtil.showD("移动了--clearView---oldPosition：${oldPosition}，toPosition：${toPosition}")
                 }
             }
         return touchHelperCall
+    }
+
+    fun getDataJsonString(oldId: Int, oldSort: Int, toID: Int, toSort: Int): String {
+        return JSONArray().apply {
+            put(JsonObject().apply {
+                addProperty("ID", oldId)
+                addProperty("SortId", oldSort)
+            })
+            put(JsonObject().apply {
+                addProperty("ID", toID)
+                addProperty("SortId", toSort)
+            })
+        }.toString()
     }
 }

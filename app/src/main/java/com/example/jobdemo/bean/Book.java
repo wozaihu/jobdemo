@@ -9,6 +9,9 @@ import androidx.databinding.ObservableField;
 import com.example.jobdemo.BR;
 
 
+/**
+ * @author Administrator
+ */
 public class Book extends BaseObservable {
     private String bookName;
     private String bookAuthor;
