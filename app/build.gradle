@@ -30,13 +30,13 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('C:\\Users\\Administrator\\.android\\debug.keystore')
+            storeFile file('/Users/shenzhendianjintai/signs/debug.keystore')
             storePassword 'android'
             keyPassword 'android'
             keyAlias 'androiddebugkey'
         }
         debug {
-            storeFile file('C:\\Users\\Administrator\\.android\\debug.keystore')
+            storeFile file('/Users/shenzhendianjintai/signs/debug.keystore')
             storePassword 'android'
             keyPassword 'android'
             keyAlias 'androiddebugkey'
@@ -160,12 +160,6 @@ dependencies {
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
-
-
-    //Room数据库
-    def room_version = "2.2.5"
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
     //管理页面和APP Bar,方便Activity中对多个Fragment进行管理
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'
