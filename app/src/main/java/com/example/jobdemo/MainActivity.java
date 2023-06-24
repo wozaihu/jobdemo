@@ -54,7 +54,6 @@ public class MainActivity extends BaseActivity {
         MainActivityAdapter adapter = new MainActivityAdapter(classList);
         inflate.rvDemoInstance.setLayoutManager(new LinearLayoutManager(this));
         inflate.rvDemoInstance.setAdapter(adapter);
-        checkLocationPermission();
     }
 
 
@@ -62,14 +61,5 @@ public class MainActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().post(new MainOnDestroy());
-    }
-
-
-    private void checkLocationPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-            }
-        }
     }
 }

@@ -25,6 +25,7 @@ public class ActivityPublicWebView extends BaseActivity {
         webContent.getSettings().setUseWideViewPort(true);
         webContent.getSettings().setLoadWithOverviewMode(true);
         webContent.loadUrl("file:///android_asset/xieyi.html");
+        String a = "";
     }
 
 

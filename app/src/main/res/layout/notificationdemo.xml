@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,27 +28,27 @@
         android:layout_below="@+id/et_phone"
         android:layout_marginTop="20dp"
         android:background="@drawable/rectangle_corners_20_bg_white_storke_gray"
-        android:drawableLeft="@mipmap/register_verification_code"
+        android:drawableStart="@mipmap/register_verification_code"
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
-        android:hint="请输验证码"
+        android:hint="@string/pleaseEnterVerifyCode"
         android:inputType="number"
         android:maxLength="6"
-        android:paddingLeft="15dp" />
+        android:paddingStart="15dp" />
 
-    <TextView
+    <com.coorchice.library.SuperTextView
         android:id="@+id/tv_downTime"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="46dp"
         android:layout_alignTop="@+id/et_verification"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/shape_bg_blue_corners_20"
+        android:layout_alignParentEnd="true"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:onClick="onClickView"
-        android:text="获取验证码"
+        android:text="@string/getVerifyCode"
         android:textColor="@color/white"
+        app:stv_corner="23dp"
+        app:stv_solid="@color/green"
         tools:ignore="OnClick" />
 
     <TextView
@@ -58,18 +59,36 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
-        android:onClick="onClickView"
         android:background="@drawable/shape_bg_blue_corners_20"
         android:gravity="center"
+        android:onClick="onClickView"
         android:text="登录"
         android:textColor="@color/white"
         tools:ignore="OnClick" />
+
+    <Button
+        android:id="@+id/btn_restart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_login"
+        android:layout_marginTop="20dp"
+        android:text="@string/restart" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_login"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/btn_restart"
+        android:text="@string/cancel" />
+
     <TextView
         android:id="@+id/tv_verification_number"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-        android:layout_centerHorizontal="true"
-        tools:text="生成的验证码是：032569"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        tools:text="生成的验证码是：032569" />
 </RelativeLayout>

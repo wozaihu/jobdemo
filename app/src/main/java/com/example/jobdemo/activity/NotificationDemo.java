@@ -14,15 +14,16 @@ import android.os.CountDownTimer;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.databinding.NotificationdemoBinding;
+import com.example.jobdemo.util.LogUtil;
 import com.example.jobdemo.util.ToastUtils;
 
 import java.util.Random;
@@ -37,37 +38,45 @@ public class NotificationDemo extends BaseActivity {
     private StringBuilder stringBuilder;
     private Random random;
     private CountDownTimer timer;
-    private int countDown;
-    private String currentVerificationNumber;
-    private String currentPhoneNumber;
+    /**
+     * 毫秒
+     */
+    private final int countDown = 10 * 1000;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = NotificationdemoBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
-    }
+        downTime();
 
-    public void onClickView(View view) {
-        switch (view.getId()) {
-            case R.id.tv_downTime:  //不是正在倒计时就发送验证码
-                if (TextUtils.isEmpty(binding.etPhone.getText().toString())) {
-                    ToastUtils.shortToast(this,"请先输入手机号");
-                } else if (!TextUtils.isEmpty(binding.etPhone.getText().toString()) && isPhoneNumber() && binding.tvDownTime.getText().toString().equals("获取验证码")
-                        || binding.tvDownTime.getText().toString().equals("重新获取验证码")) {
-                    sendVerification(binding.etPhone.getText().toString()); //发送验证码
-                    downTime();
-                }
-                break;
-            case R.id.tv_login:
-                DraftActivity.start(this);
-                break;
-        }
+        binding.tvDownTime.setOnClickListener(v -> {
+            if (TextUtils.isEmpty(binding.etPhone.getText().toString())) {
+                ToastUtils.shortToast(this, "请先输入手机号");
+            } else if (!TextUtils.isEmpty(binding.etPhone.getText().toString()) && isPhoneNumber() && binding.tvDownTime.getText().toString().equals("获取验证码")
+                    || binding.tvDownTime.getText().toString().equals("重新获取验证码")) {
+                sendVerification(binding.etPhone.getText().toString()); //发送验证码
+                binding.tvDownTime.setSolid(ContextCompat.getColor(this, R.color.dove_gray));
+                timer.start();
+            }
+        });
+        binding.tvLogin.setOnClickListener(v -> DraftActivity.start(this));
+
+        binding.btnCancel.setOnClickListener(v -> {
+            binding.tvDownTime.setText(getString(R.string.getVerifyCode));
+            binding.tvDownTime.setSolid(ContextCompat.getColor(this, R.color.green));
+            timer.cancel();
+        });
+
+        binding.btnRestart.setOnClickListener(v->{
+            binding.tvDownTime.setSolid(ContextCompat.getColor(this, R.color.dove_gray));
+            timer.start();
+        });
     }
 
 
     //发送验证码
-    @SuppressLint("CommitPrefEdits")
+    @SuppressLint({"CommitPrefEdits", "SetTextI18n"})
     private void sendVerification(String phoneNumber) {
         if (stringBuilder == null) {
             stringBuilder = new StringBuilder();
@@ -82,8 +91,7 @@ public class NotificationDemo extends BaseActivity {
         }
         Log.d(TAG, "生成的验证码是: " + stringBuilder.toString());
         String channelId = "verification";
-        currentVerificationNumber = stringBuilder.toString();
-        currentPhoneNumber = phoneNumber;
+        String currentVerificationNumber = stringBuilder.toString();
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         //适配8.0及以上需要设置NotificationChannel，且NotificationChannel的id与Notification的channelId必须相同
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -96,7 +104,7 @@ public class NotificationDemo extends BaseActivity {
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentIntent(PendingIntent.getActivity(this, 99
                         , new Intent(this, InfoShow.class).putExtra("code", stringBuilder.toString())
-                        , PendingIntent.FLAG_CANCEL_CURRENT))
+                        , PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE))
                 .setAutoCancel(true)
                 .setVibrate(new long[]{0, 1000, 1000, 1000}) //设置振动， 需要添加权限  <uses-permission android:name="android.permission.VIBRATE"/>
                 .setLights(Color.GREEN, 1000, 1000)//设置前置LED灯进行闪烁， 第一个为颜色值  第二个为亮的时长  第三个为暗的时长
@@ -109,25 +117,23 @@ public class NotificationDemo extends BaseActivity {
 
     //开启倒计时
     private void downTime() {
-        countDown = 10; //计时器
-        timer = new CountDownTimer(10000, 1000) { //第一个参数是总倒计时，第二个参数是每次跳多少时间
+        timer = new CountDownTimer(countDown, 1000) { //第一个参数是总倒计时，第二个参数是每次跳多少时间
+            @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long l) {
-                //每次都调用
-                if (!isFinishing() && binding.tvDownTime != null) {
-                    binding.tvDownTime.setText(countDown + "秒后可重发");
-                    countDown--;
-                }
+                //每次都调用，不要判断页面是否显示
+                binding.tvDownTime.setText(l / 1000 + 1 + "秒后可重发");
+                LogUtil.showD(TAG, "onTick: " + l);
             }
 
             @Override
             public void onFinish() {
                 //倒计时结束调用
-                if (!isFinishing() && binding.tvDownTime != null) {
-                    binding.tvDownTime.setText("重新获取验证码");
-                }
+                binding.tvDownTime.setText("重新获取验证码");
+                binding.tvDownTime.setSolid(ContextCompat.getColor(NotificationDemo.this, R.color.green));
+                LogUtil.showD(TAG, "onFinish: ");
             }
-        }.start();
+        };
     }
 
 

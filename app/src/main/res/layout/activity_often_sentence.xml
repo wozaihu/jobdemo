@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/show_fragment_dialog"
+            android:textSize="14dp"
             android:textAllCaps="false" />
 
         <Button
@@ -24,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:textSize="14sp"
             android:text="@string/show_bottom_sheet_dialog"
             android:textAllCaps="false" />
 
@@ -32,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:textSize="14sp"
             android:text="@string/getFileClassConst"
             android:textAllCaps="false" />
 

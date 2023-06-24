@@ -17,19 +17,23 @@ import com.example.jobdemo.util.ToastUtils
  * @Date 2022/12/30 17:42
 
  */
-class KtOftenSentence : AppCompatActivity() {
+class KtOftenSentence: AppCompatActivity() {
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityOftenSentenceBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.btnShowDialog.setOnClickListener {
             OftenSentenceDialog().showNow(
                 supportFragmentManager,
                 "tag"
             )
         }
-
+        
         binding.btnShowBottomDialog.setOnClickListener {
             BottomDialog().showNow(
                 supportFragmentManager,
@@ -49,5 +53,7 @@ class KtOftenSentence : AppCompatActivity() {
             Log.d("常用语", "KtOftenSentence收到了intent传值-----${it.userInfo[0].WordText}")
             Log.d("常用语", "KtOftenSentence收到了intent传值-----${it.userInfo.size}")
         }
+
+        val  a=1
     }
 }

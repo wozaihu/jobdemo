@@ -125,7 +125,7 @@
             </intent-filter>
         </receiver> <!-- android12 兼容 end -->
         <activity
-            android:name=".LaunchActivity"
+            android:name=".CustomLaunchActivity"
             android:description="@string/exclude"
             android:exported="true"
             android:theme="@style/DjtStyle">
