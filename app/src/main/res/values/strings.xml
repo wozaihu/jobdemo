@@ -147,6 +147,7 @@
     <string name="revamp">修改</string>
     <string name="sort">排序</string>
     <string name="getFileClassConst">获得File文件的常量</string>
+    <string name="addViewToWindow">添加view到window</string>
     <string name="needReviseRow">要修改的行</string>
     <string name="needReviseContent">要修改的内容</string>
     <string name="zero">0</string>
