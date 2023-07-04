@@ -36,7 +36,7 @@
     <string name="layout_create_picture">布局生成图片</string>
     <string name="todo">TODO</string>
     <string name="azqx">安装权限</string>
-    <string name="update_tip">需要授予点金台“安装未知应用”权限才能更新</string>
+    <string name="update_tip">需要授予%s“安装未知应用”权限才能更新</string>
     <string name="add">添加</string>
     <string name="delete">删除</string>
     <string name="deleteALL">删除全部</string>
@@ -164,4 +164,7 @@
     <string name="restart">重新开始</string>
     <string name="getVerifyCode">获取验证码</string>
     <string name="pleaseEnterVerifyCode">请输验证码</string>
+    <string name="switchBtn">SwitchBtn</string>
+    <string name="checkDeviceInstallPermission">检测是否具备安装应用权限</string>
+    <string name="canBeInstalled">可以安装</string>
 </resources>

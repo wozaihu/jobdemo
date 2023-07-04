@@ -16,35 +16,53 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@drawable/select_enable_green_gray"
             android:text="@string/show_fragment_dialog"
-            android:textSize="14dp"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
 
         <Button
             android:id="@+id/btn_show_bottom_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:textSize="14sp"
+            android:background="@drawable/select_enable_green_gray"
             android:text="@string/show_bottom_sheet_dialog"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btn_showFileClassConst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:textSize="14sp"
+            android:background="@drawable/select_enable_green_gray"
             android:text="@string/getFileClassConst"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
         <Button
-            android:id="@+id/btn_addView"
+            android:id="@+id/btn_checkInstallPermission"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:textSize="14sp"
-            android:text="@string/addViewToWindow"
-            android:textAllCaps="false" />
+            android:background="@drawable/select_enable_green_gray"
+            android:text="@string/checkDeviceInstallPermission"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_switchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/switchBtn"
+            android:textAllCaps="false"
+            android:textSize="14sp" />
+
 
     </com.nex3z.flowlayout.FlowLayout>
 
