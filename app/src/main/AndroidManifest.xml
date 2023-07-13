@@ -2,9 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.jobdemo">
-
-    <!--用于告知设备是否必须需要此硬件才能运行（不会在安装时检测，所以即使设为true也可以安装，
-    但GooglePay会检测此属性，如果设备不支持，就会搜索不到）如果不声明则默认为true-->
+    <!--
+    用于告知设备是否必须需要此硬件才能运行（不会在安装时检测，所以即使设为true也可以安装，
+    但GooglePay会检测此属性，如果设备不支持，就会搜索不到）如果不声明则默认为true
+    -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -62,6 +63,24 @@
         android:theme="@style/JobDemoAppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
+        <activity
+            android:name=".activity.BehaviorUse"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ImitateWechatLocation"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RenameOrEditSignature"
+            android:exported="false"
+            android:label="@string/rename"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name=".activity.FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_fullscreen"
+            android:theme="@style/JobDemoAppTheme.Fullscreen" />
+
         <meta-data
             android:name="design_width_in_dp"
             android:value="375" />
@@ -164,7 +183,9 @@
         <activity
             android:name=".exercise.RecyclerViewDemo"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".baidu_map.BaiduMapDemo" />
+        <activity
+            android:name=".baidu_map.BaiduMapDemo"
+            android:label="@string/showMapView" />
         <activity
             android:name=".activity.CameraDemo"
             android:label="@string/activity_camera_demo" />

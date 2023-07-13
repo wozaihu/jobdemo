@@ -167,4 +167,10 @@
     <string name="switchBtn">SwitchBtn</string>
     <string name="checkDeviceInstallPermission">检测是否具备安装应用权限</string>
     <string name="canBeInstalled">可以安装</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="rename">请输入新的昵称</string>
+    <string name="showMapView">显示地图的控件</string>
+    <string name="send">发送</string>
 </resources>

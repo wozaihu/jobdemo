@@ -123,7 +123,16 @@
         <!--        这个才能去掉shape的角落背景色-->
         <item name="android:colorBackground">@android:color/transparent</item>
         <!--        去除dialog蒙版遮罩层-->
-<!--        <item name="android:backgroundDimEnabled">false</item>-->
+        <!--        <item name="android:backgroundDimEnabled">false</item>-->
+    </style>
+
+    <style name="Widget.JobDemoAppTheme.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Widget.JobDemoAppTheme.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
 
 </resources>

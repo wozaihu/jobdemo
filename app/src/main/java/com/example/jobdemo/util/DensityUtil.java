@@ -30,8 +30,6 @@ public class DensityUtil {
 
     /**
      * 将px值转换为sp值，保证文字大小不变
-     * @param pxValue
-     * @return
      */
     public static int px2sp(Context context,float pxValue) {
         final float fontScale = context.getApplicationContext().getResources().getDisplayMetrics().scaledDensity;
@@ -40,8 +38,6 @@ public class DensityUtil {
 
     /**
      * 将sp值转换为px值，保证文字大小不变
-     * @param spValue
-     * @return
      */
     public static int sp2px(Context context, float spValue) {
         final float fontScale = context.getApplicationContext().getResources().getDisplayMetrics().scaledDensity;

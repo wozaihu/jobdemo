@@ -57,7 +57,7 @@ public class ClassUtils {
                             }
                             String tempName = activityName.toLowerCase();
                             String pinyin = PinyinHelper.toPinyin(tempName, PinyinStyleEnum.FIRST_LETTER, StringUtil.EMPTY);
-                            activityList.add(new ActivityBean(activityName, pinyin.substring(0, 1), pinyin, c));
+                            activityList.add(new ActivityBean(activityName, pinyin.substring(0, 1).toUpperCase(), pinyin, c));
                         }
                     } catch (Exception e) {
                         LogUtil.showD(TAG, "Class Not Found:" + e.getMessage());
