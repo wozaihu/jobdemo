@@ -29,7 +29,7 @@ public class CustomLaunchActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         checkLocationPermission();
         MyIntentService.startActionFoo(this, "hello", "hi");
-        downTimer = new CountDownTimer(3000, 1000) {
+        downTimer = new CountDownTimer(1000, 1000) {
             @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long millisUntilFinished) {

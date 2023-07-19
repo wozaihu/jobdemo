@@ -173,4 +173,6 @@
     <string name="rename">请输入新的昵称</string>
     <string name="showMapView">显示地图的控件</string>
     <string name="send">发送</string>
+    <string name="addressAndColon">地址：</string>
+    <string name="selectLocation">选择地址</string>
 </resources>

@@ -30,7 +30,12 @@ public class BaiduMapDemo extends BaseActivity {
         mapView = new MapView(this);
         baiduMap = mapView.getMap();
         baiduMap.setMyLocationEnabled(true);
-        initLocationOption();
+        LocationClient.setAgreePrivacy(true);
+        try {
+            initLocationOption();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -60,7 +65,7 @@ public class BaiduMapDemo extends BaseActivity {
      * 初始化定位参数配置
      */
 
-    private void initLocationOption() {
+    private void initLocationOption() throws Exception {
 //定位服务的客户端。宿主程序在客户端声明此类，并调用，目前只支持在主线程中启动
         locationClient = new LocationClient(getApplicationContext());
 //声明LocationClient类实例并配置定位参数
@@ -140,16 +145,18 @@ public class BaiduMapDemo extends BaseActivity {
             Log.d("定位的", "百度纬度信息== " + latitude + "-------百度经度信息==" + longitude);
 
             //设定bai中心点坐标
-            LatLng cenpt = new LatLng(latitude, longitude);
+            LatLng centre = new LatLng(latitude, longitude);
 //定义地图状态
             MapStatus mMapStatus = new MapStatus.Builder()
-                    .target(cenpt)
-                    .zoom(18)
+                    .target(centre)
+                    .zoom(16)
                     .build();
 //定义MapStatusUpdate对象，以便描述地图状态将du要发生的变化
             MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
 //改变地图状态
             baiduMap.setMapStatus(mMapStatusUpdate);
+
+
         }
     }
 }

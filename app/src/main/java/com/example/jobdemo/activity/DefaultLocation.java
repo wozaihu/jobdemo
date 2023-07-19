@@ -322,7 +322,11 @@ public class DefaultLocation extends AppCompatActivity {
 
     private void initLocationOption() {
 //定位服务的客户端。宿主程序在客户端声明此类，并调用，目前只支持在主线程中启动
-        locationClient = new LocationClient(getApplicationContext());
+        try {
+            locationClient = new LocationClient(getApplicationContext());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 //声明LocationClient类实例并配置定位参数
         LocationClientOption locationOption = new LocationClientOption();
         MyLocationListener myLocationListener = new MyLocationListener();

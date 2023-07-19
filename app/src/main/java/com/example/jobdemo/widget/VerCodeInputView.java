@@ -362,6 +362,7 @@ public class VerCodeInputView extends FrameLayout {
             child.setTextSize(textSize);
             child.setInputType(inputType);
             child.setBackgroundResource(editTextBg);
+            invalidate();
         }
     }
 
