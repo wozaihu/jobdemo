@@ -122,6 +122,7 @@
     <string name="userName">用户姓名：</string>
     <string name="userAge">用户年龄：</string>
     <string name="toolText">你知道怎么做才是好的</string>
+    <string name="simulationKnowXY">模拟不知道图片宽高显示瀑布流布局</string>
     <string name="back">返回</string>
     <string name="companyDetails">企业详情</string>
     <string name="companyType">公司类型</string>
@@ -166,6 +167,7 @@
     <string name="pleaseEnterVerifyCode">请输验证码</string>
     <string name="switchBtn">SwitchBtn</string>
     <string name="checkDeviceInstallPermission">检测是否具备安装应用权限</string>
+    <string name="inputDialog">带输入框的对话框</string>
     <string name="canBeInstalled">可以安装</string>
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>

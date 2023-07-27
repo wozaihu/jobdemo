@@ -227,6 +227,9 @@ dependencies {
 
     //常用工具类：https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/README-CN.md
     implementation 'com.blankj:utilcodex:1.31.1'
+
+    //图片浏览view
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 }
 repositories {
     mavenCentral()

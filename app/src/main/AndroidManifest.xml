@@ -64,12 +64,17 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
         <activity
+            android:name=".activity.ImageShow"
+            android:exported="false"
+            android:label="@string/simulationKnowXY"
+            android:theme="@style/showScrollbarThumb" />
+        <activity
             android:name=".activity.BehaviorUse"
             android:exported="false" />
         <activity
             android:name=".activity.ImitateWechatLocation"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".activity.RenameOrEditSignature"
             android:exported="false"
@@ -261,9 +266,9 @@
             android:name=".activity.CompanyDetailsDemo"
             android:theme="@style/DjtStyle" />
         <activity android:name=".activity.ShowCellPhoneInfo" />
-        <activity android:name=".activity.TestStatusBarUtils"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            />
+        <activity
+            android:name=".activity.TestStatusBarUtils"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity android:name=".activity.DefaultLocation" />
         <activity android:name=".kotlin_code.activity.KtListViewDemo" />
         <activity android:name=".kotlin_code.activity.KtRecycleViewDemo" />
@@ -280,6 +285,9 @@
             android:name=".kotlin_code.activity.KtAnimationDemo"
             android:label="@string/propertyAnimationDemo" />
         <activity android:name=".activity.ChatLocation" />
+        <activity
+            android:name=".activity.ImageActivity"
+            android:description="@string/exclude" />
     </application>
 
 </manifest>

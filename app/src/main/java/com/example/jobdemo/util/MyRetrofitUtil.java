@@ -18,7 +18,7 @@ public enum MyRetrofitUtil {
     INSTANCE;
     private final RetrofitInterface retrofitInterface;
 
-    private MyRetrofitUtil() {
+     MyRetrofitUtil() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_PICTURE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

@@ -2,6 +2,10 @@ package com.example.jobdemo.kotlin_code.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
@@ -10,10 +14,12 @@ import android.util.Log
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.jobdemo.bean.Book
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
+import com.example.jobdemo.R
 import com.example.jobdemo.databinding.ActivityKtConstrainDemoBinding
 import com.example.jobdemo.kotlin_code.bean.SentenceBean
-import com.example.jobdemo.util.LogUtil
 import com.example.jobdemo.util.ToastUtils
 import com.google.gson.Gson
 
@@ -25,10 +31,12 @@ import com.google.gson.Gson
 
  */
 class KtConstrainDemo : AppCompatActivity() {
+    private lateinit var binding: ActivityKtConstrainDemoBinding
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityKtConstrainDemoBinding.inflate(layoutInflater)
+        binding = ActivityKtConstrainDemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.image5.setOnClickListener {
             ToastUtils.shortToast(this, "点击了A1")
@@ -42,7 +50,7 @@ class KtConstrainDemo : AppCompatActivity() {
                     putExtra("bean", it)
                     putParcelableArrayListExtra(
                         "list",
-                        it.userInfo as ArrayList<SentenceBean.UserInfo>
+                        it.userInfo
                     )
                     Log.d("常用语", "第一条-----${it.userInfo[0].WordText}")
                 })
@@ -69,8 +77,5 @@ class KtConstrainDemo : AppCompatActivity() {
             }
             return@setOnTouchListener true
         }
-
-        val book: Book? = null
-        LogUtil.showD("bookName==${book?.bookName ?: "滚啊"}")
     }
 }

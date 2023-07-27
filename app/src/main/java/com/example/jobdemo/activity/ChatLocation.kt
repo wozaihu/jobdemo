@@ -71,10 +71,10 @@ class ChatLocation : AppCompatActivity(), OnMapStatusChangeListener, OnGetGeoCod
         with(binding.mapView) {
             map.isMyLocationEnabled = true
             showZoomControls(false)
-            map.uiSettings.isCompassEnabled = false
+            map.uiSettings.isCompassEnabled = true
             map.uiSettings.isOverlookingGesturesEnabled = false
             map.setOnMapStatusChangeListener(this@ChatLocation)
-            map.setMapStatus(MapStatusUpdateFactory.zoomTo(16f))
+            map.setMapStatus(MapStatusUpdateFactory.zoomTo(19f))
         }
 
         val option = LocationClientOption().apply {
@@ -106,7 +106,6 @@ class ChatLocation : AppCompatActivity(), OnMapStatusChangeListener, OnGetGeoCod
             mScreenCenterPoint = mBaiduMap.projection.toScreenLocation(latLngF)
             val markerOptionsF: OverlayOptions =
                 MarkerOptions().position(latLngF)
-                    .yOffset(30)
                     .icon(markerIcon)
                     .perspective(true)
                     .fixedScreenPosition(mScreenCenterPoint)
@@ -179,7 +178,7 @@ class ChatLocation : AppCompatActivity(), OnMapStatusChangeListener, OnGetGeoCod
     }
 
     //监听地图状态改变
-    override fun onMapStatusChangeStart(p0: MapStatus?) {
+    override fun onMapStatusChangeStart(p0: MapStatus) {
         // 地图状态开始改变时的回调
     }
 

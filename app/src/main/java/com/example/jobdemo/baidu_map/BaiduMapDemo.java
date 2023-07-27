@@ -36,6 +36,7 @@ public class BaiduMapDemo extends BaseActivity {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        setContentView(mapView);
     }
 
     @Override
@@ -129,11 +130,6 @@ public class BaiduMapDemo extends BaseActivity {
             String coorType = location.getCoorType();
             //获取定位类型、定位错误返回码，具体信息可参照类参考中BDLocation类中的说明
             int errorCode = location.getLocType();
-
-            //mapView 销毁后不在处理新接收的位置
-            if (location == null || mapView == null) {
-                return;
-            }
             MyLocationData locData = new MyLocationData.Builder()
                     .accuracy(location.getRadius())
                     // 此处设置开发者获取到的方向信息，顺时针0-360
@@ -141,7 +137,6 @@ public class BaiduMapDemo extends BaseActivity {
                     .longitude(location.getLongitude()).build();
             baiduMap.setMyLocationData(locData);
             baiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-            setContentView(mapView);
             Log.d("定位的", "百度纬度信息== " + latitude + "-------百度经度信息==" + longitude);
 
             //设定bai中心点坐标
@@ -155,8 +150,6 @@ public class BaiduMapDemo extends BaseActivity {
             MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
 //改变地图状态
             baiduMap.setMapStatus(mMapStatusUpdate);
-
-
         }
     }
 }

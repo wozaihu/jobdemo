@@ -1,7 +1,6 @@
 package com.example.jobdemo.activity;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -15,23 +14,22 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.jobdemo.R;
 import com.example.jobdemo.adapter.MaterialDesignAdapter;
-import com.example.jobdemo.bean.PictureBean;
+import com.example.jobdemo.base.RetrofitInterface;
+import com.example.jobdemo.bean.ImageShowBean;
+import com.example.jobdemo.constants.Api;
 import com.example.jobdemo.databinding.MaterialdesignBinding;
-import com.example.jobdemo.util.MyRetrofitUtil;
-import com.example.jobdemo.util.SpUtil;
 import com.example.jobdemo.util.ToastUtils;
 import com.example.jobdemo.widget.GridSpaceItemDecoration;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +38,9 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * drawerLayout<抽屉布局><只能有两个子类，第一个是主屏幕，第二个是抽屉布局，
@@ -51,22 +52,22 @@ import io.reactivex.schedulers.Schedulers;
  * NavigationView<用于抽屉布局做抽屉>
  * <p>
  * bottomNavigationView<底部导航布局，不好做凸出效果和红点未读提示消息效果，慎用>
+ *
  * @author Administrator
  */
 public class MaterialDesignDemo extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
         , View.OnClickListener {
 
     private MaterialdesignBinding binding;
-    private List<PictureBean> list = new ArrayList<>();
+    private List<String> list = new ArrayList<>();
     private MaterialDesignAdapter adapter;
+    private int page = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = MaterialdesignBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL);
-        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         binding.rvImg.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -87,8 +88,11 @@ public class MaterialDesignDemo extends AppCompatActivity implements NavigationV
                 }
             }
         });
-        binding.rvImg.setLayoutManager(layoutManager);
-        binding.rvImg.addItemDecoration(new GridSpaceItemDecoration(10, true).setEndFromSize(0));
+//        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL);
+//        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+//        binding.rvImg.addItemDecoration(new GridSpaceItemDecoration(10, true).setEndFromSize(0));
+//        binding.rvImg.setLayoutManager(layoutManager);
+        binding.rvImg.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MaterialDesignAdapter(this, list);
         binding.rvImg.setAdapter(adapter);
         setSupportActionBar(binding.toolbar);
@@ -104,6 +108,8 @@ public class MaterialDesignDemo extends AppCompatActivity implements NavigationV
         WindowManager windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         DisplayMetrics metrics = new DisplayMetrics();
         windowManager.getDefaultDisplay().getMetrics(metrics);
+
+        addPicture(page);
     }
 
     /**
@@ -151,37 +157,38 @@ public class MaterialDesignDemo extends AppCompatActivity implements NavigationV
                         }
                     }).show();
         } else if (id == R.id.fb_addPicture) {
-            addPicture();
+            if (page < 14) {
+                addPicture(++page);
+            } else {
+                ToastUtils.shortToast(this, "目前是第" + page + "页,没有更多了");
+            }
         } else if (id == R.id.fb_getCachePicture) {
-            List<PictureBean> beans = getListPictureBean("pictureList");
-            if (list.size() != 0) {
-                list.clear();
-            }
-            if (beans != null) {
-                list.addAll(beans);
-                adapter.notifyDataSetChanged();
-            }
+
         }
     }
 
     /**
      * 获得一直新图片并保持起来
      */
-    private void addPicture() {
-        Observable<PictureBean> observable = MyRetrofitUtil.INSTANCE.getRetrofitInterface().ObservableGetPicture();
+    private void addPicture(int page) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.CARTOON_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        Observable<ImageShowBean> observable = retrofit.create(RetrofitInterface.class).getCartoonPicture(String.valueOf(page));
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<PictureBean>() {
+                .subscribe(new Observer<ImageShowBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(PictureBean pictureBean) {
-                        savePictureBean(pictureBean, "pictureList");
-                        list.add(pictureBean);
-                        adapter.notifyDataSetChanged();
+                    public void onNext(ImageShowBean bean) {
+//                        list.addAll(bean.getData().getPhotoList());
+//                        adapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -194,31 +201,5 @@ public class MaterialDesignDemo extends AppCompatActivity implements NavigationV
 
                     }
                 });
-    }
-
-    /**
-     * @return 获取保存的图片集合
-     */
-    private List<PictureBean> getListPictureBean(String paramName) {
-        String pictureStr = (String) SpUtil.getInstance().getParam(paramName, "");
-        if (TextUtils.isEmpty(pictureStr)) {
-            return null;
-        }
-        Type type = new TypeToken<List<PictureBean>>() {
-        }.getType();
-        List<PictureBean> pictureBeanList = new Gson().fromJson(pictureStr, type);
-        return pictureBeanList;
-    }
-
-    /**
-     * @param bean 保存对象集合
-     */
-    private void savePictureBean(PictureBean bean, String paramName) {
-        List<PictureBean> pictureBeanList = getListPictureBean(paramName);
-        if (pictureBeanList == null) {
-            pictureBeanList = new ArrayList<>();
-        }
-        pictureBeanList.add(bean);
-        SpUtil.getInstance().setObjectToString(paramName, pictureBeanList);
     }
 }

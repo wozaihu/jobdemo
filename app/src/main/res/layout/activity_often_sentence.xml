@@ -55,6 +55,17 @@
             android:textSize="14sp" />
 
         <Button
+            android:id="@+id/btn_withInputDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/select_enable_green_gray"
+            android:text="@string/inputDialog"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
             android:id="@+id/btn_switchBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

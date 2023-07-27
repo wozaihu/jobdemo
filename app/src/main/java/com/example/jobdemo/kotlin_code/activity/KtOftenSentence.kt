@@ -2,6 +2,7 @@ package com.example.jobdemo.kotlin_code.activity
 
 import android.os.Bundle
 import android.provider.ContactsContract.Intents.Insert
+import android.text.TextUtils
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import cn.rongcloud.rtc.utils.UUID22
@@ -14,6 +15,10 @@ import com.example.jobdemo.kotlin_code.dialog.OftenSentenceDialog
 import com.example.jobdemo.kotlin_code.utils.getDefaultValue
 import com.example.jobdemo.util.CheckInstallsPermissionUtil
 import com.example.jobdemo.util.ToastUtils
+import com.lxj.xpopup.XPopup
+import com.lxj.xpopup.core.BasePopupView
+import com.lxj.xpopup.interfaces.OnInputConfirmListener
+import org.greenrobot.eventbus.EventBus
 import java.lang.StringBuilder
 import java.lang.ref.WeakReference
 
@@ -26,6 +31,8 @@ import java.lang.ref.WeakReference
  */
 class KtOftenSentence : AppCompatActivity() {
 
+
+    private var pop: BasePopupView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +66,26 @@ class KtOftenSentence : AppCompatActivity() {
             Log.d("常用语", "KtOftenSentence收到了intent传值-----${it.userInfo.size}")
         }
 
+        binding.btnWithInputDialog.setOnClickListener {
+            pop = XPopup.Builder(this)
+                .hasShadowBg(true)
+                .dismissOnTouchOutside(false)
+                .isDestroyOnDismiss(true)
+                .autoDismiss(false)
+                .asInputConfirm(
+                    "请输入公司全称",
+                    null, "必填"
+                ) { text ->
+                    if (TextUtils.isEmpty(text)) {
+                        ToastUtils.shortToast(this@KtOftenSentence, "请输入公司名")
+                    } else {
+                        pop?.smartDismiss()
+                        finish()
+                    }
+                }
+                .show()
+        }
+
         binding.btnSwitchBtn.setOnClickListener {
             binding.btnShowDialog.isEnabled = !binding.btnShowDialog.isEnabled
             binding.btnShowBottomDialog.isEnabled = !binding.btnShowBottomDialog.isEnabled
@@ -66,12 +93,12 @@ class KtOftenSentence : AppCompatActivity() {
         }
 
         binding.btnCheckInstallPermission.setOnClickListener {
-          val isInstall= CheckInstallsPermissionUtil.isInstalls(WeakReference(this))
-          if (isInstall){
-              val s =
-                  StringBuilder(getString(R.string.canBeInstalled)).insert(2, "-").toString()
-              ToastUtils.shortToast(this,s)
-          }
+            val isInstall = CheckInstallsPermissionUtil.isInstalls(WeakReference(this))
+            if (isInstall) {
+                val s =
+                    StringBuilder(getString(R.string.canBeInstalled)).insert(2, "-").toString()
+                ToastUtils.shortToast(this, s)
+            }
         }
     }
 }

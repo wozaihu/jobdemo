@@ -8,6 +8,10 @@ public class Api {
      * 随缘吧API接口站https://acg.xydwz.cn/
      */
     public static final String BASE_PICTURE_URL = "https://acg.xydwz.cn/api/";
+    public static final String CARTOON_URL = "https://bed.mydog.buzz/";
+
+    public static final String SEARCH_IMAGE_BY360 = "http://image.so.com/";
+
     public static String DEFAULT_TIP_STRING = "默认文字";
     public static String BAIDU_MAP = "com.baidu.BaiduMap";
     public static String GAODE_MAP = "com.autonavi.minimap";

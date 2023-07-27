@@ -61,18 +61,19 @@
             app:layout_constraintTop_toBottomOf="@id/image3"
             tools:ignore="ContentDescription" />
 
+
         <ImageView
             android:id="@+id/image5"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@color/yellow"
-            android:src="@mipmap/a1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
             android:translationY="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
+
 
         <Button
             android:id="@+id/btn_startSentence"
