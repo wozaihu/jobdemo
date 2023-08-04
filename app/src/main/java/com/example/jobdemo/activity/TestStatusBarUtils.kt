@@ -1,26 +1,14 @@
 package com.example.jobdemo.activity
 
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
-import android.view.View.OnTouchListener
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jobdemo.R
-import com.example.jobdemo.R2.id.fitToContents
 import com.example.jobdemo.databinding.ActivityTestStatusBarUtilsBinding
 import com.example.jobdemo.kotlin_code.adapter.FruitRecycleAdapter
-import com.example.jobdemo.kotlin_code.list
-import com.example.jobdemo.util.DensityUtil
 import com.example.jobdemo.util.MeasureUtils
-import com.example.jobdemo.util.StatusBarUtils
 import com.example.jobdemo.util.ToastUtils
-import com.example.jobdemo.util.Utils
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.gyf.immersionbar.ImmersionBar
-import io.rong.imkit.utils.RongUtils.screenHeight
 
 class TestStatusBarUtils : AppCompatActivity() {
     private lateinit var binding: ActivityTestStatusBarUtilsBinding

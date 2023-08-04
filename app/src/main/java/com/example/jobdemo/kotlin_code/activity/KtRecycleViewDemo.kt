@@ -2,21 +2,17 @@ package com.example.jobdemo.kotlin_code.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.MotionEvent
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.ItemTouchUIUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jobdemo.R
 import com.example.jobdemo.databinding.ActivityKtRecycleViewDemoBinding
 import com.example.jobdemo.kotlin_code.adapter.FruitRecycleAdapter
-import com.example.jobdemo.kotlin_code.addData
 import com.example.jobdemo.util.LogUtil
 import com.example.jobdemo.util.ToastUtils
 import com.google.android.material.divider.MaterialDividerItemDecoration
-import com.google.gson.Gson
 import com.google.gson.JsonObject
 import org.json.JSONArray
 

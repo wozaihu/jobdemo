@@ -1,25 +1,22 @@
 package com.example.jobdemo.kotlin_code.activity
 
+import android.app.Dialog
 import android.os.Bundle
-import android.provider.ContactsContract.Intents.Insert
 import android.text.TextUtils
 import android.util.Log
+import android.view.Window
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import cn.rongcloud.rtc.utils.UUID22
 import com.example.jobdemo.R
 import com.example.jobdemo.databinding.ActivityOftenSentenceBinding
-import com.example.jobdemo.databinding.AshowtoastBinding
+import com.example.jobdemo.databinding.DialogRegisterInputCompanyBinding
 import com.example.jobdemo.kotlin_code.bean.SentenceBean
 import com.example.jobdemo.kotlin_code.dialog.BottomDialog
 import com.example.jobdemo.kotlin_code.dialog.OftenSentenceDialog
 import com.example.jobdemo.kotlin_code.utils.getDefaultValue
 import com.example.jobdemo.util.CheckInstallsPermissionUtil
 import com.example.jobdemo.util.ToastUtils
-import com.lxj.xpopup.XPopup
-import com.lxj.xpopup.core.BasePopupView
-import com.lxj.xpopup.interfaces.OnInputConfirmListener
-import org.greenrobot.eventbus.EventBus
-import java.lang.StringBuilder
 import java.lang.ref.WeakReference
 
 /**
@@ -30,10 +27,6 @@ import java.lang.ref.WeakReference
 
  */
 class KtOftenSentence : AppCompatActivity() {
-
-
-    private var pop: BasePopupView? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityOftenSentenceBinding.inflate(layoutInflater)
@@ -67,23 +60,23 @@ class KtOftenSentence : AppCompatActivity() {
         }
 
         binding.btnWithInputDialog.setOnClickListener {
-            pop = XPopup.Builder(this)
-                .hasShadowBg(true)
-                .dismissOnTouchOutside(false)
-                .isDestroyOnDismiss(true)
-                .autoDismiss(false)
-                .asInputConfirm(
-                    "请输入公司全称",
-                    null, "必填"
-                ) { text ->
-                    if (TextUtils.isEmpty(text)) {
-                        ToastUtils.shortToast(this@KtOftenSentence, "请输入公司名")
-                    } else {
-                        pop?.smartDismiss()
-                        finish()
-                    }
+            val dialog = Dialog(this,R.style.CustomDialogWidth)
+            dialog.setCanceledOnTouchOutside(false)
+            val inputDialogBinding = DialogRegisterInputCompanyBinding.inflate(layoutInflater)
+            dialog.setContentView(inputDialogBinding.root)
+            inputDialogBinding.tvTitle.text="请输入公司全称"
+            inputDialogBinding.tvCancel.setOnClickListener {
+                dialog.cancel()
+            }
+            inputDialogBinding.tvConfirm.setOnClickListener {
+                val text = inputDialogBinding.etInput.text.toString()
+                if (!TextUtils.isEmpty(text)) {
+                    ToastUtils.shortToast(this, text)
+                    dialog.cancel()
                 }
-                .show()
+            }
+            dialog.window?.setDimAmount(0.2f)
+            dialog.show()
         }
 
         binding.btnSwitchBtn.setOnClickListener {
