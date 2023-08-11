@@ -18,9 +18,6 @@ class CoroutinesDemo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityCoroutinesDemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.tv.setOnClickListener {
-            startActivity(Intent(applicationContext, InfoShow::class.java))
-        }
         Log.e(tag, "start---Id：${Thread.currentThread().id}")
         job = CoroutineScope(Dispatchers.Main).launch {
             Log.e(tag, "开始执行协程任务---Id：${Thread.currentThread().id}")

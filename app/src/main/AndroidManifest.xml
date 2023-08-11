@@ -64,6 +64,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
         <activity
+            android:name=".activity.WanAndroid"
+            android:exported="false" />
+        <activity
             android:name=".activity.CoroutinesDemo"
             android:exported="false" />
         <activity

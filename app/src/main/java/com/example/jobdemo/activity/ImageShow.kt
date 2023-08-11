@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -28,10 +27,12 @@ import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.util.SmartGlideImageLoader
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 
 
 class ImageShow : AppCompatActivity() {
@@ -73,10 +74,14 @@ class ImageShow : AppCompatActivity() {
 
     @SuppressLint("CheckResult")
     fun getImage(name: String, sn: Int) {
+        val httpClientBuilder = OkHttpClient.Builder()
+            .connectTimeout(30, TimeUnit.SECONDS) // 设置连接超时时间
+            .readTimeout(30, TimeUnit.SECONDS)
         val retrofit = Retrofit.Builder()
             .baseUrl(Api.SEARCH_IMAGE_BY360)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .client(httpClientBuilder.build())
             .build()
         val retrofitInterface = retrofit.create(RetrofitInterface::class.java)
         retrofitInterface.getImage(name, sn)
