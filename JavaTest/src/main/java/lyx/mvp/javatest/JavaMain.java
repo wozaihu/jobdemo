@@ -14,5 +14,4 @@ public class JavaMain {
         student.teacher = teacher;
     }
 
-
 }
