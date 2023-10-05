@@ -13,5 +13,4 @@ public class JavaMain {
         Student student = new Student("李明");
         student.teacher = teacher;
     }
-
 }

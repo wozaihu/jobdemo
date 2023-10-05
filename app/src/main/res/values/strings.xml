@@ -8,7 +8,7 @@
     <!--如果要按字母排序显示activity名称就写下来-->
     <string name="debug_app_name">JobDemo_debug</string>
     <string name="web_view">webView</string>
-    <string name="start_camera_page">启动相机页面</string>
+    <string name="start_camera_page">启动相机页面设置了uri</string>
     <string name="two_button">第二个按钮</string>
     <string name="code_generator_plugin_details">测试根据layout自动生成activity或fragment或adapter</string>
     <string name="plugin_test">插件测试</string>
@@ -87,8 +87,16 @@
     <string name="whichRowStr">第%s行</string>
     <string name="whichRowInt">第%d行</string>
     <string name="modification">修改</string>
-    <string name="save_to_root">保存文件到根目录</string>
-    <string name="save_to_app">保存文件到应用包下</string>
+    <string name="save_sdcard_root">保存文件到SD卡</string>
+    <string name="save_external_file">保存到应用外部存储文件</string>
+    <string name="save_picture_gallery">保存图片到相册</string>
+    <string name="open_image_pick">打开图片选择</string>
+    <string name="create_direction">创建目录</string>
+    <string name="old_choose_picture">旧版选择图片</string>
+    <string name="select_picture">选择图片</string>
+    <string name="save_external_dir">保存到应用外部缓存</string>
+    <string name="save_app_file">保存到应用内部存储文件</string>
+    <string name="save_app_dir">保存到应用内部缓存</string>
     <string name="clear_cache">清除缓存</string>
     <string name="startInfoShow">启动infoShow页面</string>
     <string name="close">关闭</string>
@@ -168,6 +176,7 @@
     <string name="switchBtn">SwitchBtn</string>
     <string name="checkDeviceInstallPermission">检测是否具备安装应用权限</string>
     <string name="inputDialog">带输入框的对话框</string>
+    <string name="startGpsString">启动gps设置页面</string>
     <string name="canBeInstalled">可以安装</string>
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
@@ -179,4 +188,6 @@
     <string name="selectLocation">选择地址</string>
     <string name="mustInput">必填</string>
     <string name="title_activity_compose">ComposeActivity</string>
+    <string name="startCamera">启动相机</string>
+    <string name="check_update">检查更新</string>
 </resources>

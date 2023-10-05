@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
 import com.example.jobdemo.databinding.ActivityLaunchBinding;
 import com.example.jobdemo.service.MyIntentService;
 
@@ -22,6 +24,12 @@ public class CustomLaunchActivity extends AppCompatActivity {
 
     private CountDownTimer downTimer;
 
+    /**
+     * 模拟地址为空时，glide加载是否会报错
+     */
+    private final String src = null;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +37,7 @@ public class CustomLaunchActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         checkLocationPermission();
         MyIntentService.startActionFoo(this, "hello", "hi");
+        Glide.with(this).load(src).placeholder(R.mipmap.launch2).into(binding.img);
         downTimer = new CountDownTimer(1000, 1000) {
             @SuppressLint("SetTextI18n")
             @Override

@@ -30,8 +30,10 @@ public class ResultApiUse extends BaseActivity {
                 ToastUtils.shortToast(ResultApiUse.this,result.getData().getStringExtra("extra"));
             }
         });
-        ActivityResultLauncher<Void> launcherPhotograph = registerForActivityResult(new ActivityResultContracts.TakePicturePreview(), result -> inflate.imageView.setImageBitmap(result));
         inflate.startInfoShow.setOnClickListener(v -> launcherInfo.launch(new Intent(ResultApiUse.this, InfoShow.class)));
+
+
+        ActivityResultLauncher<Void> launcherPhotograph = registerForActivityResult(new ActivityResultContracts.TakePicturePreview(), result -> inflate.imageView.setImageBitmap(result));
         inflate.photograph.setOnClickListener(v -> launcherPhotograph.launch(null));
     }
 }

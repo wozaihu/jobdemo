@@ -4,10 +4,12 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.amap.api.mapcore.util.it
 import com.blankj.utilcode.util.ConvertUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -22,6 +24,7 @@ import com.example.jobdemo.bean.SimplePictureBean
 import com.example.jobdemo.constants.Api
 import com.example.jobdemo.databinding.ActivityImageShowBinding
 import com.example.jobdemo.util.LogUtil
+import com.example.jobdemo.util.SpUtil
 import com.example.jobdemo.widget.GridSpaceItemDecoration
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.util.SmartGlideImageLoader
@@ -37,6 +40,7 @@ import java.util.concurrent.TimeUnit
 
 class ImageShow : AppCompatActivity() {
     private val list: MutableList<SimplePictureBean> = ArrayList()
+    private val imgList: MutableList<String> = ArrayList()
     private lateinit var adapter: ImageShowAdapter
     private lateinit var binding: ActivityImageShowBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -106,13 +110,14 @@ class ImageShow : AppCompatActivity() {
                             LogUtil.showD("获取图片都获得宽高了最后一张为：${bean.index}")
                         }
                     }
+                    imgList.add(picture.img)
                 }
 
+                    SpUtil . getInstance ().setObjectToString("carUrlList", imgList)
             }, { throwable ->
                 LogUtil.showD("获取图片地址异常---${throwable.message}")
             })
     }
-
 
     private fun getAspectRatio(
         imageUrl: String,

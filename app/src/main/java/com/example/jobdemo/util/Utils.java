@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.PendingIntent;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -11,7 +13,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.Settings;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -154,20 +158,14 @@ public class Utils {
      *
      * @return
      */
-    public static boolean checkAppsIsExist(Context context, String packageName) {
-        PackageInfo packageInfo;
-        try {
-            packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
-        } catch (Exception e) {
-            packageInfo = null;
-            e.printStackTrace();
-        }
-        if (packageInfo == null) {
-            return false;
-        } else {
-            return true;
-        }
+public static boolean checkAppsIsExist(Context context, String packageName) {
+    try {
+        PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
+        return true;
+    } catch (PackageManager.NameNotFoundException e) {
+        return false;
     }
+}
 
     /**
      * @param context        上下文
@@ -191,5 +189,17 @@ public class Utils {
 
     public static String getUserId(@Nullable Context context) {
         return "80000001";
+    }
+
+
+    public static void openGPS(Context context) {
+        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+            Toast.makeText(context, "无法打开位置设置页面", Toast.LENGTH_SHORT).show();
+        }
     }
 }

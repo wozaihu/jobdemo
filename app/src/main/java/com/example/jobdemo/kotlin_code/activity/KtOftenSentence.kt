@@ -17,6 +17,7 @@ import com.example.jobdemo.kotlin_code.dialog.OftenSentenceDialog
 import com.example.jobdemo.kotlin_code.utils.getDefaultValue
 import com.example.jobdemo.util.CheckInstallsPermissionUtil
 import com.example.jobdemo.util.ToastUtils
+import com.example.jobdemo.util.Utils
 import java.lang.ref.WeakReference
 
 /**
@@ -60,11 +61,11 @@ class KtOftenSentence : AppCompatActivity() {
         }
 
         binding.btnWithInputDialog.setOnClickListener {
-            val dialog = Dialog(this,R.style.CustomDialogWidth)
+            val dialog = Dialog(this, R.style.CustomDialogWidth)
             dialog.setCanceledOnTouchOutside(false)
             val inputDialogBinding = DialogRegisterInputCompanyBinding.inflate(layoutInflater)
             dialog.setContentView(inputDialogBinding.root)
-            inputDialogBinding.tvTitle.text="请输入公司全称"
+            inputDialogBinding.tvTitle.text = "请输入公司全称"
             inputDialogBinding.tvCancel.setOnClickListener {
                 dialog.cancel()
             }
@@ -92,6 +93,10 @@ class KtOftenSentence : AppCompatActivity() {
                     StringBuilder(getString(R.string.canBeInstalled)).insert(2, "-").toString()
                 ToastUtils.shortToast(this, s)
             }
+        }
+
+        binding.btnStartGpsString.setOnClickListener {
+            Utils.openGPS(this)
         }
     }
 }

@@ -2,15 +2,12 @@ package com.example.jobdemo.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View.OnTouchListener
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.jobdemo.R
 import com.example.jobdemo.databinding.ActivityRenameOrEditSignatureBinding
-import com.example.jobdemo.util.closeKeyboard
+import com.example.jobdemo.kotlin_code.utils.closeKeyboard
 
 
 class RenameOrEditSignature : AppCompatActivity() {

@@ -105,7 +105,8 @@ public class DefaultLocation extends AppCompatActivity {
             if (location != null) {
                 binding.tvNetworkLocation.setText("network定位经度" + location.getLongitude() + "---纬度" + location.getLatitude());
                 double[] doubles = CoordinateTransformUtil.wgs84tobd09(location.getLongitude(), location.getLatitude());
-                LogUtil.showArray("network定位的location---", doubles);
+                LogUtil.showD("network定位的原始经纬度---", location.getLongitude() + "," + location.getLatitude());
+                LogUtil.showD("network定位的百度经纬度---", doubles[0] + "," + doubles[1]);
                 Address address = convertAddress(this, location.getLongitude(), location.getLatitude());
                 LogUtil.showD("network定位附近地址数---" + address.getMaxAddressLineIndex());
                 LogUtil.showD("network定位附近地址0---" + address.getAddressLine(0));
@@ -321,6 +322,7 @@ public class DefaultLocation extends AppCompatActivity {
      */
 
     private void initLocationOption() {
+        LocationClient.setAgreePrivacy(true);
 //定位服务的客户端。宿主程序在客户端声明此类，并调用，目前只支持在主线程中启动
         try {
             locationClient = new LocationClient(getApplicationContext());
@@ -404,7 +406,7 @@ baiduMap.setMyLocationData(locData);
             Log.d("定位的", "百度纬度信息== " + latitude + "-------百度经度信息==" + longitude);
             binding.tvBaiduLocation.setText("百度定位经度" + longitude + "---纬度" + latitude);
             String addr = location.getAddrStr();
-            binding.tvBaiduAddress.setText("百度定位地址：" + addr);
+            binding.tvBaiduAddress.setText("百度定位地址：" + addr + "，城市编码：" + location.getCityCode());
             //设定bai中心点坐标
             LatLng cenpt = new LatLng(latitude, longitude);
 //定义地图状态
