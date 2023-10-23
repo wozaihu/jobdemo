@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".http_use.HttpUseDemo">
+
+    <com.nex3z.flowlayout.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_http"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/httpUrlConnection"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_okHttp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/okHttp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_okPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/okPost"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_retrofit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/retrofit"
+            android:textAllCaps="false" />
+    </com.nex3z.flowlayout.FlowLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_customer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

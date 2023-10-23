@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.GlideBuilder;
 import com.example.jobdemo.databinding.ActivityLaunchBinding;
 import com.example.jobdemo.service.MyIntentService;
 
@@ -37,7 +36,7 @@ public class CustomLaunchActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         checkLocationPermission();
         MyIntentService.startActionFoo(this, "hello", "hi");
-        Glide.with(this).load(src).placeholder(R.mipmap.launch2).into(binding.img);
+        Glide.with(this).load(R.mipmap.launch2).into(binding.img);
         downTimer = new CountDownTimer(1000, 1000) {
             @SuppressLint("SetTextI18n")
             @Override

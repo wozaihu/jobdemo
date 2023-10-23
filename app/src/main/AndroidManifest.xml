@@ -29,7 +29,6 @@
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_MEDIA_PERMISSION" />
-
     <uses-permission
         android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
@@ -83,8 +82,7 @@
             android:process=":remote" /> <!-- 百度地图 key -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="UpGAvq5yhd89MZRcTpihc2mjKeR5ziDs" />
-        <!-- 文件内容提供者 -->
+            android:value="UpGAvq5yhd89MZRcTpihc2mjKeR5ziDs" /> <!-- 文件内容提供者 -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.jobdemo.fileprovider"
@@ -93,16 +91,13 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider>
-
-        <!-- 腾讯X5初始化优化 -->
+        </provider> <!-- 腾讯X5初始化优化 -->
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
             android:label="dexopt"
             android:process=":dexopt" />
         <service android:name=".service.TestService" />
-        <service android:name=".service.MyIntentService" />
-        <!-- android12 兼容，需要显式指定 exported，融云为升级前在主manifest中复制一份报错的组件，添加exported -->
+        <service android:name=".service.MyIntentService" /> <!-- android12 兼容，需要显式指定 exported，融云为升级前在主manifest中复制一份报错的组件，添加exported -->
         <!-- push 相关事件接收器 -->
         <receiver
             android:name="io.rong.push.rongpush.PushReceiver"
@@ -145,7 +140,6 @@
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
             </intent-filter>
         </receiver>
-
 
         <activity
             android:name=".activity.ComposeActivity"
@@ -314,6 +308,10 @@
         <activity
             android:name=".activity.ImageActivity"
             android:description="@string/exclude" />
+        <activity
+            android:name=".http_use.HttpUseDemo"
+            android:exported="false"
+            android:label="@string/httpUse" />
     </application>
 
 </manifest>

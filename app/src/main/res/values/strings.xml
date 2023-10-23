@@ -190,4 +190,9 @@
     <string name="title_activity_compose">ComposeActivity</string>
     <string name="startCamera">启动相机</string>
     <string name="check_update">检查更新</string>
+    <string name="httpUse">Http使用</string>
+    <string name="httpUrlConnection">httpURLConnection</string>
+    <string name="okHttp">okHttp</string>
+    <string name="okPost">post提交数据</string>
+    <string name="retrofit">retrofit</string>
 </resources>
