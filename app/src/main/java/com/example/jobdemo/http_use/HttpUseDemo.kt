@@ -47,6 +47,7 @@ class HttpUseDemo : AppCompatActivity() {
         binding.btnHttp.setOnClickListener { httpUse() }
         binding.btnOkHttp.setOnClickListener { okHttpUse() }
         binding.btnOkPost.setOnClickListener { commitCustomer() }
+        binding.btnQuery.setOnClickListener { queryCustomer() }
         binding.rvCustomer.layoutManager = LinearLayoutManager(this)
         binding.rvCustomer.addItemDecoration(
             DividerItemDecoration(
@@ -56,6 +57,30 @@ class HttpUseDemo : AppCompatActivity() {
         )
         adapter = RecyclerViewAdapter(this, list, R.layout.item_customer)
         binding.rvCustomer.adapter = adapter
+    }
+
+    private fun queryCustomer() {
+        if (!binding.etv.text.isNullOrEmpty()) {
+            getCustomer(binding.etv.text.toString())
+        }
+    }
+
+    private fun getCustomer(id: String) {
+        val customerService = CustomerServiceCreator.create<CustomerService>()
+        customerService.getSingleCustomer(id)
+            .enqueue(object : retrofit2.Callback<String> {
+                override fun onResponse(
+                    call: retrofit2.Call<String>,
+                    response: retrofit2.Response<String>
+                ) {
+                    LogUtil.showD(tag, response.body())
+                }
+
+                override fun onFailure(call: retrofit2.Call<String>, t: Throwable) {
+                    LogUtil.showD(tag, t.message)
+                }
+            })
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -106,6 +131,8 @@ class HttpUseDemo : AppCompatActivity() {
             runOnUiThread {
                 if (respond.toString().isEmpty()) {
                     ToastUtils.shortToast(this, "httpUse请求到的数据为空")
+                } else if (respond.toString() == "No customers found") {
+                    ToastUtils.shortToast(this, "No customers found")
                 } else {
                     setDate(respond.toString())
                 }
@@ -124,6 +151,8 @@ class HttpUseDemo : AppCompatActivity() {
             runOnUiThread {
                 if (string.isNullOrEmpty()) {
                     ToastUtils.shortToast(this, "okHttpUse请求到的数据为空")
+                } else if (string == "No customers found") {
+                    ToastUtils.shortToast(this, "No customers found")
                 } else {
                     setDate(string)
                 }
