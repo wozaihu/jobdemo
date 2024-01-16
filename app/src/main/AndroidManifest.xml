@@ -56,6 +56,7 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -312,6 +313,14 @@
             android:name=".http_use.HttpUseDemo"
             android:exported="false"
             android:label="@string/httpUse" />
+        <activity
+            android:name=".activity.ATestOnly"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.Itext7CreatePdf"
+            android:exported="false"
+            android:label="@string/code_create_pdf" />
     </application>
 
 </manifest>

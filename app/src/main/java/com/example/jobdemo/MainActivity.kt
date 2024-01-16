@@ -4,12 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jobdemo.base.BaseActivity
 import com.example.jobdemo.databinding.ActivityMainBinding
 import com.example.jobdemo.util.ClassUtils
+import com.example.jobdemo.util.SpUtil
+import com.example.jobdemo.util.ToastUtils
 import com.example.jobdemo.util.UserItemDecoration
 import com.umeng.commonsdk.UMConfigure
+import io.rong.callkit.util.SPUtils
 
 /**
  * 主页
@@ -50,6 +54,20 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
-
+        if (SpUtil.getInstance().getParam("isVisit", -1) == -1) {
+            createNonCancelableDialog(this)
+        } else {
+            ToastUtils.shortToast(this, "不为-1，不弹窗")
+        }
     }
+
+    private fun createNonCancelableDialog(context: Context) {
+        val alertDialog = AlertDialog.Builder(context)
+            .setMessage("对话框内容")
+            .setCancelable(false)
+            .setPositiveButton("确定", null)
+            .create()
+        alertDialog.show()
+    }
+
 }

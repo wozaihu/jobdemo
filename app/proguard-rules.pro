@@ -241,9 +241,13 @@ public static final int *;
 -dontwarn dalvik.**
 -dontwarn com.tencent.smtt.**
 
--keep class com.tencent.smtt.** {*;}
+-keep class com.tencent.smtt.** {
+    *;
+}
 
--keep class com.tencent.tbs.** {*;}
+-keep class com.tencent.tbs.** {
+    *;
+}
 
 #SuperTextView
 -keep class com.coorchice.library.gifdecoder.JNI { *; }

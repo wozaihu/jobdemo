@@ -197,4 +197,9 @@
     <string name="okPost">post提交数据</string>
     <string name="retrofit">retrofit</string>
     <string name="query">查询</string>
+    <string name="fillPdfModel">填充pdf模版</string>
+    <string name="createPdf">生成pdf文件</string>
+    <string name="webLinks">网络链接</string>
+    <string name="code_create_pdf">A代码创建Pdf</string>
+    <string name="fillColor">填充颜色</string>
 </resources>

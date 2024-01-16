@@ -2,6 +2,7 @@ package com.example.jobdemo;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -15,6 +16,7 @@ import com.baidu.mapapi.common.BaiduMapSDKException;
 import com.example.jobdemo.base.AppDataBase;
 import com.example.jobdemo.database.DaoMaster;
 import com.example.jobdemo.database.DaoSession;
+import com.example.jobdemo.util.LogUtil;
 import com.example.jobdemo.util.ProcessUtil;
 import com.example.jobdemo.util.SpUtil;
 import com.lzy.okgo.OkGo;
@@ -54,6 +56,10 @@ public class MyApplication extends Application {
         if (packageName.equals(processName)) {
             init();
         }
+    }
+
+    public static Context getAppContext() {
+        return application.getApplicationContext();
     }
 
     /**

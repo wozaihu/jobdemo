@@ -21,6 +21,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.core.content.FileProvider
+import com.example.jobdemo.util.DjtChangeUrl
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -483,4 +484,22 @@ fun convertAddress(context: Context, longitude: Double, latitude: Double): Addre
         e.printStackTrace()
     }
     return null
+}
+
+fun checkDynamicUrl(str: String): Boolean {
+    val pattern = ".*　\\[\\s.*?\\s\\]$"
+    return str.matches(pattern.toRegex())
+}
+
+
+fun findUrl(str: String): String {
+    if (checkDynamicUrl(str)) {
+        val startIndex = str.lastIndexOf("[ ")
+        val endIndex = str.lastIndexOf(" ]")
+        if (startIndex != -1 && endIndex != -1 && endIndex - startIndex > 0) {
+            val content = str.substring(startIndex + 2, endIndex)
+            return content.trim()
+        }
+    }
+    return ""
 }
