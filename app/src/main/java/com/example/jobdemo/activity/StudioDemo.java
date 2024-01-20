@@ -40,13 +40,10 @@ public class StudioDemo extends BaseActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(StudioDemo.this);
                     builder.setTitle("提示");
                     builder.setMessage(R.string.update_tip);
-                    builder.setPositiveButton("去开启", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
-                            StudioDemo.this.startActivityForResult(intent, 6310);
-                            dialog.dismiss();
-                        }
+                    builder.setPositiveButton("去开启", (dialog, which) -> {
+                        Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
+                        StudioDemo.this.startActivityForResult(intent, 6310);
+                        dialog.dismiss();
                     });
                     builder.create().show();
                 } else {
@@ -57,10 +54,6 @@ public class StudioDemo extends BaseActivity {
     }
 
     public void btnClick(View view) {
-//        if (NoDoubleClickUtils.isDoubleClick()) {
-//            Log.d("点击测试", "快速点击了两次: ===StudioDemo");
-//            return;
-//        }
         switch (view.getId()) {
             case R.id.btn_1:
                 InfoShow.start(this, this.getLocalClassName());

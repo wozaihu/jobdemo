@@ -74,7 +74,7 @@
 #继承activity,application,service,broadcastReceiver,contentprovider....不进行混淆
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Application
--keep public class * extends android.support.multidex.MultiDexApplication
+-keep public class * extends androidx.multidex.MultiDexApplication
 -keep public class * extends android.app.Service
 -keep public class * extends android.content.BroadcastReceiver
 -keep public class * extends android.content.ContentProvider
@@ -83,8 +83,9 @@
 -keep public class * extends android.view.View
 -keep class android.support.** {*;}## 保留support下的所有类及其内部类
 
--keep public class com.google.vending.licensing.ILicensingService
--keep public class com.android.vending.licensing.ILicensingService
+#不上架Google play不需要这两个
+#-keep public class com.google.vending.licensing.ILicensingService
+#-keep public class com.android.vending.licensing.ILicensingService
 #表示不混淆上面声明的类，最后这两个类我们基本也用不上，是接入Google原生的一些服务时使用的。
 #----------------------------------------------------
 
@@ -233,7 +234,7 @@
 -keep class a.** {*;}
 -keep class com.vivo.** {*;}
 
--keep public class [com.example.jobdemo].R$*{
+-keep public class com.example.jobdemo.R$*{
 public static final int *;
 }
 
