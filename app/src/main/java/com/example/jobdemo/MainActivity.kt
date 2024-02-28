@@ -54,20 +54,6 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
-        if (SpUtil.getInstance().getParam("isVisit", -1) == -1) {
-            createNonCancelableDialog(this)
-        } else {
-            ToastUtils.shortToast(this, "不为-1，不弹窗")
-        }
-    }
-
-    private fun createNonCancelableDialog(context: Context) {
-        val alertDialog = AlertDialog.Builder(context)
-            .setMessage("对话框内容")
-            .setCancelable(false)
-            .setPositiveButton("确定", null)
-            .create()
-        alertDialog.show()
     }
 
 }
