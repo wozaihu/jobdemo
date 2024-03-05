@@ -80,8 +80,8 @@
             app:srcCompat="@drawable/scan_website" />
     </LinearLayout>
 
-    <com.tencent.smtt.sdk.WebView
-        android:id="@+id/web"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <com.example.jobdemo.util.CustomTimePicker
+        android:id="@+id/custom_timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

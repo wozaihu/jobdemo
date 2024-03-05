@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
@@ -29,7 +30,7 @@ import java.util.Objects;
  * @author Administrator
  */
 public class DatePickerAndTimePicker extends AppCompatActivity {
-    public static final String DEFAULT_TIME = "2022-12-7 18:05:45";
+    public static final String DEFAULT_TIME = "2022-12-7 2:8:49";
 
     public static void start(Context context) {
         Intent starter = new Intent(context, DatePickerAndTimePicker.class);
@@ -48,8 +49,8 @@ public class DatePickerAndTimePicker extends AppCompatActivity {
         resizePicker(binding.timePicker);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
         try {
-            binding.datePicker.setMaxDate(Objects.requireNonNull(simpleDateFormat.parse("2099-12-31 23:59")).getTime());
-            long dateAndTime = Objects.requireNonNull(simpleDateFormat.parse(DEFAULT_TIME)).getTime();
+            binding.datePicker.setMaxDate(Objects.requireNonNull(simpleDateFormat.parse("2030-12-31 23:59")).getTime());
+            long dateAndTime = System.currentTimeMillis();
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(dateAndTime);
             int year = calendar.get(Calendar.YEAR);
@@ -58,25 +59,37 @@ public class DatePickerAndTimePicker extends AppCompatActivity {
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
             int minute = calendar.get(Calendar.MINUTE);
             int second = calendar.get(Calendar.SECOND);
-            binding.tvParse.setText("Calendar获取当前日期" + year + "年" + month + "月" + day + "日" + hour + ":" + minute + ":" + second);
-            binding.tvParse.setOnClickListener(v -> {
-                binding.datePicker.setMinDate(dateAndTime);
-                binding.datePicker.updateDate(year, month - 1, day);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    binding.timePicker.setHour(hour);
-                    binding.timePicker.setMinute(minute);
-                } else {
-                    binding.timePicker.setCurrentHour(hour);
-                    binding.timePicker.setCurrentMinute(minute);
-                }
-            });
+            binding.tvParse.setText("Calendar获取当前日期" + year + "年" + month + "月" + day + "日" + hour + ":" + minute);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        boolean b = KtUtilsKt.isExistEmpty("填写", "不得了","", "晓不得", null, "无敌");
-        String s = b ? "true" : "false";
-        Log.d("KtUtils", "isAllEmpty: ------" + s);
 
+        binding.getTime.setOnClickListener(v -> {
+            int year = binding.datePicker.getYear();
+            int month = binding.datePicker.getMonth()+1;
+            int day = binding.datePicker.getDayOfMonth();
+            String hour = binding.customTimePicker.getSelectedHour();
+            String minute = binding.customTimePicker.getSelectedMinute();
+            binding.tvParse.setText("Calendar获取当前日期" + year + "年" + month + "月" + day + "日" + hour + ":" + minute);
+        });
+
+        binding.setTime.setOnClickListener(v -> {
+            long dateAndTime = 0;
+            try {
+                dateAndTime = Objects.requireNonNull(simpleDateFormat.parse(DEFAULT_TIME)).getTime();
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(dateAndTime);
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH) + 1;
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+            int minute = calendar.get(Calendar.MINUTE);
+            binding.datePicker.init(year, month, day, null);
+            binding.customTimePicker.setSelectedTime(hour, minute);
+        });
     }
 
     /**
