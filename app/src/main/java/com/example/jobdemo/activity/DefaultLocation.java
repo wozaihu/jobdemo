@@ -70,7 +70,7 @@ public class DefaultLocation extends AppCompatActivity {
             LogUtil.showD("定位的---没有权限");
             return;
         }
-
+        //don't limit self
         initLocationOption();
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);

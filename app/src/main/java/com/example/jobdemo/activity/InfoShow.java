@@ -43,7 +43,7 @@ public class InfoShow extends AppCompatActivity implements View.OnClickListener 
         Intent starter = new Intent(context, InfoShow.class);
         starter.putExtra("parameter", parameter);
         context.startActivity(starter);
-
+        //I am very tired，I don't want to do anything
     }
 
     @Override

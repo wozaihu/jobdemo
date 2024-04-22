@@ -52,17 +52,15 @@
         <!-- 指定腾讯地图包名 -->
         <package android:name="com.tencent.map" />
     </queries>
-
+    <!--android:debuggable="true",android:usesCleartextTraffic="true" 抓https或许会用到-->
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/JobDemoAppTheme"
-        android:usesCleartextTraffic="true"
         tools:replace="android:theme">
 
         <meta-data
