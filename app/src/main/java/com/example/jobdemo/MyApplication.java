@@ -16,7 +16,6 @@ import com.baidu.mapapi.common.BaiduMapSDKException;
 import com.example.jobdemo.base.AppDataBase;
 import com.example.jobdemo.database.DaoMaster;
 import com.example.jobdemo.database.DaoSession;
-import com.example.jobdemo.util.LogUtil;
 import com.example.jobdemo.util.ProcessUtil;
 import com.example.jobdemo.util.SpUtil;
 import com.lzy.okgo.OkGo;
@@ -27,11 +26,13 @@ import com.umeng.commonsdk.UMConfigure;
 
 import java.util.HashMap;
 
+import dagger.hilt.android.HiltAndroidApp;
 import io.rong.imkit.RongIM;
 
 /**
  * @author Administrator
  */
+@HiltAndroidApp
 public class MyApplication extends Application {
     private DaoMaster daoMaster;
     private static DaoSession daoSession;

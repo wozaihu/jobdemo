@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jobdemo.R;
+import com.example.jobdemo.bean.LaptopBean;
 import com.example.jobdemo.bean.Person;
 import com.example.jobdemo.databinding.ActivityInfoBinding;
 import com.example.jobdemo.util.AppInfoUtils;
@@ -32,18 +33,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * @author Administrator
  */
+@AndroidEntryPoint
 public class InfoShow extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "InfoShow";
+    @Inject
+    LaptopBean laptopBean;
+
     private com.example.jobdemo.databinding.ActivityInfoBinding binding;
 
+    /**
+     * 启动 InfoShow 活动，并传递参数
+     *
+     * @param context 上下文对象
+     * @param parameter 传递给 InfoShow 活动的参数
+     */
     public static void start(Context context, String parameter) {
         Intent starter = new Intent(context, InfoShow.class);
         starter.putExtra("parameter", parameter);
         context.startActivity(starter);
         //I am very tired，I don't want to do anything
+        //if you have something you want to do ,just do it .
     }
 
     @Override
@@ -74,6 +90,7 @@ public class InfoShow extends AppCompatActivity implements View.OnClickListener 
         binding.close.setOnClickListener(this);
         Log.d(TAG, "包名: " + getPackageName());
         pointDate();
+        binding.btnLaptop.setOnClickListener(this);
     }
 
     private void pointDate() {
@@ -142,6 +159,8 @@ public class InfoShow extends AppCompatActivity implements View.OnClickListener 
         } else if (id == R.id.close) {
             setResult(Activity.RESULT_OK, new Intent().putExtra("extra", "info返回的数据"));
             finish();
+        } else if (id == R.id.btn_laptop) {
+            ToastUtils.shortToast(this, laptopBean.getScreenSize() + "");
         }
     }
 }

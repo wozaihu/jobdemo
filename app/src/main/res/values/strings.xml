@@ -202,4 +202,5 @@
     <string name="webLinks">网络链接</string>
     <string name="code_create_pdf">A代码创建Pdf</string>
     <string name="fillColor">填充颜色</string>
+    <string name="showInjectInfo">显示注入信息</string>
 </resources>

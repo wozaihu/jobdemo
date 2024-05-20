@@ -40,6 +40,12 @@
                 app:stv_state_drawable_width="20dp"
                 tools:text="sha1值" />
 
+            <Button
+                android:id="@+id/btn_laptop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/showInjectInfo" />
+
             <TextView
                 android:id="@+id/tv_md5"
                 android:layout_width="wrap_content"

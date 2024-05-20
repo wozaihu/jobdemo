@@ -70,7 +70,7 @@ public class DefaultLocation extends AppCompatActivity {
             LogUtil.showD("定位的---没有权限");
             return;
         }
-        //don't limit self
+        //don't limit yourself
         initLocationOption();
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -202,7 +202,6 @@ public class DefaultLocation extends AppCompatActivity {
                 apiGetAddressCode2();
             }
         });
-
     }
 
     private void apiGetAddressCode() {

@@ -4,6 +4,8 @@ apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'kotlin-parcelize'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 33
@@ -91,6 +93,10 @@ android {
         dataBinding = true
         viewBinding = true
         compose true
+    }
+
+    kapt {
+        correctErrorTypes true
     }
 
 
@@ -272,6 +278,10 @@ dependencies {
 
     implementation 'com.itextpdf:itext7-core:8.0.2'
     implementation 'com.itextpdf:html2pdf:5.0.2'
+
+    //hilt注入库
+    implementation "com.google.dagger:hilt-android:2.51"
+    kapt "com.google.dagger:hilt-compiler:2.51"
 }
 repositories {
     mavenCentral()
