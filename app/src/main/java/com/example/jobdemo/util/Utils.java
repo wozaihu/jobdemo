@@ -17,6 +17,8 @@ import android.provider.Settings;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.jobdemo.MyApplication;
+
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.ref.WeakReference;
@@ -158,14 +160,14 @@ public class Utils {
      *
      * @return
      */
-public static boolean checkAppsIsExist(Context context, String packageName) {
-    try {
-        PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
-        return true;
-    } catch (PackageManager.NameNotFoundException e) {
-        return false;
+    public static boolean checkAppsIsExist(Context context, String packageName) {
+        try {
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
     }
-}
 
     /**
      * @param context        上下文
@@ -201,5 +203,9 @@ public static boolean checkAppsIsExist(Context context, String packageName) {
             e.printStackTrace();
             Toast.makeText(context, "无法打开位置设置页面", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public static void showStr(String str) {
+        ToastUtils.shortToast(MyApplication.getAppContext(), str);
     }
 }

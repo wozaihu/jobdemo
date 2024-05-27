@@ -1,8 +1,11 @@
 package com.example.jobdemo.activity;
 
+import static com.example.jobdemo.util.Utils.showStr;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,7 +54,7 @@ public class InfoShow extends AppCompatActivity implements View.OnClickListener 
     /**
      * 启动 InfoShow 活动，并传递参数
      *
-     * @param context 上下文对象
+     * @param context   上下文对象
      * @param parameter 传递给 InfoShow 活动的参数
      */
     public static void start(Context context, String parameter) {
@@ -91,6 +94,17 @@ public class InfoShow extends AppCompatActivity implements View.OnClickListener 
         Log.d(TAG, "包名: " + getPackageName());
         pointDate();
         binding.btnLaptop.setOnClickListener(this);
+        binding.btnShowStr.setOnClickListener(v -> showStr("你好"));
+        binding.btnStartNew.setOnClickListener(v -> {
+            Intent intent = new Intent(this, EditTextDemo.class);
+            startActivity(intent);
+        });
+
+        // 打开百度网址
+        Uri uri = Uri.parse("https://www.baidu.com");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     private void pointDate() {

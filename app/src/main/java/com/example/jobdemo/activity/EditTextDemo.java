@@ -35,32 +35,5 @@ public class EditTextDemo extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edittextdemo);
         ButterKnife.bind(this);
-        edtPrice.requestFocus();
-        edtPrice.addTextChangedListener(new PriceTextWatcher(edtPrice));
-        double price = Double.parseDouble("0.");
-        Log.d(TAG, "price:==" + price);
-        List<String> list = new ArrayList();
-        list.add("1");
-        list.add(null);
-        list.add("2");
-        list.add("3");
-        list.add(null);
-        list.add("4");
-
-        for (int i = 0; i < list.size(); i++) {
-            Log.d(TAG, i + "=原来=" + list.get(i));
-        }
-        list.removeAll(Collections.singleton(null));
-        for (int i = 0; i < list.size(); i++) {
-            Log.d(TAG, i + "==" + list.get(i));
-        }
-        KTPerson.isJavaSupport();
-    }
-
-    @OnClick(R.id.button)
-    public void onViewClicked() {
-        Log.d(TAG, "isClickable: " + checkBox.isClickable());
-        Log.d(TAG, "isChecked: " + checkBox.isChecked());
-        Log.d(TAG, "isSelected: " + checkBox.isSelected());
     }
 }
