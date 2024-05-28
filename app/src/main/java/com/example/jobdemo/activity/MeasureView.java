@@ -8,6 +8,7 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
+import com.example.jobdemo.R2;
 import com.example.jobdemo.base.BaseActivity;
 
 import butterknife.BindView;
@@ -15,11 +16,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MeasureView extends BaseActivity {
-    @BindView(R.id.lv)
+    @BindView(R2.id.lv)
     ListView lv;
-    @BindView(R.id.btn_set_lv_adapter)
+    @BindView(R2.id.btn_set_lv_adapter)
     Button btnSetLvAdapter;
-    @BindView(R.id.btn_really_size)
+    @BindView(R2.id.btn_really_size)
     Button btnReallySize;
 
     @Override

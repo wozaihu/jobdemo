@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.jobdemo.R;
+import com.example.jobdemo.R2;
 import com.example.jobdemo.base.BaseActivity;
 
 import androidx.annotation.Nullable;
@@ -17,15 +18,15 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MyFrameAnimatoin extends BaseActivity {
-    @BindView(R.id.iv_frame_animation)
+    @BindView(R2.id.iv_frame_animation)
     ImageView ivFrameAnimation;
-    @BindView(R.id.btn_start)
+    @BindView(R2.id.btn_start)
     Button btnStart;
-    @BindView(R.id.btn_stop)
+    @BindView(R2.id.btn_stop)
     Button btnStop;
-    @BindView(R.id.btn_start_java_add_drawable_animation)
+    @BindView(R2.id.btn_start_java_add_drawable_animation)
     Button btnStartJavaAddDrawableAnimation;
-    @BindView(R.id.iv_java)
+    @BindView(R2.id.iv_java)
     ImageView ivJava;
     private AnimationDrawable animationDrawable;
 

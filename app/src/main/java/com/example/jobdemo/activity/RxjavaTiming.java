@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
+import com.example.jobdemo.R2;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.bean.PictureBean;
 import com.example.jobdemo.util.LogUtil;
@@ -41,24 +42,24 @@ import io.reactivex.schedulers.Schedulers;
  * 使用Rxjava做一个定时器
  */
 public class RxjavaTiming extends BaseActivity {
-    @BindView(R.id.et_timingNumber)
+    @BindView(R2.id.et_timingNumber)
     EditText etTimingNumber;
-    @BindView(R.id.tv_showTiming)
+    @BindView(R2.id.tv_showTiming)
     TextView tvShowTiming;
-    @BindView(R.id.btn_startTiming)
+    @BindView(R2.id.btn_startTiming)
     Button btnStartTiming;
-    @BindView(R.id.tv_showCycleNumber)
+    @BindView(R2.id.tv_showCycleNumber)
     TextView tvShowCycleNumber;
     int i = 0;
-    @BindView(R.id.et_name)
+    @BindView(R2.id.et_name)
     EditText etName;
-    @BindView(R.id.et_age)
+    @BindView(R2.id.et_age)
     EditText etAge;
-    @BindView(R.id.et_gender)
+    @BindView(R2.id.et_gender)
     EditText etGender;
-    @BindView(R.id.btn_commit)
+    @BindView(R2.id.btn_commit)
     Button btnCommit;
-    @BindView(R.id.tv_showInfo)
+    @BindView(R2.id.tv_showInfo)
     TextView tvShowInfo;
     private Observable<CharSequence> observableName;
     private Observable<CharSequence> observableAge;

@@ -15,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.example.jobdemo.R;
+import com.example.jobdemo.R2;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.view.LooperLayoutManager;
 import com.example.jobdemo.view.SlidingIndicator;
@@ -24,11 +25,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SendNotification extends BaseActivity {
-    @BindView(R.id.iv_http)
+    @BindView(R2.id.iv_http)
     ImageView ivHttp;
-    @BindView(R.id.btn_show_picture)
+    @BindView(R2.id.btn_show_picture)
     Button btnShowPicture;
-    @BindView(R.id.rv_loop_picture)
+    @BindView(R2.id.rv_loop_picture)
     RecyclerView rvLoopPicture;
     String[] pictures = {"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3047715767,2472265054&fm=26&gp=0.jpg"
             , "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1635852385,1329179566&fm=26&gp=0.jpg"
@@ -37,9 +38,9 @@ public class SendNotification extends BaseActivity {
             , "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587410362405&di=011dc9c4d7c829f68c2598d738be3261&imgtype=0&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D4048229144%2C4287653608%26fm%3D214%26gp%3D0.jpg"
 
     };
-    @BindView(R.id.vp_picture)
+    @BindView(R2.id.vp_picture)
     ViewPager vpPicture;
-    @BindView(R.id.si_dot)
+    @BindView(R2.id.si_dot)
     SlidingIndicator siDot;
 
     @Override

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
+import com.example.jobdemo.R2;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.util.MeasureUtils;
 
@@ -25,23 +26,23 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MyInterpolator extends BaseActivity {
-    @BindView(R.id.tv_accelerate)
+    @BindView(R2.id.tv_accelerate)
     TextView tvAccelerate;
-    @BindView(R.id.tv_overshoot)
+    @BindView(R2.id.tv_overshoot)
     TextView tvOvershoot;
-    @BindView(R.id.tv_accelerate_decelerate)
+    @BindView(R2.id.tv_accelerate_decelerate)
     TextView tvAccelerateDecelerate;
-    @BindView(R.id.tv_anticipate)
+    @BindView(R2.id.tv_anticipate)
     TextView tvAnticipate;
-    @BindView(R.id.tv_anticipate_overshoot)
+    @BindView(R2.id.tv_anticipate_overshoot)
     TextView tvAnticipateOvershoot;
-    @BindView(R.id.tv_bounce)
+    @BindView(R2.id.tv_bounce)
     TextView tvBounce;
-    @BindView(R.id.tv_cycle)
+    @BindView(R2.id.tv_cycle)
     TextView tvCycle;
-    @BindView(R.id.tv_decelerate)
+    @BindView(R2.id.tv_decelerate)
     TextView tvDecelerate;
-    @BindView(R.id.tv_linear)
+    @BindView(R2.id.tv_linear)
     TextView tvLinear;
     private int screenWidth;
 

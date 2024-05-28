@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
+import com.example.jobdemo.R2;
 import com.example.jobdemo.base.BaseActivity;
 
 import butterknife.BindView;
@@ -21,14 +22,14 @@ import butterknife.OnClick;
  * @author Administrator
  */
 public class MyValueAnimation extends BaseActivity {
-    @BindView(R.id.iv_value_animation)
+    @BindView(R2.id.iv_value_animation)
     ImageView ivValueAnimation;
-    @BindView(R.id.tv_change_width)
+    @BindView(R2.id.tv_change_width)
     TextView tvChangeWidth;
     private static final String TAG = "MyValueAnimation";
-    @BindView(R.id.tv_equals)
+    @BindView(R2.id.tv_equals)
     TextView tvEquals;
-    @BindView(R.id.tv_xml_change_width)
+    @BindView(R2.id.tv_xml_change_width)
     TextView tvXmlChangeWidth;
 
     @Override

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
+import com.example.jobdemo.R2;
 import com.example.jobdemo.adapter.SpinnerAdapter;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.bean.TestBean;
@@ -27,11 +28,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class WidgetViewDemo extends BaseActivity implements SpinnerView.ItemClickBackCall {
-    @BindView(R.id.vcd)
+    @BindView(R2.id.vcd)
     VerCodeInputView vcd;
-    @BindView(R.id.btn_showDialog)
+    @BindView(R2.id.btn_showDialog)
     Button btnShowDialog;
-    @BindView(R.id.spv_1)
+    @BindView(R2.id.spv_1)
     SpinnerView spv1;
     private List<TestBean> list = new ArrayList();
     private SpinnerAdapter adapter;

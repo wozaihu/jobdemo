@@ -17,6 +17,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.jobdemo.MyApplication;
 import com.example.jobdemo.R;
+import com.example.jobdemo.R2;
 import com.example.jobdemo.activity.CameraDemo;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.bean.MainOnDestroy;
@@ -30,9 +31,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MyAlpha extends BaseActivity {
-    @BindView(R.id.tv_alpha)
+    @BindView(R2.id.tv_alpha)
     TextView tvAlpha;
-    @BindView(R.id.iv_alpha)
+    @BindView(R2.id.iv_alpha)
     ImageView ivAlpha;
 
     @Override

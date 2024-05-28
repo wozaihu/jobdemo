@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
+import com.example.jobdemo.R2;
 import com.example.jobdemo.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -31,9 +32,9 @@ import butterknife.OnClick;
 public class ActivityList extends BaseActivity {
     private static final String TAG = "ActivityList";
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.lv)
+    @BindView(R2.id.lv)
     ListView lv;
-    @BindView(R.id.btn_addName)
+    @BindView(R2.id.btn_addName)
     Button btnAddName;
     private List<String> name;
     private NaemAdapter adapter;
@@ -119,7 +120,7 @@ public class ActivityList extends BaseActivity {
         }
 
         class ViewHolder {
-            @BindView(R.id.tv_child_content)
+            @BindView(R2.id.tv_child_content)
             TextView tvChildContent;
 
             ViewHolder(View view) {
