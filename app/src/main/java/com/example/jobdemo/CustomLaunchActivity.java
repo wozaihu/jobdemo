@@ -34,7 +34,7 @@ public class CustomLaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityLaunchBinding binding = ActivityLaunchBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
-        checkLocationPermission();
+//        checkLocationPermission();
         MyIntentService.startActionFoo(this, "hello", "hi");
         Glide.with(this).load(R.mipmap.launch2).into(binding.img);
         downTimer = new CountDownTimer(1000, 1000) {
