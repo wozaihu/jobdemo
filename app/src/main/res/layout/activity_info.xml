@@ -83,12 +83,23 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/getCurrentTime" />
 
-            <Button
-                android:id="@+id/btn_showStr"
-                android:layout_width="wrap_content"
+            <com.nex3z.flowlayout.FlowLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="获得文字" />
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/btn_showStr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="获得文字" />
+
+                <Button
+                    android:id="@+id/btn_showStr2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="获得第二个C文件内容" />
+            </com.nex3z.flowlayout.FlowLayout>
 
             <Button
                 android:id="@+id/btn_startNew"

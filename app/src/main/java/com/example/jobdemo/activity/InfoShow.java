@@ -51,6 +51,13 @@ public class InfoShow extends AppCompatActivity implements View.OnClickListener 
 
     private com.example.jobdemo.databinding.ActivityInfoBinding binding;
 
+    static {
+        System.loadLibrary("jobdemo");
+    }
+
+    public native String getString();
+    public native String getString2();
+
     /**
      * 启动 InfoShow 活动，并传递参数
      *
@@ -94,17 +101,13 @@ public class InfoShow extends AppCompatActivity implements View.OnClickListener 
         Log.d(TAG, "包名: " + getPackageName());
         pointDate();
         binding.btnLaptop.setOnClickListener(this);
-        binding.btnShowStr.setOnClickListener(v -> showStr("你好"));
+        binding.btnShowStr.setOnClickListener(v -> showStr(getString()));
+        binding.btnShowStr2.setOnClickListener(v -> showStr(getString2()));
         binding.btnStartNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, EditTextDemo.class);
             startActivity(intent);
         });
 
-        // 打开百度网址
-        Uri uri = Uri.parse("https://www.baidu.com");
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 
     private void pointDate() {
