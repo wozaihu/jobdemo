@@ -9,7 +9,7 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.kotlin_code.bean.KTPerson;
 import com.example.jobdemo.util.PriceTextWatcher;
@@ -24,11 +24,11 @@ import butterknife.OnClick;
 
 public class EditTextDemo extends BaseActivity {
     private static final String TAG = "打印数据";
-    @BindView(R2.id.edt_price)
+    @BindView(R.id.edt_price)
     EditText edtPrice;
-    @BindView(R2.id.checkBox)
+    @BindView(R.id.checkBox)
     CheckBox checkBox;
-    @BindView(R2.id.button)
+    @BindView(R.id.button)
     Button button;
 
     @Override

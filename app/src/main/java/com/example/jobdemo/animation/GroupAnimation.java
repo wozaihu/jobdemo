@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 
 import butterknife.BindView;
@@ -19,9 +19,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class GroupAnimation extends BaseActivity {
-    @BindView(R2.id.tv_group_animation)
+    @BindView(R.id.tv_group_animation)
     TextView tvGroupAnimation;
-    @BindView(R2.id.iv_group_animation)
+    @BindView(R.id.iv_group_animation)
     ImageView ivGroupAnimation;
 
     @Override

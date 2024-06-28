@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.databinding.TestjetpackactivityBinding;
 import com.example.jobdemo.util.LogUtil;
@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class TestJetpackActivity extends BaseActivity {
-    @BindView(R2.id.iv_picture)
+    @BindView(R.id.iv_picture)
     ImageView ivPicture;
     private String json = "{\"status\":\"1\",\"message\":\"信息已获取到!\",\"userInfo\":[{\"ID\":17673,\"UserId\":80251292,\"ExperienceCompany\":\"瑰丽珠宝\",\"Position\":\"珠宝首饰设计\",\"ExperienceContent\":\"主要负责公司研发系列与客来石高级定制\\\"贵宝石\\\"！胸针祖母绿大套链等，擅长动物植物！\",\"StartTime\":\"2016-05\",\"EndTime\":\"2020-03\"},{\"ID\":17674,\"UserId\":80251292,\"ExperienceCompany\":\"风彩珠宝\",\"Position\":\"珠宝首饰设计\",\"ExperienceContent\":\"主要做清新设计\",\"StartTime\":\"2014-07\",\"EndTime\":\"2015-03\"},{\"ID\":17692,\"UserId\":80251292,\"ExperienceCompany\":\"瑰丽珠宝有限公司\",\"Position\":\"珠宝首饰设计\",\"ExperienceContent\":\"主要负责公司的研发系列与高级定制. 擅长动物花鸟. 布契拉提设计   小清新设计。钻石 彩宝 珍珠 等贵宝石研发系列产品 \",\"StartTime\":\"2016-05\",\"EndTime\":\"2020-03\"}]}";
 

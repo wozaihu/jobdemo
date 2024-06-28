@@ -4,8 +4,8 @@ import android.app.DownloadManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.example.jobdemo.R2.attr.mimeType
-import com.example.jobdemo.R2.attr.uri
+import com.example.jobdemo.R.attr.mimeType
+import com.example.jobdemo.R.attr.uri
 import com.example.jobdemo.kotlin_code.utils.installApk
 import com.example.jobdemo.util.LogUtil
 

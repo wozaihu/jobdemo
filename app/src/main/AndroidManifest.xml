@@ -52,7 +52,7 @@
         <!-- 指定腾讯地图包名 -->
         <package android:name="com.tencent.map" />
     </queries>
-    <!--android:debuggable="true",android:usesCleartextTraffic="true" 抓https或许会用到-->
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -62,7 +62,6 @@
         android:supportsRtl="true"
         android:theme="@style/JobDemoAppTheme"
         tools:replace="android:theme">
-
         <meta-data
             android:name="design_width_in_dp"
             android:value="375" />
@@ -314,11 +313,11 @@
         <activity
             android:name=".activity.ATestOnly"
             android:exported="false" />
-
         <activity
             android:name=".activity.Itext7CreatePdf"
             android:exported="false"
             android:label="@string/code_create_pdf" />
+        <activity android:name=".open_im_chat.OpenImLoginActivity" />
     </application>
 
 </manifest>

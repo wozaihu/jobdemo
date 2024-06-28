@@ -13,7 +13,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 
 import androidx.annotation.Nullable;
@@ -23,11 +23,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MyTranslateAnimation extends BaseActivity {
-    @BindView(R2.id.tv_test_translate_animation)
+    @BindView(R.id.tv_test_translate_animation)
     TextView tvTestTranslateAnimation;
-    @BindView(R2.id.btn_start_translate)
+    @BindView(R.id.btn_start_translate)
     TextView btnStartTranslate;
-    @BindView(R2.id.btn_move)
+    @BindView(R.id.btn_move)
     TextView btnMove;
     private TranslateAnimation translateAnimation;
     private static final String TAG = "MyTranslateAnimation";

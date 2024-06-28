@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 
 import butterknife.BindView;
@@ -19,9 +19,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class PopupWindowDemo extends BaseActivity {
-    @BindView(R2.id.tv_show_popupwindow)
+    @BindView(R.id.tv_show_popupwindow)
     TextView tvShowPopupwindow;
-    @BindView(R2.id.tv_view_bottom_show_pop)
+    @BindView(R.id.tv_view_bottom_show_pop)
     TextView tvViewBottomShowPop;
 
     @Override

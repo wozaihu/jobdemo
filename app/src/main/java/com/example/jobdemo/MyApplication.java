@@ -16,8 +16,10 @@ import com.baidu.mapapi.common.BaiduMapSDKException;
 import com.example.jobdemo.base.AppDataBase;
 import com.example.jobdemo.database.DaoMaster;
 import com.example.jobdemo.database.DaoSession;
+import com.example.jobdemo.util.LogUtil;
 import com.example.jobdemo.util.ProcessUtil;
 import com.example.jobdemo.util.SpUtil;
+import com.example.jobdemo.util.Utils;
 import com.lzy.okgo.OkGo;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.export.external.TbsCoreSettings;
@@ -27,6 +29,15 @@ import com.umeng.commonsdk.UMConfigure;
 import java.util.HashMap;
 
 import dagger.hilt.android.HiltAndroidApp;
+import io.openim.android.sdk.OpenIMClient;
+import io.openim.android.sdk.listener.OnAdvanceMsgListener;
+import io.openim.android.sdk.listener.OnConnListener;
+import io.openim.android.sdk.listener.OnConversationListener;
+import io.openim.android.sdk.listener.OnFriendshipListener;
+import io.openim.android.sdk.listener.OnGroupListener;
+import io.openim.android.sdk.listener.OnSignalingListener;
+import io.openim.android.sdk.listener.OnUserListener;
+import io.openim.android.sdk.models.InitConfig;
 import io.rong.imkit.RongIM;
 
 /**
@@ -56,7 +67,75 @@ public class MyApplication extends Application {
         //主进程
         if (packageName.equals(processName)) {
             init();
+            initOpenIm();
         }
+    }
+
+    private void initOpenIm() {
+        String openImTag = "openIm打印信息";
+        InitConfig initConfig = new InitConfig(
+                "http://192.168.8.215:10002",//SDK api地址
+                "ws://192.168.8.215:10001",//SDK WebSocket地址
+                getFilesDir().getPath()//SDK数据库存储目录
+        );
+        LogUtil.showD(openImTag, "开始初始化openIm");
+        boolean initSDK = OpenIMClient.getInstance().initSDK(
+                application, //Application
+                initConfig,//InitConfig
+                new OnConnListener() {
+                    @Override
+                    public void onConnectFailed(long code, String error) {
+                        //连接服务器失败
+                        LogUtil.showD(openImTag, "连接失败");
+                    }
+
+                    @Override
+                    public void onConnectSuccess() {
+                        //连接服务器成功
+                        LogUtil.showD(openImTag, "连接成功");
+                    }
+
+                    @Override
+                    public void onConnecting() {
+                        //连接服务器中...
+                        LogUtil.showD(openImTag, "连接中...");
+                    }
+
+                    @Override
+                    public void onKickedOffline() {
+                        //当前用户被踢下线
+                        LogUtil.showD(openImTag, "当前用户被踢下线");
+                    }
+
+                    @Override
+                    public void onUserTokenExpired() {
+                        //登录票据已经过期
+                        LogUtil.showD(openImTag, "登录票据已经过期");
+                    }
+                });
+
+        LogUtil.showD(openImTag, "初始化openIm结果：" + initSDK);
+// Set listener，sdk采用的set方式，多次set会替换上次set,建议使用一个中间件使用add方式分发执行回调,参考demo IMEvent这个类
+
+        // 当前登录用户资料变更回调
+        OpenIMClient.getInstance().userInfoManager.setOnUserListener(new OnUserListener() {
+
+        });
+        // 收到新消息，已读回执，消息撤回监听。
+        OpenIMClient.getInstance().messageManager.setAdvancedMsgListener(new OnAdvanceMsgListener() {
+        });
+        // 好关系发生变化监听
+        OpenIMClient.getInstance().friendshipManager.setOnFriendshipListener(new OnFriendshipListener() {
+        });
+        // 会话新增或改变监听
+        OpenIMClient.getInstance().conversationManager.setOnConversationListener(new OnConversationListener() {
+        });
+        // 群组关系发生改变监听
+        OpenIMClient.getInstance().groupManager.setOnGroupListener(new OnGroupListener() {
+        });
+        // 信令监听
+
+//        OpenIMClient.getInstance().signalingManager.setSignalingListener(new OnSignalingListener() {});
     }
 
     public static Context getAppContext() {

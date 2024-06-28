@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 import com.example.jobdemo.adapter.MyExpandableAdapter;
 import com.example.jobdemo.base.BaseActivity;
 
@@ -20,9 +20,9 @@ import butterknife.ButterKnife;
  * @author Administrator
  */
 public class DemoExpandableListView extends BaseActivity {
-    @BindView(R2.id.elv_show_list_data)
+    @BindView(R.id.elv_show_list_data)
     ExpandableListView elvShowListData;
-    @BindView(R2.id.iv_empty)
+    @BindView(R.id.iv_empty)
     ImageView ivEmpty;
 
     @Override

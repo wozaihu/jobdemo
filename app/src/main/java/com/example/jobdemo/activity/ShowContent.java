@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.bean.PersonBean;
 
@@ -20,15 +20,15 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ShowContent extends BaseActivity {
-    @BindView(R2.id.tv_age)
+    @BindView(R.id.tv_age)
     TextView tvAge;
-    @BindView(R2.id.tv_name)
+    @BindView(R.id.tv_name)
     TextView tvName;
-    @BindView(R2.id.img_heat_portrait)
+    @BindView(R.id.img_heat_portrait)
     ImageView imgHeatPortrait;
-    @BindView(R2.id.lv_hobby)
+    @BindView(R.id.lv_hobby)
     ListView lvHobby;
-    @BindView(R2.id.tv_gender)
+    @BindView(R.id.tv_gender)
     TextView tvGender;
 
     @Override

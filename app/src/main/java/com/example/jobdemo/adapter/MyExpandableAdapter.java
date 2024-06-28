@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -100,9 +100,9 @@ public class MyExpandableAdapter extends BaseExpandableListAdapter {
 
 
     static class ViewHolder {
-        @BindView(R2.id.tv_title)
+        @BindView(R.id.tv_title)
         TextView tvTitle;
-        @BindView(R2.id.iv_group_indicator)
+        @BindView(R.id.iv_group_indicator)
         ImageView ivGroupIndicator;
 
         ViewHolder(View view) {
@@ -111,7 +111,7 @@ public class MyExpandableAdapter extends BaseExpandableListAdapter {
     }
 
     static class ItemViewHolder {
-        @BindView(R2.id.tv_child_content)
+        @BindView(R.id.tv_child_content)
         TextView tvChildContent;
 
         ItemViewHolder(View view) {

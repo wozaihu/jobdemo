@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.evaluator.GradualCircleColorEvaluator;
 import com.example.jobdemo.util.MeasureUtils;
@@ -21,17 +21,17 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MyObjectAnimator extends BaseActivity {
-    @BindView(R2.id.tv_rotate)
+    @BindView(R.id.tv_rotate)
     TextView tvRotate;
-    @BindView(R2.id.tv_alpha)
+    @BindView(R.id.tv_alpha)
     TextView tvAlpha;
-    @BindView(R2.id.tv_translate)
+    @BindView(R.id.tv_translate)
     TextView tvTranslate;
-    @BindView(R2.id.tv_scale)
+    @BindView(R.id.tv_scale)
     TextView tvScale;
-    @BindView(R2.id.tv_test_property)
+    @BindView(R.id.tv_test_property)
     TextView tvTestProperty;
-    @BindView(R2.id.gradual_circle_color)
+    @BindView(R.id.gradual_circle_color)
     GradualCircleColor gradualCircleColor;
 
     private static final String TAG = "MyObjectAnimator";

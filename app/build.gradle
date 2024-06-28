@@ -287,6 +287,14 @@ dependencies {
     //hilt注入库
     implementation "com.google.dagger:hilt-android:2.51"
     kapt "com.google.dagger:hilt-compiler:2.51"
+
+    //openIM sdk
+    implementation 'io.openim:android-sdk:3.5.1-beta1@aar'
+    implementation 'io.openim:core-sdk:3.5.1@aar'
+
+    //路由
+//    implementation 'com.alibaba:arouter-api:1.5.2'
+//    annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
 }
 repositories {
     mavenCentral()

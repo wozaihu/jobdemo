@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 
 import butterknife.BindView;
@@ -20,9 +20,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MyRotate extends BaseActivity {
-    @BindView(R2.id.tv_rotate)
+    @BindView(R.id.tv_rotate)
     TextView tvRotate;
-    @BindView(R2.id.iv_rotate)
+    @BindView(R.id.iv_rotate)
     ImageView ivRotate;
 
     @Override

@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 
 public class VeiwGroupAnimation extends BaseActivity {
     private static final String TAG = "VeiwGroupAnimation";
-    @BindView(R2.id.lv_animation)
+    @BindView(R.id.lv_animation)
     ListView lvAnimation;
 
     @Override

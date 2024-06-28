@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.jobdemo.R;
-import com.example.jobdemo.R2;
+import com.example.jobdemo.R;
 import com.example.jobdemo.base.BaseActivity;
 import com.example.jobdemo.base.RetrofitInterface;
 import com.example.jobdemo.bean.PictureBean;
@@ -49,9 +49,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitDemoActivity extends BaseActivity {
-    @BindView(R2.id.gv)
+    @BindView(R.id.gv)
     LineGridView gv;
-    @BindView(R2.id.btn_addPicture)
+    @BindView(R.id.btn_addPicture)
     Button btnAddPicture;
     private List<PictureBean> beanList = new ArrayList<>();
     private RetrofitDemoActivity.gvAdapter gvAdapter;
@@ -251,7 +251,7 @@ public class RetrofitDemoActivity extends BaseActivity {
 
 
         class ViewHolder {
-            @BindView(R2.id.iv_picture)
+            @BindView(R.id.iv_picture)
             ImageView ivPicture;
 
             ViewHolder(View view) {

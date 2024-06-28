@@ -37,6 +37,7 @@ allprojects {
             allowInsecureProtocol = true
             url 'http://lbs-sdk.luokuang.com/repository/maven-public/'
         }
+        maven { url 'https://open-im-online.rentsoft.cn:51000/repository/maven2/' }
     }
 }
 
