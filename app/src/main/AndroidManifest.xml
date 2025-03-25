@@ -139,7 +139,10 @@
         <activity android:name=".activity.ViewModelTest" />
         <activity android:name=".activity.NavigationDemo" />
         <activity android:name=".activity.NavigationUIDemo" />
-        <activity android:name=".activity.DraftActivity" />
+        <activity android:name=".activity.DraftActivity"
+            android:launchMode="standard"
+            android:exported="false"
+            />
         <activity
             android:name=".activity.MaterialDesignDemo"
             android:theme="@style/defaultStyle" />
